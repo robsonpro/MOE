@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Robson Bruno Dutra Pereira">
+
+<title>1&nbsp; Distribuições importantes à modelagem e otimização de Experimentos – Modelagem e Otimização de Experimentos Utilizando a Linguagem R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-Testes.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Dists.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuições importantes à modelagem e otimização de Experimentos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Modelagem e Otimização de Experimentos Utilizando a Linguagem R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Dists.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuições importantes à modelagem e otimização de Experimentos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Testes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Testes de hipóteses para média de uma e duas amostras</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Planejamento totalmente aleatorizado e análise de variância para um fator</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-ANOVA_blocos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Planejamento com blocos completos aleatorizados</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1.1</span> Introdução</a></li>
+  <li><a href="#distribuição-normal" id="toc-distribuição-normal" class="nav-link" data-scroll-target="#distribuição-normal"><span class="header-section-number">1.2</span> Distribuição normal</a></li>
+  <li><a href="#distribuição-chi-quadrado" id="toc-distribuição-chi-quadrado" class="nav-link" data-scroll-target="#distribuição-chi-quadrado"><span class="header-section-number">1.3</span> Distribuição Chi-quadrado</a></li>
+  <li><a href="#distribuição-t-de-student" id="toc-distribuição-t-de-student" class="nav-link" data-scroll-target="#distribuição-t-de-student"><span class="header-section-number">1.4</span> Distribuição t de Student</a></li>
+  <li><a href="#distribuição-f-de-fisher-snedecor" id="toc-distribuição-f-de-fisher-snedecor" class="nav-link" data-scroll-target="#distribuição-f-de-fisher-snedecor"><span class="header-section-number">1.5</span> Distribuição F de Fisher-Snedecor</a></li>
+  <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuições importantes à modelagem e otimização de Experimentos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Robson Bruno Dutra Pereira </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introdução" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1.1</span> Introdução</h2>
+<p>Inferência é o ramo da estatística que trata da obtenção de informações acerca de um parâmetro populacional a partir de dados amostrais. Em outras palavras, pode-se dizer que inferência constiste no aprendizado sobre a população considerando um conjunto limitado, porém suficiente, de observações retiradas desta. Em diversas situações deseja-se obter informações de parâmetros desconhecidos de uma população de interesse. Por exemplo, de um lote de tubos sem costura produzidos em um determinado horizonte de produção, por uma determinada empresa metalúrgica. Neste caso é viável coletar uma amostra para inspecionar e inferir sobre o diâmetro médio da população de tubos produzida em relação a um valor alvo de interesse. Em outros procedimentos, podem ser comparados processos, materiais, métodos de preparação, entre outras fontes de variação de interesse científico e industrial.</p>
+<p>Neste capítulo serão abordadas algumas distribuições essenciais à modelagem e análise de experimentos. Tais funções serão usadas em diversos testes estatísticos para inferência e avaliação da significância dos efeitos de variáveis de interesse em diversos planejamentos explicitados neste livro.</p>
+<p>Neste capítulo é utilizado apenas o pacote <code>ggpplot2</code> para gráficos, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. Sempre que aparecer nos blocos de código R propostos o comando <code>library(&lt;nome_pacote&gt;)</code> para carregar um determinado pacote, antes este deve ser instalado.</p>
+</section>
+<section id="distribuição-normal" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="distribuição-normal"><span class="header-section-number">1.2</span> Distribuição normal</h2>
+<p>Seja uma amostra aleatória de <span class="math inline">\(n\)</span> observações,<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, …, <span class="math inline">\(x_n\)</span>, retirada de uma população de tamanho <span class="math inline">\(N\)</span>. Cada observação amostral é retirada de forma independente. Se a população de origem é dita normal, ela é descrita pela função densidade de probabilidade (fdp) da <a href="#eq-fdpnorm" class="quarto-xref">Equação&nbsp;<span>1.1</span></a>. Uma variável aleatória (va) <span class="math inline">\(x\)</span> descrita por esta distribuição é dita normal com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>, isto é <span class="math inline">\(x \sim N(\mu,\sigma^2)\)</span>.</p>
+<p><span id="eq-fdpnorm"><span class="math display">\[
+  f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^{2}}
+\tag{1.1}\]</span></span></p>
+<p>A <a href="#fig-fdpnor" class="quarto-xref">Figura&nbsp;<span>1.1</span></a> ilustra a função densidade de probabilidade da distribuição normal de uma variável aleatória (va) <span class="math inline">\(x \sim N(100,1)\)</span>, enquanto a <a href="#fig-histnorm" class="quarto-xref">Figura&nbsp;<span>1.2</span></a> expõe um histograma de uma amostra com n = 1000 observações retirada de tal va. O código para obter tais gráficos no R são expostos à seguir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar a biblioteca ggplot2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para eixo horizontal</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">95</span>, <span class="at">to =</span> <span class="dv">105</span>, <span class="at">length =</span> <span class="dv">500</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Avaliando cada valor de x na fdp da distribuição normal</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar um data frame para o ggplot</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotando a fdp com ggplot2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"densidade"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-fdpnor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fdpnor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-fdpnor-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fdpnor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.1: fdp normal, <span class="math inline">\(\mu = 100\)</span>, <span class="math inline">\(\sigma^2 = 1\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-histnorm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-histnorm-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.2: histograma de uma amostra com n = 1000 observações retirada de uma população <span class="math inline">\(N(100,1)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A <a href="#fig-normvary" class="quarto-xref">Figura&nbsp;<span>1.3</span></a> expõe gráficos de densidade de probabilidade da função normal com variação nos parâmetros de posição (média) e dispersão (variância). Pode-se observar que o aumento na média apenas desloca a distribuição para a direita, enquanto o aumento na variância resulta em uma distribuição com maior probabilidade nas caudas e menor probabilidade na média. Quando duas vas tem médias diferentes, com variância igual, diz-se haver um viés ou vício entre estas, enquanto duas vas com médias iguais e variâncias distintas, são ditas com erro aleatório distinto. A distribuição normal é simétrica e assíntota, tendo portanto domínio <span class="math inline">\(x \in (-\infty, +\infty)\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normvary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normvary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-normvary-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normvary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.3: Variação dos parâmetros da distribuição normal
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Os parâmetos populacionais da distribuição normal podem ser calculados conforme a <a href="#eq-meann" class="quarto-xref">Equação&nbsp;<span>1.2</span></a> e a <a href="#eq-var" class="quarto-xref">Equação&nbsp;<span>1.3</span></a>. A variância populacional <span class="math inline">\(\sigma^2\)</span> tem unidade de medida igual ao quadrado da unidade de medida da va em avaliação. Neste sentido, uma outra medida é comumente utilizada como medida de dispersão, o desvio-padrão, <span class="math inline">\(\sigma\)</span>, sendo calculado conforme a <a href="#eq-sd" class="quarto-xref">Equação&nbsp;<span>1.4</span></a>. O desvio-padrão, <span class="math inline">\(\sigma\)</span>, tem sua unidade de medida igual à da va de interesse, sendo de interpretação mais fácil como medida de dispersão em situações práticas. Uma propriedade importante do desvio-padrão é que no gráfico da função densidade de probabilidade os pontos de inflexão estão à distância de um desvio-padrão em relação à média, conforme ilustrado na <a href="#fig-desvpad" class="quarto-xref">Figura&nbsp;<span>1.4</span></a>.</p>
+<p><span id="eq-meann"><span class="math display">\[
+  \mu = \frac{\sum_{i = 1}^{N}x_i}{N} = \frac{x_1+x_2+\dots+x_N}{N}
+\tag{1.2}\]</span></span></p>
+<p><span id="eq-var"><span class="math display">\[
+  \sigma^2 = \frac{\sum_{i = 1}^{N}(x_i - \mu)^2}{N}
+\tag{1.3}\]</span></span></p>
+<p><span id="eq-sd"><span class="math display">\[
+  \sigma = \sqrt{\frac{\sum_{i = 1}^{N}(x_i - \mu)^2}{N}}
+\tag{1.4}\]</span></span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-desvpad" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-desvpad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-desvpad-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-desvpad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.4: Desvio-padrão <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(N(0, 1)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ao obter uma amostra de uma distribuição normal com parâmetros desconhecidos é importante estimar os parâmetros populacionais. A estimativa para a média, <span class="math inline">\(\hat{\mu} = \bar{x}\)</span>, é obtida conforme a <a href="#eq-samplemean" class="quarto-xref">Equação&nbsp;<span>1.5</span></a>, tomando, portanto, a razão entre a soma das <span class="math inline">\(n\)</span> observações, <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, e o tamanho amostral <span class="math inline">\(n\)</span>. Já a variância amostral <span class="math inline">\(\hat{\sigma}^2 = s^2\)</span> é estimada considerando o quadrado da soma dos desvios em relação à média, dividido pelo número de graus de liberdade da amostra <span class="math inline">\(n - 1\)</span>, conforme <a href="#eq-samplevar" class="quarto-xref">Equação&nbsp;<span>1.6</span></a>. O desvio-padrão amostral também pode ser obtido tomando a raiz quadrada da variância amostral, conforme <a href="#eq-samplesd" class="quarto-xref">Equação&nbsp;<span>1.7</span></a>.</p>
+<p><span id="eq-samplemean"><span class="math display">\[
+  \bar{x} = \frac{\sum_{i = 1}^{n}x_i}{n} = \frac{x_1+x_2+...+x_n}{n}
+\tag{1.5}\]</span></span></p>
+<p><span id="eq-samplevar"><span class="math display">\[
+  s^2 = \frac{\sum_{i = 1}^{n}(x_i - \bar{x})^2}{n - 1}
+\tag{1.6}\]</span></span></p>
+<p><span id="eq-samplesd"><span class="math display">\[
+  s = \sqrt{\frac{\sum_{i = 1}^{n}(x_i - \bar{x})^2}{n - 1}}
+\tag{1.7}\]</span></span></p>
+<p>Em uma distribuição de probabilidade contínua, como a normal, a probabilidade consiste na área sob a curva, enquanto as distribuições discretas admitem a probabilidade pontual, conforme expresso na <a href="#tbl-probdist" class="quarto-xref">Tabela&nbsp;<span>1.1</span></a>. A <a href="#fig-distplot" class="quarto-xref">Figura&nbsp;<span>1.5</span></a> ilustra o conceito de probabilidade pontual em distribuição discreta e de probabilidade em um intervalo de interesse, consistindo na área sob a curva da função densidade de probabilidade, no caso contínuo.</p>
+<div class="cell">
+<div id="tbl-probdist" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-probdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1.1: Probabilidade em distribuição discreta e contínua
+</figcaption>
+<div aria-describedby="tbl-probdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Distribuição discreta</th>
+<th style="text-align: left;">Distribuição contínua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0 <span class="math inline">\(\leq p(x_j) \leq 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p(a \leq x \leq b) = \int_a^b f(x)dx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\sum_{j=1}^{n} p(x_j) = 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\int_{-\infty}^{+\infty} f(x)dx = 1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mu = E(x) = \sum_{j=1}^{n} x_jp(x_j)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mu = E(x) = \int_{-\infty}^{+\infty} xf(x)dx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\sigma^2 = Var(x) = \sum_{j=1}^{n} (x_j-\mu)^2p(x_j)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sigma^2 = Var(x) = \int_{-\infty}^{+\infty} (x-\mu)^2f(x)dx\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-distplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-distplot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.5: Probabilidade em (a) distribuição discreta e (b) contínua
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ainda conforme expresso na <a href="#tbl-probdist" class="quarto-xref">Tabela&nbsp;<span>1.1</span></a>, para o caso discreto o total de todos os eventos deve ser unitário. De maneira análoga, a integral de uma função densidade de probabilidade contínua em todo o seu domínio deve ser igual à unidade. A média de uma va pode ser descrita utilizando o operador de esperança <span class="math inline">\(\mu = E(x)\)</span>. No caso discreto a média consiste na soma do produto entre os eventos e suas respectivas probabilidades em todo o espaço amostral. Já no caso contínuo, a média consiste na integral do produto entre o valor da va e sua fdp em todo o domínio da função. A variância de uma va pode ser descrita através do operador de variância, que por sua vez, pode ser descrito usando o operador de esperança, isto é, <span class="math inline">\(\sigma^2= Var(x) = E[(x-\mu)^2]\)</span>. A <a href="#tbl-probdist" class="quarto-xref">Tabela&nbsp;<span>1.1</span></a> finaliza expondo o cálculo da variância para os casos discreto e contínuo.</p>
+<p>Algumas propriedades dos operadores de média ou esperança e variância são essenciais à análise, modelagem e otimização de experimentos, sendo resumidas na <a href="#tbl-operevar" class="quarto-xref">Tabela&nbsp;<span>1.2</span></a>, sendo <span class="math inline">\(x\)</span> uma va com média <span class="math inline">\(E(x)=\mu_x\)</span> e variância <span class="math inline">\(V(x)=\sigma_x^2\)</span>. Seja <span class="math inline">\(a\)</span> uma constante <span class="math inline">\(a \in \Re\)</span>. Seja também uma va <span class="math inline">\(y\)</span> com média <span class="math inline">\(E(y)=\mu_y\)</span> e variância <span class="math inline">\(V(y)=\sigma_y^2\)</span>, sendo <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> vas independentes, é possível provar as propriedades resumidas na <a href="#tbl-operevar" class="quarto-xref">Tabela&nbsp;<span>1.2</span></a>.</p>
+<div class="cell">
+<div id="tbl-operevar" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-operevar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1.2: Propriedades dos operadores de média e variância
+</figcaption>
+<div aria-describedby="tbl-operevar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operador de média ou esperança</th>
+<th style="text-align: left;">Operador de variâncias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(E(x)=\mu_x\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V(x)=E[(x-\mu_x)^2]=E(x^2)−E^2(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(E(a)=a\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V(a)=0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(E(a+x) = a + E(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V(a+x) = V(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(E(ax) = aE(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V(ax) = a^2V(x)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(E(x + y) = E(x) + E(y)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(V(x+y)=V(x-y)=V(x)+V(y)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Tomando uma variável aleatória que segue a distribuição normal com parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span>, isto é, <span class="math inline">\(x \sim N(\mu,\sigma^2)\)</span>, é possível calcular probabilidades considerando valores de interesse do investigador, conforme o Exemplo a seguir.</p>
+<p>Seja um processo de trefilação de aço que produz arames com diâmetro médio mm <span class="math inline">\(\mu\)</span> = 3,40 e variância <span class="math inline">\(\sigma^2 = 0,10^2 mm^2\)</span>. Deseja-se calcular a probabilidade de o diâmetro ser menor que 3,30 mm.</p>
+<p>No R é fácil calcular esta probabilidade através do comando <code>pnorm</code>, conforme segue. Logo, <span class="math inline">\(P(x &lt; 3,3) = 0.1586553\)</span>. A <a href="#fig-prob33" class="quarto-xref">Figura&nbsp;<span>1.6</span></a> ilustra esta probabilidade.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(x &lt; 3,3)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">3.3</span>, <span class="at">mean =</span> <span class="fl">3.4</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1586553</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-prob33" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prob33-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-prob33-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prob33-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.6: <span class="math inline">\(P(x&lt;3,3), x \sim N(3,4; 0,1^2)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para obter o gráfico da função densidade de probabilidade com a área relacionada à probabilidade hachurada, similar ao da <a href="#fig-prob33" class="quarto-xref">Figura&nbsp;<span>1.6</span></a>, deve-se utilizar o código a seguir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="fl">3.8</span>, <span class="at">length =</span> <span class="dv">500</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">3</span>, <span class="fl">3.8</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="at">mean =</span> <span class="fl">3.4</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>shaded_area <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="fl">3.3</span>, <span class="at">length =</span> <span class="dv">100</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="dv">3</span>, <span class="fl">3.3</span>, <span class="at">length =</span> <span class="dv">100</span>), <span class="at">mean =</span> <span class="fl">3.4</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> shaded_area,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> y),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"seagreen3"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">3.15</span>, <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"P(x &lt; 3.3)"</span>, <span class="at">color =</span> <span class="st">"green4"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Probabilidade"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Um caso particular da distribuição normal é a normal padrão <span class="math inline">\(z \sim N(0,1)\)</span>. É comum utilizá-la como referência para obter escores da distribuição normal, isto é valores <span class="math inline">\(Z\)</span> em relação à uma probabilidade de interesse. Além disso, a padronização deixa a va normal adimensional e centrada em zero e com desvio-padrão unitário. São facilmente encontradas tabelas para estes valores considerando probabilidades distintas. Entretanto, o advento dos pacotes computacionais estatísticos diminui a necessidade destas. Qualquer variável aleatória normalmente distribuída, <span class="math inline">\(x \sim N(\mu,\sigma^2)\)</span>, pode ser padronizada utilizando-se a <a href="#eq-pad" class="quarto-xref">Equação&nbsp;<span>1.8</span></a>.</p>
+<p><span id="eq-pad"><span class="math display">\[
+  z = \frac{x-\mu}{\sigma}
+\tag{1.8}\]</span></span></p>
+<p>A <a href="#eq-fdpz" class="quarto-xref">Equação&nbsp;<span>1.9</span></a> expõe a função densidade de probabilidade da distribuição normal padrão <span class="math inline">\(z\)</span>. O coeficiente <span class="math inline">\(\frac{1}{\sqrt{2\pi}}\)</span> garante que a área sob a curva seja unitária. A probabilidade à esquerda de um valor de interesse é denotada <span class="math inline">\(\Phi(\zeta) = P(z \leq \zeta)\)</span>, sendo calculada conforme a <a href="#eq-phiz" class="quarto-xref">Equação&nbsp;<span>1.10</span></a>. A <a href="#fig-qz" class="quarto-xref">Figura&nbsp;<span>1.7</span></a> ilustra três exemplos com probabilidade de 0,25, 0,5 e 0,75.</p>
+<p><span id="eq-fdpz"><span class="math display">\[
+  f(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^{2}}
+\tag{1.9}\]</span></span></p>
+<p><span id="eq-phiz"><span class="math display">\[
+  \Phi(\zeta) = \int_{-\infty}^{\zeta} f(z) dz
+\tag{1.10}\]</span></span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-qz" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-qz-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.7: quantil <span class="math inline">\(\phi(z_q) = q\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para encontrar no R o valor da probabilidade à esquerda associada a um determinado valor <span class="math inline">\(z_p\)</span>, deve-se utilizar o comando <code>pnorm(zq)</code>, enquanto para determinar o valor <span class="math inline">\(z_p\)</span> associado a uma probabilidade <span class="math inline">\(p\)</span> de interesse, deve-se utilizar o comando <code>qnorm(p)</code>, conforme exemplos à seguir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade phi(z_q) para z = 0.6744898</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.6744898</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.75</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z_q associado à probabilidade p = 0.75, P(Z &lt; z_q) = 0.5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6744898</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade p para z_p = 0 </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z_p associado à probabilidade p = 0.5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade q para z_p = -0.6744898 </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.6744898</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.25</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z associado à probabilidade p = 0.25</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6744898</code></pre>
+</div>
+</div>
+<p>Uma regra usual da distribuição normal é a regra 68-95-99%. Por esta regra sabe-se que na distribuição normal a probabilidade entre <span class="math inline">\(\pm 1\)</span> desvio-padrão em relação à média é igual a 0,6827, enquanto a probabilidade entre <span class="math inline">\(\pm 2\)</span> desvios-padrões em relação à média é igual a 0,9545. Por fim, a probabilidade entre <span class="math inline">\(\pm 3\)</span> desvios é igual a 0,9973, conforme ilustrado na <a href="#fig-probsz" class="quarto-xref">Figura&nbsp;<span>1.8</span></a>. Em metrologia é comum a incerteza de medição ser calculada considerando mais ou menos dois desvios-padrões em relação à média do mensurando corrigida, sendo considerado 0.9545 de confiança ara encontrar o erro de medição. Em controle estatístico de qualidade é comum o uso de mais ou menos três desvios-padrões em relação à média em cartas de controle, sendo o nível de confiança de 0.9973 o mais usado em tais aplicações. Para calcular tais probabilidades na linguagem R, pode-se utilizar o código abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-1&lt;z&lt;1)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-2&lt;z&lt;2)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9544997</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-3&lt;z&lt;3)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">3</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9973002</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-probsz" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-probsz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-probsz-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-probsz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.8: Regra 68-95-99.7
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Após todas estas constatações, é viável apresentar o <a href="#thm-line" class="quarto-xref">Teorema&nbsp;<span>1.1</span></a>, denominado central do limite (TCL), sendo este essencial à inferência e estatística experimental.</p>
+<div id="thm-line" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 1.1 (Teorema central do limite)</strong></span> Sejam <span class="math inline">\(n\)</span> variáveis aleatórias <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, sendo estas independentes e identicamente distribuídas (iid), com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. A média amostral <span class="math inline">\(\bar{x}\)</span> é aproximadamente normal com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2/n\)</span>:</p>
+<p><span class="math inline">\(\bar{x} \sim N(\mu,\frac{\sigma^2}{n})\)</span></p>
+<p>De maneira análoga,</p>
+<p><span class="math inline">\(P(\frac{\mu - \bar{x}}{\sigma/\sqrt{n}} \leq z) \rightarrow \Phi(z)\)</span></p>
+</div>
+<p>Pelo TCL, para um <span class="math inline">\(n\)</span> suficientemente grande, pode-se afirmar que a média amostral é aproximadamente normalmente distribuída com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\frac{\sigma^2}{n}\)</span>. Ademais, o desvio-padrão da média amostral é igual <span class="math inline">\(\sigma/\sqrt{n}\)</span>. O enunciado do TCL tem diversas implicações em modelagem e otimização de experimentos planejados, sendo, portanto, essencial sua compreensão.</p>
+</section>
+<section id="distribuição-chi-quadrado" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="distribuição-chi-quadrado"><span class="header-section-number">1.3</span> Distribuição Chi-quadrado</h2>
+<p>A distribuição da variância amostral <span class="math inline">\(s^2\)</span> é de interesse em muitos problemas de inferência. A distribuição chi-quadrado, denotada <span class="math inline">\(\chi^2\)</span>, com <span class="math inline">\(k\)</span> graus de liberdade é utilizada para descrever a soma dos quadrados de <span class="math inline">\(k\)</span> vas normais-padrão independentes, <span class="math inline">\(z_i \sim N(0,1)\)</span>, conforme segue. Uma vez que, ao calcular a variância amostral, conforme a <a href="#eq-samplevar" class="quarto-xref">Equação&nbsp;<span>1.6</span></a>, toma-se a soma dos quadrados dos desvios das observações em relação à média, isto é, a soma dos quadrados de vas normais-padrão, pode-se inferir que a variância é distribuída pela va segue a distribuição <span class="math inline">\(\chi^2\)</span>.</p>
+<p><span class="math display">\[
+  z_1^2 + z_2^2 + ... + z_k^2 \sim \chi^2
+\]</span></p>
+<p>A <a href="#eq-fdpchi" class="quarto-xref">Equação&nbsp;<span>1.11</span></a> expõe a função densidade de probabilidade da distribuição <span class="math inline">\(\chi^2\)</span>, onde <span class="math inline">\(\Gamma(k/2)\)</span> denota a função gamma, <span class="math inline">\(\Gamma(n) = (n-1)!\)</span>. A <a href="#fig-fdpchi" class="quarto-xref">Figura&nbsp;<span>1.9</span></a> expõe gráficos da fdp <span class="math inline">\(\chi^2\)</span> com variação do número de graus de liberdade.</p>
+<p><span id="eq-fdpchi"><span class="math display">\[
+  f(x) = \frac{1}{\Gamma(k/2)2^{k/2}} x^{(k/2)-1} e^{-x/2}
+\tag{1.11}\]</span></span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fdpchi" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fdpchi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-fdpchi-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fdpchi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.9: Distribuição chi-quadrado com <span class="math inline">\(k\)</span> graus de liberdade
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para obter um gráfico da fdp da distribuição <span class="math inline">\(\chi^2\)</span> pode-se utilizar um código similar ao que segue.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">5</span>),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">1</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">2</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">3</span>), </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">5</span>),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">500</span>), <span class="dv">9</span>)),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">9</span>), <span class="at">each =</span> <span class="dv">500</span>))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y, <span class="at">color =</span> k)) <span class="sc">+</span> </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"blue"</span>,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"red"</span>,</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"orange"</span>, </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"purple"</span>),</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"k=1"</span>, <span class="st">"k=2"</span>, <span class="st">"k=3"</span>, <span class="st">"k=5"</span>, <span class="st">"k=9"</span>)) <span class="sc">+</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"densidade"</span>, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para obter uma determinada probabilidade à esquerda de um determinado valor na distribuição Chi-quadrado, pode-se utilizar o comando <code>pchisq()</code>, conforme segue.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade à esquerda de x = 5</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># na distribuição Chi-quadrado com 3 graus de liberdade</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lower.tail = TRUE indica P(X &lt;= x)</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8282029</code></pre>
+</div>
+</div>
+<p>Caso o analista deseje obter a probabilidade à direita do valor de interesse, deve-se utilizar o argumento <code>lower.tail = FALSE</code>.</p>
+</section>
+<section id="distribuição-t-de-student" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="distribuição-t-de-student"><span class="header-section-number">1.4</span> Distribuição t de Student</h2>
+<p>Nem sempre é possível garantir que a população de origem de uma determinada amostra coletada de uma va de interesse é normalmente distribuída, especialmente quando o tamanho amostral é limitado. Tomando uma amostra aleatória <span class="math inline">\(x_1, x_2, ..., x_n\)</span> de uma distribuição <span class="math inline">\(N(\mu,\sigma^2)\)</span>, a quantidade</p>
+<p><span class="math display">\[
+  \frac{\bar{x}- \mu}{s / \sqrt{n}} \sim t_{n-1}
+\]</span></p>
+<p>segue a distribuição <span class="math inline">\(t\)</span> de Student com <span class="math inline">\(n-1\)</span> graus de liberdade. A função densidade de probabilidade da distribição <span class="math inline">\(t\)</span> de Student, com <span class="math inline">\(p=n-1\)</span> graus de liberdade, é exposta na <a href="#eq-fdpt" class="quarto-xref">Equação&nbsp;<span>1.12</span></a>. A <a href="#fig-fdpt" class="quarto-xref">Figura&nbsp;<span>1.10</span></a> expõe a variação no formato da função com a variação no número de graus de liberdade da distribuição <span class="math inline">\(t\)</span>. Pode-se observar que à medida que <span class="math inline">\(p=n-1\)</span> aumenta, a distribuição se aproxima da normal padrão. Neste sentido, muitos pesquisadores admitem que em procedimentos de inferência com amostras com <span class="math inline">\(n \geq 30\)</span>, pode-se utilizar a distribuição <span class="math inline">\(z \sim N(0,1)\)</span>.</p>
+<p><span id="eq-fdpt"><span class="math display">\[
+  f(t) = \frac{\Gamma(\frac{p-1}{2})}{\Gamma(\frac{p}{2})}\frac{1}{p\pi^{1/2}}\frac{1}{(1+t^2/p)^{(p+1)/2}}
+\tag{1.12}\]</span></span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fdpt" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fdpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-fdpt-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fdpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.10: Distribuição t de Student e normal padrão
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A distribuição t, assim como a normal é simétrica em relação à média, tem domínio <span class="math inline">\(t \in (-\infty, +\infty)\)</span>, sendo, portanto, assíntota ao eixo horizontal.</p>
+<p>Para encontrar uma determinada probabilidade à esquerda de um valor de interesse da distribuição <span class="math inline">\(t\)</span> com <span class="math inline">\(\nu=n-1\)</span> graus de liberdade pode-se utilizar no R o comando <code>pt()</code>, conforme segue.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.969999</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03000102</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9234472</code></pre>
+</div>
+</div>
+<p>De outra forma, para se encontrar o valor <span class="math inline">\(t\)</span> de interesse considerando uma determinada probabilidade, deve-se utilizar no R o comando <code>qt()</code>, conforme à seguir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor t para a probabilidade acumulada à esquerda de 0,9 com n-1 = 29</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.8</span>, <span class="at">df =</span> <span class="dv">29</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.854192</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pode-se fornecer um vetor de probabilidades como argumento</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.925</span>, <span class="fl">0.95</span>, <span class="fl">0.975</span>), <span class="at">df =</span> <span class="dv">29</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.311434 1.478705 1.699127 2.045230</code></pre>
+</div>
+</div>
+<p>Para obter um gráfico da fdp da distribuição <span class="math inline">\(t\)</span> pode-se utilizar um código similar ao que segue.</p>
+</section>
+<section id="distribuição-f-de-fisher-snedecor" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="distribuição-f-de-fisher-snedecor"><span class="header-section-number">1.5</span> Distribuição F de Fisher-Snedecor</h2>
+<p>A distribuição F é utilizada para descrever a razão entre vas que seguem a distribuição chi-quadrado, isto é, a razão entre variâncias. Sejam duas amostras aleatórias <span class="math inline">\(x_1, x_2, ..., x_n\)</span> e <span class="math inline">\(y_1, y_2, ..., y_m\)</span> retiradas, respectivamente de populações normais <span class="math inline">\(N(\mu_x,\sigma_x^2)\)</span> e <span class="math inline">\(N(\mu_y,\sigma_y^2)\)</span>. Pode ser de interesse inferir sobre a razão entre as variâncias populacionais, <span class="math inline">\(\sigma_x^2 / \sigma_y^2)\)</span>, a partir de estimativas amostrais, <span class="math inline">\(s_x^2 / s_y^2)\)</span>. A quantidade</p>
+<p><span class="math display">\[
+  \frac{s_x^2 / \sigma_x^2}{s_y^2 / \sigma_y^2} \sim F_{n-1,m-1}
+\]</span></p>
+<p>segue a distribuição <span class="math inline">\(F\)</span> de Fisher-Snedecor com <span class="math inline">\(n-1\)</span> e <span class="math inline">\(m-1\)</span> graus de liberdade. A razão entre variâncias pode seguir esta distribuição mesmo se as populações de origem apresentam desvios de normalidade. Analogamente à distribuição <span class="math inline">\(t\)</span>, a distribuição <span class="math inline">\(F\)</span> deriva da normal, sendo um caso específico da distribuição <span class="math inline">\(F\)</span> derivado da distribuição <span class="math inline">\(t\)</span>. A distribuição <span class="math inline">\(F\)</span> apresenta domínio <span class="math inline">\(F \in [0, +\infty)\)</span>, por descrever a razão entre variâncias, sendo também assíntota. A <a href="#eq-fdpf" class="quarto-xref">Equação&nbsp;<span>1.13</span></a> descreve a função densidade de probabilidade F, com <span class="math inline">\(p=n-1\)</span> graus de liberdade e <span class="math inline">\(q=m-1\)</span> graus de liberdade. Esta fdp é plotada com variação dos graus de liberdade na <a href="#fig-fdpf" class="quarto-xref">Figura&nbsp;<span>1.11</span></a>.</p>
+<p><span id="eq-fdpf"><span class="math display">\[
+  f(X) = \frac{\Gamma(\frac{p+q}{2})}{\Gamma(\frac{p}{2})\Gamma(\frac{q}{2})}(\frac{p}{q})^{p/2}\frac{x^{(p/2)-1}}{[1+(p/q)x]^{(p+q)/2}}
+\tag{1.13}\]</span></span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fdpf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fdpf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Dists_files/figure-html/fig-fdpf-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fdpf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.11: Distribuição F com n-1,m-1 graus de liberdade
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para obter a probabilidade associada a um determinado valor de interesse da distribuição <span class="math inline">\(F\)</span> com <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span> graus de liberdade, pode-se utilizar a sintaxe que segue.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade à direita de 2.13 na distribuição F</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># com p = 1 e q = 8 graus de liberdade</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">2.13</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1813001</code></pre>
+</div>
+</div>
+<p>De outra forma, pode ser interessante obter o valor associado a uma determinada probabilidade de interesse.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor associado à probabilidade de 0.05</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># na calda direita, com p = 1 e q = 8 graus de liberdade </span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.317655</code></pre>
+</div>
+</div>
+<p>O código à seguir serve para obtenção da fdp da distribuição <span class="math inline">\(F\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sequência para o eixo horizontal</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">length =</span> <span class="dv">500</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o data frame com a distribuição F(1,8)</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> x,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor crítico F para alpha = 0.05</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>f_crit <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para a região crítica (área verde clara)</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>x_critico <span class="ot">&lt;-</span> <span class="fu">seq</span>(f_crit, <span class="dv">10</span>, <span class="at">length =</span> <span class="dv">500</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>dados_critico <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> x_critico,</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x_critico, <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o gráfico com ggplot2</span></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plotando a curva da distribuição F</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dados, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adicionando a área sombreada para a região crítica</span></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">data =</span> dados_critico, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Configurando os limites dos eixos e os rótulos</span></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"densidade"</span></span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bibliografia" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+<p>BUSSAB, Wilton de Oliveira; MORETTIN, Pedro Alberto. <em>Estatística básica</em>. 2009.</p>
+<p>COCHRAN, William G. <em>The distribution of quadratic forms in a normal system, with applications to the analysis of covariance</em>. 1934.</p>
+<p>FELLER, Willliam. <em>An introduction to probability theory and its applications</em>. 2008.</p>
+<p>GRINSTEAD, Charles Miller; SNELL, James Laurie. <em>Introduction to probability</em>. 2012.</p>
+<p>JOHNSON, N. L.; WELCH, B. L. <em>Applications of the non-central t-distribution</em>. 1940.</p>
+<p>KENDALL, Maurice George et al.&nbsp;<em>The advanced theory of statistics</em>. 1946.</p>
+<p>KOTZ, Samuel; JOHNSON, Norman L. <em>Breakthroughs in statistics: methodology and distribution</em>. 2012.</p>
+<p>MEYER, Paul L. <em>Introductory probability and statistical applications</em>. 1965.</p>
+<p>MONTGOMERY, Douglas C.; RUNGER, George C. <em>Applied statistics and probability for engineers</em>. 2011.</p>
+<p>MORAIS, Manuel Cabral. <em>Lecture Notes—Probability Theory</em>.</p>
+<p>PEARSON, Karl. <em>Historical note on the origin of the normal curve of errors</em>. 1924.</p>
+<p>ROSS, Sheldon M. <em>Introduction to probability models</em>. 2010.</p>
+<p>SNEDECOR, George W.; COCHRAN, Witiiam G. <em>Statistical methods</em>. 1967.</p>
+<p>STEYER, Rolf; NAGEL, Werner. <em>Probability and conditional expectation.</em> 2017.</p>
+<p>WHITTLE, Peter. <em>Probability via expectation</em>. 1992.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Prefácio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02-Testes.html" class="pagination-link" aria-label="Testes de hipóteses para média de uma e duas amostras">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Testes de hipóteses para média de uma e duas amostras</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
