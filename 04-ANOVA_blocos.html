@@ -8,7 +8,7 @@
 
 <meta name="author" content="Robson Bruno Dutra Pereira">
 
-<title>4&nbsp; Planejamento com blocos completos aleatorizados – Modelagem e Otimização de Experimentos Utilizando a Linguagem R</title>
+<title>4&nbsp; Planejamento com blocos completos aleatorizados – Modelagem e Otimização de Experimentos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,7 +159,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Modelagem e Otimização de Experimentos Utilizando a Linguagem R</a> 
+      <a href="./">Modelagem e Otimização de Experimentos</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -303,150 +303,42 @@ Figura&nbsp;4.1: Delineamento em blocos completos para o experimento de concreto
 <div id="exm-anovabl1" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 4.1 (Determinação do tamanho de nanopartículas de óxido de zinco com distintos métodos de medição)</strong></span> Um estudo investiga vários métodos teóricos e experimentais para determinar o tamanho de nanopartículas de óxido de zinco (ZnO NPs) e analisa suas características usando espectroscopia UV-Vis. A pesquisa começa com a síntese verde de três amostras de ZnO NPs, utilizando três agentes redutores diferentes: biomassa do fungo Aspergillus niger (AN), folhas de Aloe barbadensis Mill (ABM) e folhas de Ocimum tenuiflorum (OT), com sulfato de zinco como precursor, através do método de precipitação. São aplicados diferentes métodos de medição tamanho das nanopartículas: Aproximação de Massa Efetiva (EMA), Equação de Brus (BE), Modelo de Banda Hiperbólica (HBM), Expressão de Meulenkamp (ME), Modelo de Ligação Forte (TBM) e uma versão simplificada da EMA (SEMA). Os resultados são apresentados na <a href="#tbl-blzno" class="quarto-xref">Tabela&nbsp;<span>4.2</span></a>, com código para obtê-lo explicitado a seguir.</p>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ZnoAN<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.7</span>,<span class="fl">2.7</span>,<span class="fl">2.1</span>,<span class="fl">2.0</span>,<span class="fl">4.6</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ZnoABM<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.2</span>,<span class="fl">5.1</span>,<span class="fl">3.8</span>,<span class="fl">4.5</span>,<span class="fl">9.5</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ZnoANOT<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>,<span class="fl">7.7</span>,<span class="fl">5.2</span>,<span class="fl">7.2</span>,<span class="fl">15.7</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co">#número de tratamentos (níveis)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">length</span>(ZnoAN) <span class="co">#número de blocos</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> a<span class="sc">*</span>b <span class="co">#número de experimentos</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Ordem <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">replicate</span>(<span class="dv">5</span>, <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> a, <span class="at">replace =</span> <span class="cn">FALSE</span>), <span class="at">simplify =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>metodo <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"BE"</span>, <span class="st">"SEMA"</span>, <span class="st">"ME"</span>, <span class="st">"TBM"</span>, <span class="st">"HBM"</span>), <span class="dv">3</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ReducingAgents <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"ZnoAN"</span>,<span class="st">"ZnoABM"</span>,<span class="st">"ZnoANOT"</span>), <span class="dv">5</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Agente <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ReducingAgents) </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Particle_size <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(ZnoAN,ZnoABM,ZnoANOT),</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span> <span class="dv">5</span>, <span class="at">byrow=</span>T) <span class="co"># resposta</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Particle_size) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"BE"</span>, <span class="st">"SEMA"</span>, <span class="st">"ME"</span>, <span class="st">"TBM"</span>, <span class="st">"HBM"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Particle_size) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ZnoAN"</span>, <span class="st">"ZnoABM"</span>, <span class="st">"ZnoANOT"</span>) </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Bloco <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"BE"</span>, <span class="st">"SEMA"</span>, <span class="st">"ME"</span>, <span class="st">"TBM"</span>, <span class="st">"HBM"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Tamanho <span class="ot">&lt;-</span> <span class="fu">c</span>(Particle_size)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>planejamento <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Ordem,Agente,Bloco,Tamanho)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(planejamento)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-blzno" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-blzno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabela&nbsp;4.2: Planejamento com blocos completos totalmente aleatorizados para o estudo do tamanho de nanopartículas de óxido de zinco com distintos métodos de medição
 </figcaption>
 <div aria-describedby="tbl-blzno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Ordem</th>
-<th style="text-align: left;">Agente</th>
-<th style="text-align: left;">Bloco</th>
-<th style="text-align: right;">Tamanho</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">ZnoAN</td>
-<td style="text-align: left;">BE</td>
-<td style="text-align: right;">2.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ZnoABM</td>
-<td style="text-align: left;">BE</td>
-<td style="text-align: right;">4.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">ZnoANOT</td>
-<td style="text-align: left;">BE</td>
-<td style="text-align: right;">5.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">ZnoAN</td>
-<td style="text-align: left;">SEMA</td>
-<td style="text-align: right;">2.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ZnoABM</td>
-<td style="text-align: left;">SEMA</td>
-<td style="text-align: right;">5.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">ZnoANOT</td>
-<td style="text-align: left;">SEMA</td>
-<td style="text-align: right;">7.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">ZnoAN</td>
-<td style="text-align: left;">ME</td>
-<td style="text-align: right;">2.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">ZnoABM</td>
-<td style="text-align: left;">ME</td>
-<td style="text-align: right;">3.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ZnoANOT</td>
-<td style="text-align: left;">ME</td>
-<td style="text-align: right;">5.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ZnoAN</td>
-<td style="text-align: left;">TBM</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">ZnoABM</td>
-<td style="text-align: left;">TBM</td>
-<td style="text-align: right;">4.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">ZnoANOT</td>
-<td style="text-align: left;">TBM</td>
-<td style="text-align: right;">7.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">ZnoAN</td>
-<td style="text-align: left;">HBM</td>
-<td style="text-align: right;">4.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ZnoABM</td>
-<td style="text-align: left;">HBM</td>
-<td style="text-align: right;">9.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">ZnoANOT</td>
-<td style="text-align: left;">HBM</td>
-<td style="text-align: right;">15.7</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="sourceCode cell-code anchored" id="tbl-blzno"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-blzno-1"><a href="#tbl-blzno-1" aria-hidden="true" tabindex="-1"></a>ZnoAN<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.7</span>,<span class="fl">2.7</span>,<span class="fl">2.1</span>,<span class="fl">2.0</span>,<span class="fl">4.6</span>)</span>
+<span id="tbl-blzno-2"><a href="#tbl-blzno-2" aria-hidden="true" tabindex="-1"></a>ZnoABM<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.2</span>,<span class="fl">5.1</span>,<span class="fl">3.8</span>,<span class="fl">4.5</span>,<span class="fl">9.5</span>)</span>
+<span id="tbl-blzno-3"><a href="#tbl-blzno-3" aria-hidden="true" tabindex="-1"></a>ZnoANOT<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>,<span class="fl">7.7</span>,<span class="fl">5.2</span>,<span class="fl">7.2</span>,<span class="fl">15.7</span>)</span>
+<span id="tbl-blzno-4"><a href="#tbl-blzno-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-5"><a href="#tbl-blzno-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co">#número de tratamentos (níveis)</span></span>
+<span id="tbl-blzno-6"><a href="#tbl-blzno-6" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">length</span>(ZnoAN) <span class="co">#número de blocos</span></span>
+<span id="tbl-blzno-7"><a href="#tbl-blzno-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> a<span class="sc">*</span>b <span class="co">#número de experimentos</span></span>
+<span id="tbl-blzno-8"><a href="#tbl-blzno-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-9"><a href="#tbl-blzno-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="tbl-blzno-10"><a href="#tbl-blzno-10" aria-hidden="true" tabindex="-1"></a>Ordem <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">replicate</span>(<span class="dv">5</span>, <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> a, <span class="at">replace =</span> <span class="cn">FALSE</span>), <span class="at">simplify =</span> <span class="cn">FALSE</span>))</span>
+<span id="tbl-blzno-11"><a href="#tbl-blzno-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-12"><a href="#tbl-blzno-12" aria-hidden="true" tabindex="-1"></a>metodo <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"BE"</span>, <span class="st">"SEMA"</span>, <span class="st">"ME"</span>, <span class="st">"TBM"</span>, <span class="st">"HBM"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
+<span id="tbl-blzno-13"><a href="#tbl-blzno-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-14"><a href="#tbl-blzno-14" aria-hidden="true" tabindex="-1"></a>ReducingAgents <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"ZnoAN"</span>,<span class="st">"ZnoABM"</span>,<span class="st">"ZnoANOT"</span>), <span class="dv">5</span>)</span>
+<span id="tbl-blzno-15"><a href="#tbl-blzno-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-16"><a href="#tbl-blzno-16" aria-hidden="true" tabindex="-1"></a>Agente <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ReducingAgents) </span>
+<span id="tbl-blzno-17"><a href="#tbl-blzno-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-18"><a href="#tbl-blzno-18" aria-hidden="true" tabindex="-1"></a>Particle_size <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(ZnoAN,ZnoABM,ZnoANOT),</span>
+<span id="tbl-blzno-19"><a href="#tbl-blzno-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span> <span class="dv">5</span>, <span class="at">byrow=</span>T) <span class="co"># resposta</span></span>
+<span id="tbl-blzno-20"><a href="#tbl-blzno-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-21"><a href="#tbl-blzno-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Particle_size) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"BE"</span>, <span class="st">"SEMA"</span>, <span class="st">"ME"</span>, <span class="st">"TBM"</span>, <span class="st">"HBM"</span>)</span>
+<span id="tbl-blzno-22"><a href="#tbl-blzno-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Particle_size) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ZnoAN"</span>, <span class="st">"ZnoABM"</span>, <span class="st">"ZnoANOT"</span>) </span>
+<span id="tbl-blzno-23"><a href="#tbl-blzno-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-24"><a href="#tbl-blzno-24" aria-hidden="true" tabindex="-1"></a>Bloco <span class="ot">&lt;-</span> metodo</span>
+<span id="tbl-blzno-25"><a href="#tbl-blzno-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-26"><a href="#tbl-blzno-26" aria-hidden="true" tabindex="-1"></a>Tamanho <span class="ot">&lt;-</span> <span class="fu">c</span>(Particle_size)</span>
+<span id="tbl-blzno-27"><a href="#tbl-blzno-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="tbl-blzno-28"><a href="#tbl-blzno-28" aria-hidden="true" tabindex="-1"></a>planejamento <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Ordem,Agente,Bloco,Tamanho)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
-</div>
 </div>
 <p>Seja o conjunto geral de dados resumido na <a href="#tbl-databloc" class="quarto-xref">Tabela&nbsp;<span>4.3</span></a>. Neste conjunto tem-se <span class="math inline">\(a\)</span> tratamentos de interesse e <span class="math inline">\(b\)</span> blocos. De forma geral, cada observação pode ser denotada como <span class="math inline">\(y_{ij}\)</span>, com <span class="math inline">\(i = 1, ..., a\)</span> e <span class="math inline">\(j = 1, ..., b\)</span>.</p>
 <div id="tbl-databloc" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -715,16 +607,16 @@ W = 0.92293, p-value = 0.2134</code></pre>
 </div>
 <p>A <a href="#fig-efeitosanovabl" class="quarto-xref">Figura&nbsp;<span>4.3</span></a> ilustra um gráfico de efeitos dos tratamentos e blocos. A idéia deste gráfico é não somente demonstrar o efeito do agente redutor, mas também do método de medição. Pode-se observar que o agente ZnOAN resulta no menor tamanho de partícula, seguido do ZnOABM e do ZnOANOT. Ademais, fica claro que o método de medição HBM apresenta maior resultado de tamanho de partícula.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(planejamento, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Tamanho, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> Agente,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Bloco)) <span class="sc">+</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> Bloco, <span class="at">color =</span> Bloco)) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> Bloco, <span class="at">color =</span> Bloco)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Tamanho de partícula (nm)"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">"Agente redutor"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Método"</span>, <span class="at">linetype =</span> <span class="st">"Método"</span>, <span class="at">shape =</span> <span class="st">"Método"</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(planejamento, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Tamanho, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> Agente,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Bloco)) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> Bloco, <span class="at">color =</span> Bloco)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> Bloco, <span class="at">color =</span> Bloco)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Tamanho de partícula (nm)"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">"Agente redutor"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Método"</span>, <span class="at">linetype =</span> <span class="st">"Método"</span>, <span class="at">shape =</span> <span class="st">"Método"</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-efeitosanovabl" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -740,16 +632,16 @@ Figura&nbsp;4.3: Gráfico de efeitos para o tamanho de partícula em função do
 </div>
 <p>Um gráfico de médias dos tratamentos pode ser apresentado conforme <a href="#fig-mediaanovabl" class="quarto-xref">Figura&nbsp;<span>4.4</span></a>, com código exposto à seguir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(planejamento <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">group_by</span>(Agente) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">summarise</span>(<span class="at">Tamanho =</span> <span class="fu">mean</span>(Tamanho)), </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Tamanho, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> Agente, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Tamanho de partícula (nm)"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">"Agente redutor"</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(planejamento <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">group_by</span>(Agente) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">summarise</span>(<span class="at">Tamanho =</span> <span class="fu">mean</span>(Tamanho)), </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Tamanho, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> Agente, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Tamanho de partícula (nm)"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">"Agente redutor"</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-mediaanovabl" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
