@@ -767,7 +767,7 @@ Figura&nbsp;2.13: Curva de poder do teste para média da dureza
 <p><span id="eq-cor1"><span class="math display">\[
   \rho_{xy} =  \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 \tag{2.10}\]</span></span></p>
-<p>A <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> apresenta diagramas de dispersão entre duas variáveis que ilustram padrões distintos de dependência (ou não) entre duas variáveis. Na <span class="citation" data-cites="rfig-corr">(<a href="#ref-rfig-corr" role="doc-biblioref"><strong>rfig-corr?</strong></a>)</span> à esquerda as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação positiva, com <span class="math inline">\(\rho \rightarrow 1\)</span>. Já na <span class="citation" data-cites="rfig-corr">(<a href="#ref-rfig-corr" role="doc-biblioref"><strong>rfig-corr?</strong></a>)</span> do meio as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação negativa, com <span class="math inline">\(\rho \rightarrow -1\)</span>. Por fim, na <span class="citation" data-cites="rfig-corr">(<a href="#ref-rfig-corr" role="doc-biblioref"><strong>rfig-corr?</strong></a>)</span> à direita as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam ausência de correlação positiva, com <span class="math inline">\(\rho \rightarrow 0\)</span>.</p>
+<p>A <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> apresenta diagramas de dispersão entre duas variáveis que ilustram padrões distintos de dependência (ou não) entre duas variáveis. Na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> à esquerda as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação positiva, com <span class="math inline">\(\rho \rightarrow 1\)</span>. Já na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> do meio as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação negativa, com <span class="math inline">\(\rho \rightarrow -1\)</span>. Por fim, na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> à direita as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam ausência de correlação positiva, com <span class="math inline">\(\rho \rightarrow 0\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-corr" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -782,14 +782,14 @@ Figura&nbsp;2.14: Diferentes padrões de correlação
 </div>
 </div>
 </div>
-<p>A correlação amostral <span class="math inline">\(r_{xy}=\hat{\rho}\)</span> entre duas variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser calculada conforme <span class="quarto-unresolved-ref">?eq-cor</span>, ou pela <span class="quarto-unresolved-ref">?eq-cor2</span>, onde <span class="math inline">\(s_{xy} = \hat{\sigma}_{xy}\)</span> é a covariância amostral entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> enquanto <span class="math inline">\(s_{x}\)</span> e <span class="math inline">\(s_{y}\)</span> são os desvios-padrões amostrais destas variáveis. A covariância amostral entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser estimada conforme <span class="quarto-unresolved-ref">?eq-cov</span>.</p>
-<p><span class="math display">\[
+<p>A correlação amostral <span class="math inline">\(r_{xy}=\hat{\rho}\)</span> entre duas variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser calculada conforme <a href="#eq-cor" class="quarto-xref">Equação&nbsp;<span>2.11</span></a>, ou pela <a href="#eq-cor2" class="quarto-xref">Equação&nbsp;<span>2.12</span></a>, onde <span class="math inline">\(s_{xy} = \hat{\sigma}_{xy}\)</span> é a covariância amostral entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> enquanto <span class="math inline">\(s_{x}\)</span> e <span class="math inline">\(s_{y}\)</span> são os desvios-padrões amostrais destas variáveis. A covariância amostral entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser estimada conforme <a href="#eq-cov" class="quarto-xref">Equação&nbsp;<span>2.13</span></a>.</p>
+<p><span id="eq-cor"><span class="math display">\[
   r_{xy} = \frac{\sum_{i}(x_i-\bar{x})\sum_{i}(y_i-\bar{y})}{\sqrt{\sum_{i}(x_i-\bar{x})^2}\sqrt{\sum_{i}(y_i-\bar{y})^2}}
-\]</span> {#eq:cor} <span class="math display">\[
+\tag{2.11}\]</span></span> <span id="eq-cor2"><span class="math display">\[
   r_{xy} = \frac{s_{xy}}{s_xs_y}
-\]</span> {#eq:cor2} <span class="math display">\[
+\tag{2.12}\]</span></span> <span id="eq-cov"><span class="math display">\[
   s_{xy} = \frac{\sum_{i}(x_i-\bar{x})\sum_{i}(y_i-\bar{y})}{n-1}
-\]</span> {#eq:cov}</p>
+\tag{2.13}\]</span></span></p>
 <div id="exm-t2" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 2.3 (Teste t para amostras independentes para amostras de fios de nanotubos de carbono tratada e sem tratamento)</strong></span> Um tratamento a base de diclorometano é aplicado em uma amostra de fios de nanotubos de carbono. A resistência à tração (MPa) da amostra tratada é comparada com a resistência à tração de uma amostra sem tratamento. Os dados de trinta observações de cada caso são expostos à seguir.</p>
 </div>
@@ -917,13 +917,13 @@ H_0: \mu_1 &lt; \mu_2
 \]</span> <span class="math display">\[
 H_0: \mu_1 &gt; \mu_2
 \]</span></p>
-<p>A estatística do teste <span class="math inline">\(t\)</span> para duas amostras com variâncias amostrais iguais é calculada conforme <a href="#eq-t2s" class="quarto-xref">Equação&nbsp;<span>2.11</span></a>, onde o desvio-padrão combinado <span class="math inline">\(S\)</span> é obtido conforme a <a href="#eq-pooledS" class="quarto-xref">Equação&nbsp;<span>2.12</span></a>.</p>
+<p>A estatística do teste <span class="math inline">\(t\)</span> para duas amostras com variâncias amostrais iguais é calculada conforme <a href="#eq-t2s" class="quarto-xref">Equação&nbsp;<span>2.14</span></a>, onde o desvio-padrão combinado <span class="math inline">\(S\)</span> é obtido conforme a <a href="#eq-pooledS" class="quarto-xref">Equação&nbsp;<span>2.15</span></a>.</p>
 <p><span id="eq-t2s"><span class="math display">\[
 t_0 = \frac{\bar{x_1}-\bar{x_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
-\tag{2.11}\]</span></span></p>
+\tag{2.14}\]</span></span></p>
 <p><span id="eq-pooledS"><span class="math display">\[
 s = \sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
-\tag{2.12}\]</span></span></p>
+\tag{2.15}\]</span></span></p>
 <p>O cálculo da estatística <span class="math inline">\(t_0\)</span> é trivial e pode ser facilmente realizado utilizando o R como uma calculadora. Entretanto, é mais interessante utilizar a função <code>t.test()</code>, por apresentar um resultado mais estruturado, cofnorme segue. Comparando o valor da estatística calculada com o valor crítico, <span class="math inline">\(|t_0| = 10.393 &gt; 2.0003 = t_{\alpha/2}\)</span>, ou pelo p-valor, <span class="math inline">\(p-valor = 7,3 \times10^{-15} &lt; 0,05 = \alpha\)</span>, constata-se que há indícios para rejeição da hipótese nula, garantindo que as resistências das amostras são diferentes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t para comparar amostras de controle e tratada</span></span>
@@ -1029,7 +1029,7 @@ Figura&nbsp;2.18: Curva de poder do teste, n1 = n2 = 30, sd = 11.17, teste bilat
 <span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>               <span class="fl">9.5</span>, <span class="fl">5.3</span>, <span class="fl">5.4</span>, <span class="fl">5.9</span>, <span class="fl">7.3</span>, <span class="dv">9</span>, <span class="fl">11.7</span>, <span class="fl">6.3</span>, <span class="fl">9.6</span>, <span class="dv">9</span>, </span>
 <span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>               <span class="fl">8.3</span>, <span class="fl">9.8</span>, <span class="fl">10.1</span>, <span class="fl">9.2</span>, <span class="fl">8.2</span>, <span class="fl">8.7</span>, <span class="fl">4.5</span>, <span class="fl">6.4</span>, <span class="fl">7.1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Para realizar o teste <span class="math inline">\(t\)</span> para amostras pareadas, é importante confirmar a dependência entre as amostras. Para isto pode-se realizar o teste de correlação de Pearson, conforme segue. A <span class="citation" data-cites="fig:scattervegetal">(<a href="#ref-fig:scattervegetal" role="doc-biblioref"><strong>fig:scattervegetal?</strong></a>)</span> apresenta um diagrama de dispersão, confirmando a correlação positiva entre as amostras de humidade do carvão vegetal pulverizado e granulado.</p>
+<p>Para realizar o teste <span class="math inline">\(t\)</span> para amostras pareadas, é importante confirmar a dependência entre as amostras. Para isto pode-se realizar o teste de correlação de Pearson, conforme segue. A <a href="#fig-scattervegetal" class="quarto-xref">Figura&nbsp;<span>2.19</span></a> apresenta um diagrama de dispersão, confirmando a correlação positiva entre as amostras de humidade do carvão vegetal pulverizado e granulado.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1059,10 +1059,10 @@ Figura&nbsp;2.19: Diagrama de dispersão para humidade das amostras de carvão v
 </div>
 </div>
 </div>
-<p>O teste <span class="math inline">\(t\)</span> pareado é realizado considerando a diferença em relação às amostras pareadas. A hipótese nula consiste em testar se a diferença é igual a um valor de interesse, isto é, <span class="math inline">\(H_0: \mu_d = \mu_{d0}\)</span>. Já a hipótese alternativa pode ser bilateral ou unilateral à direita ou à esquerda. A estatística do teste <span class="math inline">\(t\)</span> pareado é exposta na <span class="quarto-unresolved-ref">?eq-tpaired</span>, onde <span class="math inline">\(n\)</span> é o número de pares. Logo, o teste consiste no mesmo teste <span class="math inline">\(t\)</span> para uma amostra, de forma que a hipótese de normalidade para as diferenças deve ser confirmada.</p>
-<p><span class="math display">\[
+<p>O teste <span class="math inline">\(t\)</span> pareado é realizado considerando a diferença em relação às amostras pareadas. A hipótese nula consiste em testar se a diferença é igual a um valor de interesse, isto é, <span class="math inline">\(H_0: \mu_d = \mu_{d0}\)</span>. Já a hipótese alternativa pode ser bilateral ou unilateral à direita ou à esquerda. A estatística do teste <span class="math inline">\(t\)</span> pareado é exposta na <a href="#eq-tpaired" class="quarto-xref">Equação&nbsp;<span>2.16</span></a>, onde <span class="math inline">\(n\)</span> é o número de pares. Logo, o teste consiste no mesmo teste <span class="math inline">\(t\)</span> para uma amostra, de forma que a hipótese de normalidade para as diferenças deve ser confirmada.</p>
+<p><span id="eq-tpaired"><span class="math display">\[
 t_0 = \frac{\bar{x}_d-\mu_d}{s_d/\sqrt{n}}
-\]</span>{#eq:tpaired}</p>
+\tag{2.16}\]</span></span></p>
 <p>O código à seguir calcula as diferenças entre os pares das duas amostras e, posteriormente a normalidade das diferenças.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando as diferenças</span></span>
