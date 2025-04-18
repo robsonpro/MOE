@@ -257,6 +257,7 @@ window.Quarto = {
 <h2 data-number="4.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">4.1</span> Introdução</h2>
 <p>Em diversos processos industriais e experimentais a presença de variáveis de fontes diversas às quais são inevitáveis, porém não interessam diretamente ao processo ou estudo, pode afetar o desempenho do processo e/ou as características de qualidade ou respostas medidas. Tais variáveis são comumente ditas de ruído e podem estar relacionadas a fatores ambientais, máquina, matéria-prima, entre outras. A aleatorização, conforme já explicado é uma premissa do planejamento de experimentos que auxilia na diluição da variabilidade adivinda de tais fatores em todas as corridas experimentais. Porém, em situações onde existem variáveis de ruído que são conhecidas e podem ser controladas, a blocagem é a técnica mais adequada para retirar do erro experimental a variância devido a tais variáveis.</p>
 <p>O planejamento totalmente aleatorizado com blocos completos aleatorizados pode ser usado em casos onde deseja-se estudar um fator com a possibilidade de alocar cada replicação em cada nível da variável blocada.</p>
+<p>Neste capítulo é utilizado o pacote <code>ggpplot2</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. Sempre que aparecer nos blocos de código R propostos o comando <code>library(&lt;nome_pacote&gt;)</code> para carregar um determinado pacote, antes este deve ser instalado.</p>
 </section>
 <section id="formas-de-tratar-variáveis-de-ruído-e-blocagem" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="formas-de-tratar-variáveis-de-ruído-e-blocagem"><span class="header-section-number">4.2</span> Formas de tratar variáveis de ruído e blocagem</h2>
@@ -356,13 +357,13 @@ Tabela&nbsp;4.3: Dados de um experimento com <span class="math inline">\(a\)</sp
 <div aria-describedby="tbl-databloc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
 <col style="width: 14%">
 <col style="width: 14%">
-<col style="width: 8%">
 <col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -490,11 +491,11 @@ Tabela&nbsp;4.4: Tabela resumo ANOVA para o planejamento com blocos completos al
 <div aria-describedby="tbl-anova-dbc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 16%">
-<col style="width: 13%">
-<col style="width: 25%">
-<col style="width: 31%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
