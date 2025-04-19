@@ -269,7 +269,7 @@ window.Quarto = {
 <div id="fig-bpront" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bpront-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-bpront-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-bpront-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bpront-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
@@ -316,7 +316,7 @@ Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
 <div id="fig-regcrit" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-regcrit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-regcrit-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-regcrit-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regcrit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.2: Região crítica para o teste t, com <span class="math inline">\(\alpha = 0,05\)</span>, <span class="math inline">\(n-1=11\)</span> graus de liberdade
@@ -377,7 +377,7 @@ mean of x
 <div id="fig-pvaluet" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pvaluet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-pvaluet-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-pvaluet-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pvaluet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.3: p-valor associado ao valor calculado <span class="math inline">\(t_0\)</span>
@@ -412,7 +412,7 @@ t_0 \sim t(n-1,-\frac{\delta \sqrt{n}}{s})
 <div id="fig-pwrt" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pwrt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-pwrt-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-pwrt-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pwrt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.4: Erro do tipo II, teste t unilateral à esquerda
@@ -447,15 +447,15 @@ Figura&nbsp;2.4: Erro do tipo II, teste t unilateral à esquerda
 \frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)} =&amp; t_{(\beta,n-1)} \\
 
 n =&amp; \left[\frac{(t_{(\alpha,n-1)}+t_{(\beta,n-1)})s }{\delta}\right]^2
-\end{align}\]</span> $${#eq-npwr}</p>
+\end{align}\]</span> $$ {#eq-npwr}</p>
 <p>Enquanto o erro do tipo I, <span class="math inline">\(\alpha\)</span>, depende da escolha do analista, o erro do tipo II depende de como o teste foi planejado, isto é, qual o tamanho amostral adotado, considerando determinada variabilidade amostral e determinado deslocamento a ser detectado. O erro do tipo I é mais grave que o erro do tipo II, por isso, geralmente recomenda-se um valor mais baixo deste, por exemplo <span class="math inline">\(\alpha = 0,05\)</span>. Logicamente também é desejável um erro do tipo II baixo, entretanto, para determinados valores de <span class="math inline">\(s\)</span> e <span class="math inline">\(\delta\)</span>, pode ser necessário um tamanho amostral muito alto para minimizar <span class="math inline">\(\beta\)</span>, aumentando os custos experimentais. Na prática recomenda-se tentar garantir <span class="math inline">\(\beta&lt;0,2\)</span>.</p>
 <p>A probabilidade <span class="math inline">\(1 -\beta\)</span> ilustrada na <a href="#fig-pwrt" class="quarto-xref">Figura&nbsp;<span>2.4</span></a> é chamada de poder do teste. O poder do teste consiste na capacidade do teste estatístico de detectar um deslocamento na média, isto é, de rejeitar a hipótese nula, quando ela é falsa, não cometendo o erro do tipo II. A <a href="#fig-erros2" class="quarto-xref">Figura&nbsp;<span>2.5</span></a> apresenta as possibilidades quanto a decisão em testes de hipóteses em relação à realidade, que supõe-se desconhecida por parte do analista. Ao recomendar <span class="math inline">\(\beta =0,2\)</span>, procura-se um poder do teste <span class="math inline">\(1- \beta = 0,8\)</span>.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-erros2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-erros2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-erros2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/erros_inf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="images/erros_inf.png" class="img-fluid figure-img" width="906">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-erros2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.5: Erros em testes de hipóteses
@@ -510,12 +510,12 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
 </div>
 </div>
 <p>É interessante avaliar graficamente o poder do teste em função do tamanho amostral, conforme <a href="#fig-pwrcurve3" class="quarto-xref">Figura&nbsp;<span>2.6</span></a> e código relacionado à seguir.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-pwrcurve3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-pwrcurve3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pwrcurve3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-pwrcurve3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="02-Testes_files/figure-html/fig-pwrcurve3-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pwrcurve3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.6: Poder do teste em função do tamanho amostral
@@ -525,12 +525,12 @@ Figura&nbsp;2.6: Poder do teste em função do tamanho amostral
 </div>
 </div>
 <p>De forma análoga, pode ser interessante saber o poder do teste, <span class="math inline">\(1-\beta\)</span>, em função do deslocamento na média (efeito), a ser detectado. Pode-se traçar no mesmo gráfico curvas considerando tamanhos amostrais distintos. A <a href="#fig-pwrcurve2" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> ilustra curvas de poder do teste em função do efeito a ser detectado, com código relacionado à seguir.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-pwrcurve2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-pwrcurve2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pwrcurve2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-pwrcurve2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="02-Testes_files/figure-html/fig-pwrcurve2-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pwrcurve2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.7: Poder do teste em função do deslocamento na média
@@ -591,12 +591,12 @@ W = 0.9518, p-value = 0.6634</code></pre>
 </div>
 </div>
 <p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações padronizadas e ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-qqt1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-qqt1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qqt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-qqt1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="02-Testes_files/figure-html/fig-qqt1-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.10: Gráfico qq para Ront
@@ -661,7 +661,7 @@ $test
 <div id="fig-bpdureza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bpdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-bpdureza-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-bpdureza-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bpdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.11: Boxplot para dureza
@@ -685,7 +685,7 @@ W = 0.9363, p-value = 0.07236</code></pre>
 <div id="fig-qqdureza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qqdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-qqdureza-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-qqdureza-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.12: Gráfico qq para dureza
@@ -753,7 +753,7 @@ $test
 <div id="fig-poderz1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-poderz1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-poderz1-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-poderz1-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-poderz1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.13: Curva de poder do teste para média da dureza
@@ -845,7 +845,7 @@ sample estimates:
 <div id="fig-bpcarbon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bpcarbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-bpcarbon-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-bpcarbon-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bpcarbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.15: Boxplots para resistância à tração das amostras de controle e tratada
@@ -859,7 +859,7 @@ Figura&nbsp;2.15: Boxplots para resistância à tração das amostras de control
 <div id="fig-denscarbon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-denscarbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-denscarbon-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-denscarbon-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-denscarbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.16: Histogramas e densidades amostrais para resistância à tração das amostras de controle e tratada
@@ -902,7 +902,7 @@ W = 0.96465, p-value = 0.4049</code></pre>
 <div id="fig-qq2t" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qq2t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-qq2t-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-qq2t-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq2t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.17: Gráficos q-q para resistência à tração das amostras controle e tratada
@@ -1006,7 +1006,7 @@ NOTE: n is number in *each* group</code></pre>
 <div id="fig-powert2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-powert2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-powert2-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-powert2-1.png" class="img-fluid figure-img" width="288">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-powert2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.18: Curva de poder do teste, n1 = n2 = 30, sd = 11.17, teste bilateral
@@ -1056,7 +1056,7 @@ sample estimates:
 <div id="fig-scattervegetal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scattervegetal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-scattervegetal-1.png" class="img-fluid figure-img" width="672">
+<img src="02-Testes_files/figure-html/fig-scattervegetal-1.png" class="img-fluid figure-img" width="336">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scattervegetal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.19: Diagrama de dispersão para humidade das amostras de carvão vegetal pulverizada e granulada
