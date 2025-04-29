@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./06-fatunrep_frac.html" rel="next">
 <link href="./04-ANOVA_blocos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -203,6 +204,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./05-fat2k.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-fatunrep_frac.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Economia na experimentação e busca de região de curvatura via Fatorial 2^k</span></span></a>
   </div>
 </li>
     </ul>
@@ -669,7 +676,7 @@ x1x2x3      -0.0125</code></pre>
 <p><span id="eq-yfatmat"><span class="math display">\[
   \mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}
 \tag{5.6}\]</span></span></p>
-<p>No modelo da Equação @ref(eq:yfatmat) cada termo corresponde explicitamente a:</p>
+<p>No modelo da <a href="#eq-yfatmat" class="quarto-xref">Equação&nbsp;<span>5.6</span></a> cada termo corresponde explicitamente a:</p>
 <p><span class="math display">\[\mathbf{y}_{[N \times 1]} = \begin{bmatrix}
                      y_1 \\ y_2 \\ \vdots \\ y_N                    
 \end{bmatrix},
@@ -1418,23 +1425,23 @@ Coefficients:
 <span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>px1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x1, </span>
 <span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>X1, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> </span>
 <span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="st">"y ["</span> <span class="sc">*</span> mu <span class="sc">*</span> <span class="st">"m]"</span>)) <span class="sc">+</span></span>
 <span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"X1 [ºC]"</span>)</span>
 <span id="cb60-28"><a href="#cb60-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a>px2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x2, </span>
 <span id="cb60-30"><a href="#cb60-30" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>X2, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"green4"</span>) <span class="sc">+</span></span>
-<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"green4"</span>) <span class="sc">+</span></span>
+<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"green4"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"green4"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb60-33"><a href="#cb60-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="st">"y ["</span> <span class="sc">*</span> mu <span class="sc">*</span> <span class="st">"m]"</span>)) <span class="sc">+</span></span>
 <span id="cb60-34"><a href="#cb60-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"X2 [ºC]"</span>)</span>
 <span id="cb60-35"><a href="#cb60-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-36"><a href="#cb60-36" aria-hidden="true" tabindex="-1"></a>px3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x3, </span>
 <span id="cb60-37"><a href="#cb60-37" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>X3, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb60-38"><a href="#cb60-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb60-39"><a href="#cb60-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb60-38"><a href="#cb60-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb60-39"><a href="#cb60-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb60-40"><a href="#cb60-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="st">"y ["</span> <span class="sc">*</span> mu <span class="sc">*</span> <span class="st">"m]"</span>)) <span class="sc">+</span></span>
 <span id="cb60-41"><a href="#cb60-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"X3 [ºC]"</span>)</span>
 <span id="cb60-42"><a href="#cb60-42" aria-hidden="true" tabindex="-1"></a></span>
@@ -1461,8 +1468,8 @@ Figura&nbsp;5.9: Gráficos de efeitos principais para o modelo final
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plan_dec_means, </span>
 <span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>X2, <span class="at">group=</span>X3, <span class="at">col=</span>X3, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">lty=</span>X3)) <span class="sc">+</span></span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span>X3)) <span class="sc">+</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">lty=</span>X3), <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span>X3), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"X2 [ºC]"</span>) <span class="sc">+</span></span>
 <span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">col =</span> <span class="st">"X3 [ºC]"</span>, <span class="at">lty =</span> <span class="st">"X3 [ºC]"</span>, <span class="at">shape =</span> <span class="st">"X3 [ºC]"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -2072,6 +2079,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./06-fatunrep_frac.html" class="pagination-link" aria-label="Economia na experimentação e busca de região de curvatura via Fatorial 2^k">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Economia na experimentação e busca de região de curvatura via Fatorial 2^k</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

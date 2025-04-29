@@ -206,6 +206,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-fatunrep_frac.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Economia na experimentação e busca de região de curvatura via Fatorial 2^k</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -261,8 +267,16 @@ window.Quarto = {
 <section id="teste-t-para-média-de-uma-amostra" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="teste-t-para-média-de-uma-amostra"><span class="header-section-number">2.2</span> Teste t para média de uma amostra</h2>
 <p>Seja uma amostra aleatória de <span class="math inline">\(n\)</span> observações, <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, retirada de uma va que segue a distribuição normal, um problema comum de decisão é o teste de hipóteses. Neste tipo de teste pode-se inferir, por exemplo, se o parâmetro em estudo é igual a um determinado valor de interesse ou não. No caso da média de uma determinada amostra de interesse, o teste <span class="math inline">\(t\)</span> pode ser utilizado.</p>
-<div id="exm-t1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 2.1 (Teste t para a média da circularidade total)</strong></span> Considere uma amostra de 12 observações da circularidade total <span class="math inline">\(Ron_t\)</span> de furos obtidos por fresamento helicoidal no aço inox superduplex UNS S32760. A <a href="#fig-bpront" class="quarto-xref">Figura&nbsp;<span>2.1</span></a> apresenta um boxplot de Ront. Um engenheiro ou pesquisador pode desejar inferir se a média de Ront é menor que 10 <span class="math inline">\(\mu m\)</span> por considerar este limite superior como aceitável para uma determinada aplicação.</p>
+<p>::: {#exm-t1} ## Teste t para a média da circularidade total</p>
+<p>Considere uma amostra de 12 observações da circularidade total <span class="math inline">\(Ron_t\)</span> de furos obtidos por fresamento helicoidal no aço inox superduplex UNS S32760. A <a href="#fig-bpront" class="quarto-xref">Figura&nbsp;<span>2.1</span></a> apresenta um boxplot de Ront. Um engenheiro ou pesquisador pode desejar inferir se a média de Ront é menor que 10 <span class="math inline">\(\mu m\)</span> por considerar este limite superior como aceitável para uma determinada aplicação. :::</p>
+<p>A seguir apresenta-se a amostra com 12 observações da circularidade total.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Ront <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.7249</span>, <span class="fl">7.8566</span>, <span class="fl">7.5466</span>, <span class="fl">12.0763</span>, <span class="fl">7.6331</span>, <span class="fl">6.1340</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          <span class="fl">9.9053</span>, <span class="fl">10.4416</span>, <span class="fl">11.3306</span>, <span class="fl">7.0836</span>, <span class="fl">9.5623</span>, <span class="fl">9.1118</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># quartis (quantis que dividem a amostra em quatro partes)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(Ront)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -291,21 +305,21 @@ Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
 \tag{2.1}\]</span></span></p>
 <p>Para o exemplo esta estatística pode ser facilmente calculada no R como segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de Ront</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ront)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># desvio-padrão de Ront</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(Ront)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tamanho amostral </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(Ront)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># valor da hipótese</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># estatística do teste t</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>t_0 <span class="ot">&lt;-</span> (x_bar <span class="sc">-</span> mu_0)<span class="sc">/</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>t_0</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># média de Ront</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ront)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># desvio-padrão de Ront</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(Ront)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tamanho amostral </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(Ront)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># valor da hipótese</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># estatística do teste t</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>t_0 <span class="ot">&lt;-</span> (x_bar <span class="sc">-</span> mu_0)<span class="sc">/</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>t_0</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.211601</code></pre>
 </div>
@@ -327,19 +341,19 @@ Figura&nbsp;2.2: Região crítica para o teste t, com <span class="math inline">
 </div>
 <p>Considerando a distribição <span class="math inline">\(t\)</span> com 11 graus de liberdade, pode-se obter o valor <span class="math inline">\(t_\alpha\)</span>, o qual garante uma probabilidade igual a 0,05 à sua esquerda, conforme segue. Este valor <span class="math inline">\(t_\alpha\)</span> é comumente conhecido como valor crítico.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor t para uma probabilidade acumulada </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># igual à 0,05, com 11 graus de liberdade </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">11</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor t para uma probabilidade acumulada </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># igual à 0,05, com 11 graus de liberdade </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">11</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.795885</code></pre>
 </div>
 </div>
 <p>Para decidir deve-se comparar o valor da estatística do teste com o valor crítico. Neste caso, como a hipótese alternativa é <span class="math inline">\(H_0: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Logo, neste caso como <span class="math inline">\(t_0 = -2,21 &lt; -1,796 = t_\alpha\)</span>, rejeita-se a hipótese nula, com <span class="math inline">\(\alpha = 0,05\)</span> de significância, podendo-se concluir que a média da circularidade total, <span class="math inline">\(\overline{Ron_t}\)</span>, é menor que <span class="math inline">\(10 \mu m\)</span>.</p>
-<p>A função <code>t.test()</code> do R pode ser utilizada para realizar o teste <span class="math inline">\(t\)</span> para uma amostra. Para o caso do <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, pode-se utilizar sintaxe que segue.</p>
+<p>A função <code>t.test()</code> do R pode ser utilizada para realizar o teste <span class="math inline">\(t\)</span> para uma amostra. Para o caso do <span class="quarto-unresolved-ref">?exm-t1</span>, pode-se utilizar sintaxe que segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> Ront,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu=</span><span class="dv">10</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> Ront,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu=</span><span class="dv">10</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -355,7 +369,7 @@ mean of x
 </div>
 </div>
 <p>A saída fornece o valor de <span class="math inline">\(t_0\)</span> calculado, o número de graus de liberdade do teste, e o p-valor (p-value), que consiste na probabilidade associada ao valor calculado. A saída também especifíca a hipótese testada, além de fornecer um intervalo de confiança associado ao teste realizado e a estimativa pontual do parâmetro testado, isto é, a média. O intervalo de confiança consiste em limites de confiança para média, neste caso apenas o superior, uma vez que foi realizado um teste unilateral à esquerda. A média está abaixo deste limite com <span class="math inline">\(\gamma = 1 - \alpha = 0,95\)</span> de confiança.</p>
-<p>No teste unilateral à esquerda realizado o limite superior de confiança é calculado conforme Equação <a href="#eq-liminf" class="quarto-xref">Equação&nbsp;<span>2.2</span></a>. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> este limite é de <span class="math inline">\(9,77\)</span>, indicando que a média é menor que este valor com <span class="math inline">\(\gamma = 0,95\)</span> de confiança.</p>
+<p>No teste unilateral à esquerda realizado o limite superior de confiança é calculado conforme Equação <a href="#eq-liminf" class="quarto-xref">Equação&nbsp;<span>2.2</span></a>. Para o <span class="quarto-unresolved-ref">?exm-t1</span> este limite é de <span class="math inline">\(9,77\)</span>, indicando que a média é menor que este valor com <span class="math inline">\(\gamma = 0,95\)</span> de confiança.</p>
 <p><span id="eq-liminf"><span class="math display">\[
 \begin{align}
   \frac{\bar{x}-\mu_0}{s/\sqrt{n}} &lt;&amp; t_{(\alpha,n-1)} \\
@@ -364,9 +378,9 @@ mean of x
 \tag{2.2}\]</span></span></p>
 <p>Sendo o p-valor a probabilidade associada ao valor calculado, ele também pode ser utilizado na tomada de decisão em inferência. A <a href="#fig-pvaluet" class="quarto-xref">Figura&nbsp;<span>2.3</span></a> ilustra o p-valor, sendo neste caso a área sob a curva à esquerda do valor calculado <span class="math inline">\(t_0\)</span>, isto é <span class="math inline">\(p-valor = P(t &lt; t_0) = \Phi(t_0)\)</span>. Pode-se constatar que, para hipótese unilateral à esquerda, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span> implica em <span class="math inline">\(p-valor &lt; \alpha\)</span>. Quanto menor o p-valor, maior a evidência na rejeição da hipótese nula. Caso o analista queira obter o p-valor utilizando a função <code>pt</code> base do R, pode-se utilizar o código à seguir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-valor</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pvalor <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_0, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pvalor</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-valor</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pvalor <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_0, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pvalor</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02454049</code></pre>
 </div>
@@ -396,7 +410,7 @@ Figura&nbsp;2.3: p-valor associado ao valor calculado <span class="math inline">
 <p><span class="math display">\[
   \beta = P(Erro \: tipo \: II) = P(não \: rejeitar \: H_0 | H_0 \: é \: falsa)
 \]</span></p>
-<p>Considerando ainda o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, com teste unilateral à esquerda, isto é, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, supondo que a hipótese nula seja falsa, a média verdadeira pode ser descrita como <span class="math inline">\(\mu = \mu_0 - \delta\)</span>, <span class="math inline">\(\delta &gt; 0\)</span>. Logo, somando e subtraindo <span class="math inline">\(\delta\)</span> na estatística do teste e, sabendo que em uma amostra bem coletada resultará em <span class="math inline">\(\bar{x} \rightarrow \mu_0 - \delta\)</span>, tem-se:</p>
+<p>Considerando ainda o <span class="quarto-unresolved-ref">?exm-t1</span>, com teste unilateral à esquerda, isto é, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, supondo que a hipótese nula seja falsa, a média verdadeira pode ser descrita como <span class="math inline">\(\mu = \mu_0 - \delta\)</span>, <span class="math inline">\(\delta &gt; 0\)</span>. Logo, somando e subtraindo <span class="math inline">\(\delta\)</span> na estatística do teste e, sabendo que em uma amostra bem coletada resultará em <span class="math inline">\(\bar{x} \rightarrow \mu_0 - \delta\)</span>, tem-se:</p>
 <p>$$ <span class="math display">\[\begin{align}
 t_0 =&amp; \frac{\bar{x}-\mu_0}{s/\sqrt{n}} +\frac{\delta- \delta}{s/\sqrt{n}} \\
 
@@ -464,17 +478,17 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
 </div>
 </div>
 </div>
-<p>Pode-se utilizar o comando <code>power.t.test</code> para calcular o tamanho amostral, dado um poder do teste, <span class="math inline">\(1-\beta\)</span>, desejado conforme segue. Com este comando pode-se também obter o poder do teste, dado um tamanho amostral disponível. Pode-se constatar que, para garantir um poder do teste <span class="math inline">\(1-\beta = 0,8\)</span> para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> detectar uma diferença de <span class="math inline">\(2 \mu m\)</span>, seria necessário coletar uma amostra com 8 observações.</p>
+<p>Pode-se utilizar o comando <code>power.t.test</code> para calcular o tamanho amostral, dado um poder do teste, <span class="math inline">\(1-\beta\)</span>, desejado conforme segue. Com este comando pode-se também obter o poder do teste, dado um tamanho amostral disponível. Pode-se constatar que, para garantir um poder do teste <span class="math inline">\(1-\beta = 0,8\)</span> para o <span class="quarto-unresolved-ref">?exm-t1</span> detectar uma diferença de <span class="math inline">\(2 \mu m\)</span>, seria necessário coletar uma amostra com 8 observações.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para obter o tamanho amostral </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># para um determinado poder(power)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># s já calculado anteriormente</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">2</span>, </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s, </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">power =</span> <span class="fl">0.8</span>, </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"one.sample"</span>, </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"one.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para obter o tamanho amostral </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># para um determinado poder(power)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># s já calculado anteriormente</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">2</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">power =</span> <span class="fl">0.8</span>, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"one.sample"</span>, </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"one.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      One-sample t test power calculation 
@@ -487,16 +501,16 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
     alternative = one.sided</code></pre>
 </div>
 </div>
-<p>Como no teste realizado no <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> foi utilizado <span class="math inline">\(n=12\)</span>, para detectar uma diferença menor, <span class="math inline">\(\delta = 1,22\)</span>, o poder do teste foi menor, <span class="math inline">\(1-\beta = 0,67\)</span>, porém suficiente, uma vez que a hipótese nula foi rejeitada. Para obter este resultado no R, deve-se usar a sintaxe à seguir.</p>
+<p>Como no teste realizado no <span class="quarto-unresolved-ref">?exm-t1</span> foi utilizado <span class="math inline">\(n=12\)</span>, para detectar uma diferença menor, <span class="math inline">\(\delta = 1,22\)</span>, o poder do teste foi menor, <span class="math inline">\(1-\beta = 0,67\)</span>, porém suficiente, uma vez que a hipótese nula foi rejeitada. Para obter este resultado no R, deve-se usar a sintaxe à seguir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para saber o poder o teste, considerando </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># o tamanho amostral realizado</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> n, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">delta =</span> d, </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s, </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"one.sample"</span>, </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"one.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para saber o poder o teste, considerando </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># o tamanho amostral realizado</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> n, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">delta =</span> d, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"one.sample"</span>, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"one.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      One-sample t test power calculation 
@@ -530,7 +544,7 @@ Figura&nbsp;2.6: Poder do teste em função do tamanho amostral
 <div id="fig-pwrcurve2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pwrcurve2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-pwrcurve2-1.png" class="img-fluid figure-img" width="480">
+<img src="02-Testes_files/figure-html/fig-pwrcurve2-1.png" class="img-fluid figure-img" width="432">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pwrcurve2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.7: Poder do teste em função do deslocamento na média
@@ -540,7 +554,7 @@ Figura&nbsp;2.7: Poder do teste em função do deslocamento na média
 </div>
 </div>
 <p>Tomando as curvas na <a href="#fig-pwrcurve2" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> pode-se constatar que quanto menor o efeito a ser detectado, menor o poder do teste e, consequentemente, maior a probabilidade de erro do tipo II, para um tamanho amostral fixo. De outra forma, fixando o deslocamento a ser detectado, quanto maior o tamanho amostral, maior o poder do teste.</p>
-<p>O <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> apresentou um teste unilateral à esquerda, entretanto há outras possibilidades. A <a href="#fig-hip" class="quarto-xref">Figura&nbsp;<span>2.8</span></a> ilustra, da esquerda para direita os testes unilateral à esquerda, unilateral à direita e bilateral. Neste último o analista deseja apenas contestar se a média <span class="math inline">\(\mu\)</span> é diferente do valor de referência <span class="math inline">\(\mu_0\)</span>, sendo a região de rejeição de <span class="math inline">\(H_0\)</span> dividida pelas duas caldas, cada uma com área igual a <span class="math inline">\(\alpha/2\)</span>. Para <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&lt;-t_{(\alpha,n-1)}\)</span>. Já para <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&gt;t_{(\alpha,n-1)}\)</span>. Por fim, para <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(|t_0|&gt;t_{(\alpha/2,n-1)}\)</span>.</p>
+<p>O <span class="quarto-unresolved-ref">?exm-t1</span> apresentou um teste unilateral à esquerda, entretanto há outras possibilidades. A <a href="#fig-hip" class="quarto-xref">Figura&nbsp;<span>2.8</span></a> ilustra, da esquerda para direita os testes unilateral à esquerda, unilateral à direita e bilateral. Neste último o analista deseja apenas contestar se a média <span class="math inline">\(\mu\)</span> é diferente do valor de referência <span class="math inline">\(\mu_0\)</span>, sendo a região de rejeição de <span class="math inline">\(H_0\)</span> dividida pelas duas caldas, cada uma com área igual a <span class="math inline">\(\alpha/2\)</span>. Para <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&lt;-t_{(\alpha,n-1)}\)</span>. Já para <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&gt;t_{(\alpha,n-1)}\)</span>. Por fim, para <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(|t_0|&gt;t_{(\alpha/2,n-1)}\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hip" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -578,10 +592,10 @@ Figura&nbsp;2.9: p-valor para diferentes casos do teste t para média de uma amo
 <p><span id="eq-npwrbil"><span class="math display">\[
 n = \biggl[\frac{(t_{\alpha/2,n-1}+t_{\beta,n-1})s}{\delta}\biggr]^2
 \tag{2.7}\]</span></span></p>
-<p>Para utilizar o teste <span class="math inline">\(t\)</span> para a média de uma amostra, é desejável que a amostra obtida seja normalmente distribuída. Para testar a normalidade dos dados, pode-se utilizar o teste de Shapiro. A hipótese nula do teste de normalidade <span class="math inline">\(H_0\)</span> é que os dados são normalmente distribuídos. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, pode-se utilizar a linha de código que segue.</p>
+<p>Para utilizar o teste <span class="math inline">\(t\)</span> para a média de uma amostra, é desejável que a amostra obtida seja normalmente distribuída. Para testar a normalidade dos dados, pode-se utilizar o teste de Shapiro. A hipótese nula do teste de normalidade <span class="math inline">\(H_0\)</span> é que os dados são normalmente distribuídos. Para o <span class="quarto-unresolved-ref">?exm-t1</span>, pode-se utilizar a linha de código que segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de normalidade de Ront</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(Ront)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de normalidade de Ront</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(Ront)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -590,13 +604,13 @@ data:  Ront
 W = 0.9518, p-value = 0.6634</code></pre>
 </div>
 </div>
-<p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações padronizadas e ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>.</p>
+<p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações padronizadas e ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <span class="quarto-unresolved-ref">?exm-t1</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-qqt1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qqt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-qqt1-1.png" class="img-fluid figure-img" width="288">
+<img src="02-Testes_files/figure-html/fig-qqt1-1.png" class="img-fluid figure-img" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.10: Gráfico qq para Ront
@@ -613,19 +627,19 @@ Figura&nbsp;2.10: Gráfico qq para Ront
   Z_0 = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}
 \tag{2.8}\]</span></span></p>
 <div id="exm-z1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 2.2 (Teste z para a média da dureza)</strong></span> Considere uma amostra com <span class="math inline">\(n = 30\)</span> observações da dureza de corpos de prova de aço ABNT H13 temperado. Deseja-se testar se a média é diferente de 55 HRC.</p>
+<p><span class="theorem-title"><strong>Exemplo 2.1 (Teste z para a média da dureza)</strong></span> Considere uma amostra com <span class="math inline">\(n = 30\)</span> observações da dureza de corpos de prova de aço ABNT H13 temperado. Deseja-se testar se a média é diferente de 55 HRC.</p>
 </div>
 <p>Para planejar este teste considerou-se a necessidade de detectar uma diferença de 0,5 HRC na dureza, supondo um desvio-padrão de 1 HRC, baseado em dados históricos. O analista requer um poder mínimo <span class="math inline">\(1-\beta= 0,8\)</span>. Pode-se utilizar o comando <code>power.z.test</code> do pacote <code>asbio</code>. O argumento <code>test = "two.tail"</code>, é usado para o teste bilateral, <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>. Pelos resultados da análise, é necessária uma amostra com <span class="math inline">\(n = 32\)</span> observações para garantir um poder do teste de 0,8. O analista considerou o tamanho amostral <span class="math inline">\(n = 30\)</span> suficiente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando pacote</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(asbio)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># definindo tamanho amostral</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">power.z.test</span>(<span class="at">sigma =</span> <span class="dv">1</span>, </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">power =</span> <span class="fl">0.8</span>, </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">effect =</span> <span class="fl">0.5</span>, </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">test =</span> <span class="st">"two.tail"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando pacote</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(asbio)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># definindo tamanho amostral</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">power.z.test</span>(<span class="at">sigma =</span> <span class="dv">1</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">power =</span> <span class="fl">0.8</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">effect =</span> <span class="fl">0.5</span>, </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">test =</span> <span class="st">"two.tail"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$sigma
 [1] 1
@@ -648,13 +662,13 @@ $test
 </div>
 <p>As trinta observações de dureza são expostas a seguir. Um boxplot é exposto na <a href="#fig-bpdureza" class="quarto-xref">Figura&nbsp;<span>2.11</span></a> para ilustrar a variabilidade dos dados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dureza <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">57.00</span>, <span class="fl">58.00</span>, <span class="fl">58.00</span>, <span class="fl">57.50</span>, <span class="fl">58.25</span>, <span class="fl">58.00</span>, <span class="fl">58.50</span>, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">57.25</span>, <span class="fl">58.75</span>, <span class="fl">57.00</span>, <span class="fl">56.50</span>, <span class="fl">57.25</span>, <span class="fl">57.25</span>, <span class="fl">58.00</span>, </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="fl">58.50</span>, <span class="fl">58.00</span>, <span class="fl">57.50</span>, <span class="fl">58.25</span>, <span class="fl">56.25</span>, <span class="fl">57.25</span>, <span class="fl">58.50</span>, </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="fl">57.00</span>, <span class="fl">58.50</span>, <span class="fl">58.75</span>, <span class="fl">57.50</span>, <span class="fl">56.00</span>, <span class="fl">58.25</span>, <span class="fl">58.25</span>, </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="fl">58.75</span>, <span class="fl">57.25</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(dureza)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dureza <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">57.00</span>, <span class="fl">58.00</span>, <span class="fl">58.00</span>, <span class="fl">57.50</span>, <span class="fl">58.25</span>, <span class="fl">58.00</span>, <span class="fl">58.50</span>, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">57.25</span>, <span class="fl">58.75</span>, <span class="fl">57.00</span>, <span class="fl">56.50</span>, <span class="fl">57.25</span>, <span class="fl">57.25</span>, <span class="fl">58.00</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="fl">58.50</span>, <span class="fl">58.00</span>, <span class="fl">57.50</span>, <span class="fl">58.25</span>, <span class="fl">56.25</span>, <span class="fl">57.25</span>, <span class="fl">58.50</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="fl">57.00</span>, <span class="fl">58.50</span>, <span class="fl">58.75</span>, <span class="fl">57.50</span>, <span class="fl">56.00</span>, <span class="fl">58.25</span>, <span class="fl">58.25</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            <span class="fl">58.75</span>, <span class="fl">57.25</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(dureza)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -685,7 +699,7 @@ W = 0.9363, p-value = 0.07236</code></pre>
 <div id="fig-qqdureza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qqdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-Testes_files/figure-html/fig-qqdureza-1.png" class="img-fluid figure-img" width="288">
+<img src="02-Testes_files/figure-html/fig-qqdureza-1.png" class="img-fluid figure-img" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqdureza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.12: Gráfico qq para dureza
@@ -694,7 +708,7 @@ Figura&nbsp;2.12: Gráfico qq para dureza
 </div>
 </div>
 </div>
-<p>As hipóteses para o <a href="#exm-z1" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a> são expostas à seguir, onde <span class="math inline">\(\mu_0 = 55\)</span>. O teste realizado é, portanto, bilateral. Para testar tais hipóteses, uma vez que tem-se um tamanho amostral considerável, pode-se utilizar do teste <span class="math inline">\(Z\)</span> para média amostral. A função <code>ZTest()</code> do pacote <code>DescTools</code> é utilizada.</p>
+<p>As hipóteses para o <a href="#exm-z1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> são expostas à seguir, onde <span class="math inline">\(\mu_0 = 55\)</span>. O teste realizado é, portanto, bilateral. Para testar tais hipóteses, uma vez que tem-se um tamanho amostral considerável, pode-se utilizar do teste <span class="math inline">\(Z\)</span> para média amostral. A função <code>ZTest()</code> do pacote <code>DescTools</code> é utilizada.</p>
 <p><span class="math display">\[
 \begin{align}
   H_0:&amp; \mu = \mu_0 \\
@@ -702,14 +716,14 @@ Figura&nbsp;2.12: Gráfico qq para dureza
 \end{align}
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando pacote</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste z para dureza</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ZTest</span>(dureza, </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mu =</span> <span class="dv">55</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">alternative =</span> <span class="st">"two.sided"</span>, </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd_pop =</span> <span class="fu">sd</span>(dureza))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando pacote</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste z para dureza</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ZTest</span>(dureza, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mu =</span> <span class="dv">55</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">alternative =</span> <span class="st">"two.sided"</span>, </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd_pop =</span> <span class="fu">sd</span>(dureza))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample z-test
@@ -747,7 +761,7 @@ $test
 [1] "two.tail"</code></pre>
 </div>
 </div>
-<p>A curva para o poder do teste <a href="#exm-z1" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a> é exposta na <a href="#fig-poderz1" class="quarto-xref">Figura&nbsp;<span>2.13</span></a>. Pode-se observar que para um efeito superior a 0,65 é possível realizar o teste com <span class="math inline">\(1-\beta = 1\)</span>.</p>
+<p>A curva para o poder do teste <a href="#exm-z1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> é exposta na <a href="#fig-poderz1" class="quarto-xref">Figura&nbsp;<span>2.13</span></a>. Pode-se observar que para um efeito superior a 0,65 é possível realizar o teste com <span class="math inline">\(1-\beta = 1\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-poderz1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -797,33 +811,33 @@ Figura&nbsp;2.14: Diferentes padrões de correlação
   s_{xy} = \frac{\sum_{i}(x_i-\bar{x})\sum_{i}(y_i-\bar{y})}{n-1}
 \tag{2.13}\]</span></span></p>
 <div id="exm-t2" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 2.3 (Teste t para amostras independentes para amostras de fios de nanotubos de carbono tratada e sem tratamento)</strong></span> Um tratamento a base de diclorometano é aplicado em uma amostra de fios de nanotubos de carbono. A resistência à tração (MPa) da amostra tratada é comparada com a resistência à tração de uma amostra sem tratamento. Os dados de trinta observações de cada caso são expostos à seguir.</p>
+<p><span class="theorem-title"><strong>Exemplo 2.2 (Teste t para amostras independentes para amostras de fios de nanotubos de carbono tratada e sem tratamento)</strong></span> Um tratamento a base de diclorometano é aplicado em uma amostra de fios de nanotubos de carbono. A resistência à tração (MPa) da amostra tratada é comparada com a resistência à tração de uma amostra sem tratamento. Os dados de trinta observações de cada caso são expostos à seguir.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># amostra sem tratamento, x</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">103.07251</span>, <span class="fl">111.58047</span>, <span class="fl">123.60685</span>, <span class="fl">109.08819</span>, <span class="fl">101.15997</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">110.81570</span>, <span class="fl">115.01119</span>, <span class="fl">120.90489</span>, <span class="fl">139.00266</span>, <span class="fl">112.23041</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">113.51231</span>, <span class="fl">107.87118</span>, <span class="fl">118.95093</span>, <span class="fl">121.14550</span>, <span class="fl">112.09335</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="fl">124.51045</span>, <span class="fl">143.41912</span>, <span class="fl">147.07329</span>,  <span class="fl">87.66812</span>, <span class="fl">115.83727</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="fl">120.75799</span>, <span class="fl">135.29565</span>, <span class="fl">114.94833</span>, <span class="fl">106.86862</span>, <span class="fl">106.26170</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="fl">119.59667</span>, <span class="fl">113.43255</span>, <span class="fl">124.69555</span>,  <span class="fl">98.18949</span>, <span class="fl">115.72124</span>)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># amostra com tratamento, y</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">131.5811</span>, <span class="fl">131.4042</span>, <span class="fl">137.8762</span>, <span class="fl">146.3840</span>, <span class="fl">151.6944</span>, <span class="fl">142.3577</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>       <span class="fl">159.6285</span>, <span class="fl">148.1704</span>, <span class="fl">157.7661</span>, <span class="fl">136.2317</span>, <span class="fl">162.3226</span>, <span class="fl">149.6494</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>       <span class="fl">158.7077</span>, <span class="fl">150.4730</span>, <span class="fl">151.3008</span>, <span class="fl">155.1563</span>, <span class="fl">143.8435</span>, <span class="fl">147.5971</span>,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>       <span class="fl">151.2632</span>, <span class="fl">137.5846</span>, <span class="fl">146.7573</span>, <span class="fl">145.0630</span>, <span class="fl">158.3956</span>, <span class="fl">129.1484</span>,</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>       <span class="fl">153.8584</span>, <span class="fl">145.1890</span>, <span class="fl">137.9211</span>, <span class="fl">150.6881</span>, <span class="fl">143.4069</span>, <span class="fl">131.7691</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># amostra sem tratamento, x</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">103.07251</span>, <span class="fl">111.58047</span>, <span class="fl">123.60685</span>, <span class="fl">109.08819</span>, <span class="fl">101.15997</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">110.81570</span>, <span class="fl">115.01119</span>, <span class="fl">120.90489</span>, <span class="fl">139.00266</span>, <span class="fl">112.23041</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">113.51231</span>, <span class="fl">107.87118</span>, <span class="fl">118.95093</span>, <span class="fl">121.14550</span>, <span class="fl">112.09335</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>       <span class="fl">124.51045</span>, <span class="fl">143.41912</span>, <span class="fl">147.07329</span>,  <span class="fl">87.66812</span>, <span class="fl">115.83727</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>       <span class="fl">120.75799</span>, <span class="fl">135.29565</span>, <span class="fl">114.94833</span>, <span class="fl">106.86862</span>, <span class="fl">106.26170</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>       <span class="fl">119.59667</span>, <span class="fl">113.43255</span>, <span class="fl">124.69555</span>,  <span class="fl">98.18949</span>, <span class="fl">115.72124</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># amostra com tratamento, y</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">131.5811</span>, <span class="fl">131.4042</span>, <span class="fl">137.8762</span>, <span class="fl">146.3840</span>, <span class="fl">151.6944</span>, <span class="fl">142.3577</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>       <span class="fl">159.6285</span>, <span class="fl">148.1704</span>, <span class="fl">157.7661</span>, <span class="fl">136.2317</span>, <span class="fl">162.3226</span>, <span class="fl">149.6494</span>,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>       <span class="fl">158.7077</span>, <span class="fl">150.4730</span>, <span class="fl">151.3008</span>, <span class="fl">155.1563</span>, <span class="fl">143.8435</span>, <span class="fl">147.5971</span>,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>       <span class="fl">151.2632</span>, <span class="fl">137.5846</span>, <span class="fl">146.7573</span>, <span class="fl">145.0630</span>, <span class="fl">158.3956</span>, <span class="fl">129.1484</span>,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>       <span class="fl">153.8584</span>, <span class="fl">145.1890</span>, <span class="fl">137.9211</span>, <span class="fl">150.6881</span>, <span class="fl">143.4069</span>, <span class="fl">131.7691</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>O teste de correlação de Pearson, pode ser utilizado para avaliar a significância estatística da correlação entre duas amostras. A hipótese nula do teste garante que a correlação é igual a zero, isto é, <span class="math inline">\(H_0: \rho=0\)</span>. Para realizar o teste de correlação de Pearson entre a amostra de controle e a amostra tratada do <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a>, denotadas <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, respectivamente, pode-se utilizar a sintaxe à seguir. O teste é baseado na distribuição <span class="math inline">\(t\)</span> e fornece como resultado o valor da estatística <span class="math inline">\(t_0\)</span> a qual pode ser comparada com o valor crítico <span class="math inline">\(t_{(\alpha/2,n-2)}\)</span>, onde <span class="math inline">\(n = n_x + n_y\)</span>. Se <span class="math inline">\(t_0 &gt; t_{(\alpha/2,n-1)}\)</span>, rejeita-se <span class="math inline">\(H_0\)</span>. Considernado <span class="math inline">\(\alpha = 0,05\)</span>, para <span class="math inline">\(n = 58\)</span>, <span class="math inline">\(t_{(0,025;58)}=2.001717\)</span>, <code>qt(0.95+.05/2, 58)</code>. Logo, como <span class="math inline">\(t_0 = 0,73203 &lt; 2.001717 = t_{(\alpha/2,n-1)}\)</span>, não há indícios para rejeição de <span class="math inline">\(H_0\)</span>, ou seja, a correlação entre as amostras é nula. A independência entre tais amostras é trivial, por terem sido retiradas de populações distintas. Entretanto, é importante confirmar a independência para posteriormente realizar o teste de hipóteses adequado para diferença entre médias das amostras.</p>
+<p>O teste de correlação de Pearson, pode ser utilizado para avaliar a significância estatística da correlação entre duas amostras. A hipótese nula do teste garante que a correlação é igual a zero, isto é, <span class="math inline">\(H_0: \rho=0\)</span>. Para realizar o teste de correlação de Pearson entre a amostra de controle e a amostra tratada do <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a>, denotadas <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, respectivamente, pode-se utilizar a sintaxe à seguir. O teste é baseado na distribuição <span class="math inline">\(t\)</span> e fornece como resultado o valor da estatística <span class="math inline">\(t_0\)</span> a qual pode ser comparada com o valor crítico <span class="math inline">\(t_{(\alpha/2,n-2)}\)</span>, onde <span class="math inline">\(n = n_x + n_y\)</span>. Se <span class="math inline">\(t_0 &gt; t_{(\alpha/2,n-1)}\)</span>, rejeita-se <span class="math inline">\(H_0\)</span>. Considernado <span class="math inline">\(\alpha = 0,05\)</span>, para <span class="math inline">\(n = 58\)</span>, <span class="math inline">\(t_{(0,025;58)}=2.001717\)</span>, <code>qt(0.95+.05/2, 58)</code>. Logo, como <span class="math inline">\(t_0 = 0,73203 &lt; 2.001717 = t_{(\alpha/2,n-1)}\)</span>, não há indícios para rejeição de <span class="math inline">\(H_0\)</span>, ou seja, a correlação entre as amostras é nula. A independência entre tais amostras é trivial, por terem sido retiradas de populações distintas. Entretanto, é importante confirmar a independência para posteriormente realizar o teste de hipóteses adequado para diferença entre médias das amostras.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo da correlação</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(X,Y)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo da correlação</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(X,Y)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1370349</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de correlação</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(X,Y, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de correlação</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(X,Y, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -838,7 +852,7 @@ sample estimates:
 0.1370349 </code></pre>
 </div>
 </div>
-<p>Antes de realizar o teste <span class="math inline">\(t\)</span> para averiguar a diferença entre médias entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> do <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a>, é importante testar a homocedasticidade, isto é, a homogeneidade de variâncias entre as duas amostras. Primeiramente, é necessário organizar os dados de forma tabular utilizando o comando <code>data.frame()</code>.</p>
+<p>Antes de realizar o teste <span class="math inline">\(t\)</span> para averiguar a diferença entre médias entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> do <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a>, é importante testar a homocedasticidade, isto é, a homogeneidade de variâncias entre as duas amostras. Primeiramente, é necessário organizar os dados de forma tabular utilizando o comando <code>data.frame()</code>.</p>
 <p>Posteriormente, pode-se plotar alguns gráficos para visualizar a variabilidade dos dados. A <a href="#fig-bpcarbon" class="quarto-xref">Figura&nbsp;<span>2.15</span></a> ilustra boxplots, enquanto a <a href="#fig-denscarbon" class="quarto-xref">Figura&nbsp;<span>2.16</span></a> ilustra gráficos de densidade da distribuição amostral para a resistência à tração em função das amostras de controle e tratada. Em ambos os casos, pode-se constatar que a variabilidade dos dados parece similar e que a resistência média da amostra tratada é superior. Pelos gráficos de densidade, pode-se verificar que as distribuições amostrais aparentam ter normalidade. Todas estas evidências gráficas podem ser estatísticamente confirmados.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -868,10 +882,10 @@ Figura&nbsp;2.16: Histogramas e densidades amostrais para resistância à traç�
 </div>
 </div>
 </div>
-<p>O teste de homocedasticidade de Bartlett para o <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a> é apresentado à seguir. A hipótese nula do teste postula a igualdade de variâncias entre as amostras, isto é, <span class="math inline">\(H_0: \sigma_1^2 = \sigma_2^2\)</span>. Pelos resultados, como <span class="math inline">\(p-value = 0,07128 &gt; 0,05 = \alpha\)</span>, não se rejeita <span class="math inline">\(H_0\)</span>, podendo-se confirmar a homogeneidade entre as variâncias amostrais.</p>
+<p>O teste de homocedasticidade de Bartlett para o <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a> é apresentado à seguir. A hipótese nula do teste postula a igualdade de variâncias entre as amostras, isto é, <span class="math inline">\(H_0: \sigma_1^2 = \sigma_2^2\)</span>. Pelos resultados, como <span class="math inline">\(p-value = 0,07128 &gt; 0,05 = \alpha\)</span>, não se rejeita <span class="math inline">\(H_0\)</span>, podendo-se confirmar a homogeneidade entre as variâncias amostrais.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de homocedasticidade de Bartlett</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(resistencia <span class="sc">~</span> grupo, <span class="at">data =</span> dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de homocedasticidade de Bartlett</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(resistencia <span class="sc">~</span> grupo, <span class="at">data =</span> dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Bartlett test of homogeneity of variances
@@ -932,11 +946,11 @@ s = \sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
 \tag{2.15}\]</span></span></p>
 <p>O cálculo da estatística <span class="math inline">\(t_0\)</span> é trivial e pode ser facilmente realizado utilizando o R como uma calculadora. Entretanto, é mais interessante utilizar a função <code>t.test()</code>, por apresentar um resultado mais estruturado, cofnorme segue. Comparando o valor da estatística calculada com o valor crítico, <span class="math inline">\(|t_0| = 10.393 &gt; 2.0003 = t_{\alpha/2}\)</span>, ou pelo p-valor, <span class="math inline">\(p-valor = 7,3 \times10^{-15} &lt; 0,05 = \alpha\)</span>, constata-se que há indícios para rejeição da hipótese nula, garantindo que as resistências das amostras são diferentes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t para comparar amostras de controle e tratada</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(resistencia <span class="sc">~</span> grupo, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> dados,</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t para comparar amostras de controle e tratada</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(resistencia <span class="sc">~</span> grupo, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> dados,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -950,42 +964,42 @@ sample estimates:
 mean in group Controle  mean in group Tratada 
               116.4774               146.4396 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tcritico <span class="ot">&lt;-</span> <span class="fu">qt</span>(.<span class="dv">95</span><span class="fl">+.05</span><span class="sc">/</span><span class="dv">2</span>,<span class="fu">dim</span>(dados)[<span class="dv">1</span>])</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tcritico</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tcritico <span class="ot">&lt;-</span> <span class="fu">qt</span>(.<span class="dv">95</span><span class="fl">+.05</span><span class="sc">/</span><span class="dv">2</span>,<span class="fu">dim</span>(dados)[<span class="dv">1</span>])</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tcritico</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.000298</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra sintaxe possível</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># retirar # para testar</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(X, </span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Y,</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>       <span class="co"># alternative = "two.sided",</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>       <span class="co"># var.equal = TRUE)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra sintaxe possível</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># retirar # para testar</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(X, </span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Y,</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>       <span class="co"># alternative = "two.sided",</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>       <span class="co"># var.equal = TRUE)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O poder do teste pode ser obtido utilizando a função <code>power.t.test</code>, conforme segue. Pode-se observar que o poder do teste foi unitário.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># médias</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># desvios-padrões</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># tamanhos amostrais</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">length</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">length</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># desvio-padrão da diferença</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((n1<span class="dv">-1</span>)<span class="sc">*</span>s1<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(n2<span class="dv">-1</span>)<span class="sc">*</span>s2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n1<span class="sc">+</span>n2<span class="dv">-2</span>))</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co"># poder do teste</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, </span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">delta =</span> m1 <span class="sc">-</span> m2,</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s,</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"two.sample"</span>,</span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># médias</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># desvios-padrões</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># tamanhos amostrais</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">length</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Controle"</span>]))</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">with</span>(dados, <span class="fu">length</span>(resistencia[grupo <span class="sc">==</span> <span class="st">"Tratada"</span>]))</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># desvio-padrão da diferença</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((n1<span class="dv">-1</span>)<span class="sc">*</span>s1<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>(n2<span class="dv">-1</span>)<span class="sc">*</span>s2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n1<span class="sc">+</span>n2<span class="dv">-2</span>))</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># poder do teste</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>, </span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">delta =</span> m1 <span class="sc">-</span> m2,</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">sd =</span> s,</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">"two.sample"</span>,</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -1000,7 +1014,7 @@ mean in group Controle  mean in group Tratada
 NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
-<p>A <a href="#fig-powert2" class="quarto-xref">Figura&nbsp;<span>2.18</span></a> apresenta a curva de poder do teste em função do deslocamento a ser detectado para o <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a>. A alta diferença entre médias, relativamente aos desvios-padrões amostrais, garantiu <span class="math inline">\(1-\beta \backsimeq 1\)</span> no <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a>.</p>
+<p>A <a href="#fig-powert2" class="quarto-xref">Figura&nbsp;<span>2.18</span></a> apresenta a curva de poder do teste em função do deslocamento a ser detectado para o <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a>. A alta diferença entre médias, relativamente aos desvios-padrões amostrais, garantiu <span class="math inline">\(1-\beta \backsimeq 1\)</span> no <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.2</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-powert2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1020,20 +1034,20 @@ Figura&nbsp;2.18: Curva de poder do teste, n1 = n2 = 30, sd = 11.17, teste bilat
 <h2 data-number="2.5" class="anchored" data-anchor-id="teste-t-para-médias-de-duas-amostras-dependentes"><span class="header-section-number">2.5</span> Teste t para médias de duas amostras dependentes</h2>
 <p>O teste <span class="math inline">\(t\)</span> para amostras pareadas (ou emparelhadas) é aplicado em estudos onde cada objeto é medido em duas diferentes ocasiões, antes e depois de um determinado tratamento, por exemplo. Este tipo de teste pode também ser aplicado em pares de indivíduos similares, sendo um tratamento aplicado a um elemento de cada par, enquanto o outro elemento dos pares é submetido a outro tratamento, ou não é submetido a tratamento algum (controle). Devido à possível dependência entre as amostras tomadas aos pares, utilizar os procedimentos anteriormente propostos para testar a diferença entre médias de duas amostras violaria a hipótese de independência estatística entre as amostras. Por conseguinte, o teste <span class="math inline">\(t\)</span> pareado é utilizado para testar a diferença entre médias de amostras dependentes.</p>
 <div id="exm-paired" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 2.4 (Teste t para amostras pareadas de carvão vegetal)</strong></span> Um estudo foi realizado para avaliar se há diferença nos resultados de umidade de amostras de carvão vegetal submetidas aos dois procedimentos de preparação. De cada uma das 30 amostras de fração de carvão vegetal uma parte foi triturada e outra foi pulverizada, garantindo a dependência entre as amostras. Os dados das duas amostras são expostos à seguir.</p>
+<p><span class="theorem-title"><strong>Exemplo 2.3 (Teste t para amostras pareadas de carvão vegetal)</strong></span> Um estudo foi realizado para avaliar se há diferença nos resultados de umidade de amostras de carvão vegetal submetidas aos dois procedimentos de preparação. De cada uma das 30 amostras de fração de carvão vegetal uma parte foi triturada e outra foi pulverizada, garantindo a dependência entre as amostras. Os dados das duas amostras são expostos à seguir.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A ordem das observações importa, pois estão pareadas</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostra pulverizada</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>Pulverizada <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">12.8</span>, <span class="fl">11.1</span>, <span class="fl">6.5</span>, <span class="fl">6.2</span>, <span class="fl">6.3</span>, <span class="fl">7.5</span>, <span class="fl">8.2</span>, <span class="fl">7.8</span>, <span class="fl">9.3</span>,</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">9</span>, <span class="fl">10.2</span>, <span class="fl">7.6</span>, <span class="fl">6.8</span>, <span class="fl">6.3</span>, <span class="fl">7.3</span>, <span class="fl">9.7</span>, <span class="fl">10.9</span>, <span class="fl">7.8</span>, <span class="fl">9.8</span>, <span class="dv">9</span>,</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">9.4</span>, <span class="fl">9.4</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">7.8</span>, <span class="fl">9.1</span>, <span class="fl">5.1</span>, <span class="fl">5.7</span>, <span class="fl">6.3</span>)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostra granulada</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>Granulada <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.7</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span>, <span class="fl">6.5</span>, <span class="fl">6.6</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">9.7</span>, <span class="fl">7.2</span>, <span class="dv">9</span>, <span class="dv">9</span>,</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>               <span class="fl">9.5</span>, <span class="fl">5.3</span>, <span class="fl">5.4</span>, <span class="fl">5.9</span>, <span class="fl">7.3</span>, <span class="dv">9</span>, <span class="fl">11.7</span>, <span class="fl">6.3</span>, <span class="fl">9.6</span>, <span class="dv">9</span>, </span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>               <span class="fl">8.3</span>, <span class="fl">9.8</span>, <span class="fl">10.1</span>, <span class="fl">9.2</span>, <span class="fl">8.2</span>, <span class="fl">8.7</span>, <span class="fl">4.5</span>, <span class="fl">6.4</span>, <span class="fl">7.1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A ordem das observações importa, pois estão pareadas</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostra pulverizada</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>Pulverizada <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">12.8</span>, <span class="fl">11.1</span>, <span class="fl">6.5</span>, <span class="fl">6.2</span>, <span class="fl">6.3</span>, <span class="fl">7.5</span>, <span class="fl">8.2</span>, <span class="fl">7.8</span>, <span class="fl">9.3</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">9</span>, <span class="fl">10.2</span>, <span class="fl">7.6</span>, <span class="fl">6.8</span>, <span class="fl">6.3</span>, <span class="fl">7.3</span>, <span class="fl">9.7</span>, <span class="fl">10.9</span>, <span class="fl">7.8</span>, <span class="fl">9.8</span>, <span class="dv">9</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">9.4</span>, <span class="fl">9.4</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">7.8</span>, <span class="fl">9.1</span>, <span class="fl">5.1</span>, <span class="fl">5.7</span>, <span class="fl">6.3</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostra granulada</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>Granulada <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.7</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span>, <span class="fl">6.5</span>, <span class="fl">6.6</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">9.7</span>, <span class="fl">7.2</span>, <span class="dv">9</span>, <span class="dv">9</span>,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>               <span class="fl">9.5</span>, <span class="fl">5.3</span>, <span class="fl">5.4</span>, <span class="fl">5.9</span>, <span class="fl">7.3</span>, <span class="dv">9</span>, <span class="fl">11.7</span>, <span class="fl">6.3</span>, <span class="fl">9.6</span>, <span class="dv">9</span>, </span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>               <span class="fl">8.3</span>, <span class="fl">9.8</span>, <span class="fl">10.1</span>, <span class="fl">9.2</span>, <span class="fl">8.2</span>, <span class="fl">8.7</span>, <span class="fl">4.5</span>, <span class="fl">6.4</span>, <span class="fl">7.1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para realizar o teste <span class="math inline">\(t\)</span> para amostras pareadas, é importante confirmar a dependência entre as amostras. Para isto pode-se realizar o teste de correlação de Pearson, conforme segue. A <a href="#fig-scattervegetal" class="quarto-xref">Figura&nbsp;<span>2.19</span></a> apresenta um diagrama de dispersão, confirmando a correlação positiva entre as amostras de humidade do carvão vegetal pulverizado e granulado.</p>
 <div class="cell">
@@ -1071,11 +1085,11 @@ t_0 = \frac{\bar{x}_d-\mu_d}{s_d/\sqrt{n}}
 \tag{2.16}\]</span></span></p>
 <p>O código à seguir calcula as diferenças entre os pares das duas amostras e, posteriormente a normalidade das diferenças.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando as diferenças</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> Pulverizada <span class="sc">-</span> Granulada</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de normalidade de Shapiro </span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(d)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando as diferenças</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> Pulverizada <span class="sc">-</span> Granulada</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de normalidade de Shapiro </span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(d)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1083,16 +1097,16 @@ t_0 = \frac{\bar{x}_d-\mu_d}{s_d/\sqrt{n}}
 data:  d
 W = 0.9786, p-value = 0.7871</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico q-q</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># qqnorm(d)</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># qqline(d)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico q-q</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># qqnorm(d)</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># qqline(d)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finalmente o teste <span class="math inline">\(t\)</span> pareado é realizado através do código à seguir. Pode-se constatar que, como <span class="math inline">\(p-valor = 0,8562 &gt; 0,05 = \alpha\)</span>, não se rejeita a hipótese nula de igualdade entre os métodos de preparação da amostra para medição de umidade do carvão vegetal. Como conclusão prática, não é necessário triturar o carvão para medir sua umidade.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t pareado</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> Pulverizada, <span class="at">y =</span> Granulada,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t pareado</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> Pulverizada, <span class="at">y =</span> Granulada,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1106,8 +1120,8 @@ sample estimates:
 mean difference 
            0.03 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra possibilidade fazer o teste t para uma amostra das diferenças</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(d)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra possibilidade fazer o teste t para uma amostra das diferenças</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(d)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O cálculo do poder do teste pode ser realizado com a sintaxe que segue. Como a diferença é muito pequena considerando o desvio-padrão e o tamanho amostral, o poder do teste foi baixíssimo.</p>
 <div class="cell">
