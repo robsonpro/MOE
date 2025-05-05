@@ -291,7 +291,12 @@ f \cong &amp; f\left(x_{10}, x_{20}, \ldots, x_{k0}\right) + \sum_{i=1}^k \left.
 \end{aligned}
 \end{equation}
 \tag{7.1}\]</span></span></p>
-<p>Onde: - <span class="math inline">\(\beta_0 = f\left(x_{10}, x_{20}, \ldots, x_{k0}\right)\)</span> - <span class="math inline">\(\beta_i = \left.\frac{\partial f}{\partial x_i}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos lineares) - <span class="math inline">\(\beta_{ii} = \frac{1}{2} \left.\frac{\partial^2 f}{\partial x_i^2}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos quadráticos puros) - <span class="math inline">\(\beta_{ij} = \left.\frac{\partial^2 f}{\partial x_i \partial x_j}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos de interação)</p>
+<p>Onde: - <span class="math inline">\(\beta_0 = f\left(x_{10}, x_{20}, \ldots, x_{k0}\right)\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\beta_i = \left.\frac{\partial f}{\partial x_i}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos lineares)</p></li>
+<li><p><span class="math inline">\(\beta_{ii} = \frac{1}{2} \left.\frac{\partial^2 f}{\partial x_i^2}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos quadráticos puros)</p></li>
+<li><p><span class="math inline">\(\beta_{ij} = \left.\frac{\partial^2 f}{\partial x_i \partial x_j}\right|_{\mathbf{x}=\mathbf{x}_0}\)</span> (termos de interação)</p></li>
+</ul>
 <p>O modelo final, após reparametrização, fica conforme <a href="#eq-rsm" class="quarto-xref">Equação&nbsp;<span>7.2</span></a>. Os termos quadráticos, <span class="math inline">\(\beta_{ii} x_i^2\)</span>, são a novidade em relação ao modelo obtido via fatorial <span class="math inline">\(2^k\)</span>. Este modelo é dito de segunda ordem completo, contendouma constante, <span class="math inline">\(k\)</span> termos lineares, <span class="math inline">\(k\)</span> termos quadráticos ou de segunda ordem puros e <span class="math inline">\(k(k-1)/2\)</span> termos de interação de sgeunda ordem ou termos de segunda ordem mistos.</p>
 <p><span id="eq-rsm"><span class="math display">\[
 y = \beta_0 + \sum_{i=1}^k \beta_i x_i + \sum_{i=1}^k \beta_{ii} x_i^2 + \sum_{i &lt; j} \beta_{ij} x_i x_j + \varepsilon

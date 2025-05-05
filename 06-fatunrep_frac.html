@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./07-rsm.html" rel="next">
 <link href="./05-fat2k.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -209,6 +210,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./06-fatunrep_frac.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Economia na experimentação e busca de região de curvatura via Fatorial 2^k</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-rsm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Metodologia de Superfície de Resposta</span></span></a>
   </div>
 </li>
     </ul>
@@ -593,7 +600,7 @@ attr(,"mean")
 60.4875 </code></pre>
 </div>
 </div>
-<p>O chamado <em>half normal plot</em> ou gráfico de Daniel, permite observar os efeitos mais importantes. Neste gráfico, os efeitos são plotados de forma padronizada e ordenada em relação aos quantis da distribuição normal. Quanto maior o desvio da reta onde devem se encontrar os efeitos esparços, mais importante o efeito. Entretanto, ele funciona melhor quando há poucos efeitos influentes entre os <span class="math inline">\(N-1\)</span> estimados. Os efeitos positivos são plotados em vermelho e os negativos em azul. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o <em>half normal plot</em> é apresentado na <a href="#fig-halfeflu" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>. Pode-se concluir que os efeitos A e C são significativos considerando o erro marginal de Lenth.</p>
+<p>O chamado <em>half normal plot</em> ou gráfico de Daniel, permite observar os efeitos mais importantes. Neste gráfico, os efeitos são plotados de forma padronizada e ordenada em relação aos quantis da distribuição normal. Quanto maior o desvio da reta onde devem se encontrar os efeitos esparços, mais importante o efeito. Entretanto, ele funciona melhor quando há poucos efeitos influentes entre os <span class="math inline">\(N-1\)</span> estimados. Os efeitos positivos são plotados em vermelho e os negativos em azul. Para o <a href="07-rsm.html#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>7.1</span></a> o <em>half normal plot</em> é apresentado na <a href="#fig-halfeflu" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>. Pode-se concluir que os efeitos A e C são significativos considerando o erro marginal de Lenth.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hnplot</span>(efeitos, <span class="at">half =</span> T, <span class="at">method =</span> <span class="st">"Lenth"</span>, <span class="at">ID =</span> <span class="fu">ME</span>(efeitos))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -609,7 +616,7 @@ Figura&nbsp;6.1: Half normal plot para os efeitos no experimento de tratamento d
 </div>
 </div>
 </div>
-<p>O gráfico de Pareto tem sido comumente utilizado para plotar os efeitos em relação ao erro marginal, <span class="math inline">\(ME\)</span>, e ao erro marginal simultâneo, <span class="math inline">\(SME\)</span>. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o gráfico de Pareto é plotado na <a href="#fig-paretoeflu" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>. Pelo primeiro critério temos a mesma conclusão obtida pelo método gráfico de Daniel, enquanto pelo segundo critério apenas o efeito do fator A é significativo.</p>
+<p>O gráfico de Pareto tem sido comumente utilizado para plotar os efeitos em relação ao erro marginal, <span class="math inline">\(ME\)</span>, e ao erro marginal simultâneo, <span class="math inline">\(SME\)</span>. Para o <a href="07-rsm.html#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>7.1</span></a> o gráfico de Pareto é plotado na <a href="#fig-paretoeflu" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>. Pelo primeiro critério temos a mesma conclusão obtida pelo método gráfico de Daniel, enquanto pelo segundo critério apenas o efeito do fator A é significativo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto PSE plot</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parplot</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -632,21 +639,21 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16.950      4.05   4.185  0.0065      0.0536
-C    11.675      4.05   2.883  0.0213      0.1849
-AD    5.900      4.05   1.457  0.1469      0.8298
-D     5.625      4.05   1.389  0.1628      0.8688
-AC   -3.400      4.05  -0.840  0.3734      0.9996
-BCD   3.350      4.05   0.827  0.3803      0.9996
-ABCD -3.325      4.05  -0.821  0.3835      0.9996
-B     3.100      4.05   0.765  0.4181      1.0000
-BD   -2.700      4.05  -0.667  0.5393      1.0000
-ABD  -2.325      4.05  -0.574  0.5994      1.0000
-AB    2.275      4.05   0.562  0.6075      1.0000
-CD    2.125      4.05   0.525  0.6313      1.0000
-ABC  -1.825      4.05  -0.451  0.6795      1.0000
-BC    0.850      4.05   0.210  0.8455      1.0000
-ACD  -0.650      4.05  -0.160  0.8813      1.0000</code></pre>
+A    16.950      4.05   4.185  0.0052      0.0491
+C    11.675      4.05   2.883  0.0215      0.2013
+AD    5.900      4.05   1.457  0.1456      0.8346
+D     5.625      4.05   1.389  0.1628      0.8755
+AC   -3.400      4.05  -0.840  0.3751      1.0000
+BCD   3.350      4.05   0.827  0.3819      1.0000
+ABCD -3.325      4.05  -0.821  0.3853      1.0000
+B     3.100      4.05   0.765  0.4171      1.0000
+BD   -2.700      4.05  -0.667  0.5395      1.0000
+ABD  -2.325      4.05  -0.574  0.6004      1.0000
+AB    2.275      4.05   0.562  0.6076      1.0000
+CD    2.125      4.05   0.525  0.6316      1.0000
+ABC  -1.825      4.05  -0.451  0.6818      1.0000
+BC    0.850      4.05   0.210  0.8496      1.0000
+ACD  -0.650      4.05  -0.160  0.8831      1.0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
@@ -1577,21 +1584,21 @@ attr(,"mean")
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85.25      9.75  -8.744  0.0005      0.0045
-A     19.25      9.75   1.974  0.0653      0.4822
-AC   -16.25      9.75  -1.667  0.1058      0.6929
-AB   -13.25      9.75  -1.359  0.1708      0.8849
-BCD   12.75      9.75   1.308  0.1858      0.9078
-B    -11.25      9.75  -1.154  0.2336      0.9655
-ABC    7.25      9.75   0.744  0.4313      1.0000
-BC    -6.75      9.75  -0.692  0.4655      1.0000
-BD     6.25      9.75   0.641  0.5567      1.0000
-ABD   -5.75      9.75  -0.590  0.5904      1.0000
-AD    -5.25      9.75  -0.538  0.6224      1.0000
-CD    -3.75      9.75  -0.385  0.7214      1.0000
-ACD   -2.75      9.75  -0.282  0.7915      1.0000
-D      1.75      9.75   0.179  0.8676      1.0000
-ABCD  -1.25      9.75  -0.128  0.9048      1.0000</code></pre>
+C    -85.25      9.75  -8.744  0.0001      0.0019
+A     19.25      9.75   1.974  0.0647      0.4931
+AC   -16.25      9.75  -1.667  0.1047      0.6989
+AB   -13.25      9.75  -1.359  0.1706      0.8935
+BCD   12.75      9.75   1.308  0.1850      0.9224
+B    -11.25      9.75  -1.154  0.2349      0.9726
+ABC    7.25      9.75   0.744  0.4310      1.0000
+BC    -6.75      9.75  -0.692  0.4652      1.0000
+BD     6.25      9.75   0.641  0.5573      1.0000
+ABD   -5.75      9.75  -0.590  0.5906      1.0000
+AD    -5.25      9.75  -0.538  0.6225      1.0000
+CD    -3.75      9.75  -0.385  0.7263      1.0000
+ACD   -2.75      9.75  -0.282  0.7978      1.0000
+D      1.75      9.75   0.179  0.8703      1.0000
+ABCD  -1.25      9.75  -0.128  0.9067      1.0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2017,22 +2024,22 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1   1 -1 -1 -1  1
-2   1  1 -1  1  1
-3  -1 -1 -1 -1 -1
-4   1 -1  1 -1 -1
-5   1  1 -1 -1 -1
-6   1  1  1 -1  1
-7   1 -1  1  1  1
-8  -1  1 -1 -1  1
-9  -1  1  1 -1 -1
-10 -1  1  1  1  1
-11  1  1  1  1 -1
-12 -1  1 -1  1 -1
-13 -1 -1  1  1 -1
-14  1 -1 -1  1 -1
-15 -1 -1 -1  1  1
-16 -1 -1  1 -1  1
+1  -1  1  1 -1 -1
+2  -1 -1 -1  1  1
+3   1  1  1  1 -1
+4  -1  1 -1  1 -1
+5   1 -1  1 -1 -1
+6   1 -1 -1 -1  1
+7   1  1 -1  1  1
+8   1 -1  1  1  1
+9  -1 -1  1 -1  1
+10 -1 -1 -1 -1 -1
+11  1 -1 -1  1 -1
+12 -1 -1  1  1 -1
+13 -1  1  1  1  1
+14  1  1 -1 -1 -1
+15 -1  1 -1 -1  1
+16  1  1  1 -1  1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
@@ -2844,6 +2851,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./07-rsm.html" class="pagination-link" aria-label="Metodologia de Superfície de Resposta">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Metodologia de Superfície de Resposta</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
