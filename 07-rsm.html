@@ -239,6 +239,7 @@ window.Quarto = {
   <li><a href="#condições-de-otimalidade-de-segunda-ordem" id="toc-condições-de-otimalidade-de-segunda-ordem" class="nav-link" data-scroll-target="#condições-de-otimalidade-de-segunda-ordem"><span class="header-section-number">7.6</span> Condições de otimalidade de segunda ordem</a></li>
   <li><a href="#otimização-não-linear-restrita" id="toc-otimização-não-linear-restrita" class="nav-link" data-scroll-target="#otimização-não-linear-restrita"><span class="header-section-number">7.7</span> Otimização não linear restrita</a></li>
   <li><a href="#planejamento-box-behnken" id="toc-planejamento-box-behnken" class="nav-link" data-scroll-target="#planejamento-box-behnken"><span class="header-section-number">7.8</span> Planejamento Box-Behnken</a></li>
+  <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
   </ul>
 </nav>
     </div>
@@ -328,7 +329,7 @@ Figura&nbsp;7.1: Busca de região de curvatura via experimentação sequencial e
 <div id="fig-ccd" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ccd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ccd.png" class="img-fluid figure-img" width="1343">
+<img src="images/ccd.png" style="width:5in;height:3in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;7.2: Representação do CCD (a) <span class="math inline">\(k=3\)</span>; (b) <span class="math inline">\(k=2\)</span>
@@ -1189,7 +1190,7 @@ x2  0.1138866 -0.95060326 0.2887616
 x3 -0.9792683 -0.05840032 0.1939663</code></pre>
 </div>
 </div>
-<p>A <a href="#fig-contCO" class="quarto-xref">Figura&nbsp;<span>7.9</span></a> ilustra gráficos de contorno obtidos com código abaixo. É importante entender que cada visualização consiste em um corte do modelo que não pode ser visualizado de forma integral, uma vez que no <span class="math inline">\(\mathcal R ^4\)</span>. Logo, para cada par de variáveis plotadas, a remanescente é fixada, neste caso no nível central.</p>
+<p>A <a href="#fig-contCO" class="quarto-xref">Figura&nbsp;<span>7.9</span></a> ilustra gráficos de contorno obtidos com código abaixo. É importante entender que cada visualização consiste em um corte do modelo que não pode ser visualizado de forma integral, uma vez que está no <span class="math inline">\(\mathcal R ^4\)</span>. Logo, para cada par de variáveis plotadas, a remanescente é fixada, neste caso no nível central.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(res.rsm, <span class="sc">~</span>x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3, <span class="at">image =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1273,7 +1274,678 @@ Figura&nbsp;7.9: Gráficos de contorno para rendimento de CO
 </section>
 <section id="planejamento-box-behnken" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="planejamento-box-behnken"><span class="header-section-number">7.8</span> Planejamento Box-Behnken</h2>
-<p>Xxx</p>
+<p>O planejamento Box-Behnken (<em>Box-Behnken Design</em> - BBD) foi proposto pelos pesquisadores George Box e Bonald Behnken nos anos 60, como proposta alternativa para obtenção de modelos de superfície de resposta, garantindo boas propriedades estatísticas e baixo custo na experimentação. Para <span class="math inline">\(k\leq6\)</span> fatores o planejamento consiste em blocos de combinações de fatoriais <span class="math inline">\(2^2\)</span> com os fatores remanescentes fixos no ponto central. A <a href="#fig-bbd" class="quarto-xref">Figura&nbsp;<span>7.10</span></a> ilustra o planejamento para <span class="math inline">\(k=3\)</span> com três pontos centrais, com correspondência com a <a href="#tbl-bbd" class="quarto-xref">Tabela&nbsp;<span>7.3</span></a>. Pode-se observar em azul os 4 primeiros pontos consistindo em um fatorial <span class="math inline">\(2^2\)</span> para <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> com <span class="math inline">\(x_3\)</span> no ponto central, os pontos 5 a 8 com um fatorial <span class="math inline">\(2^2\)</span> para <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_3\)</span> e <span class="math inline">\(x_2\)</span> no ponto central e os pontos 9 a 12 com um fatorial <span class="math inline">\(2^2\)</span> para <span class="math inline">\(x_2\)</span> e <span class="math inline">\(x_3\)</span> e <span class="math inline">\(x_1\)</span> no ponto central, além de três pontos centrais nos experimentos 13 a 15. O número de pontos centrais pode ser customizado. Para <span class="math inline">\(k=6\)</span> ou mais fatores ao invés de combinações de fatoriais <span class="math inline">\(2^2\)</span> são considerados fatoriais <span class="math inline">\(2^3\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bbd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/bbd.png" style="width:2.8in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.10: Representação do BBD para <span class="math inline">\(k=3\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div id="tbl-bbd" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;7.3: Planejamento BBD para k=3 fatores com pontos centrais
+</figcaption>
+<div aria-describedby="tbl-bbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-bordered do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ordem</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">x₁</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">x₂</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">x₃</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">2</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">3</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">4</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(204, 239, 250, 128) !important;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">5</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">6</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">7</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">8</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(230, 247, 179, 128) !important;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">9</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">10</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">11</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">-1</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">12</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">1</td>
+<td style="text-align: center; background-color: rgba(255, 214, 214, 128) !important;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">13</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">14</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">15</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+<td style="text-align: center; background-color: rgba(232, 204, 255, 128) !important;">0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Um planejamento BBD para <span class="math inline">\(k\leq5\)</span> apresenta <span class="math inline">\(N=2k(k-1)+n_c\)</span> experimentos no total. Para os pontos nas arestas do cubo a distância até os pontos centrais é exatamente igual a <span class="math inline">\(\sqrt{2}\)</span>. Ou seja, o BBD é um planejamento esférico com raio igual <span class="math inline">\(\sqrt{2}\)</span> para <span class="math inline">\(k\leq5\)</span> e <span class="math inline">\(\sqrt{3}\)</span> para <span class="math inline">\(k\geq6\)</span>. Recomenda-se entretanto realizar RSM para número baixo de fatores. É importante observar que o BBD só é possível para <span class="math inline">\(k\geq3\)</span> fatores.</p>
+<p>A <a href="#tbl-Nccdbbd" class="quarto-xref">Tabela&nbsp;<span>7.4</span></a> compara o número de ensaios para o BBD e o CCD segundo o número de fatores. Observa-se que para <span class="math inline">\(3\leq k\leq4\)</span> o BBD é uma opção interessante, sendo mais econômico que o CCD. Já para <span class="math inline">\(k \geq5\)</span> o CCD resulta em número menor de ensaios. É importante enfatizar que a escolha não deve-se basear somente no número de experimentos, mas também na estratéga experimental almejada. Por exemplo, o CCD permite a experimentação sequencial. Outra questão é que enquanto no CCD o raio do planejamento cresce com <span class="math inline">\(k\)</span>, no BBD ele é fixo, de forma que, ao se realizar procedimentos de otimização restrita para casos onde as condições de otimalidade de segunda ordem não são de interesse, a região experimental codificada é limitada comparativamente ao CCD. Obviamente tudo depende da relativa escolha dos níveis decodificados dos fatores em estudo.</p>
+<div id="tbl-Nccdbbd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Nccdbbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;7.4: Comparativo entre número de experimentos no CCD e no BBD
+</figcaption>
+<div aria-describedby="tbl-Nccdbbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>k</th>
+<th>CCD</th>
+<th>BBD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>8 + <span class="math inline">\(n_c\)</span></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>14 + <span class="math inline">\(n_c\)</span></td>
+<td>12 + <span class="math inline">\(n_c\)</span></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>24 + <span class="math inline">\(n_c\)</span></td>
+<td>24 + <span class="math inline">\(n_c\)</span></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>26* + <span class="math inline">\(n_c\)</span></td>
+<td>40 + <span class="math inline">\(n_c\)</span></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>44 + <span class="math inline">\(n_c\)</span></td>
+<td>48 + <span class="math inline">\(n_c\)</span></td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>78 + <span class="math inline">\(n_c\)</span></td>
+<td>56 + <span class="math inline">\(n_c\)</span></td>
+</tr>
+<tr class="odd">
+<td>*fatorial fracionado <span class="math inline">\(2^{5-1}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="exm-exbbd" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 7.3</strong></span> Seja um experimento de sinterização de inibição seletiva de peças de polietileno de alta densidade com os seguintes fatores de controle: x1: altura da camada (mm), x2: Energia do aquecedor (<span class="math inline">\(J/mm^2\)</span>), x3: Velocidade de avanço do aquecedor (mm/s) e x4: Velocidade de avanço da impressora (mm/min). A resposta y consiste no encolhimento das peças no sentido da largura. # https://link.springer.com/article/10.1007%2Fs40799-018-0286-6</p>
+</div>
+<p>A Tabela <a href="#tbl-bbdexm" class="quarto-xref">Tabela&nbsp;<span>7.5</span></a> apresenta o planejamento com a resposta, o qual pode ser obtido com o código abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">bbd</span>(<span class="at">k =</span> <span class="sc">~</span>x1<span class="sc">+</span>x2<span class="sc">+</span>x3<span class="sc">+</span>x4,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">block =</span> F,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n0 =</span> <span class="dv">5</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">randomize =</span> F,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">coding =</span> <span class="fu">list</span>(x1 <span class="sc">~</span> (Ac <span class="sc">-</span> <span class="fl">0.2</span>)<span class="sc">/</span><span class="fl">0.1</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                            x2 <span class="sc">~</span> (Ea <span class="sc">-</span> <span class="fl">25.32</span>)<span class="sc">/</span><span class="fl">3.16</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                            x3 <span class="sc">~</span> (vf_a <span class="sc">-</span> <span class="fl">3.5</span>)<span class="sc">/</span><span class="fl">0.5</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                            x4 <span class="sc">~</span> (vf_p <span class="sc">-</span> <span class="dv">100</span>)<span class="sc">/</span><span class="dv">20</span>))</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>design</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   run.order std.order  Ac    Ea vf_a vf_p
+1          1         1 0.1 22.16  3.5  100
+2          2         2 0.3 22.16  3.5  100
+3          3         3 0.1 28.48  3.5  100
+4          4         4 0.3 28.48  3.5  100
+5          5         5 0.2 25.32  3.0   80
+6          6         6 0.2 25.32  4.0   80
+7          7         7 0.2 25.32  3.0  120
+8          8         8 0.2 25.32  4.0  120
+9          9         9 0.1 25.32  3.5   80
+10        10        10 0.3 25.32  3.5   80
+11        11        11 0.1 25.32  3.5  120
+12        12        12 0.3 25.32  3.5  120
+13        13        13 0.2 22.16  3.0  100
+14        14        14 0.2 28.48  3.0  100
+15        15        15 0.2 22.16  4.0  100
+16        16        16 0.2 28.48  4.0  100
+17        17        17 0.1 25.32  3.0  100
+18        18        18 0.3 25.32  3.0  100
+19        19        19 0.1 25.32  4.0  100
+20        20        20 0.3 25.32  4.0  100
+21        21        21 0.2 22.16  3.5   80
+22        22        22 0.2 28.48  3.5   80
+23        23        23 0.2 22.16  3.5  120
+24        24        24 0.2 28.48  3.5  120
+25        25        25 0.2 25.32  3.5  100
+26        26        26 0.2 25.32  3.5  100
+27        27        27 0.2 25.32  3.5  100
+28        28        28 0.2 25.32  3.5  100
+29        29        29 0.2 25.32  3.5  100
+
+Data are stored in coded form using these coding formulas ...
+x1 ~ (Ac - 0.2)/0.1
+x2 ~ (Ea - 25.32)/3.16
+x3 ~ (vf_a - 3.5)/0.5
+x4 ~ (vf_p - 100)/20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># desvio na largura</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>width <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.3533</span>, <span class="fl">5.2615</span>, <span class="fl">5.0008</span>, <span class="fl">4.2712</span>, <span class="fl">4.5840</span>, <span class="fl">2.7470</span>, <span class="fl">3.8086</span>, <span class="fl">3.9839</span>, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>           <span class="fl">4.3630</span>, <span class="fl">3.5519</span>, <span class="fl">4.0534</span>, <span class="fl">4.0031</span>, <span class="fl">5.1495</span>, <span class="fl">4.5581</span>, <span class="fl">4.1959</span>, <span class="fl">3.5946</span>, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>           <span class="fl">5.1642</span>, <span class="fl">4.0103</span>, <span class="fl">3.6354</span>, <span class="fl">4.2529</span>, <span class="fl">3.5171</span>, <span class="fl">4.4485</span>, <span class="fl">5.3879</span>, <span class="fl">3.4132</span>, </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>           <span class="fl">3.8905</span>, <span class="fl">4.3263</span>, <span class="fl">4.2203</span>, <span class="fl">3.9451</span>, <span class="fl">3.9024</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>design<span class="sc">$</span>y <span class="ot">&lt;-</span> width</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div id="tbl-bbdexm" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bbdexm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;7.5: Planejamento BBD para k=3 fatores com pontos centrais
+</figcaption>
+<div aria-describedby="tbl-bbdexm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">run.order</th>
+<th style="text-align: right;">std.order</th>
+<th style="text-align: right;">x1</th>
+<th style="text-align: right;">x2</th>
+<th style="text-align: right;">x3</th>
+<th style="text-align: right;">x4</th>
+<th style="text-align: right;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.3533</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.2615</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.0008</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.2712</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">4.5840</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">2.7470</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.8086</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.9839</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">4.3630</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">3.5519</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.0534</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.0031</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.1495</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.5581</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.1959</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.5946</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.1642</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.0103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.6354</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.2529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">3.5171</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">4.4485</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5.3879</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.4132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.8905</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.3263</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.2203</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.9451</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.9024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>A análise pode ser realizada com o comando <code>rsm</code>, conforme segue. Pelos resultados observa-se que apenas as interações <span class="math inline">\(x_1x_2\)</span>, <span class="math inline">\(x_1x_4\)</span> e <span class="math inline">\(x_2x_3\)</span> não foram significativas, além do termo quadrático <span class="math inline">\(x_3^2\)</span>. O modelo apresenta um bom ajuste, com <span class="math inline">\(R_{aj}^2 = 0,9198\)</span>, porém sugere-se ao leitor tentar reduzir o modelo via <code>lm</code> e <code>step</code> para avaliar se é possível melhorar um pouco mais, aproximando <span class="math inline">\(R_{aj}^2\)</span> de <span class="math inline">\(R^2\)</span>. Já é possível constatar pela análise dos sinais dos autovalores que o ponto estacionário não é últil para minimizar o desvio dimensional no sentido da largura.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analise</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>rsm.bbd <span class="ot">&lt;-</span> <span class="fu">rsm</span>(y <span class="sc">~</span> <span class="fu">SO</span>(x1,x2,x3,x4), <span class="at">data =</span> design)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rsm.bbd)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+rsm(formula = y ~ SO(x1, x2, x3, x4), data = design)
+
+             Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)  4.056920   0.081357 49.8655 &lt; 2.2e-16 ***
+x1          -0.184933   0.052516 -3.5215 0.0033875 ** 
+x2          -0.298233   0.052516 -5.6789 5.693e-05 ***
+x3          -0.405417   0.052516 -7.7199 2.068e-06 ***
+x4           0.119883   0.052516  2.2828 0.0385872 *  
+x1:x2       -0.159450   0.090960 -1.7530 0.1014672    
+x1:x3        0.442850   0.090960  4.8686 0.0002485 ***
+x1:x4        0.190200   0.090960  2.0910 0.0552423 .  
+x2:x3       -0.002475   0.090960 -0.0272 0.9786765    
+x2:x4       -0.726525   0.090960 -7.9873 1.395e-06 ***
+x3:x4        0.503075   0.090960  5.5307 7.405e-05 ***
+x1^2         0.323777   0.071429  4.5328 0.0004688 ***
+x2^2         0.477602   0.071429  6.6864 1.033e-05 ***
+x3^2        -0.080797   0.071429 -1.1312 0.2769959    
+x4^2        -0.308648   0.071429 -4.3210 0.0007043 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Multiple R-squared:  0.9599,    Adjusted R-squared:  0.9198 
+F-statistic: 23.94 on 14 and 14 DF,  p-value: 2.31e-07
+
+Analysis of Variance Table
+
+Response: y
+                    Df Sum Sq Mean Sq F value    Pr(&gt;F)
+FO(x1, x2, x3, x4)   4 3.6225 0.90563 27.3647 1.738e-06
+TWI(x1, x2, x3, x4)  6 4.1546 0.69243 20.9225 3.067e-06
+PQ(x1, x2, x3, x4)   4 3.3140 0.82850 25.0338 2.984e-06
+Residuals           14 0.4633 0.03310                  
+Lack of fit         10 0.3000 0.03000  0.7347    0.6856
+Pure error           4 0.1633 0.04083                  
+
+Stationary point of response surface:
+        x1         x2         x3         x4 
+ 1.0579092  0.1742857 -0.8902676 -0.4104952 
+
+Stationary point in original units:
+        Ac         Ea       vf_a       vf_p 
+ 0.3057909 25.8707427  3.0548662 91.7900965 
+
+Eigenanalysis:
+eigen() decomposition
+$values
+[1]  0.6966486  0.3725336 -0.0899158 -0.5673314
+
+$vectors
+         [,1]        [,2]       [,3]        [,4]
+x1  0.4113305  0.78063120  0.4678823  0.05008278
+x2 -0.7896263  0.50636028 -0.1821966  0.29477793
+x3  0.2429853  0.36542084 -0.7745350 -0.45554504
+x4  0.3850399 -0.02611146 -0.3846896  0.83849651</code></pre>
+</div>
+</div>
+<p>Não há indícios para rejeição da hipótese de normalidade dos resíduos, dado resultado do teste de Shapiro-Wilk exposto abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalidade</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(rsm.bbd<span class="sc">$</span>residuals)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  rsm.bbd$residuals
+W = 0.93612, p-value = 0.07937</code></pre>
+</div>
+</div>
+<p>A <a href="#fig-contbbd" class="quarto-xref">Figura&nbsp;<span>7.11</span></a> ilustra gráficos de contorno para desvio dimensional de peças obtidas via sinterização de inibição seletiva.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficos</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(rsm.bbd, <span class="sc">~</span>x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4, <span class="at">image =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-contbbd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contbbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-rsm_files/figure-html/fig-contbbd-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contbbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.11: Gráficos de contorno para o desvio dimensional
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Por fim, apresenta-se o código e resultado da otimização restrita, sendo expostos níveis dos fatores que minimizam o desvio dimensional. Recomenda-se <span class="math inline">\(Ac\)</span> = 0,1987 <span class="math inline">\(mm\)</span>, <span class="math inline">\(Ea\)</span> = 24,628 <span class="math inline">\(J/mm^2\)</span>, <span class="math inline">\(Vf_a\)</span> = 3,93 <span class="math inline">\(mm/s\)</span> e <span class="math inline">\(Vf_p\)</span> = 78,36 <span class="math inline">\(mm/min\)</span>. O desvio mínimo predito foi <span class="math inline">\(\hat y\)</span> = 2,6 <span class="math inline">\(mm\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Otimizacao restrita</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>otimo <span class="ot">&lt;-</span> <span class="fu">steepest</span>(rsm.bbd, <span class="at">dist=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="at">by=</span>.<span class="dv">1</span>), <span class="at">descent=</span>T)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Path of steepest descent from ridge analysis:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>otimo[<span class="fu">nrow</span>(otimo),]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   dist     x1     x2   x3     x4 |     Ac       Ea vf_a  vf_p |  yhat
+15  1.4 -0.013 -0.219 0.86 -1.082 | 0.1987 24.62796 3.93 78.36 | 2.606</code></pre>
+</div>
+</div>
+</section>
+<section id="bibliografia" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+<p>ANDERSON-COOK, C. M.; BORROR, C. M.; MONTGOMERY, D. C. Response surface design evaluation and comparison. <em>Journal of Statistical Planning and Inference</em>, v. 139, n.&nbsp;2, p.&nbsp;629-641, 2009.</p>
+<p>BOX, G. E. P.; DRAPER, N. R. A basis for the selection of a response surface design. <em>Journal of the American Statistical Association</em>, v. 54, n.&nbsp;287, p.&nbsp;622-654, 1959.</p>
+<p>BOX, G. E. P.; DRAPER, N. R. Response surfaces, mixtures, and ridge analyses. New Jersey: John Wiley &amp; Sons, 2007.</p>
+<p>BOX, G. E. P.; HUNTER, J. S. Multi-factor experimental designs for exploring response surfaces. <em>The Annals of Mathematical Statistics</em>, p.&nbsp;195-241, 1957.</p>
+<p>BOX, G. E. P.; HUNTER, J. S. The 2k-p fractional factorial designs. <em>Technometrics</em>, v. 3, n.&nbsp;3, p.&nbsp;311-351, 1961.</p>
+<p>BOX, G. E. P.; HUNTER, J. S.; HUNTER, William Gordon. <em>Statistics for experimenters: design, innovation, and discovery</em>. New York: Wiley-Interscience, 2005.</p>
+<p>BOX, G. E. P.; WILSON, K. B. On the Experimental Attainment of Optimum Conditions. <em>Journal of the Royal Statistical Society. Series B (Methodological)</em>, v. 13, n.&nbsp;1, p.&nbsp;1-45, 1951.</p>
+<p>DEL CASTILLO, E. <em>Process optimization: a statistical approach</em>. New York: Springer, 2007.</p>
+<p>DRAPER, N. R.; GUTTMAN, I. An index of rotatability. <em>Technometrics</em>, v. 30, n.&nbsp;1, p.&nbsp;105-111, 1988.</p>
+<p>DRAPER, N. R.; LIN, D. K. J. Small response-surface designs. <em>Technometrics</em>, v. 32, n.&nbsp;2, p.&nbsp;187-194, 1990.</p>
+<p>DUNN, K. <em>Process Improvement Using Data</em>. Disponível em: http://learnche.org/pid, 2010. Acesso em: 05/2025.</p>
+<p>GIOVANNITTI-JENSEN, A.; MYERS, R. H. Graphical assessment of the prediction capability of response surface designs. <em>Technometrics</em>, v. 31, n.&nbsp;2, p.&nbsp;159-171, 1989.</p>
+<p>KHURI, A. I. A measure of rotatability for response-surface designs. <em>Technometrics</em>, v. 30, n.&nbsp;1, p.&nbsp;95-104, 1988.</p>
+<p>LUCAS, J. M. Which response surface design is best: a performance comparison of several types of quadratic response surface designs in symmetric regions. <em>Technometrics</em>, v. 18, n.&nbsp;4, p.&nbsp;411-417, 1976.</p>
+<p>MONTGOMERY, D. C. <em>Design and analysis of experiments</em>. John Wiley &amp; Sons, 2013.</p>
+<p>MORRIS, M. D. A class of three-level experimental designs for response surface modeling. <em>Technometrics</em>, v. 42, n.&nbsp;2, p.&nbsp;111-121, 2000.</p>
+<p>MYERS, R. H.; MONTGOMERY, D. C.; ANDERSON-COOK, C. M. <em>Response surface methodology: process and product optimization using designed experiments</em>. John Wiley &amp; Sons, 2016.</p>
+<p>NOCEDAL, J.; WRIGHT, S. J. <em>Numerical optimization</em>. Springer Science, v. 35, n.&nbsp;67-68, p.&nbsp;7, 2006.</p>
+<p>OYEJOLA, B. A.; NWANYA, J. C. Selecting the right Central Composite Design. <em>International Journal of Statistics and Applications</em>, v. 5, n.&nbsp;1, p.&nbsp;21-30, 2015.</p>
+<p>RAO, S. S. <em>Engineering optimization: theory and practice</em>. John Wiley &amp; Sons, 2009.</p>
+<p>SEBER, G. A. F.; LEE, A. J. <em>Linear regression analysis</em>. John Wiley &amp; Sons, 2003.</p>
+<p>UKAEGBU, E. C.; CHIGBU, P. E. Graphical evaluation of the prediction capabilities of partially replicated orthogonal central composite designs. <em>Quality and Reliability Engineering International</em>, v. 31, n.&nbsp;4, p.&nbsp;707-717, 2015.</p>
+<p>WEISBERG, S. <em>Applied linear regression</em>. John Wiley &amp; Sons, 2005.</p>
 
 
 </section>
