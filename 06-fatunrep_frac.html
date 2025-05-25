@@ -645,21 +645,21 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16.950      4.05   4.185  0.0060      0.0562
-C    11.675      4.05   2.883  0.0221      0.2002
-AD    5.900      4.05   1.457  0.1490      0.8429
-D     5.625      4.05   1.389  0.1647      0.8785
-AC   -3.400      4.05  -0.840  0.3739      1.0000
-BCD   3.350      4.05   0.827  0.3805      1.0000
-ABCD -3.325      4.05  -0.821  0.3842      1.0000
-B     3.100      4.05   0.765  0.4163      1.0000
-BD   -2.700      4.05  -0.667  0.5397      1.0000
-ABD  -2.325      4.05  -0.574  0.6003      1.0000
-AB    2.275      4.05   0.562  0.6083      1.0000
-CD    2.125      4.05   0.525  0.6323      1.0000
-ABC  -1.825      4.05  -0.451  0.6777      1.0000
-BC    0.850      4.05   0.210  0.8445      1.0000
-ACD  -0.650      4.05  -0.160  0.8816      1.0000</code></pre>
+A    16.950      4.05   4.185  0.0057      0.0514
+C    11.675      4.05   2.883  0.0217      0.1916
+AD    5.900      4.05   1.457  0.1484      0.8395
+D     5.625      4.05   1.389  0.1641      0.8744
+AC   -3.400      4.05  -0.840  0.3707      0.9996
+BCD   3.350      4.05   0.827  0.3776      1.0000
+ABCD -3.325      4.05  -0.821  0.3815      1.0000
+B     3.100      4.05   0.765  0.4145      1.0000
+BD   -2.700      4.05  -0.667  0.5394      1.0000
+ABD  -2.325      4.05  -0.574  0.5985      1.0000
+AB    2.275      4.05   0.562  0.6069      1.0000
+CD    2.125      4.05   0.525  0.6305      1.0000
+ABC  -1.825      4.05  -0.451  0.6802      1.0000
+BC    0.850      4.05   0.210  0.8465      1.0000
+ACD  -0.650      4.05  -0.160  0.8817      1.0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
@@ -1590,21 +1590,21 @@ attr(,"mean")
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85.25      9.75  -8.744  0.0002      0.0022
-A     19.25      9.75   1.974  0.0666      0.5024
-AC   -16.25      9.75  -1.667  0.1082      0.7057
-AB   -13.25      9.75  -1.359  0.1723      0.8916
-BCD   12.75      9.75   1.308  0.1864      0.9194
-B    -11.25      9.75  -1.154  0.2338      0.9726
-ABC    7.25      9.75   0.744  0.4304      1.0000
-BC    -6.75      9.75  -0.692  0.4653      1.0000
-BD     6.25      9.75   0.641  0.5570      1.0000
-ABD   -5.75      9.75  -0.590  0.5906      1.0000
-AD    -5.25      9.75  -0.538  0.6240      1.0000
-CD    -3.75      9.75  -0.385  0.7211      1.0000
-ACD   -2.75      9.75  -0.282  0.7918      1.0000
-D      1.75      9.75   0.179  0.8675      1.0000
-ABCD  -1.25      9.75  -0.128  0.9051      1.0000</code></pre>
+C    -85.25      9.75  -8.744  0.0003      0.0026
+A     19.25      9.75   1.974  0.0668      0.5028
+AC   -16.25      9.75  -1.667  0.1065      0.7045
+AB   -13.25      9.75  -1.359  0.1716      0.8924
+BCD   12.75      9.75   1.308  0.1858      0.9141
+B    -11.25      9.75  -1.154  0.2338      0.9674
+ABC    7.25      9.75   0.744  0.4281      1.0000
+BC    -6.75      9.75  -0.692  0.4648      1.0000
+BD     6.25      9.75   0.641  0.5560      1.0000
+ABD   -5.75      9.75  -0.590  0.5888      1.0000
+AD    -5.25      9.75  -0.538  0.6215      1.0000
+CD    -3.75      9.75  -0.385  0.7234      1.0000
+ACD   -2.75      9.75  -0.282  0.7950      1.0000
+D      1.75      9.75   0.179  0.8686      1.0000
+ABCD  -1.25      9.75  -0.128  0.9052      1.0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2030,22 +2030,22 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1  -1  1 -1  1 -1
-2   1  1 -1  1  1
-3   1 -1 -1 -1  1
-4   1  1 -1 -1 -1
-5  -1 -1  1  1 -1
-6   1  1  1 -1  1
-7  -1 -1 -1  1  1
-8  -1  1 -1 -1  1
-9   1  1  1  1 -1
-10  1 -1 -1  1 -1
-11 -1  1  1 -1 -1
-12  1 -1  1 -1 -1
-13 -1  1  1  1  1
-14 -1 -1  1 -1  1
-15  1 -1  1  1  1
-16 -1 -1 -1 -1 -1
+1   1  1 -1  1  1
+2  -1  1 -1 -1  1
+3  -1 -1 -1  1  1
+4   1  1  1  1 -1
+5  -1  1 -1  1 -1
+6   1  1 -1 -1 -1
+7  -1 -1 -1 -1 -1
+8   1 -1 -1 -1  1
+9  -1 -1  1  1 -1
+10  1 -1  1  1  1
+11  1 -1  1 -1 -1
+12  1  1  1 -1  1
+13 -1 -1  1 -1  1
+14  1 -1 -1  1 -1
+15 -1  1  1  1  1
+16 -1  1  1 -1 -1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
