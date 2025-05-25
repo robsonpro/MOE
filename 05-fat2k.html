@@ -218,6 +218,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Metodologia de Superfície de Resposta</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-mix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Experimentos para Misturas</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -267,7 +273,7 @@ window.Quarto = {
 <h2 data-number="5.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">5.1</span> Introdução</h2>
 <p>Os planejamentos fatoriais são utilizados quando deseja-se obter informações dos efeitos dos fatores de interesse de forma simultânea, bem como estudar o efeito da interação entre dois ou mais fatores na resposta avaliada. O planejamento fatorial <span class="math inline">\(2^k\)</span> permite a experimentação sequencial e econômica utilizando o fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> e o fatorial não replicado, elucidados no capítulo posterior. É possível utilizar esquemas de confundimento e blocagem com a finalidade de diluir possíveis fontes de variação de ruído no planejamento, sem inflar o erro experimental. Por fim, o planejamento fatorial integra estratégias de experimentação sequencial para busca de região de curvatura e obtenção de modelos quadráticos a partir do planejamento composto central, o qual será elucidado no capítulo de metodologia de superfície de resposta.</p>
 <p>Pretende-se inicialmente abordar o planejamento fatorial de dois níveis, o conhecido fatorial <span class="math inline">\(2^k\)</span> replicado.</p>
-<p>Neste capítulo são utilizados os pacotes <code>FrF2</code>, <code>pid</code>, <code>vdg</code> e <code>ggpplot2</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. Sempre que aparecer nos blocos de código R propostos o comando <code>library(&lt;nome_pacote&gt;)</code> para carregar um determinado pacote, antes este deve ser instalado.</p>
+<p>Neste capítulo são utilizados os pacotes <code>FrF2</code>, <code>pid</code>, <code>vdg</code> e <code>ggpplot2</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. A instalação é realizada uma única vez, porém o pacote deve ser carregado via <code>library(&lt;nome_pacote&gt;)</code> sempre que deseja-se usar suas funções.</p>
 </section>
 <section id="fatorial-2k-replicado" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="fatorial-2k-replicado"><span class="header-section-number">5.2</span> Fatorial <span class="math inline">\(2^k\)</span> replicado</h2>
