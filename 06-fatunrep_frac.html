@@ -273,7 +273,7 @@ window.Quarto = {
 <section id="introdução" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
 <p>O fatorial <span class="math inline">\(2^k\)</span> é um planejamento essencial ao DOE por permitir diversas estratégias na experimentação, desde a economia experimental, a partir de planejamentos não replicados ou fracionados, blocagem de variáveis controláveis porém indesejáveis, além da busca de região de curvatura e complementação do planejamento para obtenção de modelos passíveis de otimização.</p>
-<p>Neste capítulo, será apresentado o planejamento fatorial <span class="math inline">\(2^k\)</span> não replicado. Em seguida serão explicados os conceitos de blocagem. confundimento no fatorial <span class="math inline">\(2^k\)</span>. O planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é exposto a partir dos conceitos de confundimento anteriormente apresentados. Enfim, o fatorial <span class="math inline">\(2^k\)</span> com pontos centrais é exposto finalizando com a busca de região de curvatura.</p>
+<p>Neste capítulo, será apresentado o planejamento fatorial <span class="math inline">\(2^k\)</span> não replicado. Em seguida serão explicados os conceitos de blocagem. confundimento no fatorial <span class="math inline">\(2^k\)</span>. O planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é exposto a partir dos conceitos de confundimento anteriormente apresentados.</p>
 <p>Neste capítulo são utilizados os pacotes <code>FrF2</code> e <code>unrepx</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. A instalação é realizada uma única vez, porém o pacote deve ser carregado via <code>library(&lt;nome_pacote&gt;)</code> sempre que deseja-se usar suas funções.</p>
 </section>
 <section id="fatorial-2k-sem-replicar" class="level2" data-number="6.2">
@@ -645,21 +645,21 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16.950      4.05   4.185  0.0057      0.0514
-C    11.675      4.05   2.883  0.0217      0.1916
-AD    5.900      4.05   1.457  0.1484      0.8395
-D     5.625      4.05   1.389  0.1641      0.8744
-AC   -3.400      4.05  -0.840  0.3707      0.9996
-BCD   3.350      4.05   0.827  0.3776      1.0000
-ABCD -3.325      4.05  -0.821  0.3815      1.0000
-B     3.100      4.05   0.765  0.4145      1.0000
-BD   -2.700      4.05  -0.667  0.5394      1.0000
-ABD  -2.325      4.05  -0.574  0.5985      1.0000
-AB    2.275      4.05   0.562  0.6069      1.0000
-CD    2.125      4.05   0.525  0.6305      1.0000
-ABC  -1.825      4.05  -0.451  0.6802      1.0000
-BC    0.850      4.05   0.210  0.8465      1.0000
-ACD  -0.650      4.05  -0.160  0.8817      1.0000</code></pre>
+A    16.950      4.05   4.185  0.0058      0.0499
+C    11.675      4.05   2.883  0.0217      0.1860
+AD    5.900      4.05   1.457  0.1469      0.8376
+D     5.625      4.05   1.389  0.1635      0.8778
+AC   -3.400      4.05  -0.840  0.3728      0.9996
+BCD   3.350      4.05   0.827  0.3793      0.9996
+ABCD -3.325      4.05  -0.821  0.3829      0.9996
+B     3.100      4.05   0.765  0.4164      1.0000
+BD   -2.700      4.05  -0.667  0.5399      1.0000
+ABD  -2.325      4.05  -0.574  0.6012      1.0000
+AB    2.275      4.05   0.562  0.6089      1.0000
+CD    2.125      4.05   0.525  0.6322      1.0000
+ABC  -1.825      4.05  -0.451  0.6819      1.0000
+BC    0.850      4.05   0.210  0.8482      1.0000
+ACD  -0.650      4.05  -0.160  0.8833      1.0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
@@ -1129,7 +1129,7 @@ F-statistic: 6.667 on 3 and 4 DF,  p-value: 0.04909</code></pre>
 <div id="fig-fatconf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fatconf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/blockconf.png" class="img-fluid figure-img" width="317">
+<img src="images/blockconf.png" style="width:2.5in;height:2in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fatconf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.7: Fatorial <span class="math inline">\(2^3\)</span> com confundimento em dois níveis
@@ -1590,21 +1590,21 @@ attr(,"mean")
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85.25      9.75  -8.744  0.0003      0.0026
-A     19.25      9.75   1.974  0.0668      0.5028
-AC   -16.25      9.75  -1.667  0.1065      0.7045
-AB   -13.25      9.75  -1.359  0.1716      0.8924
-BCD   12.75      9.75   1.308  0.1858      0.9141
-B    -11.25      9.75  -1.154  0.2338      0.9674
-ABC    7.25      9.75   0.744  0.4281      1.0000
-BC    -6.75      9.75  -0.692  0.4648      1.0000
-BD     6.25      9.75   0.641  0.5560      1.0000
-ABD   -5.75      9.75  -0.590  0.5888      1.0000
-AD    -5.25      9.75  -0.538  0.6215      1.0000
-CD    -3.75      9.75  -0.385  0.7234      1.0000
-ACD   -2.75      9.75  -0.282  0.7950      1.0000
-D      1.75      9.75   0.179  0.8686      1.0000
-ABCD  -1.25      9.75  -0.128  0.9052      1.0000</code></pre>
+C    -85.25      9.75  -8.744  0.0004      0.0034
+A     19.25      9.75   1.974  0.0654      0.4934
+AC   -16.25      9.75  -1.667  0.1048      0.7008
+AB   -13.25      9.75  -1.359  0.1711      0.8890
+BCD   12.75      9.75   1.308  0.1845      0.9149
+B    -11.25      9.75  -1.154  0.2341      0.9723
+ABC    7.25      9.75   0.744  0.4305      1.0000
+BC    -6.75      9.75  -0.692  0.4650      1.0000
+BD     6.25      9.75   0.641  0.5569      1.0000
+ABD   -5.75      9.75  -0.590  0.5908      1.0000
+AD    -5.25      9.75  -0.538  0.6235      1.0000
+CD    -3.75      9.75  -0.385  0.7257      1.0000
+ACD   -2.75      9.75  -0.282  0.7978      1.0000
+D      1.75      9.75   0.179  0.8695      1.0000
+ABCD  -1.25      9.75  -0.128  0.9066      1.0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1631,7 +1631,7 @@ Figura&nbsp;6.8: Gráfico de Pareto para os efeitos no fatorial <span class="mat
 <div id="fig-esphier" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-esphier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/espar_hier.png" class="img-fluid figure-img" width="757">
+<img src="images/espar_hier.png" style="width:5in;height:2.5in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-esphier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.9: Princípios da esparcidade e hierarquia dos efeitos
@@ -1647,7 +1647,7 @@ Figura&nbsp;6.9: Princípios da esparcidade e hierarquia dos efeitos
 <div id="fig-projecao" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-projecao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/projec.png" class="img-fluid figure-img" width="797">
+<img src="images/projec.png" style="width:5.5in;height:2.5in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-projecao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.10: Projeção no fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>
@@ -1712,7 +1712,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
 <div id="fig-frac23" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-frac23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/frac23.png" class="img-fluid figure-img" width="820">
+<img src="images/frac23.png" style="width:5in;height:4.5in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frac23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.11: Fatorial fracionado <span class="math inline">\(2^{3-1}\)</span> (a) fração principal; (b) fração alternativa; (fatorial completo <span class="math inline">\(2^3\)</span>)
@@ -1729,7 +1729,7 @@ Figura&nbsp;6.11: Fatorial fracionado <span class="math inline">\(2^{3-1}\)</spa
 <div id="fig-estrut" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-estrut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/estrconf.png" class="img-fluid figure-img" width="559">
+<img src="images/estrconf.png" style="width:4in;height:3in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-estrut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.12: Estrutura de confundimento do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>
@@ -1982,12 +1982,12 @@ F-statistic: 101.5 on 6 and 1 DF,  p-value: 0.07583</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-summfrac" class="quarto-xref">Figura&nbsp;<span>6.13</span></a> resume algumas possibilidades para o planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>. Pode-se observar a resolução do planejamento e os geradores para cada caso. Recomenda-se sempre que possível utilizar planejamentos de resolução V ou superior. Um planejamento de resolução V tem os efeitos principais confundidos com as interações de quarta ordem e as interações de segunda ordem confundidas com as interações de terceira ordem, sendo este tipo de confundimento menos prejudicial.</p>
-<div class="cell" data-tbl-cap="Fatorial fracionado $2^{k-p}$">
+<div class="cell" data-tbl-cap="Estrtura de confundimento nos fatoriais fracionados $2^{k-p}$">
 <div class="cell-output-display">
-<div id="fig-summfrac" class="quarto-float quarto-figure quarto-figure-center anchored" width="538">
+<div id="fig-summfrac" class="quarto-float quarto-figure quarto-figure-center anchored" height="4in" width="3.5in">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-summfrac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/tabfrac.png" id="fig-summfrac" class="img-fluid figure-img" width="538">
+<img src="images/tabfrac.png" id="fig-summfrac" style="width:3.5in;height:4in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-summfrac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.13
@@ -2030,22 +2030,22 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1   1  1 -1  1  1
-2  -1  1 -1 -1  1
-3  -1 -1 -1  1  1
+1  -1 -1 -1  1  1
+2  -1  1  1 -1 -1
+3  -1 -1  1 -1  1
 4   1  1  1  1 -1
-5  -1  1 -1  1 -1
-6   1  1 -1 -1 -1
-7  -1 -1 -1 -1 -1
-8   1 -1 -1 -1  1
-9  -1 -1  1  1 -1
-10  1 -1  1  1  1
-11  1 -1  1 -1 -1
-12  1  1  1 -1  1
-13 -1 -1  1 -1  1
-14  1 -1 -1  1 -1
-15 -1  1  1  1  1
-16 -1  1  1 -1 -1
+5   1 -1  1 -1 -1
+6   1  1  1 -1  1
+7   1  1 -1 -1 -1
+8  -1  1  1  1  1
+9  -1  1 -1 -1  1
+10  1 -1 -1  1 -1
+11  1 -1 -1 -1  1
+12 -1  1 -1  1 -1
+13  1  1 -1  1  1
+14  1 -1  1  1  1
+15 -1 -1 -1 -1 -1
+16 -1 -1  1  1 -1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>

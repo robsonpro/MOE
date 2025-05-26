@@ -315,10 +315,10 @@ window.Quarto = {
 \hat y = \sum_{i=1}^q \beta_i x_i + \sum_{i &lt; }\sum_j \beta_{ij} x_i x_j,
 \tag{8.2}\]</span></span></p>
 <p>onde <span class="math inline">\(\beta_i = \beta_0^* + \beta_j^* + \beta_{jj}^*\)</span> e <span class="math inline">\(\beta_{ij} = \beta_{ij}^* - \beta_{ii}^* - \beta_{jj}^*\)</span>. Logo, dada a redundância nas proporções, um modelo de segunda ordem completo pode ser rezumido a um modelo com termos lineares e de interação. Entretanto, deve-se atentar que em tal modelo o termo linear abrange também a constante e o termo quadrático, enquanto o termo de interação é função dos termos de interação originais e quadráticos.</p>
-<p>Em modelos de misturas a multicolineariedade entre os componentes ocasionada pela restrição de soma unitária pode inflar <span class="math inline">\(R^2\)</span> e dar uma impressão errada da capacidade de previsão do modelo. Logo, o coeficiente de determinação múltipla deve ser corrigido considerando o número de termos no modelo conforme <span class="quarto-unresolved-ref">?eq-r2corr</span>, onde <span class="math inline">\(p\)</span> é o número de termos no modelo.</p>
-<p><span class="math display">\[
+<p>Em modelos de misturas a multicolineariedade entre os componentes ocasionada pela restrição de soma unitária pode inflar <span class="math inline">\(R^2\)</span> e dar uma impressão errada da capacidade de previsão do modelo. Logo, o coeficiente de determinação múltipla deve ser corrigido considerando o número de termos no modelo conforme <a href="#eq-r2corr" class="quarto-xref">Equação&nbsp;<span>8.3</span></a>, onde <span class="math inline">\(p\)</span> é o número de termos no modelo.</p>
+<p><span id="eq-r2corr"><span class="math display">\[
 R^2_{corr} = 1 - \biggl(\frac{(1-R^2)(N-1)}{N-p-1} \biggr)
-\]</span></p>
+\tag{8.3}\]</span></span></p>
 </section>
 <section id="sistema-de-coordenadas-simplex" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="sistema-de-coordenadas-simplex"><span class="header-section-number">8.4</span> Sistema de coordenadas simplex</h2>
@@ -746,14 +746,14 @@ Figura&nbsp;8.6: Gráfico de efeitos para o exprimento de misturas de fibras nat
 </div>
 </div>
 </div>
-<p>Apesar de neste caso o gráfico de contorno exposto na <a href="#fig-mixcont" class="quarto-xref">Figura&nbsp;<span>8.5</span></a> auxiliar na definição das proporções ótimas, na maioria dos casos, especialmente onde <span class="math inline">\(q \geq 4\)</span>, é importante realizar a otimização restrita, conforme <a href="#eq-mixopt" class="quarto-xref">Equação&nbsp;<span>8.3</span></a>. Neste procedimento deseja-se minimizar o modelo polinomial de misturas sujeito as restrições de proporção e soma unitária das proporções. A maioria dos pacotes de otimização são implementados para minimização, de forma que, caso seja desejado a maximização da função, conforme o exemplo de misturas de fibras, pode-se minimizar o negativo e depois multiplicar o resultado obtido por menos 1.</p>
+<p>Apesar de neste caso o gráfico de contorno exposto na <a href="#fig-mixcont" class="quarto-xref">Figura&nbsp;<span>8.5</span></a> auxiliar na definição das proporções ótimas, na maioria dos casos, especialmente onde <span class="math inline">\(q \geq 4\)</span>, é importante realizar a otimização restrita, conforme <a href="#eq-mixopt" class="quarto-xref">Equação&nbsp;<span>8.4</span></a>. Neste procedimento deseja-se minimizar o modelo polinomial de misturas sujeito as restrições de proporção e soma unitária das proporções. A maioria dos pacotes de otimização são implementados para minimização, de forma que, caso seja desejado a maximização da função, conforme o exemplo de misturas de fibras, pode-se minimizar o negativo e depois multiplicar o resultado obtido por menos 1.</p>
 <p><span id="eq-mixopt"><span class="math display">\[
 \begin{align}
 \min_{\mathbf x} &amp; \{\hat y = \sum_{i=1}^q \beta_i x_i + \sum_{i &lt; j} \beta_{ij} x_i x_j\} \\
 \textrm{s.t.: } &amp; 0 \leq x_i \leq 1 \text{, } i = 1,\dots,q \\
                 &amp; \sum_{i=1}^q x_i =1 \\
 \end{align}
-\tag{8.3}\]</span></span></p>
+\tag{8.4}\]</span></span></p>
 <p>Para otimização de modelos polinomiais de misturas quadráticos pode-se usar métodos de programação não-linear, como a programação sequencial quadrática. O pacote <code>NlcOptim</code> tem a função <code>solnl</code> que considera este método. A seguir expõe-se a implementação do procedimento para otimização. Deve-se defirnir a função objetivo. Neste caso sugere-se usar o artifício de colocar a função <code>predict</code> disponível para modelos <code>lm</code> em uma função via <code>function</code>. Deve-se definir a restrição igualdade (<code>ceq</code>) nula, na forma <span class="math inline">\(\sum x_i - 1\)</span>. Já as proporções são definidas via limites inferiores (<em>lower bound</em> - <code>lb</code>) e superiores (<em>upper bound</em> - <code>ub</code>) em 0 e 1, respectivamente, para todos os componentes da mistura.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NlcOptim)</span>
@@ -897,10 +897,10 @@ Tabela&nbsp;8.3: Planejamento SCD(3)
 </figure>
 </div>
 </div>
-<p>A <a href="#eq-polscd" class="quarto-xref">Equação&nbsp;<span>8.4</span></a> apresenta o polinômio geral que pode ser obtido via SCD(<span class="math inline">\(q\)</span>). Por exemplo, para <span class="math inline">\(q=2\)</span>, só é possível obter um modelo de segunda ordem. Já para <span class="math inline">\(q=3\)</span> é possível obter o modelo exibido antes das reticências, enquanto para <span class="math inline">\(q\geq4\)</span> mais termos são adicionados, um para cada componente adicional considerado.</p>
+<p>A <a href="#eq-polscd" class="quarto-xref">Equação&nbsp;<span>8.5</span></a> apresenta o polinômio geral que pode ser obtido via SCD(<span class="math inline">\(q\)</span>). Por exemplo, para <span class="math inline">\(q=2\)</span>, só é possível obter um modelo de segunda ordem. Já para <span class="math inline">\(q=3\)</span> é possível obter o modelo exibido antes das reticências, enquanto para <span class="math inline">\(q\geq4\)</span> mais termos são adicionados, um para cada componente adicional considerado.</p>
 <p><span id="eq-polscd"><span class="math display">\[
 \hat y = \sum_{i=1}^q \beta_i x_i + \sum_{i &lt; }\sum_j \beta_{ij} x_i x_j +  \sum_{i &lt; }\sum_j\sum_l \beta_{ijl}x_ix_jx_l + \dots
-\tag{8.4}\]</span></span></p>
+\tag{8.5}\]</span></span></p>
 <div id="exm-expsld" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 8.2</strong></span> Seja um experimento de mistura para obter um biodiesel a base de óleo vegetal e gordura animal. Os componentes da mistura são óleo de soja, sebo bovino e gordura de aves. A resposta é o período de indução no ensaio, de forma que um valor maior resulta em maior resistência à oxidação. Foi utilizado um SCD(3) para o estudo.</p>
 </div>
@@ -1180,10 +1180,10 @@ Figura&nbsp;8.9: Região restrita no planejamento de misturas com <span class="m
 </div>
 </div>
 </div>
-<p>É possível descrever os componentes de forma codificada como pseudo componentes, de forma que os novos vértices seriam misturas puras neste simplex codificado. Usando a <a href="#eq-pseudocomp" class="quarto-xref">Equação&nbsp;<span>8.5</span></a> obtém-se a proporção do pseudo-componente.</p>
+<p>É possível descrever os componentes de forma codificada como pseudo componentes, de forma que os novos vértices seriam misturas puras neste simplex codificado. Usando a <a href="#eq-pseudocomp" class="quarto-xref">Equação&nbsp;<span>8.6</span></a> obtém-se a proporção do pseudo-componente.</p>
 <p><span id="eq-pseudocomp"><span class="math display">\[
 X_i = \frac{x_i-l_i}{1-\sum_{i=1}^q l_i}
-\tag{8.5}\]</span></span></p>
+\tag{8.6}\]</span></span></p>
 <p>Quando o experimento apresenta apenas limites superiores, <span class="math inline">\(0 \leq x_i \leq u_i\)</span>, <span class="math inline">\(i=1,\dots,q\)</span>, há dois casos possíveis. Seja um experimento de misturas com as seguintes restrições:</p>
 <p><span class="math display">\[
 \begin{cases}

@@ -358,7 +358,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
 <div id="fig-fig1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/fat_22_23.png" class="img-fluid figure-img" width="668">
+<img src="images/fat_22_23.png" style="width:5in;height:2.5in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;5.1: Representação (a) fatorial <span class="math inline">\(2^2\)</span>; (b) fatorial <span class="math inline">\(2^3\)</span>
@@ -372,7 +372,7 @@ Figura&nbsp;5.1: Representação (a) fatorial <span class="math inline">\(2^2\)<
 <li><p><span class="math inline">\(k\)</span> efeitos principais;</p></li>
 <li><p><span class="math inline">\({k \choose 2}\)</span> interações de segunda ordem;</p></li>
 <li><p><span class="math inline">\({k \choose 3}\)</span> interações de terceira ordem;</p></li>
-<li><p><span class="math inline">\(\vdots\)</span>;</p></li>
+<li><p><span class="math inline">\(\vdots\)</span></p></li>
 <li><p><span class="math inline">\({k \choose (k - 1)}\)</span> interações de terceira ordem;</p></li>
 <li><p>1 interação de ordem <span class="math inline">\(k\)</span>.</p></li>
 </ul>
@@ -387,9 +387,9 @@ Figura&nbsp;5.1: Representação (a) fatorial <span class="math inline">\(2^2\)<
                      1 &amp; -1 &amp; +1 &amp; +1 &amp; -1 &amp; -1 &amp; +1 &amp; -1\\
                      1 &amp; +1 &amp; +1 &amp; +1 &amp; +1 &amp; +1 &amp; +1 &amp; +1\\         
 \end{bmatrix}\]</span></p>
-<p>O fatorial <span class="math inline">\(2^k\)</span> permite o cálculo dos efeitos de forma intuitiva, além de garantir a possibilidade de estimativa de um modelo de regressão linear com interação e de testar significância dos coeficientes de regressão. É possível também utilizar a ANOVA para trabalhar a significância dos efeitos, considerando os contrastes das somas nos dois níveis. Para facilitar o entendimento, vejamos o exemplo <a href="#exm-ex1" class="quarto-xref">Exemplo&nbsp;<span>5.1</span></a>.</p>
+<p>O fatorial <span class="math inline">\(2^k\)</span> permite o cálculo dos efeitos de forma intuitiva, além de garantir a possibilidade de estimativa de um modelo de regressão linear com interação e de testar significância dos coeficientes de regressão. É possível também utilizar a ANOVA para trabalhar a significância dos efeitos, considerando os contrastes das somas nos dois níveis. Para facilitar o entendimento, seja o exemplo <a href="#exm-ex1" class="quarto-xref">Exemplo&nbsp;<span>5.1</span></a>.</p>
 <div id="exm-ex1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 5.1 (Estudo do processo de conformação à quente via fatorial <span class="math inline">\(2^k\)</span>)</strong></span> Um planejamento fatorial <span class="math inline">\(2^k\)</span> foi utilizado para estudar a conformação a quente de um aço microligado com nióbio. Foram estudados três parâmetros do processo, a saber: <span class="math inline">\(x_1\)</span>: temperatura de desbaste; <span class="math inline">\(x_2\)</span>: temperatura de acabamento; e <span class="math inline">\(x_3\)</span>: temperatura de enrolamento em <span class="math inline">\([^\circ C]\)</span>. A resposta estudada, <span class="math inline">\(y\)</span>, foi o tamanho de grão. A <a href="#tbl-tab2" class="quarto-xref">Tabela&nbsp;<span>5.2</span></a> expõe os níveis do planejamento. Três replicações foram realizadas,totalizando <span class="math inline">\(N =3\times2^{3} = 24\)</span> testes, sendo o planejamento e os 24 resultados dos experimentos expostos na <a href="#tbl-tab3" class="quarto-xref">Tabela&nbsp;<span>5.3</span></a>.</p>
+<p><span class="theorem-title"><strong>Exemplo 5.1</strong></span> Um planejamento fatorial <span class="math inline">\(2^k\)</span> foi utilizado para estudar a conformação a quente de um aço microligado com nióbio. Foram estudados três parâmetros do processo, a saber: <span class="math inline">\(x_1\)</span>: temperatura de desbaste; <span class="math inline">\(x_2\)</span>: temperatura de acabamento; e <span class="math inline">\(x_3\)</span>: temperatura de enrolamento em <span class="math inline">\([^\circ C]\)</span>. A resposta estudada, <span class="math inline">\(y\)</span>, foi o tamanho de grão. A <a href="#tbl-tab2" class="quarto-xref">Tabela&nbsp;<span>5.2</span></a> expõe os níveis do planejamento. Três replicações foram realizadas,totalizando <span class="math inline">\(N =3\times2^{3} = 24\)</span> testes, sendo o planejamento e os 24 resultados dos experimentos expostos na <a href="#tbl-tab3" class="quarto-xref">Tabela&nbsp;<span>5.3</span></a>.</p>
 </div>
 <div class="cell">
 <div id="tbl-tab2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -650,7 +650,7 @@ Figura&nbsp;5.4: Interação de terceira ordem na resposta tamanho de grão
 <div id="fig-efffac" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-efffac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/effectx1.png" class="img-fluid figure-img" width="566">
+<img src="images/effectx1.png" style="width:4in;height:2.5in" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-efffac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;5.5: Efeito linear no fatorial <span class="math inline">\(2^k\)</span>
