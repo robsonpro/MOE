@@ -518,27 +518,27 @@ lm.default(formula = y ~ T * C * MR + center, data = planctpt)
 
 Residuals:
          1          2          3          4          5          6          7 
- 3.053e-16  1.031e-16 -1.048e-16 -8.049e-17 -1.489e-16 -1.462e-17  2.309e-16 
+ 3,053e-16  1,031e-16 -1,048e-16 -8,049e-17 -1,489e-16 -1,462e-17  2,309e-16 
          8          9         10         11         12 
- 1.087e-16  2.250e+00  1.250e+00 -2.750e+00 -7.500e-01 
+ 1,087e-16  2,250e+00  1,250e+00 -2,750e+00 -7,500e-01 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   54.125      0.784  69.041  6.7e-06 ***
-T              3.875      0.784   4.943  0.01588 *  
-C              7.875      0.784  10.045  0.00210 ** 
-MR             5.375      0.784   6.856  0.00635 ** 
-center         6.625      1.358   4.879  0.01646 *  
-T:C           -3.875      0.784  -4.943  0.01588 *  
-T:MR           3.625      0.784   4.624  0.01904 *  
-C:MR           2.625      0.784   3.348  0.04411 *  
-T:C:MR         1.375      0.784   1.754  0.17772    
+(Intercept)   54,125      0,784  69,041  6,7e-06 ***
+T              3,875      0,784   4,943  0,01588 *  
+C              7,875      0,784  10,045  0,00210 ** 
+MR             5,375      0,784   6,856  0,00635 ** 
+center         6,625      1,358   4,879  0,01646 *  
+T:C           -3,875      0,784  -4,943  0,01588 *  
+T:MR           3,625      0,784   4,624  0,01904 *  
+C:MR           2,625      0,784   3,348  0,04411 *  
+T:C:MR         1,375      0,784   1,754  0,17772    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Residual standard error: 2.217 on 3 degrees of freedom
-Multiple R-squared:  0.9884,    Adjusted R-squared:  0.9576 
-F-statistic: 32.03 on 8 and 3 DF,  p-value: 0.008</code></pre>
+Residual standard error: 2,217 on 3 degrees of freedom
+Multiple R-squared:  0,9884,    Adjusted R-squared:  0,9576 
+F-statistic: 32,03 on 8 and 3 DF,  p-value: 0,008</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova1 &lt;- aov(lm1)</span></span>
@@ -838,23 +838,23 @@ Tabela&nbsp;7.2: Planejamento CCD genérico
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   run.order std.order  x1.as.is  x2.as.is  x3.as.is Block
-1          1         1 -1.000000 -1.000000 -1.000000     1
-2          2         2  1.000000 -1.000000 -1.000000     1
-3          3         3 -1.000000  1.000000 -1.000000     1
-4          4         4  1.000000  1.000000 -1.000000     1
-5          5         5 -1.000000 -1.000000  1.000000     1
-6          6         6  1.000000 -1.000000  1.000000     1
-7          7         7 -1.000000  1.000000  1.000000     1
-8          8         8  1.000000  1.000000  1.000000     1
-9          1         1 -1.681793  0.000000  0.000000     2
-10         2         2  1.681793  0.000000  0.000000     2
-11         3         3  0.000000 -1.681793  0.000000     2
-12         4         4  0.000000  1.681793  0.000000     2
-13         5         5  0.000000  0.000000 -1.681793     2
-14         6         6  0.000000  0.000000  1.681793     2
-15         7         7  0.000000  0.000000  0.000000     2
-16         8         8  0.000000  0.000000  0.000000     2
-17         9         9  0.000000  0.000000  0.000000     2
+1          1         1 -1,000000 -1,000000 -1,000000     1
+2          2         2  1,000000 -1,000000 -1,000000     1
+3          3         3 -1,000000  1,000000 -1,000000     1
+4          4         4  1,000000  1,000000 -1,000000     1
+5          5         5 -1,000000 -1,000000  1,000000     1
+6          6         6  1,000000 -1,000000  1,000000     1
+7          7         7 -1,000000  1,000000  1,000000     1
+8          8         8  1,000000  1,000000  1,000000     1
+9          1         1 -1,681793  0,000000  0,000000     2
+10         2         2  1,681793  0,000000  0,000000     2
+11         3         3  0,000000 -1,681793  0,000000     2
+12         4         4  0,000000  1,681793  0,000000     2
+13         5         5  0,000000  0,000000 -1,681793     2
+14         6         6  0,000000  0,000000  1,681793     2
+15         7         7  0,000000  0,000000  0,000000     2
+16         8         8  0,000000  0,000000  0,000000     2
+17         9         9  0,000000  0,000000  0,000000     2
 
 Data are stored in coded form using these coding formulas ...
 x1 ~ x1.as.is
@@ -908,79 +908,79 @@ Tabela&nbsp;7.3: Planejamento CCD para determinação de conteúdo de cobre em �
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">7.000000</td>
-<td style="text-align: right;">7.000000</td>
-<td style="text-align: right;">68.64</td>
+<td style="text-align: right;">7,000000</td>
+<td style="text-align: right;">7,000000</td>
+<td style="text-align: right;">68,64</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">9.000000</td>
-<td style="text-align: right;">7.000000</td>
-<td style="text-align: right;">69.82</td>
+<td style="text-align: right;">9,000000</td>
+<td style="text-align: right;">7,000000</td>
+<td style="text-align: right;">69,82</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">7.000000</td>
-<td style="text-align: right;">9.000000</td>
-<td style="text-align: right;">81.66</td>
+<td style="text-align: right;">7,000000</td>
+<td style="text-align: right;">9,000000</td>
+<td style="text-align: right;">81,66</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">9.000000</td>
-<td style="text-align: right;">9.000000</td>
-<td style="text-align: right;">85.80</td>
+<td style="text-align: right;">9,000000</td>
+<td style="text-align: right;">9,000000</td>
+<td style="text-align: right;">85,80</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">6.585786</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">79.29</td>
+<td style="text-align: right;">6,585786</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">79,29</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">9.414214</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">87.57</td>
+<td style="text-align: right;">9,414214</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">87,57</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">6.585786</td>
-<td style="text-align: right;">74.56</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">6,585786</td>
+<td style="text-align: right;">74,56</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">9.414214</td>
-<td style="text-align: right;">94.08</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">9,414214</td>
+<td style="text-align: right;">94,08</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">100,00</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">99.41</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">99,41</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">8.000000</td>
-<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">8,000000</td>
+<td style="text-align: right;">100,00</td>
 </tr>
 </tbody>
 </table>
@@ -1031,7 +1031,7 @@ y_N
 \end{aligned}.
 \]</span></p>
 <p>Onde o vetor de respostas <span class="math inline">\(\mathbf y\)</span> é da ordem <span class="math inline">\(N \times 1\)</span>, a matriz do planejamento <span class="math inline">\(\mathbf{X}\)</span> é da ordem <span class="math inline">\(N \times r\)</span>, o vetor de coeficientes <span class="math inline">\(\boldsymbol{\beta}\)</span> é da ordem <span class="math inline">\(r \times 1\)</span> e o vetor do erro aleatório é da ordem <span class="math inline">\(N \times 1\)</span>, sendo <span class="math inline">\(N = 2^k + 2k + n_c\)</span> e <span class="math inline">\(r = 1 + 2^k + 2k + k(k − 1)/2\)</span> para um modelo de resposta completo correspondente à <a href="#eq-rsm1" class="quarto-xref">Equação&nbsp;<span>7.6</span></a>. Os coeficientes podem ser estimados pelo método dos mínimos quadrados, <span class="math inline">\(\hat{\boldsymbol{\beta}}=\left(\mathbf{X}^{\mathbf{T}} \mathbf{X}\right)^{-1} \mathbf{X}^{\mathbf{T}} \mathbf{y}\)</span>. A variância do modelo de superfície de resposta depende da matriz do planejamento <span class="math inline">\(\mathbf X\)</span>, com covariância <span class="math inline">\(\left(\mathbf{X}^{\mathbf{T}} \mathbf{X}\right)^{-1}\)</span>, do ponto avaliado, que em um modelo quadrático completo é da forma <span class="math inline">\(\mathbf x_0^T = [1, x_1, \dots,x_k, x_{11}, \dots,x_{kk}, x_1x_2, \dots, x_{k-1}x_k]^T\)</span>, e do erro experimental <span class="math inline">\(\hat\sigma^2 = \sqrt{MS_E}\)</span>, isto é, <span class="math inline">\(Var[\hat {\mathbf y}(\mathbf x)]=\mathbf x_0^T\left(\mathbf{X}^{\mathbf{T}} \mathbf{X}\right)^{-1}\mathbf x_0\)</span>.</p>
-<p>Considerando o exemplo <a href="06-fatunrep_frac.html#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> a seguir expõe-se a sintaxe para obtenção do modelo de regressão de superfície de resposta. Pode-se observar que o comando <code>lm</code> é utilizado, assim como no fatorial <span class="math inline">\(2^k\)</span>. Os termos quadráticos são adicionados usando a sintaxe <code>I(xj^2)</code>. Para o estudo em questão observa-se que o termo linear do pH, o termo quadrático tanto da vazão quanto do pH foram significativos, além da constante.</p>
+<p>Considerando o exemplo <a href="06-fatunrep_frac.html#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.1</span></a> a seguir expõe-se a sintaxe para obtenção do modelo de regressão de superfície de resposta. Pode-se observar que o comando <code>lm</code> é utilizado, assim como no fatorial <span class="math inline">\(2^k\)</span>. Os termos quadráticos são adicionados usando a sintaxe <code>I(xj^2)</code>. Para o estudo em questão observa-se que o termo linear do pH, o termo quadrático tanto da vazão quanto do pH foram significativos, além da constante.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> (x1<span class="sc">+</span>x2)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">I</span>(x1<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x2<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> ccd1)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1042,24 +1042,24 @@ lm.default(formula = y ~ (x1 + x2)^2 + I(x1^2) + I(x2^2), data = ccd1)
 
 Residuals:
       1       2       3       4       5       6       7       8       9      10 
--3.0731 -4.6705 -2.7245 -4.3219  2.5680  4.8270  3.9440  3.4510  0.1967 -0.3933 
+-3,0731 -4,6705 -2,7245 -4,3219  2,5680  4,8270  3,9440  3,4510  0,1967 -0,3933 
      11 
- 0.1967 
+ 0,1967 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   99.803      2.768  36.052 3.09e-07 ***
-x1             2.129      1.695   1.256  0.26470    
-x2             7.076      1.695   4.174  0.00871 ** 
-I(x1^2)      -10.035      2.018  -4.974  0.00420 ** 
-I(x2^2)       -9.590      2.018  -4.753  0.00509 ** 
-x1:x2          0.740      2.397   0.309  0.77002    
+(Intercept)   99,803      2,768  36,052 3,09e-07 ***
+x1             2,129      1,695   1,256  0,26470    
+x2             7,076      1,695   4,174  0,00871 ** 
+I(x1^2)      -10,035      2,018  -4,974  0,00420 ** 
+I(x2^2)       -9,590      2,018  -4,753  0,00509 ** 
+x1:x2          0,740      2,397   0,309  0,77002    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Residual standard error: 4.795 on 5 degrees of freedom
-Multiple R-squared:  0.9176,    Adjusted R-squared:  0.8352 
-F-statistic: 11.14 on 5 and 5 DF,  p-value: 0.009668</code></pre>
+Residual standard error: 4,795 on 5 degrees of freedom
+Multiple R-squared:  0,9176,    Adjusted R-squared:  0,8352 
+F-statistic: 11,14 on 5 and 5 DF,  p-value: 0,009668</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(aov(lm1))</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1067,24 +1067,24 @@ F-statistic: 11.14 on 5 and 5 DF,  p-value: 0.009668</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lm1_red <span class="ot">&lt;-</span> <span class="fu">step</span>(lm1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Start:  AIC=37.81
+<pre><code>Start:  AIC=37,81
 y ~ (x1 + x2)^2 + I(x1^2) + I(x2^2)
 
           Df Sum of Sq    RSS    AIC
-- x1:x2    1      2.19 117.14 36.020
-&lt;none&gt;                 114.95 37.813
-- I(x2^2)  1    519.39 634.35 54.602
-- I(x1^2)  1    568.71 683.66 55.425
+- x1:x2    1      2,19 117,14 36,020
+&lt;none&gt;                 114,95 37,813
+- I(x2^2)  1    519,39 634,35 54,602
+- I(x1^2)  1    568,71 683,66 55,425
 
-Step:  AIC=36.02
+Step:  AIC=36,02
 y ~ x1 + x2 + I(x1^2) + I(x2^2)
 
           Df Sum of Sq    RSS    AIC
-&lt;none&gt;                 117.14 36.020
-- x1       1     36.25 153.39 36.986
-- x2       1    400.52 517.66 50.366
-- I(x2^2)  1    519.39 636.54 52.640
-- I(x1^2)  1    568.71 685.85 53.460</code></pre>
+&lt;none&gt;                 117,14 36,020
+- x1       1     36,25 153,39 36,986
+- x2       1    400,52 517,66 50,366
+- I(x2^2)  1    519,39 636,54 52,640
+- I(x1^2)  1    568,71 685,85 53,460</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1_red)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1094,21 +1094,21 @@ lm.default(formula = y ~ x1 + x2 + I(x1^2) + I(x2^2), data = ccd1)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.4105 -2.8988  0.1967  3.0095  4.8270 
+-5,4105 -2,8988  0,1967  3,0095  4,8270 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   99.803      2.551  39.122 1.86e-08 ***
-x1             2.129      1.562   1.363  0.22192    
-x2             7.076      1.562   4.529  0.00398 ** 
-I(x1^2)      -10.035      1.859  -5.397  0.00167 ** 
-I(x2^2)       -9.590      1.859  -5.158  0.00210 ** 
+(Intercept)   99,803      2,551  39,122 1,86e-08 ***
+x1             2,129      1,562   1,363  0,22192    
+x2             7,076      1,562   4,529  0,00398 ** 
+I(x1^2)      -10,035      1,859  -5,397  0,00167 ** 
+I(x2^2)       -9,590      1,859  -5,158  0,00210 ** 
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Residual standard error: 4.419 on 6 degrees of freedom
-Multiple R-squared:  0.916, Adjusted R-squared:  0.8601 
-F-statistic: 16.36 on 4 and 6 DF,  p-value: 0.002219</code></pre>
+Residual standard error: 4,419 on 6 degrees of freedom
+Multiple R-squared:  0,916, Adjusted R-squared:  0,8601 
+F-statistic: 16,36 on 4 and 6 DF,  p-value: 0,002219</code></pre>
 </div>
 </div>
 </section>
@@ -1164,39 +1164,39 @@ Call:
 rsm(formula = y ~ FO(x1, x2) + PQ(x1, x2), data = ccd1)
 
             Estimate Std. Error t value  Pr(&gt;|t|)    
-(Intercept)  99.8033     2.5510 39.1225 1.863e-08 ***
-x1            2.1287     1.5622  1.3626  0.221920    
-x2            7.0757     1.5622  4.5293  0.003978 ** 
-x1^2        -10.0354     1.8594 -5.3972  0.001668 ** 
-x2^2         -9.5904     1.8594 -5.1579  0.002099 ** 
+(Intercept)  99,8033     2,5510 39,1225 1,863e-08 ***
+x1            2,1287     1,5622  1,3626  0,221920    
+x2            7,0757     1,5622  4,5293  0,003978 ** 
+x1^2        -10,0354     1,8594 -5,3972  0,001668 ** 
+x2^2         -9,5904     1,8594 -5,1579  0,002099 ** 
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Multiple R-squared:  0.916, Adjusted R-squared:  0.8601 
-F-statistic: 16.36 on 4 and 6 DF,  p-value: 0.002219
+Multiple R-squared:  0,916, Adjusted R-squared:  0,8601 
+F-statistic: 16,36 on 4 and 6 DF,  p-value: 0,002219
 
 Analysis of Variance Table
 
 Response: y
             Df Sum Sq Mean Sq F value   Pr(&gt;F)
-FO(x1, x2)   2 436.77  218.39  11.186 0.009458
-PQ(x1, x2)   2 841.17  420.59  21.543 0.001826
-Residuals    6 117.14   19.52                 
-Lack of fit  4 116.91   29.23 251.887 0.003958
-Pure error   2   0.23    0.12                 
+FO(x1, x2)   2 436,77  218,39  11,186 0,009458
+PQ(x1, x2)   2 841,17  420,59  21,543 0,001826
+Residuals    6 117,14   19,52                 
+Lack of fit  4 116,91   29,23 251,887 0,003958
+Pure error   2   0,23    0,12                 
 
 Stationary point of response surface:
        x1        x2 
-0.1060599 0.3688933 
+0,1060599 0,3688933 
 
 Stationary point in original units:
       vz       pH 
-8.106060 8.368893 
+8,106060 8,368893 
 
 Eigenanalysis:
 eigen() decomposition
 $values
-[1]  -9.590417 -10.035417
+[1]  -9,590417 -10,035417
 
 $vectors
    [,1] [,2]
@@ -1217,8 +1217,8 @@ x2   -1    0</code></pre>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>xs</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        [,1]
-x1 0.1060599
-x2 0.3688933</code></pre>
+x1 0,1060599
+x2 0,3688933</code></pre>
 </div>
 </div>
 <p>Para saber o valor da resposta no ponto estacionário, isto é, <span class="math inline">\(\hat y(\mathbf x_s)\)</span>, pode-se usar o comando <code>predict</code>, conforme segue.</p>
@@ -1227,7 +1227,7 @@ x2 0.3688933</code></pre>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">x2 =</span> xs[<span class="dv">2</span>]))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
-101.2213 </code></pre>
+101,2213 </code></pre>
 </div>
 </div>
 <p>O modelo de superfície de resposta pode ser visualizado usando gráficos de superfície e/ou contorno, conforme <a href="#fig-contour1" class="quarto-xref">Figura&nbsp;<span>7.5</span></a> e <a href="#fig-surf1" class="quarto-xref">Figura&nbsp;<span>7.6</span></a>, respectivamente. Especialmente no caso do gráfico de contorno fica fácil confirmar os níveis do ponto estacionário.</p>
@@ -1453,23 +1453,23 @@ Figura&nbsp;7.10: Gráfico de interação para o experimento de determinação d
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plan</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   run.order std.order        Co         W       Ce Block
-1          1         1  8.000000 1.0000000 3.000000     1
-2          2         2 12.000000 1.0000000 3.000000     1
-3          3         3  8.000000 2.0000000 3.000000     1
-4          4         4 12.000000 2.0000000 3.000000     1
-5          5         5  8.000000 1.0000000 5.000000     1
-6          6         6 12.000000 1.0000000 5.000000     1
-7          7         7  8.000000 2.0000000 5.000000     1
-8          8         8 12.000000 2.0000000 5.000000     1
-9          1         1  6.636414 1.5000000 4.000000     2
-10         2         2 13.363586 1.5000000 4.000000     2
-11         3         3 10.000000 0.6591036 4.000000     2
-12         4         4 10.000000 2.3408964 4.000000     2
-13         5         5 10.000000 1.5000000 2.318207     2
-14         6         6 10.000000 1.5000000 5.681793     2
-15         7         7 10.000000 1.5000000 4.000000     2
-16         8         8 10.000000 1.5000000 4.000000     2
-17         9         9 10.000000 1.5000000 4.000000     2
+1          1         1  8,000000 1,0000000 3,000000     1
+2          2         2 12,000000 1,0000000 3,000000     1
+3          3         3  8,000000 2,0000000 3,000000     1
+4          4         4 12,000000 2,0000000 3,000000     1
+5          5         5  8,000000 1,0000000 5,000000     1
+6          6         6 12,000000 1,0000000 5,000000     1
+7          7         7  8,000000 2,0000000 5,000000     1
+8          8         8 12,000000 2,0000000 5,000000     1
+9          1         1  6,636414 1,5000000 4,000000     2
+10         2         2 13,363586 1,5000000 4,000000     2
+11         3         3 10,000000 0,6591036 4,000000     2
+12         4         4 10,000000 2,3408964 4,000000     2
+13         5         5 10,000000 1,5000000 2,318207     2
+14         6         6 10,000000 1,5000000 5,681793     2
+15         7         7 10,000000 1,5000000 4,000000     2
+16         8         8 10,000000 1,5000000 4,000000     2
+17         9         9 10,000000 1,5000000 4,000000     2
 
 Data are stored in coded form using these coding formulas ...
 x1 ~ (Co - 10)/2
@@ -1492,51 +1492,51 @@ Call:
 rsm(formula = y ~ SO(x1, x2, x3), data = plan)
 
              Estimate Std. Error  t value  Pr(&gt;|t|)    
-(Intercept) 94.341870   0.164148 574.7379 &lt; 2.2e-16 ***
-x1           1.037567   0.077085  13.4600 2.932e-06 ***
-x2          -0.743744   0.077085  -9.6483 2.708e-05 ***
-x3          -0.211780   0.077085  -2.7474  0.028613 *  
-x1:x2       -0.460000   0.100717  -4.5673  0.002582 ** 
-x1:x3       -0.975000   0.100717  -9.6806 2.649e-05 ***
-x2:x3       -0.530000   0.100717  -5.2623  0.001170 ** 
-x1^2        -2.331911   0.084843 -27.4849 2.166e-08 ***
-x2^2        -1.578842   0.084843 -18.6089 3.211e-07 ***
-x3^2         0.247261   0.084843   2.9143  0.022521 *  
+(Intercept) 94,341870   0,164148 574,7379 &lt; 2,2e-16 ***
+x1           1,037567   0,077085  13,4600 2,932e-06 ***
+x2          -0,743744   0,077085  -9,6483 2,708e-05 ***
+x3          -0,211780   0,077085  -2,7474  0,028613 *  
+x1:x2       -0,460000   0,100717  -4,5673  0,002582 ** 
+x1:x3       -0,975000   0,100717  -9,6806 2,649e-05 ***
+x2:x3       -0,530000   0,100717  -5,2623  0,001170 ** 
+x1^2        -2,331911   0,084843 -27,4849 2,166e-08 ***
+x2^2        -1,578842   0,084843 -18,6089 3,211e-07 ***
+x3^2         0,247261   0,084843   2,9143  0,022521 *  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9894 
-F-statistic: 167.6 on 9 and 7 DF,  p-value: 2.464e-07
+Multiple R-squared:  0,9954,    Adjusted R-squared:  0,9894 
+F-statistic: 167,6 on 9 and 7 DF,  p-value: 2,464e-07
 
 Analysis of Variance Table
 
 Response: y
                 Df Sum Sq Mean Sq F value    Pr(&gt;F)
-FO(x1, x2, x3)   3 22.869  7.6230  93.937 5.112e-06
-TWI(x1, x2, x3)  3 11.545  3.8483  47.422 5.104e-05
-PQ(x1, x2, x3)   3 87.991 29.3302 361.429 4.909e-08
-Residuals        7  0.568  0.0812                  
-Lack of fit      5  0.463  0.0926   1.764    0.4001
-Pure error       2  0.105  0.0525                  
+FO(x1, x2, x3)   3 22,869  7,6230  93,937 5,112e-06
+TWI(x1, x2, x3)  3 11,545  3,8483  47,422 5,104e-05
+PQ(x1, x2, x3)   3 87,991 29,3302 361,429 4,909e-08
+Residuals        7  0,568  0,0812                  
+Lack of fit      5  0,463  0,0926   1,764    0,4001
+Pure error       2  0,105  0,0525                  
 
 Stationary point of response surface:
         x1         x2         x3 
- 0.1693026 -0.3289331  0.4095174 
+ 0,1693026 -0,3289331  0,4095174 
 
 Stationary point in original units:
        Co         W        Ce 
-10.338605  1.335533  4.409517 
+10,338605  1,335533  4,409517 
 
 Eigenanalysis:
 eigen() decomposition
 $values
-[1]  0.3614754 -1.5213599 -2.5036078
+[1]  0,3614754 -1,5213599 -2,5036078
 
 $vectors
          [,1]        [,2]      [,3]
-x1  0.1675212  0.30486530 0.9375467
-x2  0.1138866 -0.95060326 0.2887616
-x3 -0.9792683 -0.05840032 0.1939663</code></pre>
+x1  0,1675212  0,30486530 0,9375467
+x2  0,1138866 -0,95060326 0,2887616
+x3 -0,9792683 -0,05840032 0,1939663</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-contCO" class="quarto-xref">Figura&nbsp;<span>7.11</span></a> ilustra gráficos de contorno obtidos com código abaixo. É importante entender que cada visualização consiste em um corte do modelo que não pode ser visualizado de forma integral, uma vez que está no <span class="math inline">\(\mathcal R ^4\)</span>. Logo, para cada par de variáveis plotadas, a remanescente é fixada, neste caso no nível central.</p>
@@ -1594,16 +1594,16 @@ Figura&nbsp;7.11: Gráficos de contorno para rendimento de CO
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>res.otim<span class="sc">$</span>par</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            [,1]
-[1,]  0.47133056
-[2,] -0.02587354
-[3,] -1.61418871</code></pre>
+[1,]  0,47133056
+[2,] -0,02587354
+[3,] -1,61418871</code></pre>
 </div>
 </div>
 <p>Finalmente obtém-se o rendimento ótimo.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
-96.04244 </code></pre>
+96,04244 </code></pre>
 </div>
 </div>
 <p>Felizmente o pacote <code>rsm</code> também apresenta a função <code>steepest</code> que viabiliza a obtenção do ótimo restrito à região esférica. A pequena diferença no resultado é devido ao passo utilizado de 0,01, neste caso.</p>
@@ -1617,7 +1617,7 @@ Figura&nbsp;7.11: Gráficos de contorno para rendimento de CO
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>otim[<span class="fu">nrow</span>(otim),]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    dist    x1     x2     x3 |     Co     W    Ce |   yhat
-169 1.68 0.471 -0.026 -1.612 | 10.942 1.487 2.388 | 96.039</code></pre>
+169 1,68 0,471 -0,026 -1,612 | 10,942 1,487 2,388 | 96,039</code></pre>
 </div>
 </div>
 </section>
@@ -1863,7 +1863,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5.3533</td>
+<td style="text-align: right;">5,3533</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
@@ -1872,7 +1872,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5.2615</td>
+<td style="text-align: right;">5,2615</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
@@ -1881,7 +1881,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5.0008</td>
+<td style="text-align: right;">5,0008</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
@@ -1890,7 +1890,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.2712</td>
+<td style="text-align: right;">4,2712</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
@@ -1899,7 +1899,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">4.5840</td>
+<td style="text-align: right;">4,5840</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
@@ -1908,7 +1908,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">2.7470</td>
+<td style="text-align: right;">2,7470</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
@@ -1917,7 +1917,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3.8086</td>
+<td style="text-align: right;">3,8086</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
@@ -1926,7 +1926,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3.9839</td>
+<td style="text-align: right;">3,9839</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
@@ -1935,7 +1935,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">4.3630</td>
+<td style="text-align: right;">4,3630</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
@@ -1944,7 +1944,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">3.5519</td>
+<td style="text-align: right;">3,5519</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">11</td>
@@ -1953,7 +1953,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">4.0534</td>
+<td style="text-align: right;">4,0534</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
@@ -1962,7 +1962,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">4.0031</td>
+<td style="text-align: right;">4,0031</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">13</td>
@@ -1971,7 +1971,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5.1495</td>
+<td style="text-align: right;">5,1495</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">14</td>
@@ -1980,7 +1980,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.5581</td>
+<td style="text-align: right;">4,5581</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">15</td>
@@ -1989,7 +1989,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.1959</td>
+<td style="text-align: right;">4,1959</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">16</td>
@@ -1998,7 +1998,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.5946</td>
+<td style="text-align: right;">3,5946</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">17</td>
@@ -2007,7 +2007,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5.1642</td>
+<td style="text-align: right;">5,1642</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">18</td>
@@ -2016,7 +2016,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.0103</td>
+<td style="text-align: right;">4,0103</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">19</td>
@@ -2025,7 +2025,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.6354</td>
+<td style="text-align: right;">3,6354</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">20</td>
@@ -2034,7 +2034,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.2529</td>
+<td style="text-align: right;">4,2529</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">21</td>
@@ -2043,7 +2043,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">3.5171</td>
+<td style="text-align: right;">3,5171</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">22</td>
@@ -2052,7 +2052,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-1</td>
-<td style="text-align: right;">4.4485</td>
+<td style="text-align: right;">4,4485</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">23</td>
@@ -2061,7 +2061,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">-1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">5.3879</td>
+<td style="text-align: right;">5,3879</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">24</td>
@@ -2070,7 +2070,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3.4132</td>
+<td style="text-align: right;">3,4132</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">25</td>
@@ -2079,7 +2079,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.8905</td>
+<td style="text-align: right;">3,8905</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">26</td>
@@ -2088,7 +2088,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.3263</td>
+<td style="text-align: right;">4,3263</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">27</td>
@@ -2097,7 +2097,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">4.2203</td>
+<td style="text-align: right;">4,2203</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">28</td>
@@ -2106,7 +2106,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.9451</td>
+<td style="text-align: right;">3,9451</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">29</td>
@@ -2115,7 +2115,7 @@ Tabela&nbsp;7.6: Planejamento BBD para k=3 fatores com pontos centrais
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3.9024</td>
+<td style="text-align: right;">3,9024</td>
 </tr>
 </tbody>
 </table>
@@ -2135,57 +2135,57 @@ Call:
 rsm(formula = y ~ SO(x1, x2, x3, x4), data = design)
 
              Estimate Std. Error t value  Pr(&gt;|t|)    
-(Intercept)  4.056920   0.081357 49.8655 &lt; 2.2e-16 ***
-x1          -0.184933   0.052516 -3.5215 0.0033875 ** 
-x2          -0.298233   0.052516 -5.6789 5.693e-05 ***
-x3          -0.405417   0.052516 -7.7199 2.068e-06 ***
-x4           0.119883   0.052516  2.2828 0.0385872 *  
-x1:x2       -0.159450   0.090960 -1.7530 0.1014672    
-x1:x3        0.442850   0.090960  4.8686 0.0002485 ***
-x1:x4        0.190200   0.090960  2.0910 0.0552423 .  
-x2:x3       -0.002475   0.090960 -0.0272 0.9786765    
-x2:x4       -0.726525   0.090960 -7.9873 1.395e-06 ***
-x3:x4        0.503075   0.090960  5.5307 7.405e-05 ***
-x1^2         0.323777   0.071429  4.5328 0.0004688 ***
-x2^2         0.477602   0.071429  6.6864 1.033e-05 ***
-x3^2        -0.080797   0.071429 -1.1312 0.2769959    
-x4^2        -0.308648   0.071429 -4.3210 0.0007043 ***
+(Intercept)  4,056920   0,081357 49,8655 &lt; 2,2e-16 ***
+x1          -0,184933   0,052516 -3,5215 0,0033875 ** 
+x2          -0,298233   0,052516 -5,6789 5,693e-05 ***
+x3          -0,405417   0,052516 -7,7199 2,068e-06 ***
+x4           0,119883   0,052516  2,2828 0,0385872 *  
+x1:x2       -0,159450   0,090960 -1,7530 0,1014672    
+x1:x3        0,442850   0,090960  4,8686 0,0002485 ***
+x1:x4        0,190200   0,090960  2,0910 0,0552423 .  
+x2:x3       -0,002475   0,090960 -0,0272 0,9786765    
+x2:x4       -0,726525   0,090960 -7,9873 1,395e-06 ***
+x3:x4        0,503075   0,090960  5,5307 7,405e-05 ***
+x1^2         0,323777   0,071429  4,5328 0,0004688 ***
+x2^2         0,477602   0,071429  6,6864 1,033e-05 ***
+x3^2        -0,080797   0,071429 -1,1312 0,2769959    
+x4^2        -0,308648   0,071429 -4,3210 0,0007043 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Multiple R-squared:  0.9599,    Adjusted R-squared:  0.9198 
-F-statistic: 23.94 on 14 and 14 DF,  p-value: 2.31e-07
+Multiple R-squared:  0,9599,    Adjusted R-squared:  0,9198 
+F-statistic: 23,94 on 14 and 14 DF,  p-value: 2,31e-07
 
 Analysis of Variance Table
 
 Response: y
                     Df Sum Sq Mean Sq F value    Pr(&gt;F)
-FO(x1, x2, x3, x4)   4 3.6225 0.90563 27.3647 1.738e-06
-TWI(x1, x2, x3, x4)  6 4.1546 0.69243 20.9225 3.067e-06
-PQ(x1, x2, x3, x4)   4 3.3140 0.82850 25.0338 2.984e-06
-Residuals           14 0.4633 0.03310                  
-Lack of fit         10 0.3000 0.03000  0.7347    0.6856
-Pure error           4 0.1633 0.04083                  
+FO(x1, x2, x3, x4)   4 3,6225 0,90563 27,3647 1,738e-06
+TWI(x1, x2, x3, x4)  6 4,1546 0,69243 20,9225 3,067e-06
+PQ(x1, x2, x3, x4)   4 3,3140 0,82850 25,0338 2,984e-06
+Residuals           14 0,4633 0,03310                  
+Lack of fit         10 0,3000 0,03000  0,7347    0,6856
+Pure error           4 0,1633 0,04083                  
 
 Stationary point of response surface:
         x1         x2         x3         x4 
- 1.0579092  0.1742857 -0.8902676 -0.4104952 
+ 1,0579092  0,1742857 -0,8902676 -0,4104952 
 
 Stationary point in original units:
         Ac         Ea       vf_a       vf_p 
- 0.3057909 25.8707427  3.0548662 91.7900965 
+ 0,3057909 25,8707427  3,0548662 91,7900965 
 
 Eigenanalysis:
 eigen() decomposition
 $values
-[1]  0.6966486  0.3725336 -0.0899158 -0.5673314
+[1]  0,6966486  0,3725336 -0,0899158 -0,5673314
 
 $vectors
          [,1]        [,2]       [,3]        [,4]
-x1  0.4113305  0.78063120  0.4678823  0.05008278
-x2 -0.7896263  0.50636028 -0.1821966  0.29477793
-x3  0.2429853  0.36542084 -0.7745350 -0.45554504
-x4  0.3850399 -0.02611146 -0.3846896  0.83849651</code></pre>
+x1  0,4113305  0,78063120  0,4678823  0,05008278
+x2 -0,7896263  0,50636028 -0,1821966  0,29477793
+x3  0,2429853  0,36542084 -0,7745350 -0,45554504
+x4  0,3850399 -0,02611146 -0,3846896  0,83849651</code></pre>
 </div>
 </div>
 <p>Não há indícios para rejeição da hipótese de normalidade dos resíduos, dado resultado do teste de Shapiro-Wilk exposto abaixo.</p>
@@ -2197,7 +2197,7 @@ x4  0.3850399 -0.02611146 -0.3846896  0.83849651</code></pre>
     Shapiro-Wilk normality test
 
 data:  rsm.bbd$residuals
-W = 0.93612, p-value = 0.07937</code></pre>
+W = 0,93612, p-value = 0,07937</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-contbbd" class="quarto-xref">Figura&nbsp;<span>7.13</span></a> ilustra gráficos de contorno para desvio dimensional de peças obtidas via sinterização de inibição seletiva.</p>
@@ -2228,7 +2228,7 @@ Figura&nbsp;7.13: Gráficos de contorno para o desvio dimensional
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>otimo[<span class="fu">nrow</span>(otimo),]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   dist     x1     x2   x3     x4 |     Ac       Ea vf_a  vf_p |  yhat
-15  1.4 -0.013 -0.219 0.86 -1.082 | 0.1987 24.62796 3.93 78.36 | 2.606</code></pre>
+15  1,4 -0,013 -0,219 0,86 -1,082 | 0,1987 24,62796 3,93 78,36 | 2,606</code></pre>
 </div>
 </div>
 </section>

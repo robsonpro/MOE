@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -241,6 +241,7 @@ window.Quarto = {
   <li><a href="#poder-do-teste-na-anova" id="toc-poder-do-teste-na-anova" class="nav-link" data-scroll-target="#poder-do-teste-na-anova"><span class="header-section-number">3.2.2</span> Poder do teste na ANOVA</a></li>
   </ul></li>
   <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">3.3</span> Exercícios</a></li>
   </ul>
 </nav>
     </div>
@@ -337,26 +338,31 @@ Tabela&nbsp;3.1: Dados de um experimento com <span class="math inline">\(a\)</sp
 <p>A média logicamente pode variar de tratamento para tratamento, sendo esta hipotética variação testada estatísticamente. Já a variância dentro dos tratamentos é assumida constante.</p>
 <p><span id="eq-anovamodel"><span class="math display">\[
 y_{ij} = \mu + \alpha_{i} + \varepsilon_{ij}
-\tag{3.1}\]</span></span> <span id="eq-medg"><span class="math display">\[
+\tag{3.1}\]</span></span></p>
+<p><span id="eq-medg"><span class="math display">\[
 \mu = \bar{y}_{..} = \frac{
 \displaystyle\sum_{i=1}^{a}
 \displaystyle\sum_{j=1}^{n}{y_{ij}}}{an}
-\tag{3.2}\]</span></span> <span id="eq-eftrat"><span class="math display">\[
+\tag{3.2}\]</span></span></p>
+<p><span id="eq-eftrat"><span class="math display">\[
 \alpha_{i} = \bar{y}_{i.} - \bar{y}_{..}
-\tag{3.3}\]</span></span> <span id="eq-erroanova"><span class="math display">\[
+\tag{3.3}\]</span></span></p>
+<p><span id="eq-erroanova"><span class="math display">\[
 \varepsilon_{ij} = y_{ij} - \bar{y}_{i.}
 \tag{3.4}\]</span></span></p>
 <p>Este modelo é chamado de modelo de efeitos fixos, com cada efeito dentro dos tratamentos a ser estimado fixo porém desconhecido. Este tipo de modelo é o mais comum na análise de variância, sendo utilizado quando deseja-se conhecer apenas o efeito dos tratamentos considerados. No caso onde se selecionam de forma aleatória <span class="math inline">\(a\)</span> tratamentos de uma ampla população, desejando-se conhecer o efeito para toda população de origem, deve-se utilizar um modelo de efeitos aleatórios.</p>
 <p>As hipóteses testadas na análise de variância são relacionadas aos efeito dos tratamentos e de forma análoga à média destes. A hipótese nula consiste na nulidade dos efeitos, enquanto a hipótese alternativa sugere que ao menos um dos efeitos é não nulo ou, de outra forma, ao menos uma média dos tratamentos é distinta dos demais. As hipóteses são formuladas à seguir.</p>
 <p><span class="math display">\[
 H_0: \alpha_1= \alpha_2 = ... = \alpha_a = 0
-\]</span> <span class="math display">\[
+\]</span></p>
+<p><span class="math display">\[
 H_0: \alpha_i \ne 0, \text{para ao menos um } i
 \]</span></p>
 <p>A análise de variância é um teste para diferença entre médias baseado no particionamento da soma dos quadrados total, na soma dos quadrados entre tratamentos e na soma dos quadrados dentro dos tratamentos, conforme <a href="#eq-vartotal" class="quarto-xref">Equação&nbsp;<span>3.6</span></a>. A variância total das observações experimentais da <a href="#tbl-anovadata" class="quarto-xref">Tabela&nbsp;<span>3.1</span></a> é expressa conforme Equação <a href="#eq-vartotal" class="quarto-xref">Equação&nbsp;<span>3.6</span></a>. O numerador do cálculo, <span class="math inline">\(SS_T\)</span>, é a soma dos quadrados total, enquanto o denominador, <span class="math inline">\(DF_T\)</span>, consiste nos graus de liberdade total.</p>
 <p><span id="eq-sigmatotal"><span class="math display">\[
-s_T^2 = s_{Entre}^2 + s_{Dentro}^2
-\tag{3.5}\]</span></span> <span id="eq-vartotal"><span class="math display">\[
+s_T^2 = s_{Trat}^2 + s_{Erro}^2
+\tag{3.5}\]</span></span></p>
+<p><span id="eq-vartotal"><span class="math display">\[
 s_T^2 = \frac{SS_T}{DF_T} =  \frac{\displaystyle\sum_{i=1}^{a}
 \displaystyle\sum_{j=1}^{n}({y_{ij}-\bar{y}_{..}})^2}{an-1}
 \tag{3.6}\]</span></span></p>
@@ -374,13 +380,14 @@ s_T^2 = \frac{SS_T}{DF_T} =  \frac{\displaystyle\sum_{i=1}^{a}
 MS_{Trat} =  \frac{n\displaystyle\sum_{i=1}^{a}
 ({\bar{y}_{i.}-\bar{y}_{..}})^2}{a-1}
 \tag{3.8}\]</span></span></p>
-<p>Os graus de liberdade dos erros devem ser avaliados com mais cuidado. Para o i-ésimo tratamento a i-ésima variância é calculada conforme a <a href="#eq-ivar" class="quarto-xref">Equação&nbsp;<span>3.9</span></a>. Combinando todas as variâncias dos <span class="math inline">\(a\)</span> tratamentos, tem-se o resultado da <a href="05-fat2k.html#eq-mse" class="quarto-xref">Equação&nbsp;<span>5.8</span></a>. A média dos quadrados dos erros, <span class="math inline">\(MS_E\)</span>, é a estimativa da variância experimental na ANOVA, <span class="math inline">\(\sigma_\varepsilon^2=MS_E\)</span>. As médias dos quadrados são distribuídas pela distribuição <span class="math inline">\(\chi^2\)</span>, por constarem de somas de desvios quadráticos em relação à média, isto é, soma dos quadrados de quantidades distribuídas pela normal-padrão <span class="math inline">\(Z\)</span>.</p>
+<p>Os graus de liberdade dos erros devem ser avaliados com mais cuidado. Para o i-ésimo tratamento a i-ésima variância é calculada conforme a <a href="#eq-ivar" class="quarto-xref">Equação&nbsp;<span>3.9</span></a>. Combinando todas as variâncias dos <span class="math inline">\(a\)</span> tratamentos, tem-se o resultado da <a href="#eq-msee" class="quarto-xref">Equação&nbsp;<span>3.10</span></a>. A média dos quadrados dos erros, <span class="math inline">\(MS_E\)</span>, é a estimativa da variância experimental na ANOVA, <span class="math inline">\(\sigma_\varepsilon^2=MS_E\)</span>. As médias dos quadrados são distribuídas pela distribuição <span class="math inline">\(\chi^2\)</span>, por constarem de somas de desvios quadráticos em relação à média, isto é, soma dos quadrados de quantidades distribuídas pela distribuição normal-padrão, <span class="math inline">\(Z\)</span>.</p>
 <p><span id="eq-ivar"><span class="math display">\[
 s_i^2 =  \frac{\displaystyle\sum_{j=1}^{n}({y_{ij}-\bar{y}_{i.}})^2}{n-1}
-\tag{3.9}\]</span></span> <span id="eq-mse"><span class="math display">\[
+\tag{3.9}\]</span></span></p>
+<p><span id="eq-msee"><span class="math display">\[
 MS_E =  \frac{\displaystyle\sum_{i=1}^{a}\displaystyle\sum_{j=1}^{n}({y_{ij}-\bar{y}_{i.}})^2}{a(n-1)}
 \tag{3.10}\]</span></span></p>
-<p>A estatística do teste ANOVA, <span class="math inline">\(F_0\)</span>, é calculada conforme <a href="#eq-fanova" class="quarto-xref">Equação&nbsp;<span>3.11</span></a>, como a razão entre as médias dos quadrados dos tratamentos e dos erros. Quanto maior esta razão, maior a diferença entre os efeitos, relativamente ao erro experimental. Como esta quantidade consiste na razão entre médias dos quadrados, isto é, entre estimativas de variâncias ela é distribuída pela distribuição <span class="math inline">\(F\)</span>, <span class="math inline">\(F_0 \sim F_{(a-1,a(n-1))}\)</span>. A hipótese <span class="math inline">\(H_0\)</span> de nulidade e igualdade dos efeitos é rejeitada se <span class="math inline">\(F_0 &gt; F_{(\alpha,a-1,a(n-1))}\)</span>. A <a href="#tbl-resanova" class="quarto-xref">Tabela&nbsp;<span>3.2</span></a> resume os cálculos da ANOVA. Geralmente os resultados obtidos via ANOVA são apresentados neste formato.</p>
+<p>A estatística do teste ANOVA, <span class="math inline">\(F_0\)</span>, é calculada conforme <a href="#eq-fanova" class="quarto-xref">Equação&nbsp;<span>3.11</span></a>, como a razão entre as médias dos quadrados dos tratamentos e dos erros. Quanto maior esta razão, maior a diferença entre os efeitos, relativamente ao erro experimental. Como esta quantidade consiste na razão entre médias dos quadrados, isto é, entre estimativas de variâncias, ela é distribuída pela distribuição <span class="math inline">\(F\)</span>, <span class="math inline">\(F_0 \sim F_{(a-1,a(n-1))}\)</span>. A hipótese <span class="math inline">\(H_0\)</span> de nulidade e igualdade dos efeitos é rejeitada se <span class="math inline">\(F_0 &gt; F_{(\alpha,a-1,a(n-1))}\)</span>. A <a href="#tbl-resanova" class="quarto-xref">Tabela&nbsp;<span>3.2</span></a> resume os cálculos da ANOVA. Geralmente os resultados obtidos via ANOVA são apresentados neste formato.</p>
 <p><span id="eq-fanova"><span class="math display">\[
 F_0 =  \frac{MS_{Trat}}{MS_{Erro}}
 \tag{3.11}\]</span></span></p>
@@ -434,15 +441,16 @@ Tabela&nbsp;3.2: Tabela resumo ANOVA
 </div>
 </figure>
 </div>
-<p>Existem algumas medidas de ajuste usadas para averiguar a efetividade do modelo obtido via ANOVA. O coeficiente de determinação simples <span class="math inline">\(R^2\)</span> é calculado conforme a <a href="#eq-R2" class="quarto-xref">Equação&nbsp;<span>3.12</span></a>, como a razão entre a soma dos quadrados dos tratamentos e a soma dos quadrados total. Esta medida deve ser usada com cautela, por não levar em consideração o número de graus de liberdade do modelo. neste sentido, o coeficiente de determinação ajustado <span class="math inline">\(R_{aj}^2\)</span> é obtido conforme a <a href="#eq-R2aj" class="quarto-xref">Equação&nbsp;<span>3.13</span></a>, sendo uma medida mais adequada para mensurar a variabilidade dos dados explicado pelo modelo ANOVA.</p>
+<p>Existem algumas medidas de ajuste usadas para averiguar a efetividade do modelo obtido via ANOVA. O coeficiente de determinação simples <span class="math inline">\(R^2\)</span> é calculado conforme a <a href="#eq-R2" class="quarto-xref">Equação&nbsp;<span>3.12</span></a>, como a razão entre a soma dos quadrados dos tratamentos e a soma dos quadrados total. Esta medida deve ser usada com cautela, por não levar em consideração o número de graus de liberdade do modelo. Neste sentido, o coeficiente de determinação ajustado <span class="math inline">\(R_{aj}^2\)</span> é obtido conforme a <a href="#eq-R2aj" class="quarto-xref">Equação&nbsp;<span>3.13</span></a>, sendo uma medida mais adequada para mensurar a variabilidade dos dados explicado pelo modelo ANOVA.</p>
 <p><span id="eq-R2"><span class="math display">\[
 R^2 = \frac{SS_{Trat}}{SS_T}
-\tag{3.12}\]</span></span> <span id="eq-R2aj"><span class="math display">\[
-R_{aj}^2 = 1 - \frac{MS_{Trat}}{SS_T/(an-1)}
+\tag{3.12}\]</span></span></p>
+<p><span id="eq-R2aj"><span class="math display">\[
+R_{aj}^2 = 1 - \frac{MS_{Erro}}{SS_T/(an-1)}
 \tag{3.13}\]</span></span></p>
 <p>A ANOVA para um fator considerando três ou mais tratamentos é comumente chamada de ANOVA de uma via. Para conduzir este tipo de análise, deve-se utilizar o chamado planejamento totalmente aleatorizado ou delineamento inteiramente casualizado. Neste planejamento todas as <span class="math inline">\(N = an\)</span> observações experimentais são conduzidas em ordem e alocação de materiais totalmente aleatória. A aleatorização auxilia na garantia das hipóteses de normalidade e independência dos resíduos. Ao aleatorizar os experimentos garante-se que fontes externas incontroláveis de variação, chamadas de variáveis de ruídos, tenham interferência mínima ou ao menos tenham efeito diluído de forma aleatória nos resultados experimentais. As replicações viabilizam a estimativa do erro experimental. Sem a replicação não é possível testar a significância dos efeitos avaliados, visto que estes são sempre avaliados relativamente ao erro experimental.</p>
 <div id="exm-anova1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 3.1</strong></span> Um estudo foi realizado para o efeito do método de resfriamento na microdureza da porcelana de zircônia para próteses dentárias. Três métodos de resfriamento foram testados. lento: as amostras são deixadas dentro do forno fechado e desligado até atingirem a temperatura ambiente; normal: as amostras são removidas e resfriadas à temperatura ambiente; e rápido: as amostras são imediatamente removidas do forno após o tempo de espera e jateadas por ar comprimido. Os resultados são apresentados na <a href="#tbl-plananova" class="quarto-xref">Tabela&nbsp;<span>3.3</span></a>.</p>
+<p><span class="theorem-title"><strong>Exemplo 3.1</strong></span> Um estudo foi realizado para avaliar o efeito do método de resfriamento na microdureza da porcelana de zircônia para próteses dentárias. Três métodos de resfriamento foram testados. lento: as amostras são deixadas dentro do forno fechado e desligado até atingirem a temperatura ambiente; normal: as amostras são removidas e resfriadas à temperatura ambiente; e rápido: as amostras são imediatamente removidas do forno após o tempo de espera e jateadas por ar comprimido. Os resultados são apresentados na <a href="#tbl-plananova" class="quarto-xref">Tabela&nbsp;<span>3.3</span></a>.</p>
 </div>
 <div class="cell">
 <div id="tbl-plananova" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -464,77 +472,77 @@ Tabela&nbsp;3.3: Planejamento totalmente aleatorizado para microdureza HV em [GP
 <tr class="odd">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">slow</td>
-<td style="text-align: right;">5.34</td>
+<td style="text-align: right;">5,34</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">slow</td>
-<td style="text-align: right;">5.43</td>
+<td style="text-align: right;">5,43</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">12</td>
 <td style="text-align: left;">slow</td>
-<td style="text-align: right;">5.42</td>
+<td style="text-align: right;">5,42</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">slow</td>
-<td style="text-align: right;">5.40</td>
+<td style="text-align: right;">5,40</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">slow</td>
-<td style="text-align: right;">5.38</td>
+<td style="text-align: right;">5,38</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">15</td>
 <td style="text-align: left;">normal</td>
-<td style="text-align: right;">5.20</td>
+<td style="text-align: right;">5,20</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">6</td>
 <td style="text-align: left;">normal</td>
-<td style="text-align: right;">5.22</td>
+<td style="text-align: right;">5,22</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
 <td style="text-align: left;">normal</td>
-<td style="text-align: right;">5.15</td>
+<td style="text-align: right;">5,15</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">14</td>
 <td style="text-align: left;">normal</td>
-<td style="text-align: right;">5.25</td>
+<td style="text-align: right;">5,25</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">9</td>
 <td style="text-align: left;">normal</td>
-<td style="text-align: right;">5.24</td>
+<td style="text-align: right;">5,24</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">13</td>
 <td style="text-align: left;">fast</td>
-<td style="text-align: right;">5.20</td>
+<td style="text-align: right;">5,20</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">11</td>
 <td style="text-align: left;">fast</td>
-<td style="text-align: right;">5.15</td>
+<td style="text-align: right;">5,15</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">fast</td>
-<td style="text-align: right;">5.19</td>
+<td style="text-align: right;">5,19</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">fast</td>
-<td style="text-align: right;">5.17</td>
+<td style="text-align: right;">5,17</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">fast</td>
-<td style="text-align: right;">5.18</td>
+<td style="text-align: right;">5,18</td>
 </tr>
 </tbody>
 </table>
@@ -571,16 +579,16 @@ Tabela&nbsp;3.3: Planejamento totalmente aleatorizado para microdureza HV em [GP
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.anova)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Df  Sum Sq Mean Sq F value   Pr(&gt;F)    
-cooling      2 0.13489 0.06745   62.84 4.38e-07 ***
-Residuals   12 0.01288 0.00107                     
+cooling      2 0,13489 0,06745   62,84 4,38e-07 ***
+Residuals   12 0,01288 0,00107                     
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#F para  0,05 de significância</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>F_critico <span class="ot">&lt;-</span> <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="at">df1=</span><span class="dv">2</span>, <span class="at">df2=</span><span class="dv">12</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>F_critico</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.885294</code></pre>
+<pre><code>[1] 3,885294</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear associado à ANOVA</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Importante para obter as medidas de ajuste - R^2</span></span>
@@ -593,19 +601,19 @@ lm(formula = hardness ~ cooling, data = plan)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--0.062 -0.013  0.006  0.024  0.038 
+-0,062 -0,013  0,006  0,024  0,038 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    5.17800    0.01465 353.411  &lt; 2e-16 ***
-coolingnormal  0.03400    0.02072   1.641    0.127    
-coolingslow    0.21600    0.02072  10.425 2.28e-07 ***
+(Intercept)    5,17800    0,01465 353,411  &lt; 2e-16 ***
+coolingnormal  0,03400    0,02072   1,641    0,127    
+coolingslow    0,21600    0,02072  10,425 2,28e-07 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Residual standard error: 0.03276 on 12 degrees of freedom
-Multiple R-squared:  0.9128,    Adjusted R-squared:  0.8983 
-F-statistic: 62.84 on 2 and 12 DF,  p-value: 4.384e-07</code></pre>
+Residual standard error: 0,03276 on 12 degrees of freedom
+Multiple R-squared:  0,9128,    Adjusted R-squared:  0,8983 
+F-statistic: 62,84 on 2 and 12 DF,  p-value: 4,384e-07</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-Fcritico" class="quarto-xref">Figura&nbsp;<span>3.1</span></a> ilustra a região crítica do teste, com regão de rejeição de <span class="math inline">\(H_0\)</span> destacada em vermelho.</p>
@@ -634,7 +642,7 @@ Figura&nbsp;3.1: Região crítica ANOVA, <span class="math inline">\(\alpha = 0,
     Shapiro-Wilk normality test
 
 data:  residuos
-W = 0.92867, p-value = 0.2607</code></pre>
+W = 0,92867, p-value = 0,2607</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de homocedasticidade</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(hardness <span class="sc">~</span> cooling, <span class="at">data =</span> plan)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -643,7 +651,7 @@ W = 0.92867, p-value = 0.2607</code></pre>
     Bartlett test of homogeneity of variances
 
 data:  hardness by cooling
-Bartlett's K-squared = 1.831, df = 2, p-value = 0.4003</code></pre>
+Bartlett's K-squared = 1,831, df = 2, p-value = 0,4003</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-resianova" class="quarto-xref">Figura&nbsp;<span>3.2</span></a>, obtida com sintaxe à seguir, ilustra alguns gráficos dos resíduos que auxiliam na visualização das pressuposições da ANOVA. O gráfico superior esquerdo plota os resíduos <span class="math inline">\(\varepsilon_{ij}\)</span> em relação aos valores previstos ou ajustados (<em>fitted</em>), <span class="math inline">\(\hat{y}_i=\mu+\alpha_i=\bar{y}_{i.}\)</span>. Um padrão de aleatoriedade, sem crescimento ou decrescimento de <span class="math inline">\(\varepsilon_{ij}\)</span> em função de <span class="math inline">\(\hat{y}_i\)</span> deve ser observado. Para o caso estudado não há indícios de dependência entre resíduos e valores ajustados. O gráfico superior direito é o gráfico quantil-quantil que plota os resíduos ordenados em função dos quantis teóricos da normal padrão. Quanto mais próximo da reta, melhor os resíduos se ajustam à distribuição normal. O gráfico inferior esquerdo plota a raiz quadrada dos resíduos padronizados em função dos valores ajustados. Este é um auxílio para ver, além da independência entre resíduos e ajustados, a homocedasticidade. No caso estudado, já confirmado estatísticamente, visualiza-se a homogeneidade da raiz dos resíduos padronizados em relação às médias dos tratamentos. O último gráfico, plotado no canto inferior direito, plota os resíduos em função dos níveis (tratamentos) experimentais. Deve-se averiguar por este gráfico a homogeneidade e independência dos resíduos em função dos níveis, além da possível presença de <em>outliers</em>, isto é, de valores discrepantes. Em caso de um ajuste baixo, isto é, um <span class="math inline">\(R_{aj}^2\)</span> insuficiente, alguns experimentos com resíduos extremos destacados neste gráfico poderiam ser repetidos. No caso estudado não seria necessário.</p>
@@ -763,9 +771,9 @@ Fit: aov(formula = hardness ~ cooling, data = plan)
 
 $cooling
              diff        lwr       upr     p adj
-normal-fast 0.034 -0.0212791 0.0892791 0.2670508
-slow-fast   0.216  0.1607209 0.2712791 0.0000006
-slow-normal 0.182  0.1267209 0.2372791 0.0000040</code></pre>
+normal-fast 0,034 -0,0212791 0,0892791 0,2670508
+slow-fast   0,216  0,1607209 0,2712791 0,0000006
+slow-normal 0,182  0,1267209 0,2372791 0,0000040</code></pre>
 </div>
 </div>
 </section>
@@ -785,9 +793,9 @@ slow-normal 0.182  0.1267209 0.2372791 0.0000040</code></pre>
 
          groups = 3
               n = 5
-    between.var = 0.06745
-     within.var = 0.00107
-      sig.level = 0.05
+    between.var = 0,06745
+     within.var = 0,00107
+      sig.level = 0,05
           power = 1
 
 NOTE: n is number in each group</code></pre>
@@ -821,6 +829,292 @@ NOTE: n is number in each group</code></pre>
 <p>TUKEY, John W. Comparing individual means in the analysis of variance. <em>Biometrics</em>, p.&nbsp;99-114, 1949.</p>
 <p>WASSERMAN, Larry. <em>All of statistics: a concise course in statistical inference</em>. Springer Science &amp; Business Media, 2013.</p>
 <p>ZUEV, Konstantin. <em>Statistical Inference</em>. 2018.</p>
+</section>
+<section id="exercícios" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">3.3</span> Exercícios</h2>
+<ol type="1">
+<li>um experimento optométrico foi realizado por Armstrong et al.&nbsp;(2000) para comparar as taxas de leitura de indivíduos jovens normais, indivíduos idosos normais e indivíduos com degeneração macular relacionada à Idade (DMRI), havendo assim três tratamentos. A resposta consiste no número de palavras corretas lidas em um minuto por cada indivíduo. O planejamento com os resultados são fornecidos na <a href="#tbl-planex1" class="quarto-xref">Tabela&nbsp;<span>3.4</span></a>.</li>
+</ol>
+<div class="cell">
+<div id="tbl-planex1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-planex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;3.4: Planejamento totalmente aleatorizado para taxa de leitura em experimento optométrico
+</figcaption>
+<div aria-describedby="tbl-planex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">ordem</th>
+<th style="text-align: left;">tratamentos</th>
+<th style="text-align: right;">taxa de leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">65,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">44,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">83,8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">73,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">76,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">100,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">91,2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">78,7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">75,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">jovem</td>
+<td style="text-align: right;">55,7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">50,8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">46,2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">79,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">112,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">75,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">85,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">84,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">98,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">38,2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">idoso</td>
+<td style="text-align: right;">77,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">47,5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">26,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">39,9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">48,8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">53,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">46,1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">58,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">52,8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">41,1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">dmri</td>
+<td style="text-align: right;">75,0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>Obtenha o planejamento no R.</p></li>
+<li><p>Realize a análise de variância para um fator e avalie se há diferença entre as médias de capacidade de leitura dos grupos.</p></li>
+<li><p>Avalie o ajuste do modelo ANOVA obtido.</p></li>
+<li><p>Avalie as pressuposições de normalidade e homocedasticidade.</p></li>
+<li><p>Em caso de significância na ANOVA, realize o teste de comparções múltiplas de Tuke e avalie as diferenças específicas entre os grupos.</p></li>
+<li><p>Faça um box-plot para visualizar e comparar graficamente a capacidade de leitura dos grupos.</p></li>
+<li><p>Considerando as variâncias entre tratamentos e dentros dos tratamentos para este caso, qual o número necessários de réplicas para um poder de 0,8?</p></li>
+</ol>
+<p>Armstrong, R. A., Slade, S. V., &amp; Eperjesi, F. (2000). An introduction to analysis of variance (ANOVA) with special reference to data from clinical experiments in optometry. Ophthalmic and Physiological Optics, 20(3), 235-241.</p>
+<ol start="2" type="1">
+<li>em um estudo realizado por Candra et al.&nbsp;(2023) foi utilizado o planejamento totalmente aleatorizado para análise de diferentes tipos de filtros em sistemas de recirculação de água em piscinas de peixes de água doce. Foram utilizados quatro tipos de biofiltro: P0: zeólito, P1: bambu, P2: bioball (esferas plásticas ocas com estrutura interna de grade) e P3 bioring (anéis cerâmicos), todos acompanhados de carvão vegetal, espuma biológica e japmate (meio filtrante de manta sintética japonesa). Como resposta foi medida a taxa média de sobrevivência de tilápias e foram realizadas três réplicas. O planejamento é apresentado na <a href="#tbl-planex2" class="quarto-xref">Tabela&nbsp;<span>3.5</span></a>.</li>
+</ol>
+<div class="cell">
+<div id="tbl-planex2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-planex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;3.5: Planejamento totalmente aleatorizado para taxa de sobrevivência de tilápias
+</figcaption>
+<div aria-describedby="tbl-planex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">ordem</th>
+<th style="text-align: left;">tratamentos</th>
+<th style="text-align: right;">taxa de sobrevivência</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">P0</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">P0</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">P0</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">P2</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">P2</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">P2</td>
+<td style="text-align: right;">88</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">P3</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">P3</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">P3</td>
+<td style="text-align: right;">88</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>Obtenha o planejamento no R.</p></li>
+<li><p>Realize a análise de variância para um fator e avalie se há diferença entre as médias de taxa de sobrevivência dos grupos.</p></li>
+<li><p>Avalie o ajuste do modelo ANOVA obtido.</p></li>
+<li><p>Avalie as pressuposições de normalidade e homocedasticidade.</p></li>
+<li><p>Em caso de significância na ANOVA, realize o teste de comparções múltiplas de Tukey e avalie as diferenças específicas entre os grupos.</p></li>
+<li><p>Faça um box-plot para visualizar e comparar graficamente a capacidade de leitura dos grupos.</p></li>
+</ol>
+<p>Candra, H. K., Noor, S., Bahit, M., Cahyani, R. F., &amp; Mulyani, D. (2023). Application of The Completely Random Design Statistics Method For Analysis of Different Filter Types In Fresh Water Fish Pool Water Recirculation System. International Journal of Science, Technology &amp; Management, 4(5), 1197-1205.</p>
 
 
 </section>
@@ -908,8 +1202,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1020,7 +1312,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -334,7 +334,7 @@ Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>t_0 <span class="ot">&lt;-</span> (x_bar <span class="sc">-</span> mu_0)<span class="sc">/</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>t_0</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.211601</code></pre>
+<pre><code>[1] -2,211601</code></pre>
 </div>
 </div>
 <p>Para julgar se a hipótese nula deve ser rejeitada em favor da alternativa ou não, deve-se definir uma região crítica ou região de rejeição de <span class="math inline">\(H_0\)</span>. Para tal, deve-se definir um nível de significância <span class="math inline">\(\alpha\)</span> de interesse. O nível de significância consiste em uma probabilidade de erro na rejeição da hipótese nula que se assume ao testar a hipótese. Quanto menor, menor a probabilidade de rejeitar a hipótese nula erroneamente caso esta seja verdadeira. Entretanto, quanto menor o nível de significância <span class="math inline">\(\alpha\)</span>, mais difícil é a rejeição da hipótese nula. É comum adotar-se em pesquisas <span class="math inline">\(\alpha = 0,05\)</span>, mas alguns pesquisadores mais criteriosos costumam adotar <span class="math inline">\(\alpha = 0,01\)</span>, ou valores inferiores. O nível de confiança <span class="math inline">\(\gamma\)</span> do teste é o complementar do nível de significância, <span class="math inline">\(\gamma = 1 - \alpha\)</span>. A <a href="#fig-regcrit" class="quarto-xref">Figura&nbsp;<span>2.2</span></a> ilustra a distribuição <span class="math inline">\(t\)</span> com 11 graus de liberdade e região crítica em vermelho para o teste em questão, considerando <span class="math inline">\(\alpha = 0,05\)</span>.</p>
@@ -358,7 +358,7 @@ Figura&nbsp;2.2: Região crítica para o teste t, com <span class="math inline">
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># igual à 0,05, com 11 graus de liberdade </span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">11</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.795885</code></pre>
+<pre><code>[1] -1,795885</code></pre>
 </div>
 </div>
 <p>Para decidir deve-se comparar o valor da estatística do teste com o valor crítico. Neste caso, como a hipótese alternativa é <span class="math inline">\(H_0: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Logo, neste caso como <span class="math inline">\(t_0 = -2,21 &lt; -1,796 = t_\alpha\)</span>, rejeita-se a hipótese nula, com <span class="math inline">\(\alpha = 0,05\)</span> de significância, podendo-se concluir que a média da circularidade total, <span class="math inline">\(\overline{Ron_t}\)</span>, é menor que <span class="math inline">\(10 \mu m\)</span>.</p>
@@ -372,13 +372,13 @@ Figura&nbsp;2.2: Região crítica para o teste t, com <span class="math inline">
     One Sample t-test
 
 data:  Ront
-t = -2.2116, df = 11, p-value = 0.02454
+t = -2,2116, df = 11, p-value = 0,02454
 alternative hypothesis: true mean is less than 10
 95 percent confidence interval:
-     -Inf 9.771407
+     -Inf 9,771407
 sample estimates:
 mean of x 
- 8.783892 </code></pre>
+ 8,783892 </code></pre>
 </div>
 </div>
 <p>A saída fornece o valor de <span class="math inline">\(t_0\)</span> calculado, o número de graus de liberdade do teste, e o p-valor (p-value), que consiste na probabilidade associada ao valor calculado. A saída também especifíca a hipótese testada, além de fornecer um intervalo de confiança associado ao teste realizado e a estimativa pontual do parâmetro testado, isto é, a média. O intervalo de confiança consiste em limites de confiança para média, neste caso apenas o superior, uma vez que foi realizado um teste unilateral à esquerda. A média está abaixo deste limite com <span class="math inline">\(\gamma = 1 - \alpha = 0,95\)</span> de confiança.</p>
@@ -395,7 +395,7 @@ mean of x
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pvalor <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_0, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pvalor</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02454049</code></pre>
+<pre><code>[1] 0,02454049</code></pre>
 </div>
 </div>
 <p>A vantagem de tomar a decisão considerando o p-valor é que para um <span class="math inline">\(\alpha\)</span> fixo, basta comparar as probabilidades. Se o experimentador deseja, entretanto, tomar a decisão considerando o valor <span class="math inline">\(t_0\)</span>, ele deve conhecer o valor crítico <span class="math inline">\(t_\alpha\)</span> e este muda conforme o número de graus de liberdade associado ao teste. Deve-se atentar para o fato de que se o valor calculado <span class="math inline">\(t_0\)</span> cresce à medida que o tamanho amostral aumenta, o p-valor diminui no mesmo sentido. Deste modo, um pesquisador mal intencionado pode manipular seu estudo aumentado o tamanho amostral para rejeitar a hipótese nula, ou de outra forma, mudar o nível de significância para respaldar as conclusões almejadas. É importante dizer que o p-valor não pode ser usado como critério de sucesso ou fracasso, um p-valor mesmo que abaixo do nível de significância, mas próximo deste pode representar um risco considerávelmente alto de erro na rejeição da hipótese nula.</p>
@@ -506,11 +506,11 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
 <pre><code>
      One-sample t test power calculation 
 
-              n = 7.168914
+              n = 7,168914
           delta = 2
-             sd = 1.904829
-      sig.level = 0.05
-          power = 0.8
+             sd = 1,904829
+      sig.level = 0,05
+          power = 0,8
     alternative = one.sided</code></pre>
 </div>
 </div>
@@ -529,10 +529,10 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
      One-sample t test power calculation 
 
               n = 12
-          delta = 1.216108
-             sd = 1.904829
-      sig.level = 0.05
-          power = 0.6656294
+          delta = 1,216108
+             sd = 1,904829
+      sig.level = 0,05
+          power = 0,6656294
     alternative = one.sided</code></pre>
 </div>
 </div>
@@ -614,7 +614,7 @@ n = \biggl[\frac{(t_{\alpha/2,n-1}+t_{\beta,n-1})s}{\delta}\biggr]^2
     Shapiro-Wilk normality test
 
 data:  Ront
-W = 0.9518, p-value = 0.6634</code></pre>
+W = 0,9518, p-value = 0,6634</code></pre>
 </div>
 </div>
 <p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações padronizadas e ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>.</p>
@@ -658,16 +658,16 @@ Figura&nbsp;2.10: Gráfico qq para Ront
 [1] 1
 
 $n
-[1] 31.39552
+[1] 31,39552
 
 $power
-[1] 0.8
+[1] 0,8
 
 $alpha
-[1] 0.05
+[1] 0,05
 
 $effect
-[1] 0.5
+[1] 0,5
 
 $test
 [1] "two.tail"</code></pre>
@@ -704,7 +704,7 @@ Figura&nbsp;2.11: Boxplot para dureza
     Shapiro-Wilk normality test
 
 data:  dureza
-W = 0.9363, p-value = 0.07236</code></pre>
+W = 0,9363, p-value = 0,07236</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -742,13 +742,13 @@ Figura&nbsp;2.12: Gráfico qq para dureza
     One Sample z-test
 
 data:  dureza
-z = 19.761, Std. Dev. Population = 0.7553, p-value &lt; 2.2e-16
+z = 19,761, Std. Dev. Population = 0,7553, p-value &lt; 2,2e-16
 alternative hypothesis: true mean is not equal to 55
 95 percent confidence interval:
- 57.45473 57.99527
+ 57,45473 57,99527
 sample estimates:
 mean of x 
-   57.725 </code></pre>
+   57,725 </code></pre>
 </div>
 </div>
 <p>Pelos resultados obtidos, rejeita-se a hipótese nula de que a dureza média é igual a 55 HRC. Apesar de a hipótese alternativa ser <span class="math inline">\(H_1: \mu \ne 55\)</span>, como <span class="math inline">\(z_0 = 19.761\)</span> e pelos limites de confiança serem ambos maiores que 55, pode-se constatar especificamente que a média é maior que 55 HRC.</p>
@@ -756,7 +756,7 @@ mean of x
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>$sigma
-[1] 0.7552974
+[1] 0,7552974
 
 $n
 [1] 30
@@ -765,10 +765,10 @@ $power
 [1] 1
 
 $alpha
-[1] 0.05
+[1] 0,05
 
 $effect
-[1] 2.725
+[1] 2,725
 
 $test
 [1] "two.tail"</code></pre>
@@ -847,7 +847,7 @@ Figura&nbsp;2.14: Diferentes padrões de correlação
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo da correlação</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(X,Y)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1370349</code></pre>
+<pre><code>[1] 0,1370349</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de correlação</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(X,Y, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -856,13 +856,13 @@ Figura&nbsp;2.14: Diferentes padrões de correlação
     Pearson's product-moment correlation
 
 data:  X and Y
-t = 0.73203, df = 28, p-value = 0.4702
+t = 0,73203, df = 28, p-value = 0,4702
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- -0.2348276  0.4739076
+ -0,2348276  0,4739076
 sample estimates:
       cor 
-0.1370349 </code></pre>
+0,1370349 </code></pre>
 </div>
 </div>
 <p>Antes de realizar o teste <span class="math inline">\(t\)</span> para averiguar a diferença entre médias entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> do <a href="#exm-t2" class="quarto-xref">Exemplo&nbsp;<span>2.3</span></a>, é importante testar a homocedasticidade, isto é, a homogeneidade de variâncias entre as duas amostras. Primeiramente, é necessário organizar os dados de forma tabular utilizando o comando <code>data.frame()</code>.</p>
@@ -904,7 +904,7 @@ Figura&nbsp;2.16: Histogramas e densidades amostrais para resistância à traç�
     Bartlett test of homogeneity of variances
 
 data:  resistencia by grupo
-Bartlett's K-squared = 3.2534, df = 1, p-value = 0.07128</code></pre>
+Bartlett's K-squared = 3,2534, df = 1, p-value = 0,07128</code></pre>
 </div>
 </div>
 <p>O teste de normalidade das duas amostras também deve ser realizado. Pode-se constatar, pelos resultados abaixo, <span class="math inline">\(p-value&lt;\alpha\)</span>, que não há indícios para rejeição da hipótese nula de normalidade das amostras. A <a href="#fig-qq2t" class="quarto-xref">Figura&nbsp;<span>2.17</span></a> ilustra os gráficos q-q para as amostras.</p>
@@ -914,14 +914,14 @@ Bartlett's K-squared = 3.2534, df = 1, p-value = 0.07128</code></pre>
     Shapiro-Wilk normality test
 
 data:  resistencia[grupo == "Controle"]
-W = 0.95678, p-value = 0.2557</code></pre>
+W = 0,95678, p-value = 0,2557</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  resistencia[grupo == "Tratada"]
-W = 0.96465, p-value = 0.4049</code></pre>
+W = 0,96465, p-value = 0,4049</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -969,18 +969,18 @@ s = \sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
     Two Sample t-test
 
 data:  resistencia by grupo
-t = -10.393, df = 58, p-value = 7.3e-15
+t = -10,393, df = 58, p-value = 7,3e-15
 alternative hypothesis: true difference in means between group Controle and group Tratada is not equal to 0
 95 percent confidence interval:
- -35.73313 -24.19135
+ -35,73313 -24,19135
 sample estimates:
 mean in group Controle  mean in group Tratada 
-              116.4774               146.4396 </code></pre>
+              116,4774               146,4396 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tcritico <span class="ot">&lt;-</span> <span class="fu">qt</span>(.<span class="dv">95</span><span class="fl">+.05</span><span class="sc">/</span><span class="dv">2</span>,<span class="fu">dim</span>(dados)[<span class="dv">1</span>])</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tcritico</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.000298</code></pre>
+<pre><code>[1] 2,000298</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra sintaxe possível</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># retirar # para testar</span></span>
@@ -1018,9 +1018,9 @@ mean in group Controle  mean in group Tratada
      Two-sample t test power calculation 
 
               n = 30
-          delta = 29.96224
-             sd = 11.1657
-      sig.level = 0.05
+          delta = 29,96224
+             sd = 11,1657
+      sig.level = 0,05
           power = 1
     alternative = two.sided
 
@@ -1069,13 +1069,13 @@ Figura&nbsp;2.18: Curva de poder do teste, n1 = n2 = 30, sd = 11.17, teste bilat
     Pearson's product-moment correlation
 
 data:  Pulverizada and Granulada
-t = 11.704, df = 28, p-value = 2.677e-12
+t = 11,704, df = 28, p-value = 2,677e-12
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.8201861 0.9572343
+ 0,8201861 0,9572343
 sample estimates:
       cor 
-0.9112053 </code></pre>
+0,9112053 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1108,7 +1108,7 @@ t_0 = \frac{\bar{x}_d-\mu_d}{s_d/\sqrt{n}}
     Shapiro-Wilk normality test
 
 data:  d
-W = 0.9786, p-value = 0.7871</code></pre>
+W = 0,9786, p-value = 0,7871</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico q-q</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># qqnorm(d)</span></span>
@@ -1125,13 +1125,13 @@ W = 0.9786, p-value = 0.7871</code></pre>
     Paired t-test
 
 data:  Pulverizada and Granulada
-t = 0.18284, df = 29, p-value = 0.8562
+t = 0,18284, df = 29, p-value = 0,8562
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -0.3055859  0.3655859
+ -0,3055859  0,3655859
 sample estimates:
 mean difference 
-           0.03 </code></pre>
+           0,03 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outra possibilidade fazer o teste t para uma amostra das diferenças</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(d)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1143,10 +1143,10 @@ mean difference
      Paired t test power calculation 
 
               n = 30
-          delta = 0.03
-             sd = 0.8987156
-      sig.level = 0.05
-          power = 0.03728679
+          delta = 0,03
+             sd = 0,8987156
+      sig.level = 0,05
+          power = 0,03728679
     alternative = two.sided
 
 NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>

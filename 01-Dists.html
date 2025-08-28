@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -488,7 +488,7 @@ Tabela&nbsp;1.2: Propriedades dos operadores de média e variância
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(x &lt; 3,3)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">3.3</span>, <span class="at">mean =</span> <span class="fl">3.4</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1586553</code></pre>
+<pre><code>[1] 0,1586553</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -556,17 +556,17 @@ Figura&nbsp;1.7: quantil <span class="math inline">\(\phi(z_q) = q\)</span>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade phi(z_q) para z = 0.6744898</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.6744898</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.75</code></pre>
+<pre><code>[1] 0,75</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z_q associado à probabilidade p = 0.75, P(Z &lt; z_q) = 0.5</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6744898</code></pre>
+<pre><code>[1] 0,6744898</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade p para z_p = 0 </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5</code></pre>
+<pre><code>[1] 0,5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z_p associado à probabilidade p = 0.5</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,12 +576,12 @@ Figura&nbsp;1.7: quantil <span class="math inline">\(\phi(z_q) = q\)</span>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilidade q para z_p = -0.6744898 </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.6744898</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.25</code></pre>
+<pre><code>[1] 0,25</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor z associado à probabilidade p = 0.25</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.6744898</code></pre>
+<pre><code>[1] -0,6744898</code></pre>
 </div>
 </div>
 <p>Uma regra usual da distribuição normal é a regra 68-95-99%. Por esta regra sabe-se que na distribuição normal a probabilidade entre <span class="math inline">\(\pm 1\)</span> desvio-padrão em relação à média é igual a 0,6827, enquanto a probabilidade entre <span class="math inline">\(\pm 2\)</span> desvios-padrões em relação à média é igual a 0,9545. Por fim, a probabilidade entre <span class="math inline">\(\pm 3\)</span> desvios é igual a 0,9973, conforme ilustrado na <a href="#fig-probsz" class="quarto-xref">Figura&nbsp;<span>1.8</span></a>. Em metrologia é comum a incerteza de medição ser calculada considerando mais ou menos dois desvios-padrões em relação à média do mensurando corrigida, sendo considerado 0.9545 de confiança ara encontrar o erro de medição. Em controle estatístico de qualidade é comum o uso de mais ou menos três desvios-padrões em relação à média em cartas de controle, sendo o nível de confiança de 0.9973 o mais usado em tais aplicações. Para calcular tais probabilidades na linguagem R, pode-se utilizar o código abaixo.</p>
@@ -589,17 +589,17 @@ Figura&nbsp;1.7: quantil <span class="math inline">\(\phi(z_q) = q\)</span>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-1&lt;z&lt;1)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6826895</code></pre>
+<pre><code>[1] 0,6826895</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-2&lt;z&lt;2)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9544997</code></pre>
+<pre><code>[1] 0,9544997</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(-3&lt;z&lt;3)</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">3</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9973002</code></pre>
+<pre><code>[1] 0,9973002</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -679,7 +679,7 @@ Figura&nbsp;1.9: Distribuição chi-quadrado com <span class="math inline">\(k\)
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lower.tail = TRUE indica P(X &lt;= x)</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8282029</code></pre>
+<pre><code>[1] 0,8282029</code></pre>
 </div>
 </div>
 <p>Caso o analista deseje obter a probabilidade à direita do valor de interesse, deve-se utilizar o argumento <code>lower.tail = FALSE</code>.</p>
@@ -714,17 +714,17 @@ Figura&nbsp;1.10: Distribuição t de Student e normal padrão
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidade à esquerda do valor t = 2, com n-1 = 19</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">19</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.969999</code></pre>
+<pre><code>[1] 0,969999</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidade à direita do valor t = 2, com n-1 = 19</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">19</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.03000102</code></pre>
+<pre><code>[1] 0,03000102</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidade entre t=-2 e t=2, com n-1 = 9</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">9</span>) <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">df =</span> <span class="dv">9</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9234472</code></pre>
+<pre><code>[1] 0,9234472</code></pre>
 </div>
 </div>
 <p>De outra forma, para se encontrar o valor <span class="math inline">\(t\)</span> de interesse considerando uma determinada probabilidade, deve-se utilizar no R o comando <code>qt()</code>, conforme à seguir.</p>
@@ -732,12 +732,12 @@ Figura&nbsp;1.10: Distribuição t de Student e normal padrão
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valor t para a probabilidade acumulada à esquerda de 0,9 com n-1 = 29</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.8</span>, <span class="at">df =</span> <span class="dv">29</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.854192</code></pre>
+<pre><code>[1] 0,854192</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pode-se fornecer um vetor de probabilidades como argumento</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.925</span>, <span class="fl">0.95</span>, <span class="fl">0.975</span>), <span class="at">df =</span> <span class="dv">29</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.311434 1.478705 1.699127 2.045230</code></pre>
+<pre><code>[1] 1,311434 1,478705 1,699127 2,045230</code></pre>
 </div>
 </div>
 <p>Para obter um gráfico da fdp da distribuição <span class="math inline">\(t\)</span> pode-se utilizar um código similar ao que segue.</p>
@@ -801,7 +801,7 @@ Figura&nbsp;1.11: Distribuição F com n-1,m-1 graus de liberdade
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># com p = 1 e q = 8 graus de liberdade</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">2.13</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1813001</code></pre>
+<pre><code>[1] 0,1813001</code></pre>
 </div>
 </div>
 <p>De outra forma, pode ser interessante obter o valor associado a uma determinada probabilidade de interesse.</p>
@@ -810,7 +810,7 @@ Figura&nbsp;1.11: Distribuição F com n-1,m-1 graus de liberdade
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># na calda direita, com p = 1 e q = 8 graus de liberdade </span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.317655</code></pre>
+<pre><code>[1] 5,317655</code></pre>
 </div>
 </div>
 <p>O código à seguir serve para obtenção da fdp da distribuição <span class="math inline">\(F\)</span>.</p>
@@ -954,8 +954,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1066,7 +1064,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

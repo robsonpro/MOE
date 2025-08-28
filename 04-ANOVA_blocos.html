@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -562,14 +562,14 @@ Tabela&nbsp;4.4: Tabela resumo ANOVA para o planejamento com blocos completos al
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-Agente       2  71.85   35.92  12.057 0.00385 **
-Bloco        4  78.37   19.59   6.576 0.01203 * 
-Residuals    8  23.83    2.98                   
+Agente       2  71,85   35,92  12,057 0,00385 **
+Bloco        4  78,37   19,59   6,576 0,01203 * 
+Residuals    8  23,83    2,98                   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.45897</code></pre>
+<pre><code>[1] 4,45897</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -578,23 +578,23 @@ lm(formula = modelo_anova)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--2.68000 -0.27667 -0.01333  0.22000  3.06000 
+-2,68000 -0,27667 -0,01333  0,22000  3,06000 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)     3.9467     1.1791   3.347  0.01012 * 
-AgenteZnoAN    -2.6000     1.0917  -2.382  0.04443 * 
-AgenteZnoANOT   2.7600     1.0917   2.528  0.03535 * 
-BlocoHBM        5.9333     1.4093   4.210  0.00296 **
-BlocoME        -0.3000     1.4093  -0.213  0.83676   
-BlocoSEMA       1.1667     1.4093   0.828  0.43178   
-BlocoTBM        0.5667     1.4093   0.402  0.69815   
+(Intercept)     3,9467     1,1791   3,347  0,01012 * 
+AgenteZnoAN    -2,6000     1,0917  -2,382  0,04443 * 
+AgenteZnoANOT   2,7600     1,0917   2,528  0,03535 * 
+BlocoHBM        5,9333     1,4093   4,210  0,00296 **
+BlocoME        -0,3000     1,4093  -0,213  0,83676   
+BlocoSEMA       1,1667     1,4093   0,828  0,43178   
+BlocoTBM        0,5667     1,4093   0,402  0,69815   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 
-Residual standard error: 1.726 on 8 degrees of freedom
-Multiple R-squared:  0.8631,    Adjusted R-squared:  0.7604 
-F-statistic: 8.403 on 6 and 8 DF,  p-value: 0.004185</code></pre>
+Residual standard error: 1,726 on 8 degrees of freedom
+Multiple R-squared:  0,8631,    Adjusted R-squared:  0,7604 
+F-statistic: 8,403 on 6 and 8 DF,  p-value: 0,004185</code></pre>
 </div>
 </div>
 <p>As medidas de ajuste usadas para averiguar a efetividade do modelo obtido via ANOVA no caso blocado são as mesmas, porém devem considerar a variabilidade relativa ao bloco. O coeficiente de determinação simples, <span class="math inline">\(R^2\)</span>, é calculado conforme a <a href="#eq-R2dbc" class="quarto-xref">Equação&nbsp;<span>4.3</span></a>, como a razão entre a soma dos quadrados explicada pelo modelo (tratamentos e blocos) e a soma dos quadrados total. Esta medida quantifica a proporção da variabilidade total explicada pelo modelo, mas deve ser usada com cautela, pois não considera o número de parâmetros incluídos.</p>
@@ -628,7 +628,7 @@ Figura&nbsp;4.2: Gráficos de resíduos para ANOVA com blocos
     Shapiro-Wilk normality test
 
 data:  modelo_anova$residuals
-W = 0.92293, p-value = 0.2134</code></pre>
+W = 0,92293, p-value = 0,2134</code></pre>
 </div>
 </div>
 <p>A <a href="#fig-efeitosanovabl" class="quarto-xref">Figura&nbsp;<span>4.3</span></a> ilustra um gráfico de efeitos dos tratamentos e blocos. A idéia deste gráfico é não somente demonstrar o efeito do agente redutor, mas também do método de medição. Pode-se observar que o agente ZnOAN resulta no menor tamanho de partícula, seguido do ZnOABM e do ZnOANOT. Ademais, fica claro que o método de medição HBM apresenta maior resultado de tamanho de partícula.</p>
@@ -693,22 +693,22 @@ Fit: aov(formula = Tamanho ~ Agente + Bloco, data = planejamento)
 
 $Agente
                 diff        lwr       upr     p adj
-ZnoAN-ZnoABM   -2.60 -5.7193731 0.5193731 0.1005971
-ZnoANOT-ZnoABM  2.76 -0.3593731 5.8793731 0.0811522
-ZnoANOT-ZnoAN   5.36  2.2406269 8.4793731 0.0029844
+ZnoAN-ZnoABM   -2,60 -5,7193731 0,5193731 0,1005971
+ZnoANOT-ZnoABM  2,76 -0,3593731 5,8793731 0,0811522
+ZnoANOT-ZnoAN   5,36  2,2406269 8,4793731 0,0029844
 
 $Bloco
                diff        lwr        upr     p adj
-HBM-BE    5.9333333   1.064437 10.8022298 0.0182795
-ME-BE    -0.3000000  -5.168896  4.5688965 0.9994366
-SEMA-BE   1.1666667  -3.702230  6.0355631 0.9146298
-TBM-BE    0.5666667  -4.302230  5.4355631 0.9933755
-ME-HBM   -6.2333333 -11.102230 -1.3644369 0.0139017
-SEMA-HBM -4.7666667  -9.635563  0.1022298 0.0551913
-TBM-HBM  -5.3666667 -10.235563 -0.4977702 0.0310483
-SEMA-ME   1.4666667  -3.402230  6.3355631 0.8303422
-TBM-ME    0.8666667  -4.002230  5.7355631 0.9685578
-TBM-SEMA -0.6000000  -5.468896  4.2688965 0.9917826</code></pre>
+HBM-BE    5,9333333   1,064437 10,8022298 0,0182795
+ME-BE    -0,3000000  -5,168896  4,5688965 0,9994366
+SEMA-BE   1,1666667  -3,702230  6,0355631 0,9146298
+TBM-BE    0,5666667  -4,302230  5,4355631 0,9933755
+ME-HBM   -6,2333333 -11,102230 -1,3644369 0,0139017
+SEMA-HBM -4,7666667  -9,635563  0,1022298 0,0551913
+TBM-HBM  -5,3666667 -10,235563 -0,4977702 0,0310483
+SEMA-ME   1,4666667  -3,402230  6,3355631 0,8303422
+TBM-ME    0,8666667  -4,002230  5,7355631 0,9685578
+TBM-SEMA -0,6000000  -5,468896  4,2688965 0,9917826</code></pre>
 </div>
 </div>
 </section>
@@ -811,8 +811,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -923,7 +921,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
