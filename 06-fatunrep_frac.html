@@ -8,7 +8,7 @@
 
 <meta name="author" content="Robson Bruno Dutra Pereira">
 
-<title>6&nbsp; Fatorial de dois níveis não replicado e fracionado – Modelagem e Otimização de Experimentos</title>
+<title>6&nbsp; Fatorial de dois níveis não replicado, com blocos e fracionado – Modelagem e Otimização de Experimentos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +145,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-fatunrep_frac.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado e fracionado</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-fatunrep_frac.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado, com blocos e fracionado</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -203,13 +203,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-fat2k.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis replicado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-fatunrep_frac.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado e fracionado</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado, com blocos e fracionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -247,7 +247,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado e fracionado</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado, com blocos e fracionado</span></h1>
 </div>
 
 
@@ -645,21 +645,21 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16,950      4,05   4,185  0,0057      0,0502
-C    11,675      4,05   2,883  0,0212      0,1942
-AD    5,900      4,05   1,457  0,1438      0,8181
-D     5,625      4,05   1,389  0,1600      0,8508
-AC   -3,400      4,05  -0,840  0,3696      0,9996
-BCD   3,350      4,05   0,827  0,3765      0,9996
-ABCD -3,325      4,05  -0,821  0,3798      0,9996
-B     3,100      4,05   0,765  0,4129      1,0000
-BD   -2,700      4,05  -0,667  0,5395      1,0000
-ABD  -2,325      4,05  -0,574  0,5991      1,0000
-AB    2,275      4,05   0,562  0,6067      1,0000
-CD    2,125      4,05   0,525  0,6308      1,0000
-ABC  -1,825      4,05  -0,451  0,6798      1,0000
-BC    0,850      4,05   0,210  0,8449      1,0000
-ACD  -0,650      4,05  -0,160  0,8800      1,0000</code></pre>
+A    16,950      4,05   4,185  0,0065      0,0547
+C    11,675      4,05   2,883  0,0228      0,1946
+AD    5,900      4,05   1,457  0,1497      0,8361
+D     5,625      4,05   1,389  0,1661      0,8800
+AC   -3,400      4,05  -0,840  0,3753      0,9996
+BCD   3,350      4,05   0,827  0,3816      0,9996
+ABCD -3,325      4,05  -0,821  0,3852      1,0000
+B     3,100      4,05   0,765  0,4182      1,0000
+BD   -2,700      4,05  -0,667  0,5402      1,0000
+ABD  -2,325      4,05  -0,574  0,6035      1,0000
+AB    2,275      4,05   0,562  0,6109      1,0000
+CD    2,125      4,05   0,525  0,6331      1,0000
+ABC  -1,825      4,05  -0,451  0,6811      1,0000
+BC    0,850      4,05   0,210  0,8447      1,0000
+ACD  -0,650      4,05  -0,160  0,8811      1,0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
@@ -1590,21 +1590,21 @@ attr(,"mean")
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85,25      9,75  -8,744  0,0003      0,0026
-A     19,25      9,75   1,974  0,0652      0,4919
-AC   -16,25      9,75  -1,667  0,1040      0,6910
-AB   -13,25      9,75  -1,359  0,1674      0,8665
-BCD   12,75      9,75   1,308  0,1813      0,8935
-B    -11,25      9,75  -1,154  0,2310      0,9655
-ABC    7,25      9,75   0,744  0,4276      1,0000
-BC    -6,75      9,75  -0,692  0,4642      1,0000
-BD     6,25      9,75   0,641  0,5564      1,0000
-ABD   -5,75      9,75  -0,590  0,5883      1,0000
-AD    -5,25      9,75  -0,538  0,6217      1,0000
-CD    -3,75      9,75  -0,385  0,7222      1,0000
-ACD   -2,75      9,75  -0,282  0,7939      1,0000
-D      1,75      9,75   0,179  0,8672      1,0000
-ABCD  -1,25      9,75  -0,128  0,9044      1,0000</code></pre>
+C    -85,25      9,75  -8,744  0,0004      0,0041
+A     19,25      9,75   1,974  0,0673      0,5039
+AC   -16,25      9,75  -1,667  0,1078      0,7000
+AB   -13,25      9,75  -1,359  0,1744      0,8958
+BCD   12,75      9,75   1,308  0,1883      0,9164
+B    -11,25      9,75  -1,154  0,2377      0,9670
+ABC    7,25      9,75   0,744  0,4328      1,0000
+BC    -6,75      9,75  -0,692  0,4668      1,0000
+BD     6,25      9,75   0,641  0,5588      1,0000
+ABD   -5,75      9,75  -0,590  0,5931      1,0000
+AD    -5,25      9,75  -0,538  0,6255      1,0000
+CD    -3,75      9,75  -0,385  0,7238      1,0000
+ACD   -2,75      9,75  -0,282  0,7942      1,0000
+D      1,75      9,75   0,179  0,8671      1,0000
+ABCD  -1,25      9,75  -0,128  0,9051      1,0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2030,22 +2030,22 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1  -1  1 -1 -1  1
-2   1  1  1  1 -1
-3   1 -1 -1  1 -1
-4   1 -1  1 -1 -1
-5  -1 -1  1 -1  1
-6   1  1 -1 -1 -1
-7   1  1 -1  1  1
-8  -1  1  1  1  1
-9   1 -1  1  1  1
-10  1 -1 -1 -1  1
-11 -1 -1 -1  1  1
-12 -1  1 -1  1 -1
-13  1  1  1 -1  1
-14 -1  1  1 -1 -1
-15 -1 -1  1  1 -1
-16 -1 -1 -1 -1 -1
+1   1  1  1 -1  1
+2  -1  1  1  1  1
+3   1  1  1  1 -1
+4  -1 -1 -1 -1 -1
+5   1 -1  1  1  1
+6   1 -1 -1 -1  1
+7   1  1 -1 -1 -1
+8  -1  1  1 -1 -1
+9   1 -1 -1  1 -1
+10 -1 -1  1  1 -1
+11 -1 -1  1 -1  1
+12 -1  1 -1 -1  1
+13  1  1 -1  1  1
+14 -1  1 -1  1 -1
+15  1 -1  1 -1 -1
+16 -1 -1 -1  1  1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
@@ -2512,8 +2512,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-fat2k.html" class="pagination-link" aria-label="Fatorial de dois níveis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis</span></span>
+      <a href="./05-fat2k.html" class="pagination-link" aria-label="Fatorial de dois níveis replicado">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis replicado</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

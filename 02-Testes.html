@@ -203,13 +203,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-fat2k.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis replicado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-fatunrep_frac.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado e fracionado</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fatorial de dois níveis não replicado, com blocos e fracionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -273,14 +273,14 @@ window.Quarto = {
 
 <section id="introdução" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">2.1</span> Introdução</h2>
-<p>Neste capítulo serão abordados alguns testes de hipóteses para média de uma e duas amostras. Alguns destes testes são fundamentais em planejamentos de experimentos e inferência de modelos muito populares. Existem diversas situações que testes simples como os explicitados aqui são suficientes para comprovar o efeito ou testar diferenças entre médias considerando uma ou duas amostras. Ademais, existem planejamentos que consideram múltiplós fatores ou variáveis em estudo, mas usam do teste t para inferência de coeficientes de modelos de regressão. Portanto, é essencial compreender os conceitos deste capítulo.</p>
-<p>Neste capítulo são utilizados os pacotes <code>asbio</code>, <code>DescTools</code>, <code>ggpplot2</code> para gráficos, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. A instalação é realizada uma única vez, porém o pacote deve ser carregado via <code>library(&lt;nome_pacote&gt;)</code> sempre que deseja-se usar suas funções.</p>
+<p>Neste capítulo serão abordados alguns testes de hipóteses para média de uma e duas amostras. O entendimento do princípio destes testes é fundamental para posteriormente entender inferência em experimentos planejados. Existem diversas situações nas quais testes simples como os explicitados aqui são suficientes para comprovar o efeito ou testar diferenças entre médias considerando uma ou duas amostras. Ademais, existem planejamentos que consideram múltiplós fatores ou variáveis em estudo, mas usam do teste t para inferência de coeficientes de modelos de regressão. Portanto, é essencial compreender os conceitos deste capítulo.</p>
+<p>Neste capítulo são utilizados os pacotes <code>asbio</code>, <code>DescTools</code>, <code>ggpplot2</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. A instalação é realizada uma única vez, porém o pacote deve ser carregado via <code>library(&lt;nome_pacote&gt;)</code> sempre que deseja-se usar suas funções.</p>
 </section>
 <section id="teste-t-para-média-de-uma-amostra" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="teste-t-para-média-de-uma-amostra"><span class="header-section-number">2.2</span> Teste t para média de uma amostra</h2>
-<p>Seja uma amostra aleatória de <span class="math inline">\(n\)</span> observações, <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, retirada de uma va que segue a distribuição normal, um problema comum de decisão é o teste de hipóteses. Neste tipo de teste pode-se inferir, por exemplo, se o parâmetro em estudo é igual a um determinado valor de interesse ou não. No caso da média de uma determinada amostra de interesse, o teste <span class="math inline">\(t\)</span> pode ser utilizado.</p>
+<p>Seja uma amostra aleatória de <span class="math inline">\(n\)</span> observações, <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, retirada de uma va que segue a distribuição normal. Um problema comum de decisão é o teste de hipóteses. Neste tipo de teste pode-se inferir, por exemplo, se o parâmetro em estudo é igual a um determinado valor de interesse ou não. No caso da média de uma determinada amostra de interesse, o teste <span class="math inline">\(t\)</span> pode ser utilizado.</p>
 <div id="exm-t1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 2.1</strong></span> Considere uma amostra de 12 observações da circularidade total <span class="math inline">\(Ron_t\)</span> de furos obtidos por fresamento helicoidal no aço inox superduplex UNS S32760. A <a href="#fig-bpront" class="quarto-xref">Figura&nbsp;<span>2.1</span></a> apresenta um boxplot de Ront. Um engenheiro ou pesquisador pode desejar inferir se a média de Ront é menor que 10 <span class="math inline">\(\mu m\)</span> por considerar este limite superior como aceitável para uma determinada aplicação.</p>
+<p><span class="theorem-title"><strong>Exemplo 2.1</strong></span> Considere uma amostra de 12 observações da circularidade total <span class="math inline">\(Ron_t\)</span> de furos obtidos por fresamento helicoidal em peças de aço inox superduplex UNS S32760. A <a href="#fig-bpront" class="quarto-xref">Figura&nbsp;<span>2.1</span></a> apresenta um boxplot de Ront. Um engenheiro ou pesquisador pode desejar inferir se a média de Ront é menor que 10 <span class="math inline">\(\mu m\)</span> por considerar este limite superior de especificação para uma determinada aplicação.</p>
 </div>
 <p>A seguir apresenta-se a amostra com 12 observações da circularidade total.</p>
 <div class="cell">
@@ -288,8 +288,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Ront <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.7249</span>, <span class="fl">7.8566</span>, <span class="fl">7.5466</span>, <span class="fl">12.0763</span>, <span class="fl">7.6331</span>, <span class="fl">6.1340</span>, </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          <span class="fl">9.9053</span>, <span class="fl">10.4416</span>, <span class="fl">11.3306</span>, <span class="fl">7.0836</span>, <span class="fl">9.5623</span>, <span class="fl">9.1118</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># quartis (quantis que dividem a amostra em quatro partes)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(Ront)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(Ront)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -312,7 +311,7 @@ Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
   H_1:&amp; \mu &lt; 10
 \end{align}
 \]</span></p>
-<p>O valor de interesse testado na hipótese é denotado <span class="math inline">\(\mu_0\)</span>. Uma vez que o analista já coletou a amostra para testar sua hipótese, pode-se seguir com o cláculo da estatística do teste. Como ele coletou uma amostra de tamanho pequeno, além de a variância populacional ser desconhecida, deve-se utilizar o teste <span class="math inline">\(t\)</span> para uma amostra, baseado na distribuição <span class="math inline">\(t\)</span> de Student. A estatística do teste para testar uma hipótese sobre a média de uma amostra neste caso é apresentada na <a href="#eq-ttest" class="quarto-xref">Equação&nbsp;<span>2.1</span></a>. Por este cálculo padroniza-se a distribuição amostral obtida em relação ao valor hipotético, havendo mais evidência para rejeição da hipótese nula, quanto maior for o desvio negativo de <span class="math inline">\(t_0\)</span> em relação a zero. Deve-se recordar que, pelo TCL, o desvio-padrão da média é <span class="math inline">\(s_{\bar{x}} = s/\sqrt{n}\)</span>.</p>
+<p>O valor de interesse testado na hipótese é denotado <span class="math inline">\(\mu_0\)</span>, sendo neste caso 10mm, conforme consta nas hipóteses. Uma vez que o analista já coletou a amostra para testar sua hipótese, pode-se seguir com o cláculo da estatística do teste. Como ele coletou uma amostra de tamanho pequeno, além de a variância populacional ser desconhecida, deve-se utilizar o teste <span class="math inline">\(t\)</span> para uma amostra, baseado na distribuição <span class="math inline">\(t\)</span> de Student. A estatística do teste para testar uma hipótese sobre a média de uma amostra neste caso é apresentada na <a href="#eq-ttest" class="quarto-xref">Equação&nbsp;<span>2.1</span></a>. Por este cálculo padroniza-se a distribuição amostral obtida em relação ao valor hipotético, havendo mais evidência para rejeição da hipótese nula, quanto maior for o desvio negativo de <span class="math inline">\(t_0\)</span> em relação a zero. Deve-se recordar que, pelo TCL, o desvio-padrão da média é <span class="math inline">\(s_{\bar{x}} = s/\sqrt{n}\)</span>.</p>
 <p><span id="eq-ttest"><span class="math display">\[
   t_0 = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
 \tag{2.1}\]</span></span></p>
@@ -337,7 +336,7 @@ Figura&nbsp;2.1: Box-plot de Ront <span class="math inline">\([\mu m]\)</span>
 <pre><code>[1] -2,211601</code></pre>
 </div>
 </div>
-<p>Para julgar se a hipótese nula deve ser rejeitada em favor da alternativa ou não, deve-se definir uma região crítica ou região de rejeição de <span class="math inline">\(H_0\)</span>. Para tal, deve-se definir um nível de significância <span class="math inline">\(\alpha\)</span> de interesse. O nível de significância consiste em uma probabilidade de erro na rejeição da hipótese nula que se assume ao testar a hipótese. Quanto menor, menor a probabilidade de rejeitar a hipótese nula erroneamente caso esta seja verdadeira. Entretanto, quanto menor o nível de significância <span class="math inline">\(\alpha\)</span>, mais difícil é a rejeição da hipótese nula. É comum adotar-se em pesquisas <span class="math inline">\(\alpha = 0,05\)</span>, mas alguns pesquisadores mais criteriosos costumam adotar <span class="math inline">\(\alpha = 0,01\)</span>, ou valores inferiores. O nível de confiança <span class="math inline">\(\gamma\)</span> do teste é o complementar do nível de significância, <span class="math inline">\(\gamma = 1 - \alpha\)</span>. A <a href="#fig-regcrit" class="quarto-xref">Figura&nbsp;<span>2.2</span></a> ilustra a distribuição <span class="math inline">\(t\)</span> com 11 graus de liberdade e região crítica em vermelho para o teste em questão, considerando <span class="math inline">\(\alpha = 0,05\)</span>.</p>
+<p>Para julgar se a hipótese nula deve ser rejeitada em favor da alternativa ou não, deve-se definir uma região crítica ou região de rejeição de <span class="math inline">\(H_0\)</span>. Para tal, deve-se definir um nível de significância <span class="math inline">\(\alpha\)</span> de interesse. O nível de significância consiste em uma probabilidade de erro na rejeição da hipótese nula que se assume ao testar a hipótese. Quanto menor, menor a probabilidade de se rejeitar a hipótese nula erroneamente, caso esta seja verdadeira. Entretanto, quanto menor o nível de significância <span class="math inline">\(\alpha\)</span>, mais difícil é a rejeição da hipótese nula. É comum adotar-se em pesquisas <span class="math inline">\(\alpha = 0,05\)</span>, mas alguns pesquisadores mais criteriosos costumam adotar <span class="math inline">\(\alpha = 0,01\)</span>, ou valores inferiores, especialmente em testes clínicos onde se exige uma probabilidade mínima de erro na rejeição da hipótese nula. O nível de confiança <span class="math inline">\(\gamma\)</span> do teste é o complementar do nível de significância, <span class="math inline">\(\gamma = 1 - \alpha\)</span>. A <a href="#fig-regcrit" class="quarto-xref">Figura&nbsp;<span>2.2</span></a> ilustra a distribuição <span class="math inline">\(t\)</span> com 11 graus de liberdade e região crítica em vermelho para o teste em questão, considerando <span class="math inline">\(\alpha = 0,05\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-regcrit" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -361,7 +360,7 @@ Figura&nbsp;2.2: Região crítica para o teste t, com <span class="math inline">
 <pre><code>[1] -1,795885</code></pre>
 </div>
 </div>
-<p>Para decidir deve-se comparar o valor da estatística do teste com o valor crítico. Neste caso, como a hipótese alternativa é <span class="math inline">\(H_0: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Logo, neste caso como <span class="math inline">\(t_0 = -2,21 &lt; -1,796 = t_\alpha\)</span>, rejeita-se a hipótese nula, com <span class="math inline">\(\alpha = 0,05\)</span> de significância, podendo-se concluir que a média da circularidade total, <span class="math inline">\(\overline{Ron_t}\)</span>, é menor que <span class="math inline">\(10 \mu m\)</span>.</p>
+<p>Para decidir, deve-se comparar o valor da estatística do teste com o valor crítico. Neste caso, como a hipótese alternativa é <span class="math inline">\(H_0: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Logo, neste caso como <span class="math inline">\(t_0 = -2,21 &lt; -1,796 = t_\alpha\)</span>, rejeita-se a hipótese nula, com <span class="math inline">\(\alpha = 0,05\)</span> de significância, podendo-se concluir que a média da circularidade total, <span class="math inline">\(\overline{Ron_t}\)</span>, é menor que <span class="math inline">\(10 \mu m\)</span>.</p>
 <p>A função <code>t.test()</code> do R pode ser utilizada para realizar o teste <span class="math inline">\(t\)</span> para uma amostra. Para o caso do <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, pode-se utilizar sintaxe que segue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> Ront,</span>
@@ -382,14 +381,14 @@ mean of x
 </div>
 </div>
 <p>A saída fornece o valor de <span class="math inline">\(t_0\)</span> calculado, o número de graus de liberdade do teste, e o p-valor (p-value), que consiste na probabilidade associada ao valor calculado. A saída também especifíca a hipótese testada, além de fornecer um intervalo de confiança associado ao teste realizado e a estimativa pontual do parâmetro testado, isto é, a média. O intervalo de confiança consiste em limites de confiança para média, neste caso apenas o superior, uma vez que foi realizado um teste unilateral à esquerda. A média está abaixo deste limite com <span class="math inline">\(\gamma = 1 - \alpha = 0,95\)</span> de confiança.</p>
-<p>No teste unilateral à esquerda realizado o limite superior de confiança é calculado conforme Equação <a href="#eq-liminf" class="quarto-xref">Equação&nbsp;<span>2.2</span></a>. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> este limite é de <span class="math inline">\(9,77\)</span>, indicando que a média é menor que este valor com <span class="math inline">\(\gamma = 0,95\)</span> de confiança.</p>
+<p>No teste unilateral à esquerda realizado, o limite superior de confiança é calculado conforme Equação <a href="#eq-liminf" class="quarto-xref">Equação&nbsp;<span>2.2</span></a>. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> este limite é de <span class="math inline">\(9,77\)</span>, indicando que a média é menor que este valor com <span class="math inline">\(\gamma = 0,95\)</span> de confiança.</p>
 <p><span id="eq-liminf"><span class="math display">\[
 \begin{align}
   \frac{\bar{x}-\mu_0}{s/\sqrt{n}} &lt;&amp; t_{(\alpha,n-1)} \\
   \mu_0 &lt;&amp; \bar{x} - t_{(\alpha,n-1)}\frac{s}{\sqrt{n}}
 \end{align}
 \tag{2.2}\]</span></span></p>
-<p>Sendo o p-valor a probabilidade associada ao valor calculado, ele também pode ser utilizado na tomada de decisão em inferência. A <a href="#fig-pvaluet" class="quarto-xref">Figura&nbsp;<span>2.3</span></a> ilustra o p-valor, sendo neste caso a área sob a curva à esquerda do valor calculado <span class="math inline">\(t_0\)</span>, isto é <span class="math inline">\(p-valor = P(t &lt; t_0) = \Phi(t_0)\)</span>. Pode-se constatar que, para hipótese unilateral à esquerda, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span> implica em <span class="math inline">\(p-valor &lt; \alpha\)</span>. Quanto menor o p-valor, maior a evidência na rejeição da hipótese nula. Caso o analista queira obter o p-valor utilizando a função <code>pt</code> base do R, pode-se utilizar o código à seguir.</p>
+<p>Sendo o p-valor a probabilidade associada ao valor calculado, ele também pode ser utilizado na tomada de decisão em inferência. A <a href="#fig-pvaluet" class="quarto-xref">Figura&nbsp;<span>2.3</span></a> ilustra o p-valor, sendo neste caso a área sob a curva à esquerda do valor calculado <span class="math inline">\(t_0\)</span>, isto é <span class="math inline">\(pvalor = P(t &lt; t_0) = \Phi(t_0)\)</span>. Pode-se constatar que, para hipóteses unilaterais à esquerda, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, se <span class="math inline">\(t_0 &lt; t_\alpha\)</span> implica em <span class="math inline">\(p-valor &lt; \alpha\)</span>. Quanto menor o p-valor, maior a evidência na rejeição da hipótese nula. Caso o analista queira obter o p-valor utilizando a função <code>pt</code> base do R, pode-se utilizar o código à seguir.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-valor</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pvalor <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_0, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
@@ -398,7 +397,7 @@ mean of x
 <pre><code>[1] 0,02454049</code></pre>
 </div>
 </div>
-<p>A vantagem de tomar a decisão considerando o p-valor é que para um <span class="math inline">\(\alpha\)</span> fixo, basta comparar as probabilidades. Se o experimentador deseja, entretanto, tomar a decisão considerando o valor <span class="math inline">\(t_0\)</span>, ele deve conhecer o valor crítico <span class="math inline">\(t_\alpha\)</span> e este muda conforme o número de graus de liberdade associado ao teste. Deve-se atentar para o fato de que se o valor calculado <span class="math inline">\(t_0\)</span> cresce à medida que o tamanho amostral aumenta, o p-valor diminui no mesmo sentido. Deste modo, um pesquisador mal intencionado pode manipular seu estudo aumentado o tamanho amostral para rejeitar a hipótese nula, ou de outra forma, mudar o nível de significância para respaldar as conclusões almejadas. É importante dizer que o p-valor não pode ser usado como critério de sucesso ou fracasso, um p-valor mesmo que abaixo do nível de significância, mas próximo deste pode representar um risco considerávelmente alto de erro na rejeição da hipótese nula.</p>
+<p>A vantagem de tomar a decisão considerando o p-valor é que, para um <span class="math inline">\(\alpha\)</span> fixo, basta comparar as probabilidades. Se o experimentador deseja, entretanto, tomar a decisão considerando o valor <span class="math inline">\(t_0\)</span>, ele deve conhecer o valor crítico <span class="math inline">\(t_\alpha\)</span> e este muda conforme o número de graus de liberdade associado ao teste. Deve-se atentar, entretanto, para o fato de que se o valor calculado <span class="math inline">\(t_0\)</span> cresce à medida que o tamanho amostral aumenta, o p-valor diminui no mesmo sentido. Deste modo, um pesquisador mal intencionado pode manipular seu estudo aumentado o tamanho amostral para rejeitar a hipótese nula, ou de outra forma, mudar o nível de significância para respaldar as conclusões almejadas. É importante dizer que o p-valor não pode ser usado como critério de sucesso ou fracasso, um p-valor mesmo que abaixo do nível de significância, mas próximo deste pode representar um risco consideravelmente alto de erro na rejeição da hipótese nula.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pvaluet" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -414,15 +413,15 @@ Figura&nbsp;2.3: p-valor associado ao valor calculado <span class="math inline">
 </div>
 </div>
 <p>O teste de hipóteses para média de uma amostra, considerando variância populacional desconhecida e amostras pequenas, pode ser realizado utilizando-se a distribuição <span class="math inline">\(t\)</span> de Student. Além da hipótese alternativa unilateral à esquerda, há outras duas possibilidades a serem elucidadas. Há também pressuposições a serem observadas para condução do teste. Antes, porém, é razoável apresentar conceitos relacionados aos erros que podem ser cometidos ao se testar uma hipótese, visando o planejamento do teste de forma a minimizar estes erros.</p>
-<p>Um analista que deseja testar uma determinada hipótese não conhece a realidade acerca do parâmetro que deseja testar a partir de uma amostra limitada. Neste sentido, em inferência há dois tipos de erros que podem ser cometidos. O primeiro, chamado de erro do tipo I, consiste na rejeição da hipótese nula <span class="math inline">\(H_0\)</span>, quando esta é verdadeira. A probabilidade de ocorrência deste erro consiste no próprio nível de significância <span class="math inline">\(\alpha\)</span>, sendo este erro denotado utilizando probabilidade condicional, conforme segue.</p>
-<p><span class="math display">\[
+<p>Um analista que deseja testar uma determinada hipótese não conhece a realidade acerca do parâmetro de interesse a partir de uma amostra limitada. Neste sentido, em inferência há dois tipos de erros que podem ser cometidos. O primeiro, chamado de erro do tipo I, consiste na rejeição da hipótese nula <span class="math inline">\(H_0\)</span>, quando esta é verdadeira. A probabilidade de ocorrência deste erro consiste no próprio nível de significância <span class="math inline">\(\alpha\)</span>, sendo este erro denotado utilizando probabilidade condicional, conforme <a href="#eq-errot1" class="quarto-xref">Equação&nbsp;<span>2.3</span></a>.</p>
+<p><span id="eq-errot1"><span class="math display">\[
   \alpha = P(Erro \: tipo \: I) = P(rejeitar \: H_0 | H_0 \: é \: verdadeira)
-\]</span></p>
+\tag{2.3}\]</span></span></p>
 <p>Ao se adotar portanto, um determinado nível de significância <span class="math inline">\(\alpha\)</span>, assume-se o risco de cometer o erro do tipo I com probabilidade <span class="math inline">\(\alpha\)</span>.</p>
-<p>O erro do tipo II, denotado <span class="math inline">\(\beta\)</span> consiste na probabilidade de não rejeitar <span class="math inline">\(H_0\)</span>, dado que <span class="math inline">\(H_0\)</span> é falsa. Este erro é denotado conforme segue.</p>
-<p><span class="math display">\[
+<p>O erro do tipo II, <span class="math inline">\(\beta\)</span>, consiste na probabilidade de não rejeitar <span class="math inline">\(H_0\)</span>, dado que <span class="math inline">\(H_0\)</span> é falsa. Este erro é denotado conforme <a href="#eq-errot2" class="quarto-xref">Equação&nbsp;<span>2.4</span></a>.</p>
+<p><span id="eq-errot2"><span class="math display">\[
   \beta = P(Erro \: tipo \: II) = P(não \: rejeitar \: H_0 | H_0 \: é \: falsa)
-\]</span></p>
+\tag{2.4}\]</span></span></p>
 <p>Considerando ainda o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, com teste unilateral à esquerda, isto é, <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, supondo que a hipótese nula seja falsa, a média verdadeira pode ser descrita como <span class="math inline">\(\mu = \mu_0 - \delta\)</span>, <span class="math inline">\(\delta &gt; 0\)</span>. Logo, somando e subtraindo <span class="math inline">\(\delta\)</span> na estatística do teste e, sabendo que em uma amostra bem coletada resultará em <span class="math inline">\(\bar{x} \rightarrow \mu_0 - \delta\)</span>, tem-se:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -433,7 +432,7 @@ t_0 =&amp; \underbrace{\frac{\bar{x}-(\mu_0 - \delta)}{s/\sqrt{n}}}_{0, \: pois 
 <p>Logo, se <span class="math inline">\(H_0\)</span> é falsa, <span class="math inline">\(t_0\)</span> segue a distribuição <span class="math inline">\(t\)</span> não centrada, com <span class="math inline">\(n-1\)</span> graus de liberdade e parâmetro de não centralidade <span class="math inline">\(-\delta \sqrt{n}/s\)</span>, conforme segue.</p>
 <p><span id="eq-t0"><span class="math display">\[
 t_0 \sim t(n-1,-\frac{\delta \sqrt{n}}{s})
-\tag{2.3}\]</span></span></p>
+\tag{2.5}\]</span></span></p>
 <p>Este teste unilateral à esquerda com a hipótese nula falsa pode ser ilustrado conforme a <a href="#fig-pwrt" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -453,20 +452,20 @@ Figura&nbsp;2.4: Erro do tipo II, teste t unilateral à esquerda
 <p><span class="math display">\[
 \beta = P(t_0 \geq -t_{(\alpha,n-1)}|H_0)
 \]</span></p>
-<p>Tomando o valor de <span class="math inline">\(t_0\)</span> considerando, a existência de um deslocamento na média à esquerda, conforme a <a href="#eq-t0" class="quarto-xref">Equação&nbsp;<span>2.3</span></a>, tem-se:</p>
+<p>Tomando o valor de <span class="math inline">\(t_0\)</span> considerando, a existência de um deslocamento na média à esquerda, conforme a <a href="#eq-t0" class="quarto-xref">Equação&nbsp;<span>2.5</span></a>, tem-se:</p>
 <p><span id="eq-beta"><span class="math display">\[
 \begin{align}
-\beta =&amp; P(-\frac{\delta \sqrt{n}}{s} \geq -t_{(\alpha,n-1)}|H_0) \\
-\beta =&amp; P(-\frac{\delta \sqrt{n}}{s} +t_{(\alpha,n-1)} \geq 0 |H_0) \\
-\beta =&amp; 1 - P(\frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)} \leq 0 |H_0) \\
-\beta =&amp; 1 - \Phi(\frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)})
+\beta =&amp; P\bigg(-\frac{\delta \sqrt{n}}{s} \geq -t_{(\alpha,n-1)}|H_0\bigg) \\
+\beta =&amp; P\bigg(-\frac{\delta \sqrt{n}}{s} +t_{(\alpha,n-1)} \geq 0 |H_0\bigg) \\
+\beta =&amp; 1 - P\bigg(\frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)} \leq 0 |H_0\bigg) \\
+\beta =&amp; 1 - \Phi\bigg(\frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)}\bigg)
 \end{align}
-\tag{2.4}\]</span></span></p>
+\tag{2.6}\]</span></span></p>
 <p>De modo análogo, pode-se definir <span class="math inline">\(\beta\)</span> considerando a curva sob a hipótese alternativa <span class="math inline">\(H_1\)</span>, na <a href="#fig-pwrt" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>, que neste suposto caso corresponde à realidade.</p>
 <p><span id="eq-beta2"><span class="math display">\[
 \beta = 1 - \Phi(t_{(\beta,n-1)})
-\tag{2.5}\]</span></span></p>
-<p>Tomando as Equações <a href="#eq-beta" class="quarto-xref">Equação&nbsp;<span>2.4</span></a> e <a href="#eq-beta2" class="quarto-xref">Equação&nbsp;<span>2.5</span></a>, pode-se derivar o tamanho amostral necessário para garantir um erro do tipo II mínimo, dado o nível de significância <span class="math inline">\(\alpha\)</span> adotado, o desvio-padrão amostral <span class="math inline">\(S\)</span> e o deslocamento <span class="math inline">\(\delta\)</span> que deseja-se detectar no teste, conforme Equação <a href="#eq-npwr" class="quarto-xref">Equação&nbsp;<span>2.6</span></a>.</p>
+\tag{2.7}\]</span></span></p>
+<p>Tomando as Equações <a href="#eq-beta" class="quarto-xref">Equação&nbsp;<span>2.6</span></a> e <a href="#eq-beta2" class="quarto-xref">Equação&nbsp;<span>2.7</span></a>, pode-se derivar o tamanho amostral necessário para garantir um erro do tipo II mínimo, dado o nível de significância <span class="math inline">\(\alpha\)</span> adotado, o desvio-padrão amostral <span class="math inline">\(s\)</span> e o deslocamento <span class="math inline">\(\delta\)</span> que deseja-se detectar no teste, conforme <a href="#eq-npwr" class="quarto-xref">Equação&nbsp;<span>2.8</span></a>.</p>
 <p><span id="eq-npwr"><span class="math display">\[
 \begin{align}
 1 - \Phi(\frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)}) =&amp; 1 - \Phi(t_{(\beta,n-1)}) \\
@@ -474,9 +473,9 @@ Figura&nbsp;2.4: Erro do tipo II, teste t unilateral à esquerda
 \frac{\delta \sqrt{n}}{s} -t_{(\alpha,n-1)} =&amp; t_{(\beta,n-1)} \\
 n =&amp; \left[\frac{(t_{(\alpha,n-1)}+t_{(\beta,n-1)})s }{\delta}\right]^2
 \end{align}
-\tag{2.6}\]</span></span></p>
+\tag{2.8}\]</span></span></p>
 <p>Enquanto o erro do tipo I, <span class="math inline">\(\alpha\)</span>, depende da escolha do analista, o erro do tipo II depende de como o teste foi planejado, isto é, qual o tamanho amostral adotado, considerando determinada variabilidade amostral e determinado deslocamento a ser detectado. O erro do tipo I é mais grave que o erro do tipo II, por isso, geralmente recomenda-se um valor mais baixo deste, por exemplo <span class="math inline">\(\alpha = 0,05\)</span>. Logicamente também é desejável um erro do tipo II baixo, entretanto, para determinados valores de <span class="math inline">\(s\)</span> e <span class="math inline">\(\delta\)</span>, pode ser necessário um tamanho amostral muito alto para minimizar <span class="math inline">\(\beta\)</span>, aumentando os custos experimentais. Na prática recomenda-se tentar garantir <span class="math inline">\(\beta&lt;0,2\)</span>.</p>
-<p>A probabilidade <span class="math inline">\(1 -\beta\)</span> ilustrada na <a href="#fig-pwrt" class="quarto-xref">Figura&nbsp;<span>2.4</span></a> é chamada de poder do teste. O poder do teste consiste na capacidade do teste estatístico de detectar um deslocamento na média, isto é, de rejeitar a hipótese nula, quando ela é falsa, não cometendo o erro do tipo II. A <a href="#fig-erros2" class="quarto-xref">Figura&nbsp;<span>2.5</span></a> apresenta as possibilidades quanto a decisão em testes de hipóteses em relação à realidade, que supõe-se desconhecida por parte do analista. Ao recomendar <span class="math inline">\(\beta =0,2\)</span>, procura-se um poder do teste <span class="math inline">\(1- \beta = 0,8\)</span>.</p>
+<p>A probabilidade <span class="math inline">\(1 -\beta\)</span> ilustrada na <a href="#fig-pwrt" class="quarto-xref">Figura&nbsp;<span>2.4</span></a> é chamada de poder do teste. O poder do teste consiste na capacidade do teste estatístico de detectar um deslocamento na média, isto é, de rejeitar a hipótese nula, quando ela é falsa, não cometendo o erro do tipo II. A <a href="#fig-erros2" class="quarto-xref">Figura&nbsp;<span>2.5</span></a> apresenta as possibilidades quanto à decisão em testes de hipóteses em relação à realidade, que supõe-se desconhecida por parte do analista. Ao recomendar <span class="math inline">\(\beta =0,2\)</span>, procura-se um poder do teste <span class="math inline">\(1- \beta = 0,8\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-erros2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -491,7 +490,7 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
 </div>
 </div>
 </div>
-<p>Pode-se utilizar o comando <code>power.t.test</code> para calcular o tamanho amostral, dado um poder do teste, <span class="math inline">\(1-\beta\)</span>, desejado conforme segue. Com este comando pode-se também obter o poder do teste, dado um tamanho amostral disponível. Pode-se constatar que, para garantir um poder do teste <span class="math inline">\(1-\beta = 0,8\)</span> para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> detectar uma diferença de <span class="math inline">\(2 \mu m\)</span>, seria necessário coletar uma amostra com 8 observações.</p>
+<p>Pode-se utilizar o comando <code>power.t.test</code> para calcular o tamanho amostral, dado um poder do teste, <span class="math inline">\(1-\beta\)</span>, desejado conforme segue. Com este comando pode-se também obter o poder do teste, dado um tamanho amostral disponível. Pode-se constatar que, para garantir um poder do teste <span class="math inline">\(1-\beta = 0,8\)</span> para no <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> detectar uma diferença de <span class="math inline">\(2 \mu m\)</span>, seria necessário coletar uma amostra com 8 observações.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para obter o tamanho amostral </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># para um determinado poder(power)</span></span>
@@ -514,7 +513,7 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
     alternative = one.sided</code></pre>
 </div>
 </div>
-<p>Como no teste realizado no <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> foi utilizado <span class="math inline">\(n=12\)</span>, para detectar uma diferença menor, <span class="math inline">\(\delta = 1,22\)</span>, o poder do teste foi menor, <span class="math inline">\(1-\beta = 0,67\)</span>, porém suficiente, uma vez que a hipótese nula foi rejeitada. Para obter este resultado no R, deve-se usar a sintaxe à seguir.</p>
+<p>Como no teste realizado no <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> foi utilizado <span class="math inline">\(n=12\)</span>, para detectar uma diferença menor, <span class="math inline">\(\delta = 1,22\)</span>, o poder do teste foi menor, <span class="math inline">\(1-\beta = 0,67\)</span>, porém suficiente, uma vez que a hipótese nula foi rejeitada. Para obter este resultado, deve-se usar a sintaxe à seguir.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para saber o poder o teste, considerando </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># o tamanho amostral realizado</span></span>
@@ -536,7 +535,7 @@ Figura&nbsp;2.5: Erros em testes de hipóteses
     alternative = one.sided</code></pre>
 </div>
 </div>
-<p>É interessante avaliar graficamente o poder do teste em função do tamanho amostral, conforme <a href="#fig-pwrcurve3" class="quarto-xref">Figura&nbsp;<span>2.6</span></a> e código relacionado à seguir.</p>
+<p>É interessante avaliar graficamente o poder do teste em função do tamanho amostral, conforme <a href="#fig-pwrcurve3" class="quarto-xref">Figura&nbsp;<span>2.6</span></a>. Observa-se que quanto maior o tamanho amostral, maior o poder do teste e, logo, menor a probabilidade de erro do tipo II.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pwrcurve3" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -551,7 +550,7 @@ Figura&nbsp;2.6: Poder do teste em função do tamanho amostral
 </div>
 </div>
 </div>
-<p>De forma análoga, pode ser interessante saber o poder do teste, <span class="math inline">\(1-\beta\)</span>, em função do deslocamento na média (efeito), a ser detectado. Pode-se traçar no mesmo gráfico curvas considerando tamanhos amostrais distintos. A <a href="#fig-pwrcurve2" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> ilustra curvas de poder do teste em função do efeito a ser detectado, com código relacionado à seguir.</p>
+<p>De forma análoga, pode ser interessante saber o poder do teste, <span class="math inline">\(1-\beta\)</span>, em função do deslocamento na média (efeito), a ser detectado. Pode-se traçar no mesmo gráfico curvas considerando tamanhos amostrais distintos. A <a href="#fig-pwrcurve2" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> ilustra curvas de poder do teste em função do efeito a ser detectado. Tomando tais curvas pode-se constatar que quanto menor o efeito a ser detectado, menor o poder do teste e, consequentemente, maior a probabilidade de erro do tipo II, para um tamanho amostral fixo. De outra forma, fixando o deslocamento a ser detectado, quanto maior o tamanho amostral, maior o poder do teste.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pwrcurve2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -566,8 +565,7 @@ Figura&nbsp;2.7: Poder do teste em função do deslocamento na média
 </div>
 </div>
 </div>
-<p>Tomando as curvas na <a href="#fig-pwrcurve2" class="quarto-xref">Figura&nbsp;<span>2.7</span></a> pode-se constatar que quanto menor o efeito a ser detectado, menor o poder do teste e, consequentemente, maior a probabilidade de erro do tipo II, para um tamanho amostral fixo. De outra forma, fixando o deslocamento a ser detectado, quanto maior o tamanho amostral, maior o poder do teste.</p>
-<p>O <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> apresentou um teste unilateral à esquerda, entretanto há outras possibilidades. A <a href="#fig-hip" class="quarto-xref">Figura&nbsp;<span>2.8</span></a> ilustra, da esquerda para direita os testes unilateral à esquerda, unilateral à direita e bilateral. Neste último o analista deseja apenas contestar se a média <span class="math inline">\(\mu\)</span> é diferente do valor de referência <span class="math inline">\(\mu_0\)</span>, sendo a região de rejeição de <span class="math inline">\(H_0\)</span> dividida pelas duas caldas, cada uma com área igual a <span class="math inline">\(\alpha/2\)</span>. Para <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&lt;-t_{(\alpha,n-1)}\)</span>. Já para <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&gt;t_{(\alpha,n-1)}\)</span>. Por fim, para <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(|t_0|&gt;t_{(\alpha/2,n-1)}\)</span>.</p>
+<p>O <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a> apresentou um teste unilateral à esquerda, entretanto há outras possibilidades. A <a href="#fig-hip" class="quarto-xref">Figura&nbsp;<span>2.8</span></a> ilustra, da esquerda para direita, os testes unilateral à esquerda, unilateral à direita e bilateral. Neste último o analista deseja apenas contestar se a média <span class="math inline">\(\mu\)</span> é diferente do valor de referência <span class="math inline">\(\mu_0\)</span>, sendo a região de rejeição de <span class="math inline">\(H_0\)</span> dividida pelas duas caldas, cada uma com área igual a <span class="math inline">\(\alpha/2\)</span>. Para <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&lt;-t_{(\alpha,n-1)}\)</span>. Já para <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(t_0&gt;t_{(\alpha,n-1)}\)</span>. Por fim, para <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, rejeita-se <span class="math inline">\(H_0\)</span> se <span class="math inline">\(|t_0|&gt;t_{(\alpha/2,n-1)}\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hip" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -597,15 +595,15 @@ Figura&nbsp;2.9: p-valor para diferentes casos do teste t para média de uma amo
 </div>
 </div>
 </div>
-<p>No caso do teste bilateral, com <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, o intervalo de confiança associado ao teste de hipótese para média com <span class="math inline">\(\gamma\)</span> de confiança é obtido conforme <a href="#eq-icmedia" class="quarto-xref">Equação&nbsp;<span>2.7</span></a>.</p>
+<p>No caso do teste bilateral, com <span class="math inline">\(H_1: \mu \ne \mu_0\)</span>, o intervalo de confiança associado ao teste de hipótese para média com <span class="math inline">\(\gamma\)</span> de confiança é obtido conforme <a href="#eq-icmedia" class="quarto-xref">Equação&nbsp;<span>2.9</span></a>.</p>
 <p><span id="eq-icmedia"><span class="math display">\[
-\text{IC[} \gamma=1-\alpha \text{]  p/ } \mu : [\bar{X} - t_{(\alpha/2,n-1)}\frac{s}{\sqrt{n}};\bar{X} + t_{(1-\alpha/2,n-1)}\frac{s}{\sqrt{n}}]
-\tag{2.7}\]</span></span></p>
-<p>Para os casos onde deseja-se testar a hipótese para média de forma bilateral, o tamanho amostral para um determinado poder do teste deve ser calculado conforme <a href="#eq-npwrbil" class="quarto-xref">Equação&nbsp;<span>2.8</span></a>, a seguir.</p>
+\text{IC[} \gamma=1-\alpha \text{]  p/ } \mu : [\bar{x} - t_{(\alpha/2,n-1)}\frac{s}{\sqrt{n}};\bar{x} + t_{(1-\alpha/2,n-1)}\frac{s}{\sqrt{n}}]
+\tag{2.9}\]</span></span></p>
+<p>Para os casos onde deseja-se testar a hipótese para média de forma bilateral, o tamanho amostral para um determinado poder do teste deve ser calculado conforme <a href="#eq-npwrbil" class="quarto-xref">Equação&nbsp;<span>2.10</span></a>, a seguir.</p>
 <p><span id="eq-npwrbil"><span class="math display">\[
 n = \biggl[\frac{(t_{\alpha/2,n-1}+t_{\beta,n-1})s}{\delta}\biggr]^2
-\tag{2.8}\]</span></span></p>
-<p>Para utilizar o teste <span class="math inline">\(t\)</span> para a média de uma amostra, é desejável que a amostra obtida seja normalmente distribuída. Para testar a normalidade dos dados, pode-se utilizar o teste de Shapiro. A hipótese nula do teste de normalidade <span class="math inline">\(H_0\)</span> é que os dados são normalmente distribuídos. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, pode-se utilizar a linha de código que segue.</p>
+\tag{2.10}\]</span></span></p>
+<p>Para utilizar o teste <span class="math inline">\(t\)</span> para a média de uma amostra, é desejável que a amostra obtida seja normalmente distribuída. Para testar a normalidade dos dados, pode-se utilizar o teste de Shapiro-Wilk. A hipótese nula do teste de normalidade <span class="math inline">\(H_0\)</span> é que os dados são normalmente distribuídos. Para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>, pode-se utilizar a linha de código que segue. Como <span class="math inline">\(pvalor&gt; \alpha\)</span>, não se rejeita H0.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de normalidade de Ront</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(Ront)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,7 +615,7 @@ data:  Ront
 W = 0,9518, p-value = 0,6634</code></pre>
 </div>
 </div>
-<p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações padronizadas e ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>.</p>
+<p>Como <span class="math inline">\(p-valor &gt; \alpha\)</span>, não se rejeita a hipótese nula <span class="math inline">\(H_0\)</span>, concluindo-se que a amostra de circularidade segue a distribuição normal. Pode-se avaliar a normalidade através do gráfico quantil-quantil. Este gráfico plota as <span class="math inline">\(n\)</span> observações ordenadas em função de <span class="math inline">\(n\)</span> quantis teóricos da distribuição normal-padrão <span class="math inline">\(z \sim N(0,1)\)</span>. Uma boa aproximação dos pontos à reta, demonstra uma boa aproximação dos dados à distribuição normal. A <a href="#fig-qqt1" class="quarto-xref">Figura&nbsp;<span>2.10</span></a> expõe o gráfico quantil-quantil para o <a href="#exm-t1" class="quarto-xref">Exemplo&nbsp;<span>2.1</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-qqt1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -635,10 +633,10 @@ Figura&nbsp;2.10: Gráfico qq para Ront
 </section>
 <section id="teste-z-para-média-de-uma-amostra" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="teste-z-para-média-de-uma-amostra"><span class="header-section-number">2.3</span> Teste z para média de uma amostra</h2>
-<p>Nos raros casos onde a variância populacional é conhecida, pode-se utilizar a distribuição normal padrão para testar hipóteses sobre a média de uma população a partir de uma amostra disponível. Recomenda-se também para um tamanho amostral <span class="math inline">\(n\)</span> suficientemente grande, utilizar este procedimento, visto que a distribuição <span class="math inline">\(t\)</span> se aproxima da distribuição <span class="math inline">\(z\)</span> à medida que <span class="math inline">\(n\)</span> cresce. Em geral, uma amostra com tamanho a partir de <span class="math inline">\(n = 30\)</span> é suficiente. Para realizar o teste <span class="math inline">\(z\)</span> para média de uma amostra, deve-se calcular a estatística do teste conforme <a href="#eq-ztest" class="quarto-xref">Equação&nbsp;<span>2.9</span></a>.</p>
+<p>Nos raros casos onde a variância populacional é conhecida, pode-se utilizar a distribuição normal padrão para testar hipóteses sobre a média de uma população a partir de uma amostra disponível. Recomenda-se também, para um tamanho amostral <span class="math inline">\(n\)</span> suficientemente grande, utilizar este procedimento, visto que a distribuição <span class="math inline">\(t\)</span> se aproxima da distribuição <span class="math inline">\(z\)</span> à medida que <span class="math inline">\(n\)</span> cresce. Em geral, uma amostra com tamanho a partir de <span class="math inline">\(n = 30\)</span> é suficiente. Para realizar o teste <span class="math inline">\(z\)</span> para média de uma amostra, deve-se calcular a estatística do teste conforme <a href="#eq-ztest" class="quarto-xref">Equação&nbsp;<span>2.11</span></a>.</p>
 <p><span id="eq-ztest"><span class="math display">\[
-  Z_0 = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}
-\tag{2.9}\]</span></span></p>
+  z_0 = \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
+\tag{2.11}\]</span></span></p>
 <div id="exm-z1" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 2.2</strong></span> Considere uma amostra com <span class="math inline">\(n = 30\)</span> observações da dureza de corpos de prova de aço ABNT H13 temperado. Deseja-se testar se a média é diferente de 55 HRC.</p>
 </div>
@@ -793,13 +791,13 @@ Figura&nbsp;2.13: Curva de poder do teste para média da dureza
 <section id="teste-t-para-médias-de-duas-amostras-independentes" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="teste-t-para-médias-de-duas-amostras-independentes"><span class="header-section-number">2.4</span> Teste t para médias de duas amostras independentes</h2>
 <p>Em diversas situações é de interesse do pesquisador realizar inferência sobre a média de duas amostras. Este tipo de teste pode ser realizado para comparar a diferença entre médias de dois tratamentos em uma resposta de interesse. O teste baseado na distribuição <span class="math inline">\(t\)</span> pode ser utilizado para amostras pequenas quando as variâncias populacionais são desconhecidas. Há testes distintos para médias para amostras com variâncias iguais e para amostras com variâncias diferentes.</p>
-<p>Antes de entender os testes para média de duas amostras, é importante entender o que significa a independência e como testá-la estatisticamente. Duas amostras são ditas independentes quando são originadas de populações distintas. Uma forma de quantificar a dependência entre duas amostras é através da covariância e da correlação. Por estas medidas pode-se quantificar se a dependência entre duas variáveis de interesse é forte ou fraca. A covariância entre duas variáveis <span class="math inline">\(xX\)</span> e <span class="math inline">\(y\)</span>, <span class="math inline">\(Cov(x,y)=\sigma_{xy}\)</span> pode ser definida conforme <a href="#eq-cov1" class="quarto-xref">Equação&nbsp;<span>2.10</span></a>, enquanto a correlação é definida conforme a <a href="#eq-cor1" class="quarto-xref">Equação&nbsp;<span>2.11</span></a>. Logo, pode-se constatar que a correlação é a covariância padronizada. Enquanto a covariância tem domínio em toda escala de números reais, <span class="math inline">\(\sigma_{xy} \in (-\infty,+\infty)\)</span>, a correlação tem domínio entre -1 e 1, <span class="math inline">\(\rho_{xy} \in \{-1,+1\}\)</span>, sendo mais fácil entender via correlação se o relacionamento linear é forte ou fraco.</p>
+<p>Antes de entender os testes para média de duas amostras, é importante entender o que significa a independência e como testá-la estatisticamente. Duas amostras são ditas independentes quando são originadas de populações distintas. Uma forma de quantificar a dependência entre duas amostras é através da covariância e da correlação. Por estas medidas pode-se quantificar se a dependência entre duas variáveis de interesse é forte ou fraca. A covariância entre duas variáveis <span class="math inline">\(xX\)</span> e <span class="math inline">\(y\)</span>, <span class="math inline">\(Cov(x,y)=\sigma_{xy}\)</span> pode ser definida conforme <a href="#eq-cov1" class="quarto-xref">Equação&nbsp;<span>2.12</span></a>, enquanto a correlação é definida conforme a <a href="#eq-cor1" class="quarto-xref">Equação&nbsp;<span>2.13</span></a>. Logo, pode-se constatar que a correlação é a covariância padronizada. Enquanto a covariância tem domínio em toda escala de números reais, <span class="math inline">\(\sigma_{xy} \in (-\infty,+\infty)\)</span>, a correlação tem domínio entre -1 e 1, <span class="math inline">\(\rho_{xy} \in \{-1,+1\}\)</span>, sendo mais fácil entender via correlação se o relacionamento linear é forte ou fraco.</p>
 <p><span id="eq-cov1"><span class="math display">\[
   \sigma_{xy} =  E((x_i-\mu_x)(y_i-\mu_y)) = E(xy) - \mu_x\mu_y
-\tag{2.10}\]</span></span></p>
+\tag{2.12}\]</span></span></p>
 <p><span id="eq-cor1"><span class="math display">\[
   \rho_{xy} =  \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
-\tag{2.11}\]</span></span></p>
+\tag{2.13}\]</span></span></p>
 <p>A <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> apresenta diagramas de dispersão entre duas variáveis que ilustram padrões distintos de dependência (ou não) entre duas variáveis. Na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> à esquerda as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação positiva, com <span class="math inline">\(\rho \rightarrow 1\)</span>. Já na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> do meio as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam correlação negativa, com <span class="math inline">\(\rho \rightarrow -1\)</span>. Por fim, na <a href="#fig-corr" class="quarto-xref">Figura&nbsp;<span>2.14</span></a> à direita as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> apresentam ausência de correlação positiva, com <span class="math inline">\(\rho \rightarrow 0\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -815,14 +813,14 @@ Figura&nbsp;2.14: Diferentes padrões de correlação
 </div>
 </div>
 </div>
-<p>A correlação amostral <span class="math inline">\(r_{xy}=\hat{\rho}\)</span> entre duas variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser calculada conforme <a href="#eq-cor" class="quarto-xref">Equação&nbsp;<span>2.12</span></a>, ou pela <a href="#eq-cor2" class="quarto-xref">Equação&nbsp;<span>2.13</span></a>, onde <span class="math inline">\(s_{xy} = \hat{\sigma}_{xy}\)</span> é a covariância amostral entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> enquanto <span class="math inline">\(s_{x}\)</span> e <span class="math inline">\(s_{y}\)</span> são os desvios-padrões amostrais destas variáveis. A covariância amostral entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser estimada conforme <a href="#eq-cov" class="quarto-xref">Equação&nbsp;<span>2.14</span></a>.</p>
+<p>A correlação amostral <span class="math inline">\(r_{xy}=\hat{\rho}\)</span> entre duas variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser calculada conforme <a href="#eq-cor" class="quarto-xref">Equação&nbsp;<span>2.14</span></a>, ou pela <a href="#eq-cor2" class="quarto-xref">Equação&nbsp;<span>2.15</span></a>, onde <span class="math inline">\(s_{xy} = \hat{\sigma}_{xy}\)</span> é a covariância amostral entre as variáveis <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> enquanto <span class="math inline">\(s_{x}\)</span> e <span class="math inline">\(s_{y}\)</span> são os desvios-padrões amostrais destas variáveis. A covariância amostral entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pode ser estimada conforme <a href="#eq-cov" class="quarto-xref">Equação&nbsp;<span>2.16</span></a>.</p>
 <p><span id="eq-cor"><span class="math display">\[
   r_{xy} = \frac{\sum_{i}(x_i-\bar{x})\sum_{i}(y_i-\bar{y})}{\sqrt{\sum_{i}(x_i-\bar{x})^2}\sqrt{\sum_{i}(y_i-\bar{y})^2}}
-\tag{2.12}\]</span></span> <span id="eq-cor2"><span class="math display">\[
+\tag{2.14}\]</span></span> <span id="eq-cor2"><span class="math display">\[
   r_{xy} = \frac{s_{xy}}{s_xs_y}
-\tag{2.13}\]</span></span> <span id="eq-cov"><span class="math display">\[
+\tag{2.15}\]</span></span> <span id="eq-cov"><span class="math display">\[
   s_{xy} = \frac{\sum_{i}(x_i-\bar{x})\sum_{i}(y_i-\bar{y})}{n-1}
-\tag{2.14}\]</span></span></p>
+\tag{2.16}\]</span></span></p>
 <div id="exm-t2" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 2.3</strong></span> Um tratamento a base de diclorometano é aplicado em uma amostra de fios de nanotubos de carbono. A resistência à tração (MPa) da amostra tratada é comparada com a resistência à tração de uma amostra sem tratamento. Os dados de trinta observações de cada caso são expostos à seguir.</p>
 </div>
@@ -950,13 +948,13 @@ H_0: \mu_1 &lt; \mu_2
 \]</span> <span class="math display">\[
 H_0: \mu_1 &gt; \mu_2
 \]</span></p>
-<p>A estatística do teste <span class="math inline">\(t\)</span> para duas amostras com variâncias amostrais iguais é calculada conforme <a href="#eq-t2s" class="quarto-xref">Equação&nbsp;<span>2.15</span></a>, onde o desvio-padrão combinado <span class="math inline">\(S\)</span> é obtido conforme a <a href="#eq-pooledS" class="quarto-xref">Equação&nbsp;<span>2.16</span></a>.</p>
+<p>A estatística do teste <span class="math inline">\(t\)</span> para duas amostras com variâncias amostrais iguais é calculada conforme <a href="#eq-t2s" class="quarto-xref">Equação&nbsp;<span>2.17</span></a>, onde o desvio-padrão combinado <span class="math inline">\(S\)</span> é obtido conforme a <a href="#eq-pooledS" class="quarto-xref">Equação&nbsp;<span>2.18</span></a>.</p>
 <p><span id="eq-t2s"><span class="math display">\[
 t_0 = \frac{\bar{x_1}-\bar{x_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
-\tag{2.15}\]</span></span></p>
+\tag{2.17}\]</span></span></p>
 <p><span id="eq-pooledS"><span class="math display">\[
 s = \sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
-\tag{2.16}\]</span></span></p>
+\tag{2.18}\]</span></span></p>
 <p>O cálculo da estatística <span class="math inline">\(t_0\)</span> é trivial e pode ser facilmente realizado utilizando o R como uma calculadora. Entretanto, é mais interessante utilizar a função <code>t.test()</code>, por apresentar um resultado mais estruturado, cofnorme segue. Comparando o valor da estatística calculada com o valor crítico, <span class="math inline">\(|t_0| = 10.393 &gt; 2.0003 = t_{\alpha/2}\)</span>, ou pelo p-valor, <span class="math inline">\(p-valor = 7,3 \times10^{-15} &lt; 0,05 = \alpha\)</span>, constata-se que há indícios para rejeição da hipótese nula, garantindo que as resistências das amostras são diferentes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste t para comparar amostras de controle e tratada</span></span>
@@ -1092,10 +1090,10 @@ Figura&nbsp;2.19: Diagrama de dispersão para humidade das amostras de carvão v
 </div>
 </div>
 </div>
-<p>O teste <span class="math inline">\(t\)</span> pareado é realizado considerando a diferença em relação às amostras pareadas. A hipótese nula consiste em testar se a diferença é igual a um valor de interesse, isto é, <span class="math inline">\(H_0: \mu_d = \mu_{d0}\)</span>. Já a hipótese alternativa pode ser bilateral ou unilateral à direita ou à esquerda. A estatística do teste <span class="math inline">\(t\)</span> pareado é exposta na <a href="#eq-tpaired" class="quarto-xref">Equação&nbsp;<span>2.17</span></a>, onde <span class="math inline">\(n\)</span> é o número de pares. Logo, o teste consiste no mesmo teste <span class="math inline">\(t\)</span> para uma amostra, de forma que a hipótese de normalidade para as diferenças deve ser confirmada.</p>
+<p>O teste <span class="math inline">\(t\)</span> pareado é realizado considerando a diferença em relação às amostras pareadas. A hipótese nula consiste em testar se a diferença é igual a um valor de interesse, isto é, <span class="math inline">\(H_0: \mu_d = \mu_{d0}\)</span>. Já a hipótese alternativa pode ser bilateral ou unilateral à direita ou à esquerda. A estatística do teste <span class="math inline">\(t\)</span> pareado é exposta na <a href="#eq-tpaired" class="quarto-xref">Equação&nbsp;<span>2.19</span></a>, onde <span class="math inline">\(n\)</span> é o número de pares. Logo, o teste consiste no mesmo teste <span class="math inline">\(t\)</span> para uma amostra, de forma que a hipótese de normalidade para as diferenças deve ser confirmada.</p>
 <p><span id="eq-tpaired"><span class="math display">\[
 t_0 = \frac{\bar{x}_d-\mu_d}{s_d/\sqrt{n}}
-\tag{2.17}\]</span></span></p>
+\tag{2.19}\]</span></span></p>
 <p>O código à seguir calcula as diferenças entre os pares das duas amostras e, posteriormente a normalidade das diferenças.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando as diferenças</span></span>
