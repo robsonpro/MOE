@@ -448,26 +448,22 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
 </div>
 <p>Pode-se criar o planejamento utilizando o pacote <code>FrF2</code> do R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o pacote FrF2</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FrF2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o planejamento</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">nfactors =</span> <span class="dv">4</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">factor.names=</span><span class="fu">list</span>(<span class="at">Tem=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Vaz=</span><span class="fu">c</span>(<span class="dv">400</span>,<span class="dv">600</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Cor=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">1</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">DQO=</span><span class="fu">c</span>(<span class="dv">362</span>,<span class="dv">723</span>)),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">replications =</span> <span class="dv">1</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">randomize =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o planejamento</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">nfactors =</span> <span class="dv">4</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">factor.names=</span><span class="fu">list</span>(<span class="at">Tem=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Vaz=</span><span class="fu">c</span>(<span class="dv">400</span>,<span class="dv">600</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Cor=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">1</span>),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">DQO=</span><span class="fu">c</span>(<span class="dv">362</span>,<span class="dv">723</span>)),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">replications =</span> <span class="dv">1</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">randomize =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Energia em [kJ]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">43.4</span>, <span class="fl">54.1</span>, <span class="fl">48.6</span>, <span class="fl">65.5</span>, <span class="fl">59.7</span>, <span class="fl">61.9</span>, <span class="fl">56.9</span>, <span class="fl">71.3</span>, <span class="fl">47.4</span>, <span class="fl">69.2</span>, <span class="fl">38.5</span>, <span class="fl">70.5</span>, <span class="fl">55.9</span>, <span class="fl">79.9</span>, <span class="fl">65.7</span>, <span class="fl">79.3</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_eflu, y)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plan_eflu)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Energia em [kJ]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">43.4</span>, <span class="fl">54.1</span>, <span class="fl">48.6</span>, <span class="fl">65.5</span>, <span class="fl">59.7</span>, <span class="fl">61.9</span>, <span class="fl">56.9</span>, <span class="fl">71.3</span>, <span class="fl">47.4</span>, <span class="fl">69.2</span>, <span class="fl">38.5</span>, <span class="fl">70.5</span>, <span class="fl">55.9</span>, <span class="fl">79.9</span>, <span class="fl">65.7</span>, <span class="fl">79.3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_eflu, y)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plan_eflu)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 FrF2(nruns = 16, nfactors = 4, factor.names = list(Tem = c(1, 
@@ -508,21 +504,21 @@ class=design, type= full factorial </code></pre>
 </div>
 <p>É possível calcular os efeitos no R conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construindo a matrix X</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plan2<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(levels,levels,levels,levels)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(plan2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>,<span class="st">"x2"</span>,<span class="st">"x3"</span>,<span class="st">"x4"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">with</span>(plan2, <span class="fu">cbind</span>(<span class="at">I =</span> <span class="dv">1</span>, x1, x2, x3, x4, <span class="at">x1x2 =</span> x1<span class="sc">*</span>x2, <span class="at">x1x3 =</span> x1<span class="sc">*</span>x3,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x4 =</span> x1<span class="sc">*</span>x4,  <span class="at">x2x3 =</span> x2<span class="sc">*</span>x3, <span class="at">x2x4 =</span> x2<span class="sc">*</span>x4, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x3x4 =</span> x3<span class="sc">*</span>x4, <span class="at">x1x2x3 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x3, <span class="at">x1x2x4 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x4,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x3x4 =</span> x1<span class="sc">*</span>x3<span class="sc">*</span>x4, <span class="at">x2x3x4 =</span> x2<span class="sc">*</span>x3<span class="sc">*</span>x4, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x2x3x4 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x3<span class="sc">*</span>x4))</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando os efeitos</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X, y)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">*</span><span class="dv">2</span><span class="sc">^</span><span class="dv">4</span><span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(efeitos) <span class="ot">&lt;-</span> <span class="st">"Efeitos"</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construindo a matrix X</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plan2<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(levels,levels,levels,levels)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(plan2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>,<span class="st">"x2"</span>,<span class="st">"x3"</span>,<span class="st">"x4"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">with</span>(plan2, <span class="fu">cbind</span>(<span class="at">I =</span> <span class="dv">1</span>, x1, x2, x3, x4, <span class="at">x1x2 =</span> x1<span class="sc">*</span>x2, <span class="at">x1x3 =</span> x1<span class="sc">*</span>x3,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x4 =</span> x1<span class="sc">*</span>x4,  <span class="at">x2x3 =</span> x2<span class="sc">*</span>x3, <span class="at">x2x4 =</span> x2<span class="sc">*</span>x4, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x3x4 =</span> x3<span class="sc">*</span>x4, <span class="at">x1x2x3 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x3, <span class="at">x1x2x4 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x4,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x3x4 =</span> x1<span class="sc">*</span>x3<span class="sc">*</span>x4, <span class="at">x2x3x4 =</span> x2<span class="sc">*</span>x3<span class="sc">*</span>x4, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x1x2x3x4 =</span> x1<span class="sc">*</span>x2<span class="sc">*</span>x3<span class="sc">*</span>x4))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando os efeitos</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(X, y)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">*</span><span class="dv">2</span><span class="sc">^</span><span class="dv">4</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(efeitos) <span class="ot">&lt;-</span> <span class="st">"Efeitos"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         Efeitos
 I        120,975
@@ -545,10 +541,10 @@ x1x2x3x4  -3,325</code></pre>
 </div>
 <p>Posteriormente pode-se obter os coeficientes de regressão conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo dos coeficientes</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Coef <span class="ot">&lt;-</span> efeitos<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coef) <span class="ot">&lt;-</span> <span class="st">"Coeficientes"</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Coef</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo dos coeficientes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Coef <span class="ot">&lt;-</span> efeitos<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coef) <span class="ot">&lt;-</span> <span class="st">"Coeficientes"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Coef</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         Coeficientes
 I             60,4875
@@ -588,14 +584,14 @@ SME= t_{(\gamma;m/3)}PSE
 \tag{6.3}\]</span></span></p>
 <p>O pacote <code>unrepx</code> do R, de autoria do próprio Lenth, pode ser utilizado para análise da significância dos efeitos considerando o pseudo erro padrão.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o pacote unrepx</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(unrepx)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o pacote unrepx</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(unrepx)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Primeiramente, deve-se tomar os efeitos, <span class="math inline">\(E_1\)</span>, …, <span class="math inline">\(E_{N-1}\)</span>. O comando <code>yates</code> do pacote <code>unrepx</code> permite a estimativa dos efeitos sem a necessidade da matriz <span class="math inline">\(\textbf{X}\)</span>, conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Efeitos</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">yates</span>(y)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Efeitos</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">yates</span>(y)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     A      B     AB      C     AC     BC    ABC      D     AD     BD    ABD 
 16,950  3,100  2,275 11,675 -3,400  0,850 -1,825  5,625  5,900 -2,700 -2,325 
@@ -606,9 +602,9 @@ attr(,"mean")
 60,4875 </code></pre>
 </div>
 </div>
-<p>O chamado <em>half normal plot</em> ou gráfico de Daniel, permite observar os efeitos mais importantes. Neste gráfico, os efeitos são plotados de forma padronizada e ordenada em relação aos quantis da distribuição normal. Quanto maior o desvio da reta onde devem se encontrar os efeitos esparços, mais importante o efeito. Entretanto, ele funciona melhor quando há poucos efeitos influentes entre os <span class="math inline">\(N-1\)</span> estimados. Os efeitos positivos são plotados em vermelho e os negativos em azul. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.1</span></a> o <em>half normal plot</em> é apresentado na <a href="#fig-halfeflu" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>. Pode-se concluir que os efeitos A e C são significativos considerando o erro marginal de Lenth.</p>
+<p>O chamado <em>half normal plot</em> ou gráfico de Daniel, permite observar os efeitos mais importantes. Neste gráfico, os efeitos são plotados de forma padronizada e ordenada em relação aos quantis da distribuição normal. Quanto maior o desvio da reta onde devem se encontrar os efeitos esparços, mais importante o efeito. Entretanto, ele funciona melhor quando há poucos efeitos influentes entre os <span class="math inline">\(N-1\)</span> estimados. Os efeitos positivos são plotados em vermelho e os negativos em azul. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o <em>half normal plot</em> é apresentado na <a href="#fig-halfeflu" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>. Pode-se concluir que os efeitos A e C são significativos considerando o erro marginal de Lenth.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hnplot</span>(efeitos, <span class="at">half =</span> T, <span class="at">method =</span> <span class="st">"Lenth"</span>, <span class="at">ID =</span> <span class="fu">ME</span>(efeitos))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hnplot</span>(efeitos, <span class="at">half =</span> T, <span class="at">method =</span> <span class="st">"Lenth"</span>, <span class="at">ID =</span> <span class="fu">ME</span>(efeitos))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-halfeflu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -622,10 +618,10 @@ Figura&nbsp;6.1: Half normal plot para os efeitos no experimento de tratamento d
 </div>
 </div>
 </div>
-<p>O gráfico de Pareto tem sido comumente utilizado para plotar os efeitos em relação ao erro marginal, <span class="math inline">\(ME\)</span>, e ao erro marginal simultâneo, <span class="math inline">\(SME\)</span>. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.1</span></a> o gráfico de Pareto é plotado na <a href="#fig-paretoeflu" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>. Pelo primeiro critério temos a mesma conclusão obtida pelo método gráfico de Daniel, enquanto pelo segundo critério apenas o efeito do fator A é significativo.</p>
+<p>O gráfico de Pareto tem sido comumente utilizado para plotar os efeitos em relação ao erro marginal, <span class="math inline">\(ME\)</span>, e ao erro marginal simultâneo, <span class="math inline">\(SME\)</span>. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o gráfico de Pareto é plotado na <a href="#fig-paretoeflu" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>. Pelo primeiro critério temos a mesma conclusão obtida pelo método gráfico de Daniel, enquanto pelo segundo critério apenas o efeito do fator A é significativo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto PSE plot</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parplot</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto PSE plot</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parplot</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-paretoeflu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -641,32 +637,32 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 </div>
 <p>Finalmente, é possível resumir a análise da significância dos efeitos, conforme segue. O valor da estatística calculada <span class="math inline">\(t\)</span> é obtido tomando a razão entre o efeito e o pseudo erro padrão de Lenth, isto é, <span class="math inline">\(t_j = E_j/PSE\)</span>. As conclusões são as mesmas das obtidas graficamente considerando o p-valor para <span class="math inline">\(ME\)</span> e para o <span class="math inline">\(SME\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise da significância dos efeitos</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise da significância dos efeitos</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16,950      4,05   4,185  0,0065      0,0547
-C    11,675      4,05   2,883  0,0228      0,1946
-AD    5,900      4,05   1,457  0,1497      0,8361
-D     5,625      4,05   1,389  0,1661      0,8800
-AC   -3,400      4,05  -0,840  0,3753      0,9996
-BCD   3,350      4,05   0,827  0,3816      0,9996
-ABCD -3,325      4,05  -0,821  0,3852      1,0000
-B     3,100      4,05   0,765  0,4182      1,0000
-BD   -2,700      4,05  -0,667  0,5402      1,0000
-ABD  -2,325      4,05  -0,574  0,6035      1,0000
-AB    2,275      4,05   0,562  0,6109      1,0000
-CD    2,125      4,05   0,525  0,6331      1,0000
-ABC  -1,825      4,05  -0,451  0,6811      1,0000
-BC    0,850      4,05   0,210  0,8447      1,0000
-ACD  -0,650      4,05  -0,160  0,8811      1,0000</code></pre>
+A    16,950      4,05   4,185  0,0054      0,0502
+C    11,675      4,05   2,883  0,0193      0,1815
+AD    5,900      4,05   1,457  0,1425      0,8350
+D     5,625      4,05   1,389  0,1598      0,8759
+AC   -3,400      4,05  -0,840  0,3697      1,0000
+BCD   3,350      4,05   0,827  0,3772      1,0000
+ABCD -3,325      4,05  -0,821  0,3809      1,0000
+B     3,100      4,05   0,765  0,4132      1,0000
+BD   -2,700      4,05  -0,667  0,5388      1,0000
+ABD  -2,325      4,05  -0,574  0,5976      1,0000
+AB    2,275      4,05   0,562  0,6057      1,0000
+CD    2,125      4,05   0,525  0,6301      1,0000
+ABC  -1,825      4,05  -0,451  0,6793      1,0000
+BC    0,850      4,05   0,210  0,8480      1,0000
+ACD  -0,650      4,05  -0,160  0,8829      1,0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise via FrF2</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>lm_eflu <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_eflu)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise via FrF2</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lm_eflu <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_eflu)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of observations used: 16 
 Formula:
@@ -704,9 +700,9 @@ F-statistic: 8,413 on 10 and 5 DF,  p-value: 0,01486</code></pre>
 </div>
 <p>Outra possibilidade é utilizar o comando <code>lm</code> para obter um modelo completo e reduzir o modelo. Pode-se também selecionar o modelo considerando a simplicidade na interpretação. Pelas análises realizadas o modelo reduzido com o comando <code>step</code> via opção <code>backward</code> presentou o maior ajuste, com menor AIC e maior coeficiente de determinação múltipla ajustado, <span class="math inline">\(R_{aj}^2 = 0,8464\)</span>. É importante recortdar que antes de aplicar o comando <code>step</code>, devse-se remover um coeficiente manualmente, sempre o de maior ordem.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo completo</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lm_eflu2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> (Tem <span class="sc">+</span> Vaz <span class="sc">+</span> Cor <span class="sc">+</span> DQO)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_eflu)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo completo</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lm_eflu2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> (Tem <span class="sc">+</span> Vaz <span class="sc">+</span> Cor <span class="sc">+</span> DQO)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_eflu)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -738,9 +734,9 @@ Residual standard error: NaN on 0 degrees of freedom
 Multiple R-squared:      1, Adjusted R-squared:    NaN 
 F-statistic:   NaN on 15 and 0 DF,  p-value: NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo de terceira ordem</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>lm_eflu3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> (Tem <span class="sc">+</span> Vaz <span class="sc">+</span> Cor <span class="sc">+</span> DQO)<span class="sc">^</span><span class="dv">3</span>, <span class="at">data =</span> plan_eflu)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo de terceira ordem</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>lm_eflu3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> (Tem <span class="sc">+</span> Vaz <span class="sc">+</span> Cor <span class="sc">+</span> DQO)<span class="sc">^</span><span class="dv">3</span>, <span class="at">data =</span> plan_eflu)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -776,9 +772,9 @@ Residual standard error: 6,65 on 1 degrees of freedom
 Multiple R-squared:  0,9803,    Adjusted R-squared:  0,7041 
 F-statistic: 3,549 on 14 and 1 DF,  p-value: 0,3961</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo reduzido via backward</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>lm_eflu3_red <span class="ot">&lt;-</span> <span class="fu">step</span>(lm_eflu3, <span class="at">direction =</span> <span class="st">"backward"</span>, <span class="at">trace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu3_red)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo reduzido via backward</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lm_eflu3_red <span class="ot">&lt;-</span> <span class="fu">step</span>(lm_eflu3, <span class="at">direction =</span> <span class="st">"backward"</span>, <span class="at">trace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_eflu3_red)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -876,7 +872,9 @@ Figura&nbsp;6.5: Gráfico de contorno do tamanho de grão em função de X2 e X3
 <p>Em diversas situações não é possível realizar todas os <span class="math inline">\(N\)</span> experimentos em condições homogêneas, mesmo com múltiplos fatores em estudo. Nestes casos deve-se planejar o experimento de forma a evitar que o efeito de fontes de variação adicionais seja confundido com os efeitos dos fatores em avaliação ou inflem o erro experimental. A <em>blocagem</em> pode ser útil também no contexto do fatorial <span class="math inline">\(2^k\)</span>.</p>
 <p>A blocagem é um conceito muito útil no fatorial <span class="math inline">\(2^k\)</span> e em outros planejamentos envolvendo multiplos fatores, como alguns de superfície de resposta. Um planejamento pode ser dividido de forma sistemática em dois ou mais blocos, de acordo com o número de níveis da condição heterogênea em avaliação a ser blocada.</p>
 <div>
-<p>Suponha que um fatorial <span class="math inline">\(2^2\)</span> com <span class="math inline">\(n=2\)</span> réplicas será realizado para estudar o efeito do tempo e da temperatura no tratamento térmico de uma liga. Suponha que o experimentador tem quatro corpos de prova de um lote e quatro corpos de prova de outro lote, ambos da mesma liga e fornecidos pelo mesmo fornecedor. Apesar da garantia do fornecedor de homogeneidade entre os lotes, o analista decide blocar os lotes, de forma a evitar que o efeito de uma possível diferença entre estes lotes afete os resultados do experimento. Uma vez que o número de corpos de prova de cada lote corresponde a uma replicação completa, cada bloco, isto é, cada lote da liga pode corresponder a uma replicação. Os dados do exemplo são resumidos na <a href="#tbl-blockrep" class="quarto-xref">Tabela&nbsp;<span>6.2</span></a>.</p>
+<div id="exm-fatunrep1" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 6.2</strong></span> Suponha que um fatorial <span class="math inline">\(2^2\)</span> com <span class="math inline">\(n=2\)</span> réplicas será realizado para estudar o efeito do tempo e da temperatura no tratamento térmico de uma liga. Suponha que o experimentador tem quatro corpos de prova de um lote e quatro corpos de prova de outro lote, ambos da mesma liga e fornecidos pelo mesmo fornecedor. Apesar da garantia do fornecedor de homogeneidade entre os lotes, o analista decide blocar os lotes, de forma a evitar que o efeito de uma possível diferença entre estes lotes afete os resultados do experimento. Uma vez que o número de corpos de prova de cada lote corresponde a uma replicação completa, cada bloco, isto é, cada lote da liga pode corresponder a uma replicação. Os dados do exemplo são resumidos na <a href="#tbl-blockrep" class="quarto-xref">Tabela&nbsp;<span>6.2</span></a>.</p>
+</div>
 </div>
 <div class="cell">
 <div id="tbl-blockrep" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -966,17 +964,17 @@ SS_{blocos}= \sum_{i=1}^{n_{blocos}}\frac{B_i^2}{2^k}-\frac{y_{...}^2}{n2^k}
 \tag{6.4}\]</span></span></p>
 <p>Para gerar este planejamento utilizando o pacote <code>FrF2</code> do R pode-se utilizar o código à seguir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plan_block <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">4</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nfactors =</span> <span class="dv">2</span>,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">randomize =</span> F,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">replications =</span> <span class="dv">2</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>dureza <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">53</span>, <span class="dv">51</span>, <span class="dv">54</span>, <span class="dv">50</span>, <span class="dv">54</span>, <span class="dv">53</span>, <span class="dv">57</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plan_block <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_block,dureza)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plan_block</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plan_block <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">4</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nfactors =</span> <span class="dv">2</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">randomize =</span> F,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">replications =</span> <span class="dv">2</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>dureza <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">53</span>, <span class="dv">51</span>, <span class="dv">54</span>, <span class="dv">50</span>, <span class="dv">54</span>, <span class="dv">53</span>, <span class="dv">57</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plan_block <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_block,dureza)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plan_block</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  run.no run.no.std.rp  A  B Blocks dureza
 1      1           1.1 -1 -1     .1     48
@@ -994,11 +992,11 @@ NOTE: columns run.no and run.no.std.rp  are annotation,
 </div>
 <p>Pode-se observar que a coluna blocos já é adicionada no planejamento sem necessidade de algum argumento adicional. A análise deve considerar o termo <code>Blocks</code> no modelo, conforme segue. Observando o resultado do modelo linear, o termo <code>Blocks.2</code> refere-se ao segundo nível do bloco, sendo adicionado no modelo a diferença entre médias deste nível e do primeiro na previsão, no caso de se prever os resultados dos ensaios no segundo bloco. Logo, o bloco é tratado segundo uma variável categórica na análise. Para o exemplo esta diferença média entre blocos é igual a 2 HRC. Pode-se concluir que neste caso houve significância do fator blocos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com bloco na replicação</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>lm_block <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> dureza <span class="sc">~</span> Blocks <span class="sc">+</span> A<span class="sc">*</span>B, </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_block)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_block)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com bloco na replicação</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>lm_block <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> dureza <span class="sc">~</span> Blocks <span class="sc">+</span> A<span class="sc">*</span>B, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_block)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_block)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1024,9 +1022,9 @@ Residual standard error: 0,5774 on 3 degrees of freedom
 Multiple R-squared:  0,9815,    Adjusted R-squared:  0,9568 
 F-statistic: 39,75 on 4 and 3 DF,  p-value: 0,00623</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>anova_block <span class="ot">&lt;-</span> <span class="fu">aov</span>(lm_block)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_block)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>anova_block <span class="ot">&lt;-</span> <span class="fu">aov</span>(lm_block)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_block)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 Blocks       1    8,0    8,00    24,0 0,01628 * 
@@ -1040,50 +1038,50 @@ Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1</code></pre>
 </div>
 <p>A <a href="#fig-dureza" class="quarto-xref">Figura&nbsp;<span>6.6</span></a> apresenta os gráficos de efeitos principais para os fatores A, B e bloco na resposta. O código para obter os gráficos é exposto à seguir. Apesar de não se desejar estudar o efeito do bloco, é importante observar que o bloco 2 apresenta dureza média mais alta em relação ao 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plan_block<span class="sc">$</span>fit <span class="ot">&lt;-</span> lm_block<span class="sc">$</span>fitted.values</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plan_dec_x1 <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(A, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plan_dec_x2 <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(B, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>plan_dec_bl <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Blocks, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>range_y <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="fu">min</span>(plan_dec_x1<span class="sc">$</span>y,plan_dec_x2<span class="sc">$</span>y, plan_dec_bl<span class="sc">$</span>y),</span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">max</span>(plan_dec_x1<span class="sc">$</span>y,plan_dec_x2<span class="sc">$</span>y, plan_dec_bl<span class="sc">$</span>y)))</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>px1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x1 , </span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>A, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#00AFBB"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#00AFBB"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> </span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"A"</span>)</span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>px2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x2,</span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>B, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#E7B800"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#E7B800"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"B"</span>)</span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>pbl<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_bl,</span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Blocks, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#FC4E07"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#FC4E07"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
-<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Bloco"</span>)</span>
-<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranjando os gráficos em um único painel</span></span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(px1,px2,pbl, <span class="at">ncol=</span><span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plan_block<span class="sc">$</span>fit <span class="ot">&lt;-</span> lm_block<span class="sc">$</span>fitted.values</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plan_dec_x1 <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(A, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plan_dec_x2 <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(B, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>plan_dec_bl <span class="ot">&lt;-</span> plan_block <span class="sc">|&gt;</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Blocks, <span class="at">group=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">mean</span>(fit)) <span class="sc">|&gt;</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span>y, as.factor))</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>range_y <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="fu">min</span>(plan_dec_x1<span class="sc">$</span>y,plan_dec_x2<span class="sc">$</span>y, plan_dec_bl<span class="sc">$</span>y),</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">max</span>(plan_dec_x1<span class="sc">$</span>y,plan_dec_x2<span class="sc">$</span>y, plan_dec_bl<span class="sc">$</span>y)))</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>px1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x1 , </span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>A, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#00AFBB"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#00AFBB"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> </span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"A"</span>)</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>px2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_x2,</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>B, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#E7B800"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#E7B800"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"B"</span>)</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>pbl<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plan_dec_bl,</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Blocks, <span class="at">y=</span>y, <span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">"#FC4E07"</span>,<span class="at">lwd=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col=</span><span class="st">"#FC4E07"</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(range_y) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Bloco"</span>)</span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranjando os gráficos em um único painel</span></span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(px1,px2,pbl, <span class="at">ncol=</span><span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-dureza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1220,9 +1218,9 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
 </figure>
 </div>
 </div>
-<p>É importante entender além de como alocar blocos com confundimento, como realizar a análise. Seja o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a>, à seguir.</p>
+<p>É importante entender além de como alocar blocos com confundimento, como realizar a análise. Seja o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, à seguir.</p>
 <div id="exm-blockconf" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 6.2</strong></span> Um planejamento fatorial <span class="math inline">\(2^4\)</span> foi utilizado no estudo da síntese por deposição química a vapor de acetileno. Foram estudados os efeitos do tempo de crescimento (45, 60 min), da temperatura de crescimento (700, 750 °C), da vazão de acetileno (150, 190 ml/min) e da vazão de argônio (230, 290 ml/min). O catalisador bimetálico FeCo foi utilizado na síntese. Supondo que o experimentador tinha disponível quantidade suficiente de um primeiro lote do catalisador para oito experimentos e quantidade suficientes de um segundo lote para oito experimentos, ele decidiu blocar esta variável. Deve-se definir o confundimento menos prejudicial de forma a alocar os níveis dos blocos.</p>
+<p><span class="theorem-title"><strong>Exemplo 6.3</strong></span> Um planejamento fatorial <span class="math inline">\(2^4\)</span> foi utilizado no estudo da síntese por deposição química a vapor de acetileno. Foram estudados os efeitos do tempo de crescimento (45, 60 min), da temperatura de crescimento (700, 750 °C), da vazão de acetileno (150, 190 ml/min) e da vazão de argônio (230, 290 ml/min). O catalisador bimetálico FeCo foi utilizado na síntese. Supondo que o experimentador tinha disponível quantidade suficiente de um primeiro lote do catalisador para oito experimentos e quantidade suficientes de um segundo lote para oito experimentos, ele decidiu blocar esta variável. Deve-se definir o confundimento menos prejudicial de forma a alocar os níveis dos blocos.</p>
 </div>
 <div class="cell">
 <div id="tbl-blockconf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1389,14 +1387,14 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
 </div>
 <p>Para entender a melhor forma de obter o confundimento neste planejamento, é importante considerar a matriz <span class="math inline">\(X\)</span>. Para obtê-la no R, pode-se utilizar o comando <code>model.matrix</code>, conforme código à seguir. A forma menos prejudicial neste caso é confundir o bloco com a interação de quarta ordem <span class="math inline">\(x_1x_2x_3x_4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construindo a matrix X</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plan2<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(levels,levels,levels,levels)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(plan2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>,<span class="st">"x2"</span>,<span class="st">"x3"</span>,<span class="st">"x4"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># matriz do planejamento</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span>x1<span class="sc">*</span>x2<span class="sc">*</span>x3<span class="sc">*</span>x4,<span class="at">data=</span>plan2)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construindo a matrix X</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>plan2<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(levels,levels,levels,levels)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(plan2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>,<span class="st">"x2"</span>,<span class="st">"x3"</span>,<span class="st">"x4"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># matriz do planejamento</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span>x1<span class="sc">*</span>x2<span class="sc">*</span>x3<span class="sc">*</span>x4,<span class="at">data=</span>plan2)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   (Intercept) x1 x2 x3 x4 x1:x2 x1:x3 x2:x3 x1:x4 x2:x4 x3:x4 x1:x2:x3
 1            1 -1 -1 -1 -1     1     1     1     1     1     1       -1
@@ -1436,22 +1434,22 @@ attr(,"assign")
  [1]  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 </div>
 </div>
-<p>Para gerar um planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento pode-se utilizar o pacote <code>FrF2</code>. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> pode-se utilizar o código à seguir.</p>
+<p>Para gerar um planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento pode-se utilizar o pacote <code>FrF2</code>. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a> pode-se utilizar o código à seguir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^4 com confundimento</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plan_conf <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">randomize =</span> F,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">blocks =</span> <span class="dv">2</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recomenda-se avaliar o planejamento gerado primeiro, </span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pois o pacote ordena por bloco</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>rend <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">112</span>, <span class="dv">62</span>, <span class="dv">120</span>, <span class="dv">56</span>, <span class="dv">156</span>, <span class="dv">50</span>, <span class="dv">134</span>, <span class="dv">36</span>, <span class="co"># bloco1: x1x2x3x4 = -1</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>          <span class="dv">102</span>, <span class="dv">42</span>, <span class="dv">126</span>, <span class="dv">24</span>, <span class="dv">170</span>, <span class="dv">72</span>, <span class="dv">142</span>, <span class="dv">38</span>) <span class="co"># bloco2: x1x2x3x4 = +1</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>plan_conf <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_conf,rend)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plan_conf</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^4 com confundimento</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plan_conf <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">randomize =</span> F,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">blocks =</span> <span class="dv">2</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recomenda-se avaliar o planejamento gerado primeiro, </span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pois o pacote ordena por bloco</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>rend <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">112</span>, <span class="dv">62</span>, <span class="dv">120</span>, <span class="dv">56</span>, <span class="dv">156</span>, <span class="dv">50</span>, <span class="dv">134</span>, <span class="dv">36</span>, <span class="co"># bloco1: x1x2x3x4 = -1</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>          <span class="dv">102</span>, <span class="dv">42</span>, <span class="dv">126</span>, <span class="dv">24</span>, <span class="dv">170</span>, <span class="dv">72</span>, <span class="dv">142</span>, <span class="dv">38</span>) <span class="co"># bloco2: x1x2x3x4 = +1</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>plan_conf <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_conf,rend)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>plan_conf</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  run.no run.no.std.rp Blocks  A  B  C  D rend
 1      1         2.1.1      1 -1 -1 -1  1  112
@@ -1481,13 +1479,13 @@ NOTE: columns run.no and run.no.std.rp  are annotation,
 SS_{blocos}= \frac{(\sum_{bloco=+1}y)^2 - (\sum_{bloco=-1}y)^2}{n2^k/2} - \frac{y_{...}^2}{n2^k}
 \tag{6.5}\]</span></span></p>
 <p>A análise no R é feita de forma similar à blocagem na replicação, incluindo o fator <code>Blocks</code> no modelo. Portanto, a diferença é na criação do planejamento. No caso da blocagem na replicação não é necessário modificação alguma no planejamento, já na blocagem com confundimento é necessário colocar o argumento <code>blocks</code> com o número de níveis desejado. Logicamente, o número de ensaios <span class="math inline">\(N\)</span> deve ser múltiplo do número de níveis, de forma que as frações alocadas para cada bloco sejam iguais.</p>
-<p>Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a>, a análise é realizada com a sintaxe à seguir. O modelo <code>rend ~ Blocks + (A+B+C+D)^3</code> não contém o termo de quarta ordem, <span class="math inline">\(x_1x_2x_3x_4\)</span>, pois este está confundido com o termo <code>Blocks</code>. De qualquer forma os 16 graus de liberdade foram usados para estimar os efeitos, sem a possibilidade de estimar o erro experimental da forma tradicional.</p>
+<p>Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise é realizada com a sintaxe à seguir. O modelo <code>rend ~ Blocks + (A+B+C+D)^3</code> não contém o termo de quarta ordem, <span class="math inline">\(x_1x_2x_3x_4\)</span>, pois este está confundido com o termo <code>Blocks</code>. De qualquer forma os 16 graus de liberdade foram usados para estimar os efeitos, sem a possibilidade de estimar o erro experimental da forma tradicional.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>lm_conf <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> rend <span class="sc">~</span> Blocks <span class="sc">+</span> (A<span class="sc">+</span>B<span class="sc">+</span>C<span class="sc">+</span>D)<span class="sc">^</span><span class="dv">3</span>, </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_conf)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_conf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>lm_conf <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> rend <span class="sc">~</span> Blocks <span class="sc">+</span> (A<span class="sc">+</span>B<span class="sc">+</span>C<span class="sc">+</span>D)<span class="sc">^</span><span class="dv">3</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_conf)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_conf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1519,17 +1517,17 @@ Residual standard error: NaN on 0 degrees of freedom
 Multiple R-squared:      1, Adjusted R-squared:    NaN 
 F-statistic:   NaN on 15 and 0 DF,  p-value: NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf &lt;- aov(lm_conf)</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf &lt;- aov(lm_conf)</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Após uma primeira avaliação, pode-se remover alguma interação de ordem maior com efeito menor. Porém, neste estudo, como o bloco não foi significativo, pode-se removê-lo do modelo, conforme segue. Pode-se concluir que os fatores <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_3\)</span> além da interação entre estes foram significativos. Este modelo também apresentou um excelente ajuste, com <span class="math inline">\(R_{aj}^2 = 0,9973\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear sem bloco</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>lm_conf3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> rend <span class="sc">~</span> (A<span class="sc">+</span>B<span class="sc">+</span>C<span class="sc">+</span>D)<span class="sc">^</span><span class="dv">3</span>, </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_conf)</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_conf3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear sem bloco</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>lm_conf3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> rend <span class="sc">~</span> (A<span class="sc">+</span>B<span class="sc">+</span>C<span class="sc">+</span>D)<span class="sc">^</span><span class="dv">3</span>, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> plan_conf)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_conf3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1565,18 +1563,18 @@ Residual standard error: 2,5 on 1 degrees of freedom
 Multiple R-squared:  0,9998,    Adjusted R-squared:  0,9973 
 F-statistic: 392,7 on 14 and 1 DF,  p-value: 0,03954</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf3 &lt;- aov(lm_conf3)</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf3)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf3 &lt;- aov(lm_conf3)</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf3)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pode-se também utilizar o pacote <code>unrepx</code> para analisar o planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento. Entretano, o analista deve entender em qual interação está alocado o bloco, visto que os resultados deste pacote não especificam. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a>, a análise pode ser realizada conforme segue.</p>
+<p>Pode-se também utilizar o pacote <code>unrepx</code> para analisar o planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento. Entretano, o analista deve entender em qual interação está alocado o bloco, visto que os resultados deste pacote não especificam. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise pode ser realizada conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta na ordem padrão do fatorial</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>rend <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">156</span>, <span class="dv">120</span>, <span class="dv">142</span>, <span class="dv">62</span>, <span class="dv">72</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">112</span>, <span class="dv">170</span>, <span class="dv">126</span>, <span class="dv">134</span>, <span class="dv">42</span>, <span class="dv">50</span>, <span class="dv">56</span>, <span class="dv">38</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Efeitos</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">yates</span>(rend)</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta na ordem padrão do fatorial</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>rend <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">156</span>, <span class="dv">120</span>, <span class="dv">142</span>, <span class="dv">62</span>, <span class="dv">72</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">112</span>, <span class="dv">170</span>, <span class="dv">126</span>, <span class="dv">134</span>, <span class="dv">42</span>, <span class="dv">50</span>, <span class="dv">56</span>, <span class="dv">38</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Efeitos</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">yates</span>(rend)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>efeitos</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     A      B     AB      C     AC     BC    ABC      D     AD     BD    ABD 
  19,25 -11,25 -13,25 -85,25 -16,25  -6,75   7,25   1,75  -5,25   6,25  -5,75 
@@ -1586,25 +1584,25 @@ attr(,"mean")
        
 90,125 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise da significância dos efeitos</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise da significância dos efeitos</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85,25      9,75  -8,744  0,0004      0,0041
-A     19,25      9,75   1,974  0,0673      0,5039
-AC   -16,25      9,75  -1,667  0,1078      0,7000
-AB   -13,25      9,75  -1,359  0,1744      0,8958
-BCD   12,75      9,75   1,308  0,1883      0,9164
-B    -11,25      9,75  -1,154  0,2377      0,9670
-ABC    7,25      9,75   0,744  0,4328      1,0000
-BC    -6,75      9,75  -0,692  0,4668      1,0000
-BD     6,25      9,75   0,641  0,5588      1,0000
-ABD   -5,75      9,75  -0,590  0,5931      1,0000
-AD    -5,25      9,75  -0,538  0,6255      1,0000
-CD    -3,75      9,75  -0,385  0,7238      1,0000
-ACD   -2,75      9,75  -0,282  0,7942      1,0000
-D      1,75      9,75   0,179  0,8671      1,0000
-ABCD  -1,25      9,75  -0,128  0,9051      1,0000</code></pre>
+C    -85,25      9,75  -8,744  0,0003      0,0019
+A     19,25      9,75   1,974  0,0619      0,4889
+AC   -16,25      9,75  -1,667  0,1002      0,6847
+AB   -13,25      9,75  -1,359  0,1675      0,8913
+BCD   12,75      9,75   1,308  0,1811      0,9108
+B    -11,25      9,75  -1,154  0,2294      0,9734
+ABC    7,25      9,75   0,744  0,4269      1,0000
+BC    -6,75      9,75  -0,692  0,4633      1,0000
+BD     6,25      9,75   0,641  0,5558      1,0000
+ABD   -5,75      9,75  -0,590  0,5881      1,0000
+AD    -5,25      9,75  -0,538  0,6215      1,0000
+CD    -3,75      9,75  -0,385  0,7249      1,0000
+ACD   -2,75      9,75  -0,282  0,7963      1,0000
+D      1,75      9,75   0,179  0,8694      1,0000
+ABCD  -1,25      9,75  -0,128  0,9072      1,0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1744,7 +1742,7 @@ Figura&nbsp;6.12: Estrutura de confundimento do fatorial fracionado <span class=
 \hat{y}=(\beta_0+\beta_{123}) + (\beta_1+\beta_{23})x_1 + (\beta_2+\beta_{13})x_2 + (\beta_3+\beta_{12})x_3
 \tag{6.6}\]</span></span></p>
 <div id="exm-frac241" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 6.3</strong></span> Um planejamento fatorial fracionado <span class="math inline">\(2^{4-1}\)</span> foi utilizado para estudar o processo de metalurgia do pó para fabricação de uma liga biodegradável de Mg−Zn. Foram estudados os efeitos de quatro fatores: o tempo de moagem (2 - 10h), a velocidade de moagem (100 - 300rev/min), a razão mássica bola/pó (5:1 - 15:1) e o teor de Zn (3 - 10%). A resposta estudada foi o módulo de elasticidade em GPa. A <a href="#tbl-fracmetpo" class="quarto-xref">Tabela&nbsp;<span>6.6</span></a> apresenta o planejamento com a resposta.</p>
+<p><span class="theorem-title"><strong>Exemplo 6.4</strong></span> Um planejamento fatorial fracionado <span class="math inline">\(2^{4-1}\)</span> foi utilizado para estudar o processo de metalurgia do pó para fabricação de uma liga biodegradável de Mg−Zn. Foram estudados os efeitos de quatro fatores: o tempo de moagem (2 - 10h), a velocidade de moagem (100 - 300rev/min), a razão mássica bola/pó (5:1 - 15:1) e o teor de Zn (3 - 10%). A resposta estudada foi o módulo de elasticidade em GPa. A <a href="#tbl-fracmetpo" class="quarto-xref">Tabela&nbsp;<span>6.6</span></a> apresenta o planejamento com a resposta.</p>
 </div>
 <div class="cell">
 <div id="tbl-fracmetpo" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1839,24 +1837,24 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
 </div>
 <p>Para gerar este planejamento no R, pode-se utilizar o pacote <code>FrF2</code> com o código à seguir. Ao exibir o planejamento com o comando <code>summary(plan_mgzn)</code>, o analista obtém o planejamento, suas características e a estrutura de confundimento (<em>alias structure</em>). Entretanto, como o padrão deste pacote é a análise do modelo linear com interações de até segunda ordem, a estrutura de confundimento exibida só apresenta os confundimentos dos termos de até segunda ordem.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plan_mgzn <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">8</span>,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">factor.names =</span> <span class="fu">list</span>(<span class="at">x1=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>),</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x2=</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">300</span>),</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x3=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">15</span>),</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x4=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>)),</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">randomize =</span> F)</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Módulo de elasticidade</span></span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">41.83</span>, <span class="fl">45.24</span>, <span class="fl">47.88</span>, <span class="fl">44.16</span>, <span class="fl">46.47</span>, <span class="fl">40.18</span>, <span class="fl">43.79</span>, <span class="fl">45.38</span>)</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando resposta ao planejamento</span></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>plan_mgzn <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_mgzn,y)</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo o planejamento</span></span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plan_mgzn)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plan_mgzn <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">8</span>,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">factor.names =</span> <span class="fu">list</span>(<span class="at">x1=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x2=</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">300</span>),</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x3=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">15</span>),</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">x4=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>)),</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">randomize =</span> F)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Módulo de elasticidade</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">41.83</span>, <span class="fl">45.24</span>, <span class="fl">47.88</span>, <span class="fl">44.16</span>, <span class="fl">46.47</span>, <span class="fl">40.18</span>, <span class="fl">43.79</span>, <span class="fl">45.38</span>)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando resposta ao planejamento</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>plan_mgzn <span class="ot">&lt;-</span> <span class="fu">add.response</span>(plan_mgzn,y)</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo o planejamento</span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plan_mgzn)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 FrF2(nruns = 8, nfactors = 4, factor.names = list(x1 = c(2, 10), 
@@ -1901,8 +1899,8 @@ class=design, type= FrF2 </code></pre>
 </div>
 <p>Para obter a estrutura de confundimento completa utilizando o pacote <code>FrF2</code> deve-se utilizar o comando <code>aliases</code>, com o modelo de interesse, conforme segue. Pelos resultados, pode-se constatar que os termos principais estão confundidos com as interações de terceira ordem, enquanto as interações de segunda ordem estão confundidas entre si. Este planejamento tem resolução IV. O maior problema neste planejamento reside na dificuldade de interpretar as interações de segunda ordem.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento com termos de até quarta ordem</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_mgzn))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento com termos de até quarta ordem</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_mgzn))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              
  x1 = x2:x3:x4
@@ -1916,9 +1914,9 @@ class=design, type= FrF2 </code></pre>
 </div>
 <p>Após criar o planejamento pode-se proceder com a análise. Pode-se observar que, ao se obter o modelo de segunda ordem, algumas das interações não são exibidas. Isto ocorre pois, além de não haver graus de liberdade suficiente para estimá-las, deve-se lembrar que estas interações estão confundidas. Deste modo, quando o analista interpreta o efeito da interação <span class="math inline">\(x_1x_2\)</span>, ele deve ter em mente que neste efeito consta também a interação <span class="math inline">\(x_3x_4\)</span>, ou seja, a magnitude do efeito é na verdade o confundimento destes dois efeitos <span class="math inline">\(x_1x_2+x_3x_4\)</span>. O mesmo ocorre para as demais interações de segunda ordem. As interações de terceira ordem, apesar de serem menos importantes estão confundidas com os efeitos de primeira ordem. Entretanto, neste caso, a interpretação deve priorizar os efeitos principais, dado o princípio da hierarquia dos efeitos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo "completo"</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_mgzn)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo "completo"</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_mgzn)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of observations used: 8 
 Formula:
@@ -1951,10 +1949,10 @@ F-statistic:   NaN on 7 and 0 DF,  p-value: NA</code></pre>
 </div>
 <p>Ao observar os efeitos, pode-se optar por reduzir o modelo, retirando uma interação com menor magnitude para estimar o erro experimental. Isto pode ser feito utilizando o comando <code>lm</code> base do R, conforme segue. Procedendo desta forma é possível estimar o erro experimental e testar a significância dos efeitos. Neste caso apenas o efeito de <span class="math inline">\(x_4\)</span> foi estatísticamente significativo com <span class="math inline">\(\alpha = 0,05\)</span> de significância. O modelo explica uma proporção de 0,9895 da variabilidade dos dados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo com apenas duas interações</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span>x1 <span class="sc">+</span>x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x1<span class="sc">:</span>x3 <span class="sc">+</span> x2<span class="sc">:</span>x3,</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>            plan_mgzn)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo com apenas duas interações</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span>x1 <span class="sc">+</span>x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x1<span class="sc">:</span>x3 <span class="sc">+</span> x2<span class="sc">:</span>x3,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>            plan_mgzn)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1998,11 +1996,11 @@ Figura&nbsp;6.13
 </div>
 <p>Utilizando o pacote <code>FrF2</code> é possível gerar um planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, definindo o gerador do planejamento. Observando a <a href="#fig-summfrac" class="quarto-xref">Figura&nbsp;<span>6.13</span></a> seja o planejamento <span class="math inline">\(2^{5-1}\)</span> considerando que o analista deseja analisar 5 fatores, mas só tem recursos para 16 ensaios. Este planejamento tem resolução V. Caso o analista queira utilizar a fração alternativa, ele deve considerar o gerador E = -ABCD, colocando o argumento <code>gen = "-ABCD"</code>, conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^(5-1) com fração alternativa</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>planv <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">nfactors =</span> <span class="dv">5</span>, </span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">gen =</span> <span class="st">"-ABCD"</span>)</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(planv)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^(5-1) com fração alternativa</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>planv <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">nfactors =</span> <span class="dv">5</span>, </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">gen =</span> <span class="st">"-ABCD"</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(planv)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 FrF2(nruns = 16, nfactors = 5, gen = "-ABCD")
@@ -2030,35 +2028,35 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1   1  1  1 -1  1
+1   1 -1  1  1  1
 2  -1  1  1  1  1
 3   1  1  1  1 -1
-4  -1 -1 -1 -1 -1
-5   1 -1  1  1  1
-6   1 -1 -1 -1  1
-7   1  1 -1 -1 -1
-8  -1  1  1 -1 -1
-9   1 -1 -1  1 -1
-10 -1 -1  1  1 -1
+4   1  1 -1  1  1
+5  -1 -1 -1  1  1
+6  -1  1  1 -1 -1
+7  -1  1 -1 -1  1
+8   1 -1 -1  1 -1
+9  -1 -1  1  1 -1
+10  1  1 -1 -1 -1
 11 -1 -1  1 -1  1
-12 -1  1 -1 -1  1
-13  1  1 -1  1  1
-14 -1  1 -1  1 -1
-15  1 -1  1 -1 -1
-16 -1 -1 -1  1  1
+12  1  1  1 -1  1
+13 -1  1 -1  1 -1
+14 -1 -1 -1 -1 -1
+15  1 -1 -1 -1  1
+16  1 -1  1 -1 -1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
 <p>Pelos resultados pode-se observar que não há confundimento entre os efeitos principais e as interações de segunda ordem. Caso o analista deseje entender toda a estrutura de confundimento, deve-se utilizar o comando <code>aliases</code> conforme sintaxe abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gerando coluna resposta aleatória </span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apenas para ver confundimento</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">16</span>)</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>planv<span class="sc">$</span>y <span class="ot">&lt;-</span> y</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento completa</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">5</span>, <span class="at">data =</span> planv))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gerando coluna resposta aleatória </span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apenas para ver confundimento</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">16</span>)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>planv<span class="sc">$</span>y <span class="ot">&lt;-</span> y</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento completa</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">5</span>, <span class="at">data =</span> planv))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
  A = -B:C:D:E
