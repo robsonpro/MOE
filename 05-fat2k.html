@@ -1656,42 +1656,6 @@ Figura&nbsp;5.12: Gráfico de dispersão de variância para o fatorial <span cla
 <li>O artigo utilizou um planejamento fatorial completo <span class="math inline">\(2^3\)</span> para estudar a adsorção do corante vermelho neutro em areia de fundição residual (WFS). Foram considerados 3 fatores, cada um em 2 níveis, seno realizadas duas réplicas. Os fatores considerados são: Tempo de contato (A): 5 min e 120 min; Concentração inicial do corante (B): 30 mg/L e 300 mg/L; Dosagem de adsorvente (C): 2,5 g/L e 20 g/L. Como resposta foi avaliada a eficiência de remoção do corante vermelho neutro (%) da solução aquosa. O planejamento é apresentado na <a href="#tbl-planfat2k1" class="quarto-xref">Tabela&nbsp;<span>5.5</span></a>.</li>
 </ol>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-FrF2(nruns = 8, nfactors = 3, replications = 2, factor.names = list(tempo = c(5, 
-    120), concent = c(30, 300), dosagem = c(2.5, 20)), randomize = F)
-
-Experimental design of type  full factorial 
-8  runs
-each run independently conducted  2  times
-
-Factor settings:
-  tempo concent dosagem
-1     5      30     2,5
-2   120     300      20
-
-The design itself:
-   run.no run.no.std.rp tempo concent dosagem Blocks
-1       1           1.1     5      30     2,5     .1
-2       2           2.1   120      30     2,5     .1
-3       3           3.1     5     300     2,5     .1
-4       4           4.1   120     300     2,5     .1
-5       5           5.1     5      30      20     .1
-6       6           6.1   120      30      20     .1
-7       7           7.1     5     300      20     .1
-8       8           8.1   120     300      20     .1
-9       9           1.2     5      30     2,5     .2
-10     10           2.2   120      30     2,5     .2
-11     11           3.2     5     300     2,5     .2
-12     12           4.2   120     300     2,5     .2
-13     13           5.2     5      30      20     .2
-14     14           6.2   120      30      20     .2
-15     15           7.2     5     300      20     .2
-16     16           8.2   120     300      20     .2
-class=design, type= full factorial 
-NOTE: columns run.no and run.no.std.rp  are annotation, 
- not part of the data frame</code></pre>
-</div>
 <div id="tbl-planfat2k1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-planfat2k1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1824,6 +1788,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
 <ol start="2" type="1">
 <li>O estudo de Ananthanarayanan et al.&nbsp;(2019) buscou modelar os parâmetros de encruamento em pré-formas de alumínio sinterizado e alumínio com 1% de carbono, submetidas a conformação a frio por compressão (cold upsetting). Foi utilizado um planejamento fatorial completo <span class="math inline">\(2^3\)</span>, ou seja, três fatores com dois níveis cada. Foram estudados o efeito da composição (C): Alumínio puro e Alumínio + 1% Carbono; da temperatura de sinterização (T): 495 e 561 °C; e do lubrificante a seco e estearato de zinco (E-Zinco). Uma das respostas avaliada foi o coeficiente de resistência ao escoamento (K, em MPa). O planejamento foi replicado duas vezes, conforme apresentado na <a href="#tbl-planfat2k2" class="quarto-xref">Tabela&nbsp;<span>5.6</span></a>.</li>
 </ol>
+<!-- -->
 <ol type="a">
 <li><p>Obtenha o planejamento no R.</p></li>
 <li><p>Obtenha o modelo de regressão e faça o teste t para os coeficientes do modelo completo. Avalie a significância de cada termo considerado.</p></li>
@@ -1831,51 +1796,126 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
 <li><p>Avalie as pressuposições de normalidade e homocedasticidade.</p></li>
 <li><p>Faça os gráficos de efeitos principais e de interação para os termos significativos e interprete os efeitos observados.</p></li>
 </ol>
+<div class="cell">
 <div id="tbl-planfat2k2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-planfat2k2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-formas de alumínio sinterizado na conformação a frio por compressão
 </figcaption>
 <div aria-describedby="tbl-planfat2k2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-FrF2(nruns = 8, nfactors = 3, replications = 2, factor.names = list(Composicao = c("Al", 
-    "Al-1%C"), Temperatura = c(495, 561), Lubrificante = c("Seco", 
-    "E-Zinco")), randomize = F)
-
-Experimental design of type  full factorial 
-8  runs
-each run independently conducted  2  times
-
-Factor settings:
-  Composicao Temperatura Lubrificante
-1         Al         495         Seco
-2     Al-1%C         561      E-Zinco
-
-The design itself:
-   run.no run.no.std.rp Composicao Temperatura Lubrificante Blocks
-1       1           1.1         Al         495         Seco     .1
-2       2           2.1     Al-1%C         495         Seco     .1
-3       3           3.1         Al         561         Seco     .1
-4       4           4.1     Al-1%C         561         Seco     .1
-5       5           5.1         Al         495      E-Zinco     .1
-6       6           6.1     Al-1%C         495      E-Zinco     .1
-7       7           7.1         Al         561      E-Zinco     .1
-8       8           8.1     Al-1%C         561      E-Zinco     .1
-9       9           1.2         Al         495         Seco     .2
-10     10           2.2     Al-1%C         495         Seco     .2
-11     11           3.2         Al         561         Seco     .2
-12     12           4.2     Al-1%C         561         Seco     .2
-13     13           5.2         Al         495      E-Zinco     .2
-14     14           6.2     Al-1%C         495      E-Zinco     .2
-15     15           7.2         Al         561      E-Zinco     .2
-16     16           8.2     Al-1%C         561      E-Zinco     .2
-class=design, type= full factorial 
-NOTE: columns run.no and run.no.std.rp  are annotation, 
- not part of the data frame</code></pre>
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Composição</th>
+<th style="text-align: left;">Temperatura</th>
+<th style="text-align: left;">Lubrificante</th>
+<th style="text-align: right;">K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">185</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">187</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">255</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">220</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">248</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">195</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">195</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">220</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">Seco</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">215</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Al</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Al-1%C</td>
+<td style="text-align: left;">561</td>
+<td style="text-align: left;">E-Zinco</td>
+<td style="text-align: right;">182</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </figure>
+</div>
 </div>
 <p>Ananthanarayanan, R., Ahmed, Z., Prasad, A., &amp; Narayan, S. (2019). Strain hardening analysis and modelling of its parameters for sintered Al and Al-1% C preforms during cold upsetting. Journal of Materials Research and Technology, 8(2), 1789-1797.</p>
 
