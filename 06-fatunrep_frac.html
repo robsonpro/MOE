@@ -239,6 +239,7 @@ window.Quarto = {
   <li><a href="#bloco-e-confundimento-no-fatorial-2k" id="toc-bloco-e-confundimento-no-fatorial-2k" class="nav-link" data-scroll-target="#bloco-e-confundimento-no-fatorial-2k"><span class="header-section-number">6.3</span> Bloco e confundimento no fatorial <span class="math inline">\(2^k\)</span></a></li>
   <li><a href="#fatorial-fracionado-2k-p" id="toc-fatorial-fracionado-2k-p" class="nav-link" data-scroll-target="#fatorial-fracionado-2k-p"><span class="header-section-number">6.4</span> Fatorial fracionado <span class="math inline">\(2^{k-p}\)</span></a></li>
   <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">6.5</span> Exercícios</a></li>
   </ul>
 </nav>
     </div>
@@ -641,21 +642,21 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16,950      4,05   4,185  0,0054      0,0502
-C    11,675      4,05   2,883  0,0193      0,1815
-AD    5,900      4,05   1,457  0,1425      0,8350
-D     5,625      4,05   1,389  0,1598      0,8759
-AC   -3,400      4,05  -0,840  0,3697      1,0000
-BCD   3,350      4,05   0,827  0,3772      1,0000
-ABCD -3,325      4,05  -0,821  0,3809      1,0000
-B     3,100      4,05   0,765  0,4132      1,0000
-BD   -2,700      4,05  -0,667  0,5388      1,0000
-ABD  -2,325      4,05  -0,574  0,5976      1,0000
-AB    2,275      4,05   0,562  0,6057      1,0000
-CD    2,125      4,05   0,525  0,6301      1,0000
-ABC  -1,825      4,05  -0,451  0,6793      1,0000
-BC    0,850      4,05   0,210  0,8480      1,0000
-ACD  -0,650      4,05  -0,160  0,8829      1,0000</code></pre>
+A    16,950      4,05   4,185  0,0064      0,0589
+C    11,675      4,05   2,883  0,0229      0,2058
+AD    5,900      4,05   1,457  0,1501      0,8305
+D     5,625      4,05   1,389  0,1665      0,8669
+AC   -3,400      4,05  -0,840  0,3741      1,0000
+BCD   3,350      4,05   0,827  0,3812      1,0000
+ABCD -3,325      4,05  -0,821  0,3850      1,0000
+B     3,100      4,05   0,765  0,4166      1,0000
+BD   -2,700      4,05  -0,667  0,5393      1,0000
+ABD  -2,325      4,05  -0,574  0,6010      1,0000
+AB    2,275      4,05   0,562  0,6085      1,0000
+CD    2,125      4,05   0,525  0,6320      1,0000
+ABC  -1,825      4,05  -0,451  0,6786      1,0000
+BC    0,850      4,05   0,210  0,8449      1,0000
+ACD  -0,650      4,05  -0,160  0,8832      1,0000</code></pre>
 </div>
 </div>
 <p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
@@ -1218,7 +1219,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
 </figure>
 </div>
 </div>
-<p>É importante entender além de como alocar blocos com confundimento, como realizar a análise. Seja o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, à seguir.</p>
+<p>Além de saber como alocar blocos com confundimento, é importante entender como realizar a análise. Seja o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, à seguir.</p>
 <div id="exm-blockconf" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 6.3</strong></span> Um planejamento fatorial <span class="math inline">\(2^4\)</span> foi utilizado no estudo da síntese por deposição química a vapor de acetileno. Foram estudados os efeitos do tempo de crescimento (45, 60 min), da temperatura de crescimento (700, 750 °C), da vazão de acetileno (150, 190 ml/min) e da vazão de argônio (230, 290 ml/min). O catalisador bimetálico FeCo foi utilizado na síntese. Supondo que o experimentador tinha disponível quantidade suficiente de um primeiro lote do catalisador para oito experimentos e quantidade suficientes de um segundo lote para oito experimentos, ele decidiu blocar esta variável. Deve-se definir o confundimento menos prejudicial de forma a alocar os níveis dos blocos.</p>
 </div>
@@ -1588,21 +1589,21 @@ attr(,"mean")
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85,25      9,75  -8,744  0,0003      0,0019
-A     19,25      9,75   1,974  0,0619      0,4889
-AC   -16,25      9,75  -1,667  0,1002      0,6847
-AB   -13,25      9,75  -1,359  0,1675      0,8913
-BCD   12,75      9,75   1,308  0,1811      0,9108
-B    -11,25      9,75  -1,154  0,2294      0,9734
-ABC    7,25      9,75   0,744  0,4269      1,0000
-BC    -6,75      9,75  -0,692  0,4633      1,0000
-BD     6,25      9,75   0,641  0,5558      1,0000
-ABD   -5,75      9,75  -0,590  0,5881      1,0000
-AD    -5,25      9,75  -0,538  0,6215      1,0000
-CD    -3,75      9,75  -0,385  0,7249      1,0000
-ACD   -2,75      9,75  -0,282  0,7963      1,0000
-D      1,75      9,75   0,179  0,8694      1,0000
-ABCD  -1,25      9,75  -0,128  0,9072      1,0000</code></pre>
+C    -85,25      9,75  -8,744  0,0002      0,0037
+A     19,25      9,75   1,974  0,0685      0,5006
+AC   -16,25      9,75  -1,667  0,1103      0,7019
+AB   -13,25      9,75  -1,359  0,1742      0,8845
+BCD   12,75      9,75   1,308  0,1891      0,9183
+B    -11,25      9,75  -1,154  0,2381      0,9651
+ABC    7,25      9,75   0,744  0,4304      1,0000
+BC    -6,75      9,75  -0,692  0,4662      1,0000
+BD     6,25      9,75   0,641  0,5567      1,0000
+ABD   -5,75      9,75  -0,590  0,5908      1,0000
+AD    -5,25      9,75  -0,538  0,6232      1,0000
+CD    -3,75      9,75  -0,385  0,7229      1,0000
+ACD   -2,75      9,75  -0,282  0,7939      1,0000
+D      1,75      9,75   0,179  0,8679      1,0000
+ABCD  -1,25      9,75  -0,128  0,9060      1,0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2028,22 +2029,22 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1   1 -1  1  1  1
-2  -1  1  1  1  1
-3   1  1  1  1 -1
-4   1  1 -1  1  1
-5  -1 -1 -1  1  1
-6  -1  1  1 -1 -1
-7  -1  1 -1 -1  1
-8   1 -1 -1  1 -1
-9  -1 -1  1  1 -1
-10  1  1 -1 -1 -1
-11 -1 -1  1 -1  1
-12  1  1  1 -1  1
-13 -1  1 -1  1 -1
-14 -1 -1 -1 -1 -1
-15  1 -1 -1 -1  1
-16  1 -1  1 -1 -1
+1   1  1  1  1 -1
+2   1  1 -1 -1 -1
+3   1 -1 -1  1 -1
+4  -1  1  1  1  1
+5  -1  1 -1  1 -1
+6   1 -1 -1 -1  1
+7  -1  1  1 -1 -1
+8   1  1 -1  1  1
+9   1 -1  1  1  1
+10  1  1  1 -1  1
+11  1 -1  1 -1 -1
+12 -1 -1 -1 -1 -1
+13 -1  1 -1 -1  1
+14 -1 -1  1 -1  1
+15 -1 -1  1  1 -1
+16 -1 -1 -1  1  1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
@@ -2086,6 +2087,498 @@ class=design, type= FrF2.generators </code></pre>
 <p>FISHER, Ronald A. The theory of confounding in factorial experiments in relation to the theory of groups. <em>Annals of Eugenics</em>, v. 11, n.&nbsp;1, p.&nbsp;341-353, 1941.</p>
 <p>LENTH, Russell V. Quick and easy analysis of unreplicated factorials. <em>Technometrics</em>, v. 31, n.&nbsp;4, p.&nbsp;469-473, 1989.</p>
 <p>SALLEH, Emee Marina; ZUHAILAWATI, Hussain; RAMAKRISHNAN, Sivakumar. Synthesis of biodegradable Mg-Zn alloy by mechanical alloying: Statistical prediction of elastic modulus and mass loss using fractional factorial design. <em>Transactions of Nonferrous Metals Society of China</em>, v. 28, n.&nbsp;4, p.&nbsp;687-699, 2018.</p>
+</section>
+<section id="exercícios" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">6.5</span> Exercícios</h2>
+<ol type="1">
+<li>O processo de galvanização a quente frequentemente apresenta o problema de sobrecamada de zinco. A espessura do revestimento de zinco pode ser influenciada por diversos fatores do processo. No estudo de Verma et al.&nbsp;(2022), foram considerados três fatores principais: tempo de imersão (3 min ou 5 min); percentual de silício no aço (0,18% ou 0,28%); e percentual de níquel no banho de zinco (0% ou 0,05%). Foi conduzido um experimento fatorial completo <span class="math inline">\(2^3\)</span>, não replicado, em banho a 450 °C e com teor fixo de 2,5% de fósforo no aço. O planejamento é apresentado na <a href="#tbl-exfaturep1" class="quarto-xref">Tabela&nbsp;<span>6.7</span></a>.</li>
+</ol>
+<div class="cell">
+<div id="tbl-exfaturep1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exfaturep1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;6.7: Planejamento fatorial de dois níveis não replicado para espessura de revestimento de zinco
+</figcaption>
+<div aria-describedby="tbl-exfaturep1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tempo</th>
+<th style="text-align: left;">Silicio</th>
+<th style="text-align: left;">Niquel</th>
+<th style="text-align: right;">Espessura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0,18</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0,18</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">154</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0,28</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">102</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0,28</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">142</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0,18</td>
+<td style="text-align: left;">0,05</td>
+<td style="text-align: right;">94</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0,18</td>
+<td style="text-align: left;">0,05</td>
+<td style="text-align: right;">115</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0,28</td>
+<td style="text-align: left;">0,05</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0,28</td>
+<td style="text-align: left;">0,05</td>
+<td style="text-align: right;">134</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>Obtenha o modelo completo e faça a análise usando o método de Lenth.</p></li>
+<li><p>Obtenha os gráficos de Pareto e de Daniel e avalie os efeitos significativos considerando o erro marginal.</p></li>
+<li><p>Retire a interção de terceira ordem e faça a análise usando o teste t. Avalie os efeitos significativos. Avalie o ajuste do modelo.</p></li>
+<li><p>Faça análise dos resíduos do modelo de segunda ordem.</p></li>
+<li><p>Avalie graficamente os efeitos e determine as condições que minimizam a espessura do processo de galvanização.</p></li>
+</ol>
+<p>Verma, N., Sharma, V., Badar, M. A., Choubey, N., &amp; Parihar, R. S. (2022). Optimization of zinc coating thickness by unreplicated factorial design of experiments in hot-dip galvanization process. International Journal of Precision Engineering and Manufacturing, 23(10), 1173-1182.</p>
+<ol start="2" type="1">
+<li>O quitosano é obtido a partir da desacetilação da quitina. Suas propriedades estão diretamente relacionadas às características do polímero, que por sua vez dependem das condições de desacetilação. Um estudo experimental foi conduzido por Younes et al.&nbsp;(2014) para investigar os fatores que influenciam o grau de acetilação (DA) do quitosano, utilizando um planejamento fatorial fracionado <span class="math inline">\(2{7−3}\)</span> com sete fatores em dois níveis. Os fatores considerados foram: <span class="math inline">\(x_1\)</span>: número sucessivo de banhos (1, 2); <span class="math inline">\(x_2\)</span>: tempo de reação (3 h, 6 h); <span class="math inline">\(x_3\)</span>: temperatura (90 °C, 140 °C); <span class="math inline">\(x_4\)</span>: tipo de reagente alcalino (NaOH, KOH); <span class="math inline">\(x_5\)</span>: condições atmosféricas (nitrogênio, ar); <span class="math inline">\(x_6\)</span>: uso de borohidreto de sódio (com, sem); e <span class="math inline">\(x_7\)</span>: concentração alcalina (7 mol/L, 10 mol/L). A resposta consistiu no grau de acetilação - DA (%), obtido por de ressonância magnética nuclear de hidrogênio, ou percentual de umidades monoméricas que possuem grupos acetila (COCH<span class="math inline">\(_3\)</span>) ligados à estrutura. O DA influencia a solubilidade, hidrofobicidade, biodegradabilidade e reatividade química. A Tabela <span class="citation" data-cites="exfatufrac73">(<a href="#ref-exfatufrac73" role="doc-biblioref"><strong>exfatufrac73?</strong></a>)</span> expõe o planejamento com a resposta.</li>
+</ol>
+<div class="cell">
+<div id="tbl-exfatufrac73" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exfatufrac73-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;6.8: Planejamento fatorial fracionado de dois níveis para avaliar o grau de acetilação do quitosano
+</figcaption>
+<div aria-describedby="tbl-exfatufrac73-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Banhos</th>
+<th style="text-align: left;">Tempo</th>
+<th style="text-align: left;">Temperatura</th>
+<th style="text-align: left;">Reagente</th>
+<th style="text-align: left;">Atmosfera</th>
+<th style="text-align: left;">NaBH4</th>
+<th style="text-align: left;">Alkali</th>
+<th style="text-align: right;">DA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">7,5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">11,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">9,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">4,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">7,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">3,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">NaOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">2,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">19,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">10,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">13,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">11,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">8,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">5,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Nitrogênio</td>
+<td style="text-align: left;">com</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">4,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">140</td>
+<td style="text-align: left;">KOH</td>
+<td style="text-align: left;">Ar</td>
+<td style="text-align: left;">sem</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">5,0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>Obtenha este planejamento no R. Use o argumento <code>generators = c("ABC","ABD", "ABCD")</code> para obter as mesmas condições da <span class="citation" data-cites="exfatufrac73">(<a href="#ref-exfatufrac73" role="doc-biblioref"><strong>exfatufrac73?</strong></a>)</span>.</p></li>
+<li><p>Obtenha a estrutura de confundimento. Qual a resolução deste planejamento?</p></li>
+<li><p>É possível obter um modelo completo para este estudo?</p></li>
+<li><p>Obtenha o modelo de segunda ordem e avalie os efeitos mais importantes segundo a magnitude dos coeficientes.</p></li>
+<li><p>Faça a análise via pseudo erro padrão de Lenth e avalie a significância dos efeitos usando o erro marginal.</p></li>
+<li><p>Faça os gráficos de efeitos principais e determine os níveis dos fatores que minimizam o grau de acetilação.</p></li>
+</ol>
+<p>Younes, I., Ghorbel-Bellaaj, O., Chaabouni, M., Rinaudo, M., Souard, F., Vanhaverbeke, C., … &amp; Nasri, M. (2014). Use of a fractional factorial design to study the effects of experimental factors on the chitin deacetylation. International journal of biological macromolecules, 70, 385-390.</p>
+<ol start="3" type="1">
+<li>Um estudo avaliou o efeito de diversos parâmetros de soldagem na geometria do cordão de solda de chapas de aço carbono com 10 mm de espessura, soldadas por arco submerso. Os fatores estudados e seus níveis foram: A: Tensão (32 V e 36 V); B: Velocidade do carrinho (35 cm/min e 40 cm/min); C: Taxa de alimentação do arame (5 cm/s e 7 cm/s); D: Diâmetro do eletrodo (3,15 mm e 4 mm); e E: Tipo de fluxo (F1 e F2). As respostas medidas foram a altura do reforço em mm; a profundidade de penetração em mm; e a dureza em HRB. A Tabela <a href="#tbl-soldaa" class="quarto-xref">Tabela&nbsp;<span>6.9</span></a> apresenta o planejamento na ordem padrão com as respostas.</li>
+</ol>
+<div class="cell">
+<div id="tbl-soldaa" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-soldaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;6.9: Planejamento fatorial fracionado de dois níveis para experimento de soldagem a arco submerso
+</figcaption>
+<div aria-describedby="tbl-soldaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">x1</th>
+<th style="text-align: left;">x2</th>
+<th style="text-align: left;">x3</th>
+<th style="text-align: left;">x4</th>
+<th style="text-align: left;">x5</th>
+<th style="text-align: right;">Reforço</th>
+<th style="text-align: right;">Penetração</th>
+<th style="text-align: right;">Dureza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">2,735</td>
+<td style="text-align: right;">1,485</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">2,315</td>
+<td style="text-align: right;">1,935</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">2,780</td>
+<td style="text-align: right;">2,490</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">3,050</td>
+<td style="text-align: right;">1,585</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">3,730</td>
+<td style="text-align: right;">3,610</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">4,290</td>
+<td style="text-align: right;">3,035</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">3,420</td>
+<td style="text-align: right;">2,775</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">3,170</td>
+<td style="text-align: right;">2,910</td>
+<td style="text-align: right;">81</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">4,920</td>
+<td style="text-align: right;">3,000</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">4,350</td>
+<td style="text-align: right;">2,375</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">3,265</td>
+<td style="text-align: right;">3,300</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">4,180</td>
+<td style="text-align: right;">3,675</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">6,945</td>
+<td style="text-align: right;">6,590</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">6,365</td>
+<td style="text-align: right;">7,145</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: right;">5,860</td>
+<td style="text-align: right;">6,665</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">3,945</td>
+<td style="text-align: right;">7,940</td>
+<td style="text-align: right;">86</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>Obtenha este planejamento no R.</p></li>
+<li><p>Obtenha a estrutura de confundimento. Qual a resolução deste planejamento?</p></li>
+<li><p>Obtenha o modelo de segunda ordem e avalie os efeitos mais importantes segundo a magnitude dos coeficientes.</p></li>
+</ol>
+<p>Para cada resposta resolva os itens (e) até ().</p>
+<ol start="5" type="a">
+<li><p>Faça a análise via pseudo erro padrão de Lenth e avalie a significância dos efeitos usando o erro marginal.</p></li>
+<li><p>Realize o teste t para o modelo reduzido. Para tal, inicie removendo a interação de segunda ordem menos significativa e faça a redução automática via <code>step</code>. Quais termos são significativos?</p></li>
+<li><p>Faça os gráficos de efeitos principais e de interação de segunda ordem e determine os níveis dos fatores que maximizam as respostas.</p></li>
+</ol>
+<p>Rathi, A. K. (2021). To study the effect of submerged arc welding parameters on bead geometry and hardness for mild steel (IS-2062A) using fractional factorial design. Materials Today: Proceedings, 34, 525-530.</p>
 
 
 </section>
