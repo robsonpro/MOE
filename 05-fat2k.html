@@ -279,7 +279,7 @@ window.Quarto = {
 <section id="fatorial-2k-replicado" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="fatorial-2k-replicado"><span class="header-section-number">5.2</span> Fatorial <span class="math inline">\(2^k\)</span> replicado</h2>
 <p>O planejamento fatorial <span class="math inline">\(2^k\)</span> consiste em um projeto experimental onde todos os <span class="math inline">\(k\)</span> fatores de interesse apresentam dois níveis. Este planejamento permite a avaliação de fatores quantitativos ou qualitativos codificando os dois níveis dos fatores em -1 e +1. O número total de experimentos em um planejamento fatorial <span class="math inline">\(2^k\)</span> é <span class="math inline">\(N = n2^{k}\)</span>, onde <span class="math inline">\(n\)</span> é o número de replicações do planejamento. Um planejamento fatorial <span class="math inline">\(2^k\)</span> considera todas as <span class="math inline">\(2^k\)</span> combinações dos níveis dos três fatores de interesse <span class="math inline">\(x_1, x_2,..., x_k\)</span>. A finalidade de testar todas as combinações dos níveis dos fatores é de averiguar o efeito das interações entre os fatores, isto é, de estimar o efeito da mudança de dois ou mais fatores de forma concomitante.</p>
-<p>A <a href="#tbl-tab1" class="quarto-xref">Tabela&nbsp;<span>5.1</span></a> apresenta um planejamento fatorial <span class="math inline">\(2^3\)</span> com <span class="math inline">\(N = 8\)</span> experimentos. O planejamento fatorial <span class="math inline">\(2^k\)</span> é comumente codificado com níveis <span class="math inline">\({-1,+1}\)</span>. A codificação evita efeitos de escala e unidades de medida na inferência dos efeitos testados. A ordem padrão dos ensaios garante que todas as <span class="math inline">\(2^3\)</span> combinações dos dois níveis dos <span class="math inline">\(k = 3\)</span> fatores sejam testadas. Para o fator <span class="math inline">\(x_1\)</span> muda-se de nível a cada <span class="math inline">\(2^0 = 1\)</span> linha. Para o fator <span class="math inline">\(x_2\)</span> muda-se de nível a cada cada <span class="math inline">\(2^1 = 2\)</span> linhas. Para o fator <span class="math inline">\(x_k\)</span> muda-se de nível a cada <span class="math inline">\(2^{k−1}\)</span> linhas. E assim sucessivamente, caso o planejamento apresente mais fatores. Um fatorial balanceado deve ter o mesmo número de replicações, <span class="math inline">\(n\)</span>, em cada uma das <span class="math inline">\(2^k\)</span> combinações dos níveis dos fatores.</p>
+<p>A <a href="#tbl-tab1" class="quarto-xref">Tabela&nbsp;<span>5.1</span></a> apresenta um planejamento fatorial <span class="math inline">\(2^3\)</span> com <span class="math inline">\(N = 8\)</span> experimentos. O planejamento fatorial <span class="math inline">\(2^k\)</span> é comumente codificado com níveis <span class="math inline">\({-1,+1}\)</span>. A codificação evita efeitos de escala e unidades de medida na inferência dos efeitos testados. A ordem padrão dos ensaios garante que todas as <span class="math inline">\(2^3\)</span> combinações dos dois níveis dos <span class="math inline">\(k = 3\)</span> fatores sejam testadas. Para o fator <span class="math inline">\(x_1\)</span> muda-se de nível a cada <span class="math inline">\(2^0 = 1\)</span> linha. Para o fator <span class="math inline">\(x_2\)</span> muda-se de nível a cada cada <span class="math inline">\(2^1 = 2\)</span> linhas. Para <span class="math inline">\(x_3\)</span> muda-se de nível a cada <span class="math inline">\(2^2=4\)</span> linhas. E assim sucessivamente, caso o planejamento apresente mais fatores, ou seja, para o fator <span class="math inline">\(x_k\)</span> muda-se de nível a cada <span class="math inline">\(2^{k−1}\)</span> linhas. Um fatorial balanceado deve ter o mesmo número de replicações, <span class="math inline">\(n\)</span>, em cada uma das <span class="math inline">\(2^k\)</span> combinações dos níveis dos fatores.</p>
 <div class="cell">
 <div id="tbl-tab1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -288,23 +288,23 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
 </figcaption>
 <div aria-describedby="tbl-tab1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="gtorgqswro" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gtorgqswro table {
+<div id="urtskdzoim" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#urtskdzoim table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gtorgqswro thead, #gtorgqswro tbody, #gtorgqswro tfoot, #gtorgqswro tr, #gtorgqswro td, #gtorgqswro th {
+#urtskdzoim thead, #urtskdzoim tbody, #urtskdzoim tfoot, #urtskdzoim tr, #urtskdzoim td, #urtskdzoim th {
   border-style: none;
 }
 
-#gtorgqswro p {
+#urtskdzoim p {
   margin: 0;
   padding: 0;
 }
 
-#gtorgqswro .gt_table {
+#urtskdzoim .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -330,12 +330,12 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-left-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_caption {
+#urtskdzoim .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gtorgqswro .gt_title {
+#urtskdzoim .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -347,7 +347,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-bottom-width: 0;
 }
 
-#gtorgqswro .gt_subtitle {
+#urtskdzoim .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -359,7 +359,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-top-width: 0;
 }
 
-#gtorgqswro .gt_heading {
+#urtskdzoim .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -371,13 +371,13 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-right-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_bottom_border {
+#urtskdzoim .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_col_headings {
+#urtskdzoim .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -392,7 +392,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-right-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_col_heading {
+#urtskdzoim .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -412,7 +412,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   overflow-x: hidden;
 }
 
-#gtorgqswro .gt_column_spanner_outer {
+#urtskdzoim .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -424,15 +424,15 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 4px;
 }
 
-#gtorgqswro .gt_column_spanner_outer:first-child {
+#urtskdzoim .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gtorgqswro .gt_column_spanner_outer:last-child {
+#urtskdzoim .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gtorgqswro .gt_column_spanner {
+#urtskdzoim .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -444,11 +444,11 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   width: 100%;
 }
 
-#gtorgqswro .gt_spanner_row {
+#urtskdzoim .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gtorgqswro .gt_group_heading {
+#urtskdzoim .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -474,7 +474,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   text-align: left;
 }
 
-#gtorgqswro .gt_empty_group_heading {
+#urtskdzoim .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -489,15 +489,15 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   vertical-align: middle;
 }
 
-#gtorgqswro .gt_from_md > :first-child {
+#urtskdzoim .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gtorgqswro .gt_from_md > :last-child {
+#urtskdzoim .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gtorgqswro .gt_row {
+#urtskdzoim .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -516,7 +516,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   overflow-x: hidden;
 }
 
-#gtorgqswro .gt_stub {
+#urtskdzoim .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -529,7 +529,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 5px;
 }
 
-#gtorgqswro .gt_stub_row_group {
+#urtskdzoim .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -543,15 +543,15 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   vertical-align: top;
 }
 
-#gtorgqswro .gt_row_group_first td {
+#urtskdzoim .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gtorgqswro .gt_row_group_first th {
+#urtskdzoim .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gtorgqswro .gt_summary_row {
+#urtskdzoim .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -561,16 +561,16 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 5px;
 }
 
-#gtorgqswro .gt_first_summary_row {
+#urtskdzoim .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_first_summary_row.thick {
+#urtskdzoim .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gtorgqswro .gt_last_summary_row {
+#urtskdzoim .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -580,7 +580,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_grand_summary_row {
+#urtskdzoim .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -590,7 +590,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 5px;
 }
 
-#gtorgqswro .gt_first_grand_summary_row {
+#urtskdzoim .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -600,7 +600,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-top-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_last_grand_summary_row_top {
+#urtskdzoim .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -610,11 +610,11 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_striped {
+#urtskdzoim .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gtorgqswro .gt_table_body {
+#urtskdzoim .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -623,7 +623,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_footnotes {
+#urtskdzoim .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -637,7 +637,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-right-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_footnote {
+#urtskdzoim .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -646,7 +646,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 5px;
 }
 
-#gtorgqswro .gt_sourcenotes {
+#urtskdzoim .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -660,7 +660,7 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   border-right-color: #D3D3D3;
 }
 
-#gtorgqswro .gt_sourcenote {
+#urtskdzoim .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -668,72 +668,72 @@ Tabela&nbsp;5.1: Planejamento fatorial <span class="math inline">\(2^3\)</span>
   padding-right: 5px;
 }
 
-#gtorgqswro .gt_left {
+#urtskdzoim .gt_left {
   text-align: left;
 }
 
-#gtorgqswro .gt_center {
+#urtskdzoim .gt_center {
   text-align: center;
 }
 
-#gtorgqswro .gt_right {
+#urtskdzoim .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gtorgqswro .gt_font_normal {
+#urtskdzoim .gt_font_normal {
   font-weight: normal;
 }
 
-#gtorgqswro .gt_font_bold {
+#urtskdzoim .gt_font_bold {
   font-weight: bold;
 }
 
-#gtorgqswro .gt_font_italic {
+#urtskdzoim .gt_font_italic {
   font-style: italic;
 }
 
-#gtorgqswro .gt_super {
+#urtskdzoim .gt_super {
   font-size: 65%;
 }
 
-#gtorgqswro .gt_footnote_marks {
+#urtskdzoim .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gtorgqswro .gt_asterisk {
+#urtskdzoim .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gtorgqswro .gt_indent_1 {
+#urtskdzoim .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gtorgqswro .gt_indent_2 {
+#urtskdzoim .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gtorgqswro .gt_indent_3 {
+#urtskdzoim .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gtorgqswro .gt_indent_4 {
+#urtskdzoim .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gtorgqswro .gt_indent_5 {
+#urtskdzoim .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gtorgqswro .katex-display {
+#urtskdzoim .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gtorgqswro div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#urtskdzoim div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -852,23 +852,23 @@ Tabela&nbsp;5.2: Níveis dos fatores
 </figcaption>
 <div aria-describedby="tbl-tab2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="xgqzasivxi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xgqzasivxi table {
+<div id="fixxzemxyd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fixxzemxyd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xgqzasivxi thead, #xgqzasivxi tbody, #xgqzasivxi tfoot, #xgqzasivxi tr, #xgqzasivxi td, #xgqzasivxi th {
+#fixxzemxyd thead, #fixxzemxyd tbody, #fixxzemxyd tfoot, #fixxzemxyd tr, #fixxzemxyd td, #fixxzemxyd th {
   border-style: none;
 }
 
-#xgqzasivxi p {
+#fixxzemxyd p {
   margin: 0;
   padding: 0;
 }
 
-#xgqzasivxi .gt_table {
+#fixxzemxyd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -894,12 +894,12 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-left-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_caption {
+#fixxzemxyd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xgqzasivxi .gt_title {
+#fixxzemxyd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -911,7 +911,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-bottom-width: 0;
 }
 
-#xgqzasivxi .gt_subtitle {
+#fixxzemxyd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -923,7 +923,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-top-width: 0;
 }
 
-#xgqzasivxi .gt_heading {
+#fixxzemxyd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -935,13 +935,13 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-right-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_bottom_border {
+#fixxzemxyd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_col_headings {
+#fixxzemxyd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -956,7 +956,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-right-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_col_heading {
+#fixxzemxyd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -976,7 +976,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   overflow-x: hidden;
 }
 
-#xgqzasivxi .gt_column_spanner_outer {
+#fixxzemxyd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -988,15 +988,15 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 4px;
 }
 
-#xgqzasivxi .gt_column_spanner_outer:first-child {
+#fixxzemxyd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xgqzasivxi .gt_column_spanner_outer:last-child {
+#fixxzemxyd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xgqzasivxi .gt_column_spanner {
+#fixxzemxyd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1008,11 +1008,11 @@ Tabela&nbsp;5.2: Níveis dos fatores
   width: 100%;
 }
 
-#xgqzasivxi .gt_spanner_row {
+#fixxzemxyd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xgqzasivxi .gt_group_heading {
+#fixxzemxyd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1038,7 +1038,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   text-align: left;
 }
 
-#xgqzasivxi .gt_empty_group_heading {
+#fixxzemxyd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1053,15 +1053,15 @@ Tabela&nbsp;5.2: Níveis dos fatores
   vertical-align: middle;
 }
 
-#xgqzasivxi .gt_from_md > :first-child {
+#fixxzemxyd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xgqzasivxi .gt_from_md > :last-child {
+#fixxzemxyd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xgqzasivxi .gt_row {
+#fixxzemxyd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1080,7 +1080,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   overflow-x: hidden;
 }
 
-#xgqzasivxi .gt_stub {
+#fixxzemxyd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1093,7 +1093,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 5px;
 }
 
-#xgqzasivxi .gt_stub_row_group {
+#fixxzemxyd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1107,15 +1107,15 @@ Tabela&nbsp;5.2: Níveis dos fatores
   vertical-align: top;
 }
 
-#xgqzasivxi .gt_row_group_first td {
+#fixxzemxyd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xgqzasivxi .gt_row_group_first th {
+#fixxzemxyd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xgqzasivxi .gt_summary_row {
+#fixxzemxyd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1125,16 +1125,16 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 5px;
 }
 
-#xgqzasivxi .gt_first_summary_row {
+#fixxzemxyd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_first_summary_row.thick {
+#fixxzemxyd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xgqzasivxi .gt_last_summary_row {
+#fixxzemxyd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1144,7 +1144,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-bottom-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_grand_summary_row {
+#fixxzemxyd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1154,7 +1154,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 5px;
 }
 
-#xgqzasivxi .gt_first_grand_summary_row {
+#fixxzemxyd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1164,7 +1164,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-top-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_last_grand_summary_row_top {
+#fixxzemxyd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1174,11 +1174,11 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-bottom-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_striped {
+#fixxzemxyd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xgqzasivxi .gt_table_body {
+#fixxzemxyd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1187,7 +1187,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-bottom-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_footnotes {
+#fixxzemxyd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1201,7 +1201,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-right-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_footnote {
+#fixxzemxyd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1210,7 +1210,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 5px;
 }
 
-#xgqzasivxi .gt_sourcenotes {
+#fixxzemxyd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1224,7 +1224,7 @@ Tabela&nbsp;5.2: Níveis dos fatores
   border-right-color: #D3D3D3;
 }
 
-#xgqzasivxi .gt_sourcenote {
+#fixxzemxyd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1232,72 +1232,72 @@ Tabela&nbsp;5.2: Níveis dos fatores
   padding-right: 5px;
 }
 
-#xgqzasivxi .gt_left {
+#fixxzemxyd .gt_left {
   text-align: left;
 }
 
-#xgqzasivxi .gt_center {
+#fixxzemxyd .gt_center {
   text-align: center;
 }
 
-#xgqzasivxi .gt_right {
+#fixxzemxyd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xgqzasivxi .gt_font_normal {
+#fixxzemxyd .gt_font_normal {
   font-weight: normal;
 }
 
-#xgqzasivxi .gt_font_bold {
+#fixxzemxyd .gt_font_bold {
   font-weight: bold;
 }
 
-#xgqzasivxi .gt_font_italic {
+#fixxzemxyd .gt_font_italic {
   font-style: italic;
 }
 
-#xgqzasivxi .gt_super {
+#fixxzemxyd .gt_super {
   font-size: 65%;
 }
 
-#xgqzasivxi .gt_footnote_marks {
+#fixxzemxyd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xgqzasivxi .gt_asterisk {
+#fixxzemxyd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xgqzasivxi .gt_indent_1 {
+#fixxzemxyd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xgqzasivxi .gt_indent_2 {
+#fixxzemxyd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xgqzasivxi .gt_indent_3 {
+#fixxzemxyd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xgqzasivxi .gt_indent_4 {
+#fixxzemxyd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xgqzasivxi .gt_indent_5 {
+#fixxzemxyd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xgqzasivxi .katex-display {
+#fixxzemxyd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xgqzasivxi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fixxzemxyd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1343,23 +1343,23 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
 </figcaption>
 <div aria-describedby="tbl-tab3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="doyowgzric" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#doyowgzric table {
+<div id="pihnkrfawj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pihnkrfawj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#doyowgzric thead, #doyowgzric tbody, #doyowgzric tfoot, #doyowgzric tr, #doyowgzric td, #doyowgzric th {
+#pihnkrfawj thead, #pihnkrfawj tbody, #pihnkrfawj tfoot, #pihnkrfawj tr, #pihnkrfawj td, #pihnkrfawj th {
   border-style: none;
 }
 
-#doyowgzric p {
+#pihnkrfawj p {
   margin: 0;
   padding: 0;
 }
 
-#doyowgzric .gt_table {
+#pihnkrfawj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1385,12 +1385,12 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-left-color: #D3D3D3;
 }
 
-#doyowgzric .gt_caption {
+#pihnkrfawj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#doyowgzric .gt_title {
+#pihnkrfawj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1402,7 +1402,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-bottom-width: 0;
 }
 
-#doyowgzric .gt_subtitle {
+#pihnkrfawj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1414,7 +1414,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-top-width: 0;
 }
 
-#doyowgzric .gt_heading {
+#pihnkrfawj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1426,13 +1426,13 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-right-color: #D3D3D3;
 }
 
-#doyowgzric .gt_bottom_border {
+#pihnkrfawj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#doyowgzric .gt_col_headings {
+#pihnkrfawj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1447,7 +1447,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-right-color: #D3D3D3;
 }
 
-#doyowgzric .gt_col_heading {
+#pihnkrfawj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1467,7 +1467,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   overflow-x: hidden;
 }
 
-#doyowgzric .gt_column_spanner_outer {
+#pihnkrfawj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1479,15 +1479,15 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 4px;
 }
 
-#doyowgzric .gt_column_spanner_outer:first-child {
+#pihnkrfawj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#doyowgzric .gt_column_spanner_outer:last-child {
+#pihnkrfawj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#doyowgzric .gt_column_spanner {
+#pihnkrfawj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1499,11 +1499,11 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   width: 100%;
 }
 
-#doyowgzric .gt_spanner_row {
+#pihnkrfawj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#doyowgzric .gt_group_heading {
+#pihnkrfawj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1529,7 +1529,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   text-align: left;
 }
 
-#doyowgzric .gt_empty_group_heading {
+#pihnkrfawj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1544,15 +1544,15 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   vertical-align: middle;
 }
 
-#doyowgzric .gt_from_md > :first-child {
+#pihnkrfawj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#doyowgzric .gt_from_md > :last-child {
+#pihnkrfawj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#doyowgzric .gt_row {
+#pihnkrfawj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1571,7 +1571,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   overflow-x: hidden;
 }
 
-#doyowgzric .gt_stub {
+#pihnkrfawj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,7 +1584,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 5px;
 }
 
-#doyowgzric .gt_stub_row_group {
+#pihnkrfawj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1598,15 +1598,15 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   vertical-align: top;
 }
 
-#doyowgzric .gt_row_group_first td {
+#pihnkrfawj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#doyowgzric .gt_row_group_first th {
+#pihnkrfawj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#doyowgzric .gt_summary_row {
+#pihnkrfawj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1616,16 +1616,16 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 5px;
 }
 
-#doyowgzric .gt_first_summary_row {
+#pihnkrfawj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#doyowgzric .gt_first_summary_row.thick {
+#pihnkrfawj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#doyowgzric .gt_last_summary_row {
+#pihnkrfawj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1635,7 +1635,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-bottom-color: #D3D3D3;
 }
 
-#doyowgzric .gt_grand_summary_row {
+#pihnkrfawj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1645,7 +1645,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 5px;
 }
 
-#doyowgzric .gt_first_grand_summary_row {
+#pihnkrfawj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1655,7 +1655,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-top-color: #D3D3D3;
 }
 
-#doyowgzric .gt_last_grand_summary_row_top {
+#pihnkrfawj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1665,11 +1665,11 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-bottom-color: #D3D3D3;
 }
 
-#doyowgzric .gt_striped {
+#pihnkrfawj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#doyowgzric .gt_table_body {
+#pihnkrfawj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1678,7 +1678,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-bottom-color: #D3D3D3;
 }
 
-#doyowgzric .gt_footnotes {
+#pihnkrfawj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1692,7 +1692,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-right-color: #D3D3D3;
 }
 
-#doyowgzric .gt_footnote {
+#pihnkrfawj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1701,7 +1701,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 5px;
 }
 
-#doyowgzric .gt_sourcenotes {
+#pihnkrfawj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1715,7 +1715,7 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   border-right-color: #D3D3D3;
 }
 
-#doyowgzric .gt_sourcenote {
+#pihnkrfawj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1723,72 +1723,72 @@ Tabela&nbsp;5.3: Planejamento fatorial <span class="math inline">\(2^3\)</span>,
   padding-right: 5px;
 }
 
-#doyowgzric .gt_left {
+#pihnkrfawj .gt_left {
   text-align: left;
 }
 
-#doyowgzric .gt_center {
+#pihnkrfawj .gt_center {
   text-align: center;
 }
 
-#doyowgzric .gt_right {
+#pihnkrfawj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#doyowgzric .gt_font_normal {
+#pihnkrfawj .gt_font_normal {
   font-weight: normal;
 }
 
-#doyowgzric .gt_font_bold {
+#pihnkrfawj .gt_font_bold {
   font-weight: bold;
 }
 
-#doyowgzric .gt_font_italic {
+#pihnkrfawj .gt_font_italic {
   font-style: italic;
 }
 
-#doyowgzric .gt_super {
+#pihnkrfawj .gt_super {
   font-size: 65%;
 }
 
-#doyowgzric .gt_footnote_marks {
+#pihnkrfawj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#doyowgzric .gt_asterisk {
+#pihnkrfawj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#doyowgzric .gt_indent_1 {
+#pihnkrfawj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#doyowgzric .gt_indent_2 {
+#pihnkrfawj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#doyowgzric .gt_indent_3 {
+#pihnkrfawj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#doyowgzric .gt_indent_4 {
+#pihnkrfawj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#doyowgzric .gt_indent_5 {
+#pihnkrfawj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#doyowgzric .katex-display {
+#pihnkrfawj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#doyowgzric div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pihnkrfawj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2616,23 +2616,23 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
 </figcaption>
 <div aria-describedby="tbl-predgrao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ttafcpscsy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ttafcpscsy table {
+<div id="pkyuegotcy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pkyuegotcy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ttafcpscsy thead, #ttafcpscsy tbody, #ttafcpscsy tfoot, #ttafcpscsy tr, #ttafcpscsy td, #ttafcpscsy th {
+#pkyuegotcy thead, #pkyuegotcy tbody, #pkyuegotcy tfoot, #pkyuegotcy tr, #pkyuegotcy td, #pkyuegotcy th {
   border-style: none;
 }
 
-#ttafcpscsy p {
+#pkyuegotcy p {
   margin: 0;
   padding: 0;
 }
 
-#ttafcpscsy .gt_table {
+#pkyuegotcy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2658,12 +2658,12 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-left-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_caption {
+#pkyuegotcy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ttafcpscsy .gt_title {
+#pkyuegotcy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2675,7 +2675,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-bottom-width: 0;
 }
 
-#ttafcpscsy .gt_subtitle {
+#pkyuegotcy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2687,7 +2687,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-top-width: 0;
 }
 
-#ttafcpscsy .gt_heading {
+#pkyuegotcy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2699,13 +2699,13 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-right-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_bottom_border {
+#pkyuegotcy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_col_headings {
+#pkyuegotcy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2720,7 +2720,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-right-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_col_heading {
+#pkyuegotcy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2740,7 +2740,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   overflow-x: hidden;
 }
 
-#ttafcpscsy .gt_column_spanner_outer {
+#pkyuegotcy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2752,15 +2752,15 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 4px;
 }
 
-#ttafcpscsy .gt_column_spanner_outer:first-child {
+#pkyuegotcy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ttafcpscsy .gt_column_spanner_outer:last-child {
+#pkyuegotcy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ttafcpscsy .gt_column_spanner {
+#pkyuegotcy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2772,11 +2772,11 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   width: 100%;
 }
 
-#ttafcpscsy .gt_spanner_row {
+#pkyuegotcy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ttafcpscsy .gt_group_heading {
+#pkyuegotcy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2802,7 +2802,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   text-align: left;
 }
 
-#ttafcpscsy .gt_empty_group_heading {
+#pkyuegotcy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2817,15 +2817,15 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   vertical-align: middle;
 }
 
-#ttafcpscsy .gt_from_md > :first-child {
+#pkyuegotcy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ttafcpscsy .gt_from_md > :last-child {
+#pkyuegotcy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ttafcpscsy .gt_row {
+#pkyuegotcy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2844,7 +2844,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   overflow-x: hidden;
 }
 
-#ttafcpscsy .gt_stub {
+#pkyuegotcy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2857,7 +2857,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 5px;
 }
 
-#ttafcpscsy .gt_stub_row_group {
+#pkyuegotcy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2871,15 +2871,15 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   vertical-align: top;
 }
 
-#ttafcpscsy .gt_row_group_first td {
+#pkyuegotcy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ttafcpscsy .gt_row_group_first th {
+#pkyuegotcy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ttafcpscsy .gt_summary_row {
+#pkyuegotcy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2889,16 +2889,16 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 5px;
 }
 
-#ttafcpscsy .gt_first_summary_row {
+#pkyuegotcy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_first_summary_row.thick {
+#pkyuegotcy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ttafcpscsy .gt_last_summary_row {
+#pkyuegotcy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2908,7 +2908,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-bottom-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_grand_summary_row {
+#pkyuegotcy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2918,7 +2918,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 5px;
 }
 
-#ttafcpscsy .gt_first_grand_summary_row {
+#pkyuegotcy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2928,7 +2928,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-top-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_last_grand_summary_row_top {
+#pkyuegotcy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2938,11 +2938,11 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-bottom-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_striped {
+#pkyuegotcy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ttafcpscsy .gt_table_body {
+#pkyuegotcy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2951,7 +2951,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-bottom-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_footnotes {
+#pkyuegotcy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2965,7 +2965,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-right-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_footnote {
+#pkyuegotcy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2974,7 +2974,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 5px;
 }
 
-#ttafcpscsy .gt_sourcenotes {
+#pkyuegotcy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2988,7 +2988,7 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   border-right-color: #D3D3D3;
 }
 
-#ttafcpscsy .gt_sourcenote {
+#pkyuegotcy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2996,72 +2996,72 @@ Tabela&nbsp;5.4: Primeiras observações e respectivas previsões
   padding-right: 5px;
 }
 
-#ttafcpscsy .gt_left {
+#pkyuegotcy .gt_left {
   text-align: left;
 }
 
-#ttafcpscsy .gt_center {
+#pkyuegotcy .gt_center {
   text-align: center;
 }
 
-#ttafcpscsy .gt_right {
+#pkyuegotcy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ttafcpscsy .gt_font_normal {
+#pkyuegotcy .gt_font_normal {
   font-weight: normal;
 }
 
-#ttafcpscsy .gt_font_bold {
+#pkyuegotcy .gt_font_bold {
   font-weight: bold;
 }
 
-#ttafcpscsy .gt_font_italic {
+#pkyuegotcy .gt_font_italic {
   font-style: italic;
 }
 
-#ttafcpscsy .gt_super {
+#pkyuegotcy .gt_super {
   font-size: 65%;
 }
 
-#ttafcpscsy .gt_footnote_marks {
+#pkyuegotcy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ttafcpscsy .gt_asterisk {
+#pkyuegotcy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ttafcpscsy .gt_indent_1 {
+#pkyuegotcy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ttafcpscsy .gt_indent_2 {
+#pkyuegotcy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ttafcpscsy .gt_indent_3 {
+#pkyuegotcy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ttafcpscsy .gt_indent_4 {
+#pkyuegotcy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ttafcpscsy .gt_indent_5 {
+#pkyuegotcy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ttafcpscsy .katex-display {
+#pkyuegotcy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ttafcpscsy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pkyuegotcy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3453,7 +3453,7 @@ Figura&nbsp;5.12: Gráfico de dispersão de variância para o fatorial <span cla
 <section id="exercícios" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">5.4</span> Exercícios</h2>
 <ol type="1">
-<li>O artigo utilizou um planejamento fatorial completo <span class="math inline">\(2^3\)</span> para estudar a adsorção do corante vermelho neutro em areia de fundição residual (WFS). Foram considerados 3 fatores, cada um em 2 níveis, seno realizadas duas réplicas. Os fatores considerados são: Tempo de contato (A): 5 min e 120 min; Concentração inicial do corante (B): 30 mg/L e 300 mg/L; Dosagem de adsorvente (C): 2,5 g/L e 20 g/L. Como resposta foi avaliada a eficiência de remoção do corante vermelho neutro (%) da solução aquosa. O planejamento é apresentado na <a href="#tbl-planfat2k1" class="quarto-xref">Tabela&nbsp;<span>5.5</span></a>.</li>
+<li>Çoruh &amp; Gürkan (2014) utilizaram um planejamento fatorial completo <span class="math inline">\(2^3\)</span> para estudar a adsorção do corante vermelho neutro em areia de fundição residual (WFS). Foram considerados 3 fatores, cada um em 2 níveis, seno realizadas duas réplicas. Os fatores considerados são: Tempo de contato (A): 5 min e 120 min; Concentração inicial do corante (B): 30 mg/L e 300 mg/L; Dosagem de adsorvente (C): 2,5 g/L e 20 g/L. Como resposta foi avaliada a eficiência de remoção do corante vermelho neutro (%) da solução aquosa. O planejamento é apresentado na <a href="#tbl-planfat2k1" class="quarto-xref">Tabela&nbsp;<span>5.5</span></a>.</li>
 </ol>
 <div class="cell">
 <div id="tbl-planfat2k1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -3463,23 +3463,23 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
 </figcaption>
 <div aria-describedby="tbl-planfat2k1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="qjtmgwxpds" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qjtmgwxpds table {
+<div id="kismisfges" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kismisfges table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qjtmgwxpds thead, #qjtmgwxpds tbody, #qjtmgwxpds tfoot, #qjtmgwxpds tr, #qjtmgwxpds td, #qjtmgwxpds th {
+#kismisfges thead, #kismisfges tbody, #kismisfges tfoot, #kismisfges tr, #kismisfges td, #kismisfges th {
   border-style: none;
 }
 
-#qjtmgwxpds p {
+#kismisfges p {
   margin: 0;
   padding: 0;
 }
 
-#qjtmgwxpds .gt_table {
+#kismisfges .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3505,12 +3505,12 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-left-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_caption {
+#kismisfges .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qjtmgwxpds .gt_title {
+#kismisfges .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3522,7 +3522,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-bottom-width: 0;
 }
 
-#qjtmgwxpds .gt_subtitle {
+#kismisfges .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3534,7 +3534,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-top-width: 0;
 }
 
-#qjtmgwxpds .gt_heading {
+#kismisfges .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3546,13 +3546,13 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-right-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_bottom_border {
+#kismisfges .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_col_headings {
+#kismisfges .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3567,7 +3567,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-right-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_col_heading {
+#kismisfges .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3587,7 +3587,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   overflow-x: hidden;
 }
 
-#qjtmgwxpds .gt_column_spanner_outer {
+#kismisfges .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3599,15 +3599,15 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 4px;
 }
 
-#qjtmgwxpds .gt_column_spanner_outer:first-child {
+#kismisfges .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qjtmgwxpds .gt_column_spanner_outer:last-child {
+#kismisfges .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qjtmgwxpds .gt_column_spanner {
+#kismisfges .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3619,11 +3619,11 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   width: 100%;
 }
 
-#qjtmgwxpds .gt_spanner_row {
+#kismisfges .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qjtmgwxpds .gt_group_heading {
+#kismisfges .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3649,7 +3649,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   text-align: left;
 }
 
-#qjtmgwxpds .gt_empty_group_heading {
+#kismisfges .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3664,15 +3664,15 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   vertical-align: middle;
 }
 
-#qjtmgwxpds .gt_from_md > :first-child {
+#kismisfges .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qjtmgwxpds .gt_from_md > :last-child {
+#kismisfges .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qjtmgwxpds .gt_row {
+#kismisfges .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3691,7 +3691,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   overflow-x: hidden;
 }
 
-#qjtmgwxpds .gt_stub {
+#kismisfges .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3704,7 +3704,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 5px;
 }
 
-#qjtmgwxpds .gt_stub_row_group {
+#kismisfges .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3718,15 +3718,15 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   vertical-align: top;
 }
 
-#qjtmgwxpds .gt_row_group_first td {
+#kismisfges .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qjtmgwxpds .gt_row_group_first th {
+#kismisfges .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qjtmgwxpds .gt_summary_row {
+#kismisfges .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3736,16 +3736,16 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 5px;
 }
 
-#qjtmgwxpds .gt_first_summary_row {
+#kismisfges .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_first_summary_row.thick {
+#kismisfges .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qjtmgwxpds .gt_last_summary_row {
+#kismisfges .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3755,7 +3755,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-bottom-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_grand_summary_row {
+#kismisfges .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3765,7 +3765,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 5px;
 }
 
-#qjtmgwxpds .gt_first_grand_summary_row {
+#kismisfges .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3775,7 +3775,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-top-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_last_grand_summary_row_top {
+#kismisfges .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3785,11 +3785,11 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-bottom-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_striped {
+#kismisfges .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qjtmgwxpds .gt_table_body {
+#kismisfges .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3798,7 +3798,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-bottom-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_footnotes {
+#kismisfges .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3812,7 +3812,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-right-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_footnote {
+#kismisfges .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3821,7 +3821,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 5px;
 }
 
-#qjtmgwxpds .gt_sourcenotes {
+#kismisfges .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3835,7 +3835,7 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   border-right-color: #D3D3D3;
 }
 
-#qjtmgwxpds .gt_sourcenote {
+#kismisfges .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3843,72 +3843,72 @@ Tabela&nbsp;5.5: Planejamento fatorial 2^3 para estudar a adsorção do corante 
   padding-right: 5px;
 }
 
-#qjtmgwxpds .gt_left {
+#kismisfges .gt_left {
   text-align: left;
 }
 
-#qjtmgwxpds .gt_center {
+#kismisfges .gt_center {
   text-align: center;
 }
 
-#qjtmgwxpds .gt_right {
+#kismisfges .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qjtmgwxpds .gt_font_normal {
+#kismisfges .gt_font_normal {
   font-weight: normal;
 }
 
-#qjtmgwxpds .gt_font_bold {
+#kismisfges .gt_font_bold {
   font-weight: bold;
 }
 
-#qjtmgwxpds .gt_font_italic {
+#kismisfges .gt_font_italic {
   font-style: italic;
 }
 
-#qjtmgwxpds .gt_super {
+#kismisfges .gt_super {
   font-size: 65%;
 }
 
-#qjtmgwxpds .gt_footnote_marks {
+#kismisfges .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qjtmgwxpds .gt_asterisk {
+#kismisfges .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qjtmgwxpds .gt_indent_1 {
+#kismisfges .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qjtmgwxpds .gt_indent_2 {
+#kismisfges .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qjtmgwxpds .gt_indent_3 {
+#kismisfges .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qjtmgwxpds .gt_indent_4 {
+#kismisfges .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qjtmgwxpds .gt_indent_5 {
+#kismisfges .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qjtmgwxpds .katex-display {
+#kismisfges .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qjtmgwxpds div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kismisfges div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4056,23 +4056,23 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
 </figcaption>
 <div aria-describedby="tbl-planfat2k2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="opvjsoyzlc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#opvjsoyzlc table {
+<div id="lnhuzbggca" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lnhuzbggca table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#opvjsoyzlc thead, #opvjsoyzlc tbody, #opvjsoyzlc tfoot, #opvjsoyzlc tr, #opvjsoyzlc td, #opvjsoyzlc th {
+#lnhuzbggca thead, #lnhuzbggca tbody, #lnhuzbggca tfoot, #lnhuzbggca tr, #lnhuzbggca td, #lnhuzbggca th {
   border-style: none;
 }
 
-#opvjsoyzlc p {
+#lnhuzbggca p {
   margin: 0;
   padding: 0;
 }
 
-#opvjsoyzlc .gt_table {
+#lnhuzbggca .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4098,12 +4098,12 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-left-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_caption {
+#lnhuzbggca .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#opvjsoyzlc .gt_title {
+#lnhuzbggca .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4115,7 +4115,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-bottom-width: 0;
 }
 
-#opvjsoyzlc .gt_subtitle {
+#lnhuzbggca .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4127,7 +4127,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-top-width: 0;
 }
 
-#opvjsoyzlc .gt_heading {
+#lnhuzbggca .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4139,13 +4139,13 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-right-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_bottom_border {
+#lnhuzbggca .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_col_headings {
+#lnhuzbggca .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4160,7 +4160,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-right-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_col_heading {
+#lnhuzbggca .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4180,7 +4180,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   overflow-x: hidden;
 }
 
-#opvjsoyzlc .gt_column_spanner_outer {
+#lnhuzbggca .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4192,15 +4192,15 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 4px;
 }
 
-#opvjsoyzlc .gt_column_spanner_outer:first-child {
+#lnhuzbggca .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#opvjsoyzlc .gt_column_spanner_outer:last-child {
+#lnhuzbggca .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#opvjsoyzlc .gt_column_spanner {
+#lnhuzbggca .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4212,11 +4212,11 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   width: 100%;
 }
 
-#opvjsoyzlc .gt_spanner_row {
+#lnhuzbggca .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#opvjsoyzlc .gt_group_heading {
+#lnhuzbggca .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4242,7 +4242,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   text-align: left;
 }
 
-#opvjsoyzlc .gt_empty_group_heading {
+#lnhuzbggca .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4257,15 +4257,15 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   vertical-align: middle;
 }
 
-#opvjsoyzlc .gt_from_md > :first-child {
+#lnhuzbggca .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#opvjsoyzlc .gt_from_md > :last-child {
+#lnhuzbggca .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#opvjsoyzlc .gt_row {
+#lnhuzbggca .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4284,7 +4284,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   overflow-x: hidden;
 }
 
-#opvjsoyzlc .gt_stub {
+#lnhuzbggca .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4297,7 +4297,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 5px;
 }
 
-#opvjsoyzlc .gt_stub_row_group {
+#lnhuzbggca .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4311,15 +4311,15 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   vertical-align: top;
 }
 
-#opvjsoyzlc .gt_row_group_first td {
+#lnhuzbggca .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#opvjsoyzlc .gt_row_group_first th {
+#lnhuzbggca .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#opvjsoyzlc .gt_summary_row {
+#lnhuzbggca .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4329,16 +4329,16 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 5px;
 }
 
-#opvjsoyzlc .gt_first_summary_row {
+#lnhuzbggca .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_first_summary_row.thick {
+#lnhuzbggca .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#opvjsoyzlc .gt_last_summary_row {
+#lnhuzbggca .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4348,7 +4348,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-bottom-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_grand_summary_row {
+#lnhuzbggca .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4358,7 +4358,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 5px;
 }
 
-#opvjsoyzlc .gt_first_grand_summary_row {
+#lnhuzbggca .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4368,7 +4368,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-top-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_last_grand_summary_row_top {
+#lnhuzbggca .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4378,11 +4378,11 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-bottom-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_striped {
+#lnhuzbggca .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#opvjsoyzlc .gt_table_body {
+#lnhuzbggca .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4391,7 +4391,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-bottom-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_footnotes {
+#lnhuzbggca .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4405,7 +4405,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-right-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_footnote {
+#lnhuzbggca .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4414,7 +4414,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 5px;
 }
 
-#opvjsoyzlc .gt_sourcenotes {
+#lnhuzbggca .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4428,7 +4428,7 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   border-right-color: #D3D3D3;
 }
 
-#opvjsoyzlc .gt_sourcenote {
+#lnhuzbggca .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4436,72 +4436,72 @@ Tabela&nbsp;5.6: Planejamento fatorial 2^3 para estudar o encruamento em pré-fo
   padding-right: 5px;
 }
 
-#opvjsoyzlc .gt_left {
+#lnhuzbggca .gt_left {
   text-align: left;
 }
 
-#opvjsoyzlc .gt_center {
+#lnhuzbggca .gt_center {
   text-align: center;
 }
 
-#opvjsoyzlc .gt_right {
+#lnhuzbggca .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#opvjsoyzlc .gt_font_normal {
+#lnhuzbggca .gt_font_normal {
   font-weight: normal;
 }
 
-#opvjsoyzlc .gt_font_bold {
+#lnhuzbggca .gt_font_bold {
   font-weight: bold;
 }
 
-#opvjsoyzlc .gt_font_italic {
+#lnhuzbggca .gt_font_italic {
   font-style: italic;
 }
 
-#opvjsoyzlc .gt_super {
+#lnhuzbggca .gt_super {
   font-size: 65%;
 }
 
-#opvjsoyzlc .gt_footnote_marks {
+#lnhuzbggca .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#opvjsoyzlc .gt_asterisk {
+#lnhuzbggca .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#opvjsoyzlc .gt_indent_1 {
+#lnhuzbggca .gt_indent_1 {
   text-indent: 5px;
 }
 
-#opvjsoyzlc .gt_indent_2 {
+#lnhuzbggca .gt_indent_2 {
   text-indent: 10px;
 }
 
-#opvjsoyzlc .gt_indent_3 {
+#lnhuzbggca .gt_indent_3 {
   text-indent: 15px;
 }
 
-#opvjsoyzlc .gt_indent_4 {
+#lnhuzbggca .gt_indent_4 {
   text-indent: 20px;
 }
 
-#opvjsoyzlc .gt_indent_5 {
+#lnhuzbggca .gt_indent_5 {
   text-indent: 25px;
 }
 
-#opvjsoyzlc .katex-display {
+#lnhuzbggca .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#opvjsoyzlc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lnhuzbggca div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
