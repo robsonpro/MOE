@@ -274,13 +274,13 @@ window.Quarto = {
 <section id="introdução" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
 <p>O fatorial <span class="math inline">\(2^k\)</span> é um planejamento essencial ao DOE por permitir diversas estratégias na experimentação, desde a economia experimental, a partir de planejamentos não replicados ou fracionados, blocagem de variáveis controláveis porém indesejáveis, além da busca de região de curvatura e complementação do planejamento para obtenção de modelos passíveis de otimização.</p>
-<p>Neste capítulo, será apresentado o planejamento fatorial <span class="math inline">\(2^k\)</span> não replicado. Em seguida serão explicados os conceitos de blocagem. confundimento no fatorial <span class="math inline">\(2^k\)</span>. O planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é exposto a partir dos conceitos de confundimento anteriormente apresentados.</p>
+<p>Neste capítulo, será apresentado o planejamento fatorial <span class="math inline">\(2^k\)</span> não replicado. Em seguida serão explicados os conceitos de blocagem e confundimento no fatorial <span class="math inline">\(2^k\)</span>. Em seguida, o planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é exposto a partir dos conceitos de confundimento anteriormente apresentados.</p>
 <p>Neste capítulo são utilizados os pacotes <code>FrF2</code> e <code>unrepx</code>, além das funções básicas do R. Recomenda-se a instalação destes utilizando o comando <code>install.packages("&lt;nome_pacote&gt;")</code>. A instalação é realizada uma única vez, porém o pacote deve ser carregado via <code>library(&lt;nome_pacote&gt;)</code> sempre que deseja-se usar suas funções.</p>
 </section>
 <section id="fatorial-2k-sem-replicar" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="fatorial-2k-sem-replicar"><span class="header-section-number">6.2</span> Fatorial <span class="math inline">\(2^k\)</span> sem replicar</h2>
-<p>O fatorial <span class="math inline">\(2^k\)</span> não replicado consiste em um caso particular do fatorial <span class="math inline">\(2^k\)</span> com <span class="math inline">\(n = 1\)</span>. Especialmente quando há muitos fatores <span class="math inline">\(k\)</span> de interesse a serem analisados, o fatorial <span class="math inline">\(2^k\)</span> não replicado tem sido utilizado, visto que o custo da replicação é alto. É possível obter o modelo de regressão completo, porém não é possível testar os efeitos via teste <span class="math inline">\(t\)</span> ou ANOVA, uma vez que não há graus de liberdade remanescentes para estimar o erro experimental, uma vez que o número total de experimentos é igual ao número de termos no modelo completo, <span class="math inline">\(N = 2^k = r\)</span>.</p>
-<p>Existem métodos alternativos para estimar o erro experimental considerando os efeitos mais esparços, isto é, os efeitos de menor magnitude. Estes métodos se baseiam no princípio da esparcidade dos efeitos que garantem que poucos efeitos apresentam magnitude não desprezível, enquanto a maior parte dos efeitos investigados é esparça. Outra possibilidade de estimativa do erro experimental pode ser realizada a partir da redução hierárquica do modelo e, deste modo, testar a significância dos efeitos de menor ordem. Geralmente, os efeitos de menor ordem explicam melhor a variabilidade dos dados. Modelos saturados e com termos de ordem maior além de difícil interpretação, geralmente apresentam maior variabilidade.</p>
+<p>O fatorial <span class="math inline">\(2^k\)</span> não replicado consiste em um caso particular do fatorial <span class="math inline">\(2^k\)</span> com <span class="math inline">\(n = 1\)</span>. Especialmente quando há muitos fatores de interesse a serem analisados, o fatorial <span class="math inline">\(2^k\)</span> não replicado é uma alternativa, visto que o custo da replicação é alto. É possível obter o modelo de regressão completo, porém não é possível testar os efeitos via teste <span class="math inline">\(t\)</span> ou ANOVA, uma vez que não há graus de liberdade remanescentes para estimar o erro experimental, devido ao número total de experimentos ser igual ao número de termos no modelo completo, <span class="math inline">\(N = 2^k = r\)</span>.</p>
+<p>Existem métodos alternativos para estimar o erro experimental considerando os efeitos de menor magnitude. Estes métodos se baseiam no princípio da esparcidade dos efeitos, o qual garante que, na maioria dos estudos, poucos efeitos e de menor grau apresentam magnitude não desprezível, enquanto a maioria dos efeitos investigados apresenta efeito desprezível. Outra possibilidade de estimativa do erro experimental pode ser realizada a partir da redução hierárquica do modelo, viabilizando testar a significância dos efeitos de menor ordem a partir dos graus de liberdade dos termos de maior ordem removidos. Modelos saturados e com termos de alta ordem, além de difícil interpretação, comumente apresentam maior variabilidade.</p>
 <div id="exm-fatunrep1" class="theorem example">
 <p><span class="theorem-title"><strong>Exemplo 6.1</strong></span> Um fatorial <span class="math inline">\(2^4\)</span> não replicado foi usado para estudar o tratamento eletroquímico de águas residuais de fabricação de fibra acrílica com eletrodo de diamante dopado com boro. Os fatores considerados foram o tempo de tratamento (1-2 horas), a vazão (400-600 mL/min), intensidade de corrente (0,50-1,00 A) e carga inicial de demanda química de oxigênio (362- 723 mg/L) na eficiência do tratamento.</p>
 </div>
@@ -292,23 +292,23 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
 </figcaption>
 <div aria-describedby="tbl-dqoeflu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="pbopmxjmbv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pbopmxjmbv table {
+<div id="drauuulrom" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#drauuulrom table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pbopmxjmbv thead, #pbopmxjmbv tbody, #pbopmxjmbv tfoot, #pbopmxjmbv tr, #pbopmxjmbv td, #pbopmxjmbv th {
+#drauuulrom thead, #drauuulrom tbody, #drauuulrom tfoot, #drauuulrom tr, #drauuulrom td, #drauuulrom th {
   border-style: none;
 }
 
-#pbopmxjmbv p {
+#drauuulrom p {
   margin: 0;
   padding: 0;
 }
 
-#pbopmxjmbv .gt_table {
+#drauuulrom .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -334,12 +334,12 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-left-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_caption {
+#drauuulrom .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pbopmxjmbv .gt_title {
+#drauuulrom .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -351,7 +351,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-bottom-width: 0;
 }
 
-#pbopmxjmbv .gt_subtitle {
+#drauuulrom .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -363,7 +363,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-top-width: 0;
 }
 
-#pbopmxjmbv .gt_heading {
+#drauuulrom .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -375,13 +375,13 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-right-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_bottom_border {
+#drauuulrom .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_col_headings {
+#drauuulrom .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -396,7 +396,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-right-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_col_heading {
+#drauuulrom .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -416,7 +416,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   overflow-x: hidden;
 }
 
-#pbopmxjmbv .gt_column_spanner_outer {
+#drauuulrom .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -428,15 +428,15 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 4px;
 }
 
-#pbopmxjmbv .gt_column_spanner_outer:first-child {
+#drauuulrom .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pbopmxjmbv .gt_column_spanner_outer:last-child {
+#drauuulrom .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pbopmxjmbv .gt_column_spanner {
+#drauuulrom .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -448,11 +448,11 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   width: 100%;
 }
 
-#pbopmxjmbv .gt_spanner_row {
+#drauuulrom .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pbopmxjmbv .gt_group_heading {
+#drauuulrom .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -478,7 +478,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   text-align: left;
 }
 
-#pbopmxjmbv .gt_empty_group_heading {
+#drauuulrom .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -493,15 +493,15 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   vertical-align: middle;
 }
 
-#pbopmxjmbv .gt_from_md > :first-child {
+#drauuulrom .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pbopmxjmbv .gt_from_md > :last-child {
+#drauuulrom .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pbopmxjmbv .gt_row {
+#drauuulrom .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -520,7 +520,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   overflow-x: hidden;
 }
 
-#pbopmxjmbv .gt_stub {
+#drauuulrom .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -533,7 +533,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 5px;
 }
 
-#pbopmxjmbv .gt_stub_row_group {
+#drauuulrom .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -547,15 +547,15 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   vertical-align: top;
 }
 
-#pbopmxjmbv .gt_row_group_first td {
+#drauuulrom .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pbopmxjmbv .gt_row_group_first th {
+#drauuulrom .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pbopmxjmbv .gt_summary_row {
+#drauuulrom .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -565,16 +565,16 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 5px;
 }
 
-#pbopmxjmbv .gt_first_summary_row {
+#drauuulrom .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_first_summary_row.thick {
+#drauuulrom .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pbopmxjmbv .gt_last_summary_row {
+#drauuulrom .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +584,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-bottom-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_grand_summary_row {
+#drauuulrom .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -594,7 +594,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 5px;
 }
 
-#pbopmxjmbv .gt_first_grand_summary_row {
+#drauuulrom .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -604,7 +604,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-top-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_last_grand_summary_row_top {
+#drauuulrom .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,11 +614,11 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-bottom-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_striped {
+#drauuulrom .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pbopmxjmbv .gt_table_body {
+#drauuulrom .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -627,7 +627,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-bottom-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_footnotes {
+#drauuulrom .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -641,7 +641,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-right-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_footnote {
+#drauuulrom .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -650,7 +650,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 5px;
 }
 
-#pbopmxjmbv .gt_sourcenotes {
+#drauuulrom .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -664,7 +664,7 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   border-right-color: #D3D3D3;
 }
 
-#pbopmxjmbv .gt_sourcenote {
+#drauuulrom .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -672,72 +672,72 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
   padding-right: 5px;
 }
 
-#pbopmxjmbv .gt_left {
+#drauuulrom .gt_left {
   text-align: left;
 }
 
-#pbopmxjmbv .gt_center {
+#drauuulrom .gt_center {
   text-align: center;
 }
 
-#pbopmxjmbv .gt_right {
+#drauuulrom .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pbopmxjmbv .gt_font_normal {
+#drauuulrom .gt_font_normal {
   font-weight: normal;
 }
 
-#pbopmxjmbv .gt_font_bold {
+#drauuulrom .gt_font_bold {
   font-weight: bold;
 }
 
-#pbopmxjmbv .gt_font_italic {
+#drauuulrom .gt_font_italic {
   font-style: italic;
 }
 
-#pbopmxjmbv .gt_super {
+#drauuulrom .gt_super {
   font-size: 65%;
 }
 
-#pbopmxjmbv .gt_footnote_marks {
+#drauuulrom .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pbopmxjmbv .gt_asterisk {
+#drauuulrom .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pbopmxjmbv .gt_indent_1 {
+#drauuulrom .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pbopmxjmbv .gt_indent_2 {
+#drauuulrom .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pbopmxjmbv .gt_indent_3 {
+#drauuulrom .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pbopmxjmbv .gt_indent_4 {
+#drauuulrom .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pbopmxjmbv .gt_indent_5 {
+#drauuulrom .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pbopmxjmbv .katex-display {
+#drauuulrom .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pbopmxjmbv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#drauuulrom div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -891,17 +891,20 @@ Tabela&nbsp;6.1: Planejamento fatorial 2^4 não replicado, tratamento efluentes
 </figure>
 </div>
 </div>
-<p>Pode-se criar o planejamento utilizando o pacote <code>FrF2</code> do R.</p>
+<p>Pode-se criar o planejamento utilizando o pacote <code>FrF2</code> do R, conforme segue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o planejamento</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">nfactors =</span> <span class="dv">4</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">factor.names=</span><span class="fu">list</span>(<span class="at">Tem=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Vaz=</span><span class="fu">c</span>(<span class="dv">400</span>,<span class="dv">600</span>),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Cor=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">1</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">DQO=</span><span class="fu">c</span>(<span class="dv">362</span>,<span class="dv">723</span>)),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">replications =</span> <span class="dv">1</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">randomize =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o pacote FrF2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FrF2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando o planejamento</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plan_eflu <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">nfactors =</span> <span class="dv">4</span>, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">factor.names=</span><span class="fu">list</span>(<span class="at">Tem=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Vaz=</span><span class="fu">c</span>(<span class="dv">400</span>,<span class="dv">600</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Cor=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">DQO=</span><span class="fu">c</span>(<span class="dv">362</span>,<span class="dv">723</span>)),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">replications =</span> <span class="dv">1</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">randomize =</span> F)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Energia em [kJ]</span></span>
@@ -984,7 +987,7 @@ x2x3x4     3,350
 x1x2x3x4  -3,325</code></pre>
 </div>
 </div>
-<p>Posteriormente pode-se obter os coeficientes de regressão conforme segue.</p>
+<p>Posteriormente, pode-se obter os coeficientes de regressão conforme segue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo dos coeficientes</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Coef <span class="ot">&lt;-</span> efeitos<span class="sc">/</span><span class="dv">2</span></span>
@@ -1011,11 +1014,11 @@ x1x2x3x4      -1,6625</code></pre>
 </div>
 </div>
 <p>Uma vez que <span class="math inline">\(N = 2^4 = 16\)</span> e <span class="math inline">\(r = 16\)</span>, não há graus de liberdade para estimar o erro experimental, pois <span class="math inline">\(DF_E= N - r = 0\)</span>. Deste modo, os métodos tradicionais para testar a significância dos efeitos, isto é, o teste <span class="math inline">\(t\)</span> e a ANOVA não podem ser realizados.</p>
-<p>Pode-se testar a significância dos efeitos utilizando o pseudo erro padrão de Lenth. Sejam <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>…, <span class="math inline">\(E_{N-1}\)</span> os efeitos estimados em um fatorial <span class="math inline">\(2^k\)</span> não replicado. Seja <span class="math inline">\(s_0\)</span>, onde <span class="math inline">\(\widetilde{|E_j|}\)</span> é a mediana dos efeitos padonizados.</p>
+<p>Pode-se testar a significância dos efeitos utilizando o pseudo erro padrão de Lenth. Sejam <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>…, <span class="math inline">\(E_{r-1}\)</span> os efeitos estimados em um fatorial <span class="math inline">\(2^k\)</span> não replicado. Consideram-se, neste caso, <span class="math inline">\(r-1\)</span> efeitos, uma vez que não se considera a constante. Seja a medida <span class="math inline">\(s_0\)</span> calculada a seguir, onde <span class="math inline">\(\widetilde{|E_j|}\)</span> é a mediana dos efeitos padonizados.</p>
 <p><span class="math display">\[
 s_0 = 1,5\widetilde{|E_j|}
 \]</span></p>
-<p>Então, o pseudo erro padrão de Lenth (<em>pseudo standard error</em>- PSE) é calculado de forma análoga, porém considerando apenas os efeitos esparsos. Estes efeitos desprezíveis são levados em consideração no cálculo, conforme <a href="#eq-pse" class="quarto-xref">Equação&nbsp;<span>6.1</span></a>, visto que podem representar o erro aleatório do processo em estudo.</p>
+<p>Então, o pseudo erro padrão de Lenth (<em>pseudo standard error</em>- PSE) é calculado de forma análoga, porém considerando apenas os efeitos esparsos, isto é, aqueles que apresentam valor absoluto menor que 2,5 vezes <span class="math inline">\(s_0\)</span>, <span class="math inline">\(|E_j|&lt;2,5s_0\)</span>. Estes efeitos desprezíveis são levados em consideração no cálculo, conforme <a href="#eq-pse" class="quarto-xref">Equação&nbsp;<span>6.1</span></a>, visto que podem representar o erro aleatório do processo em estudo.</p>
 <p><span id="eq-pse"><span class="math display">\[
 PSE = 1,5\underbrace{\widetilde{|E_j|}}_{|E_j|&lt;2,5s_0}
 \tag{6.1}\]</span></span></p>
@@ -1023,7 +1026,7 @@ PSE = 1,5\underbrace{\widetilde{|E_j|}}_{|E_j|&lt;2,5s_0}
 <p><span id="eq-me"><span class="math display">\[
 ME= t_{(0,975;m/3)}PSE
 \tag{6.2}\]</span></span></p>
-<p>Quando o número de efeitos <span class="math inline">\(N-1\)</span> testados é alto, pode acontecer de efeitos inativos serem significativos. Deste modo, pode-se usar como alternativa a margem de erro simultânea, <span class="math inline">\(SME\)</span>, conforme <a href="#eq-sme" class="quarto-xref">Equação&nbsp;<span>6.3</span></a>, onde <span class="math inline">\(\gamma = (1+0,95^{1/m})/2\)</span>.</p>
+<p>Quando o número de efeitos, <span class="math inline">\(r-1\)</span>, testados é alto, pode acontecer de haver efeitos não significativos segundo o erro marginal serem importantes. Deste modo, pode-se usar como alternativa a margem de erro simultânea, <span class="math inline">\(SME\)</span>, conforme <a href="#eq-sme" class="quarto-xref">Equação&nbsp;<span>6.3</span></a>, onde <span class="math inline">\(\gamma = (1+0,95^{1/m})/2\)</span>.</p>
 <p><span id="eq-sme"><span class="math display">\[
 SME= t_{(\gamma;m/3)}PSE
 \tag{6.3}\]</span></span></p>
@@ -1032,7 +1035,7 @@ SME= t_{(\gamma;m/3)}PSE
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o pacote unrepx</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(unrepx)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Primeiramente, deve-se tomar os efeitos, <span class="math inline">\(E_1\)</span>, …, <span class="math inline">\(E_{N-1}\)</span>. O comando <code>yates</code> do pacote <code>unrepx</code> permite a estimativa dos efeitos sem a necessidade da matriz <span class="math inline">\(\textbf{X}\)</span>, conforme segue.</p>
+<p>Primeiramente, deve-se tomar os efeitos, <span class="math inline">\(E_1\)</span>, …, <span class="math inline">\(E_{N-1}\)</span>. O comando <code>yates</code> do pacote <code>unrepx</code> permite a estimativa dos efeitos de forma mais direta, conforme segue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Efeitos</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>efeitos <span class="ot">&lt;-</span> <span class="fu">yates</span>(y)</span>
@@ -1049,7 +1052,9 @@ attr(,"mean")
 </div>
 <p>O chamado <em>half normal plot</em> ou gráfico de Daniel, permite observar os efeitos mais importantes. Neste gráfico, os efeitos são plotados de forma padronizada e ordenada em relação aos quantis da distribuição normal. Quanto maior o desvio da reta onde devem se encontrar os efeitos esparços, mais importante o efeito. Entretanto, ele funciona melhor quando há poucos efeitos influentes entre os <span class="math inline">\(N-1\)</span> estimados. Os efeitos positivos são plotados em vermelho e os negativos em azul. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o <em>half normal plot</em> é apresentado na <a href="#fig-halfeflu" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>. Pode-se concluir que os efeitos A e C são significativos considerando o erro marginal de Lenth.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hnplot</span>(efeitos, <span class="at">half =</span> T, <span class="at">method =</span> <span class="st">"Lenth"</span>, <span class="at">ID =</span> <span class="fu">ME</span>(efeitos))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hnplot</span>(efeitos, <span class="at">half =</span> T, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">method =</span> <span class="st">"Lenth"</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">ID =</span> <span class="fu">ME</span>(efeitos))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-halfeflu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1066,7 +1071,8 @@ Figura&nbsp;6.1: Half normal plot para os efeitos no experimento de tratamento d
 <p>O gráfico de Pareto tem sido comumente utilizado para plotar os efeitos em relação ao erro marginal, <span class="math inline">\(ME\)</span>, e ao erro marginal simultâneo, <span class="math inline">\(SME\)</span>. Para o <a href="#exm-fatunrep1" class="quarto-xref">Exemplo&nbsp;<span>6.2</span></a> o gráfico de Pareto é plotado na <a href="#fig-paretoeflu" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>. Pelo primeiro critério temos a mesma conclusão obtida pelo método gráfico de Daniel, enquanto pelo segundo critério apenas o efeito do fator A é significativo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto PSE plot</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parplot</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parplot</span>(efeitos, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-paretoeflu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1086,24 +1092,24 @@ Figura&nbsp;6.2: Gráfico de Pareto dos efeitos padronizados para o exemplo
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-A    16,950      4,05   4,185  0,0062      0,0544
-C    11,675      4,05   2,883  0,0221      0,1946
-AD    5,900      4,05   1,457  0,1458      0,8294
-D     5,625      4,05   1,389  0,1635      0,8665
-AC   -3,400      4,05  -0,840  0,3764      0,9996
-BCD   3,350      4,05   0,827  0,3831      1,0000
-ABCD -3,325      4,05  -0,821  0,3865      1,0000
-B     3,100      4,05   0,765  0,4184      1,0000
-BD   -2,700      4,05  -0,667  0,5397      1,0000
-ABD  -2,325      4,05  -0,574  0,5995      1,0000
-AB    2,275      4,05   0,562  0,6076      1,0000
-CD    2,125      4,05   0,525  0,6311      1,0000
-ABC  -1,825      4,05  -0,451  0,6801      1,0000
-BC    0,850      4,05   0,210  0,8469      1,0000
-ACD  -0,650      4,05  -0,160  0,8828      1,0000</code></pre>
+A    16,950      4,05   4,185  0,0044      0,0446
+C    11,675      4,05   2,883  0,0179      0,1736
+AD    5,900      4,05   1,457  0,1416      0,8234
+D     5,625      4,05   1,389  0,1574      0,8605
+AC   -3,400      4,05  -0,840  0,3728      1,0000
+BCD   3,350      4,05   0,827  0,3795      1,0000
+ABCD -3,325      4,05  -0,821  0,3825      1,0000
+B     3,100      4,05   0,765  0,4141      1,0000
+BD   -2,700      4,05  -0,667  0,5384      1,0000
+ABD  -2,325      4,05  -0,574  0,5983      1,0000
+AB    2,275      4,05   0,562  0,6068      1,0000
+CD    2,125      4,05   0,525  0,6299      1,0000
+ABC  -1,825      4,05  -0,451  0,6776      1,0000
+BC    0,850      4,05   0,210  0,8447      1,0000
+ACD  -0,650      4,05  -0,160  0,8799      1,0000</code></pre>
 </div>
 </div>
-<p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma podemos retomar o uso do pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth. Caso o experimentador queira continuar a investigação para procurar região de curvatura e um modelo quadrático, pode-se o modelo com interações de até segunda ordem é uma boa opção, além de ser de fácil interpretação.</p>
+<p>Outra possibilidade em relação ao fatorial <span class="math inline">\(2^k\)</span> não replicado é a estimativa do erro experimental utilizando graus de liberdade dos efeitos esparços desconsiderados. Para proceder desta forma, pode-se usar o pacote <code>FrF2</code>. Fazando a análise com o comando <code>lm</code> deste pacote, apenas os efeitos de até segunda ordem são estimados. Consequentemente, a soma dos quadrados e os graus de liberdade dos erros são obtidos considerando os efeitos de terceira ordem ou maior. O resultado abaixo expõe o modelo de regressão e o teste t para os coeficientes. Os efeitos significativos foram os do Tempo e da Corrente, os mesmos significativos via <span class="math inline">\(ME\)</span> de Lenth.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise via FrF2</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lm_eflu <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_eflu)</span>
@@ -1143,7 +1149,7 @@ Multiple R-squared:  0,9439,    Adjusted R-squared:  0,8317
 F-statistic: 8,413 on 10 and 5 DF,  p-value: 0,01486</code></pre>
 </div>
 </div>
-<p>Outra possibilidade é utilizar o comando <code>lm</code> para obter um modelo completo e reduzir o modelo. Pode-se também selecionar o modelo considerando a simplicidade na interpretação. Pelas análises realizadas o modelo reduzido com o comando <code>step</code> via opção <code>backward</code> presentou o maior ajuste, com menor AIC e maior coeficiente de determinação múltipla ajustado, <span class="math inline">\(R_{aj}^2 = 0,8464\)</span>. É importante recortdar que antes de aplicar o comando <code>step</code>, devse-se remover um coeficiente manualmente, sempre o de maior ordem.</p>
+<p>Outra possibilidade é utilizar o comando <code>lm</code> para obter inicialmente um modelo completo, de forma a reduzí-lo via eliminação para trás, conforme segue. Pelas análises realizadas, o modelo reduzido com o comando <code>step</code> e <code>direction=backward</code> apresentou o maior ajuste, com menor AIC e maior coeficiente de determinação múltipla ajustado, <span class="math inline">\(R_{aj}^2 = 0,8464\)</span>. É importante recordar que, antes de aplicar o comando <code>step</code>, deve-se remover um coeficiente manualmente, sempre o de maior ordem.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo completo</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lm_eflu2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> (Tem <span class="sc">+</span> Vaz <span class="sc">+</span> Cor <span class="sc">+</span> DQO)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_eflu)</span>
@@ -1318,7 +1324,7 @@ Figura&nbsp;6.5: Gráfico de contorno do tamanho de grão em função de X2 e X3
 <p>A blocagem é um conceito muito útil no fatorial <span class="math inline">\(2^k\)</span> e em outros planejamentos envolvendo multiplos fatores, como alguns de superfície de resposta. Um planejamento pode ser dividido de forma sistemática em dois ou mais blocos, de acordo com o número de níveis da condição heterogênea em avaliação a ser blocada.</p>
 <div>
 <div id="exm-fatunrep1" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 6.2</strong></span> Suponha que um fatorial <span class="math inline">\(2^2\)</span> com <span class="math inline">\(n=2\)</span> réplicas será realizado para estudar o efeito do tempo e da temperatura no tratamento térmico de uma liga. Suponha que o experimentador tem quatro corpos de prova de um lote e quatro corpos de prova de outro lote, ambos da mesma liga e fornecidos pelo mesmo fornecedor. Apesar da garantia do fornecedor de homogeneidade entre os lotes, o analista decide blocar os lotes, de forma a evitar que o efeito de uma possível diferença entre estes lotes afete os resultados do experimento. Uma vez que o número de corpos de prova de cada lote corresponde a uma replicação completa, cada bloco, isto é, cada lote da liga pode corresponder a uma replicação. Os dados do exemplo são resumidos na <a href="#tbl-blockrep" class="quarto-xref">Tabela&nbsp;<span>6.2</span></a>.</p>
+<p><span class="theorem-title"><strong>Exemplo 6.2</strong></span> Suponha que um fatorial <span class="math inline">\(2^2\)</span> com <span class="math inline">\(n=2\)</span> réplicas será realizado para estudar o efeito do tempo e da temperatura no tratamento térmico de uma liga. Suponha que o experimentador tem quatro corpos de prova de um lote e quatro corpos de prova de outro lote, ambos da mesma liga e fornecidos pelo mesmo fornecedor. Apesar da garantia do fornecedor de homogeneidade entre os lotes, o analista decide blocar os lotes, de forma a evitar que o efeito de uma possível diferença entre estes afete os resultados do experimento. Uma vez que o número de corpos de prova de cada lote corresponde a uma replicação completa, cada bloco, isto é, cada lote da liga, pode corresponder a uma replicação. Os dados do exemplo são resumidos na <a href="#tbl-blockrep" class="quarto-xref">Tabela&nbsp;<span>6.2</span></a>.</p>
 </div>
 </div>
 <div class="cell">
@@ -1329,23 +1335,23 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
 </figcaption>
 <div aria-describedby="tbl-blockrep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="gwopehwcqe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gwopehwcqe table {
+<div id="lgjnocjahg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lgjnocjahg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gwopehwcqe thead, #gwopehwcqe tbody, #gwopehwcqe tfoot, #gwopehwcqe tr, #gwopehwcqe td, #gwopehwcqe th {
+#lgjnocjahg thead, #lgjnocjahg tbody, #lgjnocjahg tfoot, #lgjnocjahg tr, #lgjnocjahg td, #lgjnocjahg th {
   border-style: none;
 }
 
-#gwopehwcqe p {
+#lgjnocjahg p {
   margin: 0;
   padding: 0;
 }
 
-#gwopehwcqe .gt_table {
+#lgjnocjahg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1371,12 +1377,12 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-left-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_caption {
+#lgjnocjahg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gwopehwcqe .gt_title {
+#lgjnocjahg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1388,7 +1394,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-bottom-width: 0;
 }
 
-#gwopehwcqe .gt_subtitle {
+#lgjnocjahg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1400,7 +1406,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-top-width: 0;
 }
 
-#gwopehwcqe .gt_heading {
+#lgjnocjahg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1412,13 +1418,13 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-right-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_bottom_border {
+#lgjnocjahg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_col_headings {
+#lgjnocjahg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1433,7 +1439,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-right-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_col_heading {
+#lgjnocjahg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1453,7 +1459,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   overflow-x: hidden;
 }
 
-#gwopehwcqe .gt_column_spanner_outer {
+#lgjnocjahg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1465,15 +1471,15 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 4px;
 }
 
-#gwopehwcqe .gt_column_spanner_outer:first-child {
+#lgjnocjahg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gwopehwcqe .gt_column_spanner_outer:last-child {
+#lgjnocjahg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gwopehwcqe .gt_column_spanner {
+#lgjnocjahg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1485,11 +1491,11 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   width: 100%;
 }
 
-#gwopehwcqe .gt_spanner_row {
+#lgjnocjahg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gwopehwcqe .gt_group_heading {
+#lgjnocjahg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1515,7 +1521,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   text-align: left;
 }
 
-#gwopehwcqe .gt_empty_group_heading {
+#lgjnocjahg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1530,15 +1536,15 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   vertical-align: middle;
 }
 
-#gwopehwcqe .gt_from_md > :first-child {
+#lgjnocjahg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gwopehwcqe .gt_from_md > :last-child {
+#lgjnocjahg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gwopehwcqe .gt_row {
+#lgjnocjahg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1557,7 +1563,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   overflow-x: hidden;
 }
 
-#gwopehwcqe .gt_stub {
+#lgjnocjahg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1570,7 +1576,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 5px;
 }
 
-#gwopehwcqe .gt_stub_row_group {
+#lgjnocjahg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,15 +1590,15 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   vertical-align: top;
 }
 
-#gwopehwcqe .gt_row_group_first td {
+#lgjnocjahg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gwopehwcqe .gt_row_group_first th {
+#lgjnocjahg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gwopehwcqe .gt_summary_row {
+#lgjnocjahg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1602,16 +1608,16 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 5px;
 }
 
-#gwopehwcqe .gt_first_summary_row {
+#lgjnocjahg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_first_summary_row.thick {
+#lgjnocjahg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gwopehwcqe .gt_last_summary_row {
+#lgjnocjahg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1621,7 +1627,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-bottom-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_grand_summary_row {
+#lgjnocjahg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1631,7 +1637,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 5px;
 }
 
-#gwopehwcqe .gt_first_grand_summary_row {
+#lgjnocjahg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1641,7 +1647,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-top-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_last_grand_summary_row_top {
+#lgjnocjahg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1651,11 +1657,11 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-bottom-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_striped {
+#lgjnocjahg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gwopehwcqe .gt_table_body {
+#lgjnocjahg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1664,7 +1670,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-bottom-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_footnotes {
+#lgjnocjahg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1678,7 +1684,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-right-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_footnote {
+#lgjnocjahg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1687,7 +1693,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 5px;
 }
 
-#gwopehwcqe .gt_sourcenotes {
+#lgjnocjahg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1701,7 +1707,7 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   border-right-color: #D3D3D3;
 }
 
-#gwopehwcqe .gt_sourcenote {
+#lgjnocjahg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1709,72 +1715,72 @@ Tabela&nbsp;6.2: Planejamento fatorial 2^2, bloco na replicação
   padding-right: 5px;
 }
 
-#gwopehwcqe .gt_left {
+#lgjnocjahg .gt_left {
   text-align: left;
 }
 
-#gwopehwcqe .gt_center {
+#lgjnocjahg .gt_center {
   text-align: center;
 }
 
-#gwopehwcqe .gt_right {
+#lgjnocjahg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gwopehwcqe .gt_font_normal {
+#lgjnocjahg .gt_font_normal {
   font-weight: normal;
 }
 
-#gwopehwcqe .gt_font_bold {
+#lgjnocjahg .gt_font_bold {
   font-weight: bold;
 }
 
-#gwopehwcqe .gt_font_italic {
+#lgjnocjahg .gt_font_italic {
   font-style: italic;
 }
 
-#gwopehwcqe .gt_super {
+#lgjnocjahg .gt_super {
   font-size: 65%;
 }
 
-#gwopehwcqe .gt_footnote_marks {
+#lgjnocjahg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gwopehwcqe .gt_asterisk {
+#lgjnocjahg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gwopehwcqe .gt_indent_1 {
+#lgjnocjahg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gwopehwcqe .gt_indent_2 {
+#lgjnocjahg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gwopehwcqe .gt_indent_3 {
+#lgjnocjahg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gwopehwcqe .gt_indent_4 {
+#lgjnocjahg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gwopehwcqe .gt_indent_5 {
+#lgjnocjahg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gwopehwcqe .katex-display {
+#lgjnocjahg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gwopehwcqe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lgjnocjahg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1887,7 +1893,7 @@ NOTE: columns run.no and run.no.std.rp  are annotation,
  not part of the data frame</code></pre>
 </div>
 </div>
-<p>Pode-se observar que a coluna blocos já é adicionada no planejamento sem necessidade de algum argumento adicional. A análise deve considerar o termo <code>Blocks</code> no modelo, conforme segue. Observando o resultado do modelo linear, o termo <code>Blocks.2</code> refere-se ao segundo nível do bloco, sendo adicionado no modelo a diferença entre médias deste nível e do primeiro na previsão, no caso de se prever os resultados dos ensaios no segundo bloco. Logo, o bloco é tratado segundo uma variável categórica na análise. Para o exemplo esta diferença média entre blocos é igual a 2 HRC. Pode-se concluir que neste caso houve significância do fator blocos.</p>
+<p>Pode-se observar que a coluna blocos já é adicionada no planejamento sem necessidade de algum argumento adicional. A análise deve considerar o termo <code>Blocks</code> no modelo, conforme segue. Observando o resultado do modelo linear, o termo <code>Blocks.2</code> refere-se ao segundo nível do bloco, sendo adicionado essa quantidade à constante, no caso de se prever os resultados dos ensaios no segundo bloco. Logo, o bloco é tratado segundo uma variável categórica na análise. Para o exemplo, esta diferença média entre blocos é igual a 2 HRC. Pode-se concluir que, neste caso, houve significância do fator blocado, havendo, portanto, diferença significativa entre os lotes de fabricação do material fornecido.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com bloco na replicação</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
@@ -2017,8 +2023,8 @@ Multiple R-squared:  0,8333,    Adjusted R-squared:  0,7083
 F-statistic: 6,667 on 3 and 4 DF,  p-value: 0,04909</code></pre>
 </div>
 </div>
-<p>No caso onde deseja-se blocar uma determinada variável em um fatorial com número de níveis da variável a ser blocada maior que o número de réplicas, deve-se utilizar do confundimento. O confundimento é uma técnica para dividir os experimentos do fatorial <span class="math inline">\(2^k\)</span> em blocos de forma menos prejudicial, quando não é possível blocar nas replicações. Neste caso aloca-se uma fração do planejamento em cada bloco. A escolha desta fração acarreta um confundimento com um dos efeitos a ser estimado no fatorial <span class="math inline">\(2^k\)</span>. Respeitando a hierarquia dos efeitos, deve-se sempre alocar os níveis da variável blocada na interação de maior ordem.</p>
-<p>A <a href="#fig-fatconf" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> ilustra um fatorial <span class="math inline">\(2^3\)</span> com bloco com confundimento em dois níveis. O princípio de hierarquia dos efeitos garante que os efeitos de ordem mais baixa são os mais importantes. Já pelo princípio da esparcidade dos efeitos na maioria dos estudos poucos efeitos explicam a maior proporção da variabilidade dos dados na resposta de interesse. Portanto, espera-se que poucos efeitos e de menor ordem sejam mais importantes. Neste sentido, para o fatorial <span class="math inline">\(2^3\)</span> não replicado com bloco em dois níveis, o confundimento deve ser alocado na interação de maior ordem, <span class="math inline">\(x_1x_2x_3\)</span>, conforme a <a href="#tbl-23conf" class="quarto-xref">Tabela&nbsp;<span>6.3</span></a>. O bloco destacado em azul na <a href="#fig-fatconf" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> corresponde a <span class="math inline">\(x_1x_2x_3=-1\)</span>, enquanto o amarelo correponde a <span class="math inline">\(x_1x_2x_3=+1\)</span> na <a href="#tbl-23conf" class="quarto-xref">Tabela&nbsp;<span>6.3</span></a>.</p>
+<p>No caso onde deseja-se blocar uma determinada variável em um fatorial de dois níveis, com número de níveis da variável a ser blocada maior que o número de réplicas, deve-se utilizar do confundimento. O confundimento é uma técnica para dividir os experimentos do fatorial <span class="math inline">\(2^k\)</span> em blocos de forma menos prejudicial, quando não é possível blocar nas replicações. Neste caso, aloca-se uma fração do planejamento em cada bloco. A escolha desta fração acarreta um confundimento com um dos efeitos a ser estimado no fatorial <span class="math inline">\(2^k\)</span>. Respeitando a hierarquia dos efeitos, deve-se sempre alocar os níveis da variável blocada na interação de maior ordem.</p>
+<p>A <a href="#fig-fatconf" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> ilustra um fatorial <span class="math inline">\(2^3\)</span> com bloco com confundimento em dois níveis. O princípio de hierarquia dos efeitos garante que os efeitos de ordem mais baixa são os mais importantes. Já pelo princípio da esparcidade dos efeitos, na maioria dos estudos, poucos efeitos explicam a maior proporção da variabilidade dos dados na resposta de interesse. Portanto, espera-se que poucos efeitos e de menor ordem sejam mais importantes. Neste sentido, para o fatorial <span class="math inline">\(2^3\)</span> não replicado com bloco em dois níveis, o confundimento deve ser alocado na interação de maior ordem, <span class="math inline">\(x_1x_2x_3\)</span>, conforme a <a href="#tbl-23conf" class="quarto-xref">Tabela&nbsp;<span>6.3</span></a>. O bloco destacado em azul na <a href="#fig-fatconf" class="quarto-xref">Figura&nbsp;<span>6.7</span></a> corresponde a <span class="math inline">\(x_1x_2x_3=-1\)</span>, enquanto o amarelo correponde a <span class="math inline">\(x_1x_2x_3=+1\)</span> na <a href="#tbl-23conf" class="quarto-xref">Tabela&nbsp;<span>6.3</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fatconf" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2041,23 +2047,23 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
 </figcaption>
 <div aria-describedby="tbl-23conf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="biazodwqln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#biazodwqln table {
+<div id="qjfipfpeik" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qjfipfpeik table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#biazodwqln thead, #biazodwqln tbody, #biazodwqln tfoot, #biazodwqln tr, #biazodwqln td, #biazodwqln th {
+#qjfipfpeik thead, #qjfipfpeik tbody, #qjfipfpeik tfoot, #qjfipfpeik tr, #qjfipfpeik td, #qjfipfpeik th {
   border-style: none;
 }
 
-#biazodwqln p {
+#qjfipfpeik p {
   margin: 0;
   padding: 0;
 }
 
-#biazodwqln .gt_table {
+#qjfipfpeik .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2083,12 +2089,12 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-left-color: #D3D3D3;
 }
 
-#biazodwqln .gt_caption {
+#qjfipfpeik .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#biazodwqln .gt_title {
+#qjfipfpeik .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2100,7 +2106,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-bottom-width: 0;
 }
 
-#biazodwqln .gt_subtitle {
+#qjfipfpeik .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2112,7 +2118,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-top-width: 0;
 }
 
-#biazodwqln .gt_heading {
+#qjfipfpeik .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2124,13 +2130,13 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-right-color: #D3D3D3;
 }
 
-#biazodwqln .gt_bottom_border {
+#qjfipfpeik .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#biazodwqln .gt_col_headings {
+#qjfipfpeik .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2145,7 +2151,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-right-color: #D3D3D3;
 }
 
-#biazodwqln .gt_col_heading {
+#qjfipfpeik .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2165,7 +2171,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   overflow-x: hidden;
 }
 
-#biazodwqln .gt_column_spanner_outer {
+#qjfipfpeik .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2177,15 +2183,15 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 4px;
 }
 
-#biazodwqln .gt_column_spanner_outer:first-child {
+#qjfipfpeik .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#biazodwqln .gt_column_spanner_outer:last-child {
+#qjfipfpeik .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#biazodwqln .gt_column_spanner {
+#qjfipfpeik .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2197,11 +2203,11 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   width: 100%;
 }
 
-#biazodwqln .gt_spanner_row {
+#qjfipfpeik .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#biazodwqln .gt_group_heading {
+#qjfipfpeik .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2227,7 +2233,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   text-align: left;
 }
 
-#biazodwqln .gt_empty_group_heading {
+#qjfipfpeik .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2242,15 +2248,15 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   vertical-align: middle;
 }
 
-#biazodwqln .gt_from_md > :first-child {
+#qjfipfpeik .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#biazodwqln .gt_from_md > :last-child {
+#qjfipfpeik .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#biazodwqln .gt_row {
+#qjfipfpeik .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2269,7 +2275,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   overflow-x: hidden;
 }
 
-#biazodwqln .gt_stub {
+#qjfipfpeik .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2282,7 +2288,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 5px;
 }
 
-#biazodwqln .gt_stub_row_group {
+#qjfipfpeik .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2296,15 +2302,15 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   vertical-align: top;
 }
 
-#biazodwqln .gt_row_group_first td {
+#qjfipfpeik .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#biazodwqln .gt_row_group_first th {
+#qjfipfpeik .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#biazodwqln .gt_summary_row {
+#qjfipfpeik .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2314,16 +2320,16 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 5px;
 }
 
-#biazodwqln .gt_first_summary_row {
+#qjfipfpeik .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#biazodwqln .gt_first_summary_row.thick {
+#qjfipfpeik .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#biazodwqln .gt_last_summary_row {
+#qjfipfpeik .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2333,7 +2339,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#biazodwqln .gt_grand_summary_row {
+#qjfipfpeik .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2343,7 +2349,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 5px;
 }
 
-#biazodwqln .gt_first_grand_summary_row {
+#qjfipfpeik .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2353,7 +2359,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-top-color: #D3D3D3;
 }
 
-#biazodwqln .gt_last_grand_summary_row_top {
+#qjfipfpeik .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2363,11 +2369,11 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#biazodwqln .gt_striped {
+#qjfipfpeik .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#biazodwqln .gt_table_body {
+#qjfipfpeik .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2376,7 +2382,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#biazodwqln .gt_footnotes {
+#qjfipfpeik .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2390,7 +2396,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-right-color: #D3D3D3;
 }
 
-#biazodwqln .gt_footnote {
+#qjfipfpeik .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2399,7 +2405,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 5px;
 }
 
-#biazodwqln .gt_sourcenotes {
+#qjfipfpeik .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2413,7 +2419,7 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   border-right-color: #D3D3D3;
 }
 
-#biazodwqln .gt_sourcenote {
+#qjfipfpeik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2421,72 +2427,72 @@ Tabela&nbsp;6.3: Planejamento fatorial 2^3 com confundimento
   padding-right: 5px;
 }
 
-#biazodwqln .gt_left {
+#qjfipfpeik .gt_left {
   text-align: left;
 }
 
-#biazodwqln .gt_center {
+#qjfipfpeik .gt_center {
   text-align: center;
 }
 
-#biazodwqln .gt_right {
+#qjfipfpeik .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#biazodwqln .gt_font_normal {
+#qjfipfpeik .gt_font_normal {
   font-weight: normal;
 }
 
-#biazodwqln .gt_font_bold {
+#qjfipfpeik .gt_font_bold {
   font-weight: bold;
 }
 
-#biazodwqln .gt_font_italic {
+#qjfipfpeik .gt_font_italic {
   font-style: italic;
 }
 
-#biazodwqln .gt_super {
+#qjfipfpeik .gt_super {
   font-size: 65%;
 }
 
-#biazodwqln .gt_footnote_marks {
+#qjfipfpeik .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#biazodwqln .gt_asterisk {
+#qjfipfpeik .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#biazodwqln .gt_indent_1 {
+#qjfipfpeik .gt_indent_1 {
   text-indent: 5px;
 }
 
-#biazodwqln .gt_indent_2 {
+#qjfipfpeik .gt_indent_2 {
   text-indent: 10px;
 }
 
-#biazodwqln .gt_indent_3 {
+#qjfipfpeik .gt_indent_3 {
   text-indent: 15px;
 }
 
-#biazodwqln .gt_indent_4 {
+#qjfipfpeik .gt_indent_4 {
   text-indent: 20px;
 }
 
-#biazodwqln .gt_indent_5 {
+#qjfipfpeik .gt_indent_5 {
   text-indent: 25px;
 }
 
-#biazodwqln .katex-display {
+#qjfipfpeik .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#biazodwqln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qjfipfpeik div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2579,23 +2585,23 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
 </figcaption>
 <div aria-describedby="tbl-blockconf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fkyliaelra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fkyliaelra table {
+<div id="xrufeyvibd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xrufeyvibd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fkyliaelra thead, #fkyliaelra tbody, #fkyliaelra tfoot, #fkyliaelra tr, #fkyliaelra td, #fkyliaelra th {
+#xrufeyvibd thead, #xrufeyvibd tbody, #xrufeyvibd tfoot, #xrufeyvibd tr, #xrufeyvibd td, #xrufeyvibd th {
   border-style: none;
 }
 
-#fkyliaelra p {
+#xrufeyvibd p {
   margin: 0;
   padding: 0;
 }
 
-#fkyliaelra .gt_table {
+#xrufeyvibd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2621,12 +2627,12 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-left-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_caption {
+#xrufeyvibd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fkyliaelra .gt_title {
+#xrufeyvibd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2638,7 +2644,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-bottom-width: 0;
 }
 
-#fkyliaelra .gt_subtitle {
+#xrufeyvibd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2650,7 +2656,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-top-width: 0;
 }
 
-#fkyliaelra .gt_heading {
+#xrufeyvibd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2662,13 +2668,13 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-right-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_bottom_border {
+#xrufeyvibd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_col_headings {
+#xrufeyvibd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2683,7 +2689,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-right-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_col_heading {
+#xrufeyvibd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2703,7 +2709,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   overflow-x: hidden;
 }
 
-#fkyliaelra .gt_column_spanner_outer {
+#xrufeyvibd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2715,15 +2721,15 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 4px;
 }
 
-#fkyliaelra .gt_column_spanner_outer:first-child {
+#xrufeyvibd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fkyliaelra .gt_column_spanner_outer:last-child {
+#xrufeyvibd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fkyliaelra .gt_column_spanner {
+#xrufeyvibd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2735,11 +2741,11 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   width: 100%;
 }
 
-#fkyliaelra .gt_spanner_row {
+#xrufeyvibd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fkyliaelra .gt_group_heading {
+#xrufeyvibd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2765,7 +2771,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   text-align: left;
 }
 
-#fkyliaelra .gt_empty_group_heading {
+#xrufeyvibd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2780,15 +2786,15 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   vertical-align: middle;
 }
 
-#fkyliaelra .gt_from_md > :first-child {
+#xrufeyvibd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fkyliaelra .gt_from_md > :last-child {
+#xrufeyvibd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fkyliaelra .gt_row {
+#xrufeyvibd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2807,7 +2813,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   overflow-x: hidden;
 }
 
-#fkyliaelra .gt_stub {
+#xrufeyvibd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2820,7 +2826,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 5px;
 }
 
-#fkyliaelra .gt_stub_row_group {
+#xrufeyvibd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2834,15 +2840,15 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   vertical-align: top;
 }
 
-#fkyliaelra .gt_row_group_first td {
+#xrufeyvibd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fkyliaelra .gt_row_group_first th {
+#xrufeyvibd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fkyliaelra .gt_summary_row {
+#xrufeyvibd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2852,16 +2858,16 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 5px;
 }
 
-#fkyliaelra .gt_first_summary_row {
+#xrufeyvibd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_first_summary_row.thick {
+#xrufeyvibd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fkyliaelra .gt_last_summary_row {
+#xrufeyvibd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2871,7 +2877,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_grand_summary_row {
+#xrufeyvibd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2881,7 +2887,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 5px;
 }
 
-#fkyliaelra .gt_first_grand_summary_row {
+#xrufeyvibd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2891,7 +2897,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-top-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_last_grand_summary_row_top {
+#xrufeyvibd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2901,11 +2907,11 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_striped {
+#xrufeyvibd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fkyliaelra .gt_table_body {
+#xrufeyvibd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2914,7 +2920,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-bottom-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_footnotes {
+#xrufeyvibd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2928,7 +2934,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-right-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_footnote {
+#xrufeyvibd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2937,7 +2943,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 5px;
 }
 
-#fkyliaelra .gt_sourcenotes {
+#xrufeyvibd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2951,7 +2957,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   border-right-color: #D3D3D3;
 }
 
-#fkyliaelra .gt_sourcenote {
+#xrufeyvibd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2959,72 +2965,72 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
   padding-right: 5px;
 }
 
-#fkyliaelra .gt_left {
+#xrufeyvibd .gt_left {
   text-align: left;
 }
 
-#fkyliaelra .gt_center {
+#xrufeyvibd .gt_center {
   text-align: center;
 }
 
-#fkyliaelra .gt_right {
+#xrufeyvibd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fkyliaelra .gt_font_normal {
+#xrufeyvibd .gt_font_normal {
   font-weight: normal;
 }
 
-#fkyliaelra .gt_font_bold {
+#xrufeyvibd .gt_font_bold {
   font-weight: bold;
 }
 
-#fkyliaelra .gt_font_italic {
+#xrufeyvibd .gt_font_italic {
   font-style: italic;
 }
 
-#fkyliaelra .gt_super {
+#xrufeyvibd .gt_super {
   font-size: 65%;
 }
 
-#fkyliaelra .gt_footnote_marks {
+#xrufeyvibd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fkyliaelra .gt_asterisk {
+#xrufeyvibd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fkyliaelra .gt_indent_1 {
+#xrufeyvibd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fkyliaelra .gt_indent_2 {
+#xrufeyvibd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fkyliaelra .gt_indent_3 {
+#xrufeyvibd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fkyliaelra .gt_indent_4 {
+#xrufeyvibd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fkyliaelra .gt_indent_5 {
+#xrufeyvibd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fkyliaelra .katex-display {
+#xrufeyvibd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fkyliaelra div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xrufeyvibd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3178,7 +3184,7 @@ Tabela&nbsp;6.4: Planejamento fatorial 2^4, confundimento
 </figure>
 </div>
 </div>
-<p>Para entender a melhor forma de obter o confundimento neste planejamento, é importante considerar a matriz <span class="math inline">\(X\)</span>. Para obtê-la no R, pode-se utilizar o comando <code>model.matrix</code>, conforme código à seguir. A forma menos prejudicial neste caso é confundir o bloco com a interação de quarta ordem <span class="math inline">\(x_1x_2x_3x_4\)</span>.</p>
+<p>Para entender a melhor forma de obter o confundimento neste planejamento, é importante considerar a matriz <span class="math inline">\(X\)</span>. Para obtê-la no R, pode-se utilizar o comando <code>model.matrix</code>, conforme código à seguir. A forma de confundimento menos prejudicial neste caso é confundir o bloco com a interação de quarta ordem <span class="math inline">\(x_1x_2x_3x_4\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construindo a matrix X</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">+</span><span class="dv">1</span>)</span>
@@ -3227,7 +3233,7 @@ attr(,"assign")
  [1]  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 </div>
 </div>
-<p>Para gerar um planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento pode-se utilizar o pacote <code>FrF2</code>. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a> pode-se utilizar o código à seguir.</p>
+<p>Para gerar um planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento, pode-se utilizar o pacote <code>FrF2</code>. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, pode-se utilizar o código à seguir.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^4 com confundimento</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plan_conf <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
@@ -3271,8 +3277,8 @@ NOTE: columns run.no and run.no.std.rp  are annotation,
 <p><span id="eq-ssconf"><span class="math display">\[
 SS_{blocos}= \frac{(\sum_{bloco=+1}y)^2 - (\sum_{bloco=-1}y)^2}{n2^k/2} - \frac{y_{...}^2}{n2^k}
 \tag{6.5}\]</span></span></p>
-<p>A análise no R é feita de forma similar à blocagem na replicação, incluindo o fator <code>Blocks</code> no modelo. Portanto, a diferença é na criação do planejamento. No caso da blocagem na replicação não é necessário modificação alguma no planejamento, já na blocagem com confundimento é necessário colocar o argumento <code>blocks</code> com o número de níveis desejado. Logicamente, o número de ensaios <span class="math inline">\(N\)</span> deve ser múltiplo do número de níveis, de forma que as frações alocadas para cada bloco sejam iguais.</p>
-<p>Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise é realizada com a sintaxe à seguir. O modelo <code>rend ~ Blocks + (A+B+C+D)^3</code> não contém o termo de quarta ordem, <span class="math inline">\(x_1x_2x_3x_4\)</span>, pois este está confundido com o termo <code>Blocks</code>. De qualquer forma os 16 graus de liberdade foram usados para estimar os efeitos, sem a possibilidade de estimar o erro experimental da forma tradicional.</p>
+<p>A análise é feita de forma similar à blocagem na replicação, incluindo o fator <code>Blocks</code> no modelo. Portanto, a diferença é na criação do planejamento. No caso da blocagem na replicação, não é necessária modificação alguma no planejamento obtido via <code>FrF2</code>. Já na blocagem com confundimento, é necessário considerar o argumento <code>blocks</code> com o número de níveis desejado. Logicamente, o número de ensaios <span class="math inline">\(N\)</span> deve ser múltiplo do número de níveis, de forma que as frações alocadas para cada bloco sejam iguais.</p>
+<p>Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise é realizada com a sintaxe à seguir. O modelo <code>rend ~ Blocks + (A+B+C+D)^3</code> não contém o termo de quarta ordem, <span class="math inline">\(x_1x_2x_3x_4\)</span>, pois este está confundido com o termo <code>Blocks</code>. De qualquer forma, os 16 graus de liberdade foram usados para estimar os efeitos, sem a possibilidade de estimar o erro experimental da forma tradicional.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear</span></span>
@@ -3314,7 +3320,7 @@ F-statistic:   NaN on 15 and 0 DF,  p-value: NA</code></pre>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf &lt;- aov(lm_conf)</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Após uma primeira avaliação, pode-se remover alguma interação de ordem maior com efeito menor. Porém, neste estudo, como o bloco não foi significativo, pode-se removê-lo do modelo, conforme segue. Pode-se concluir que os fatores <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_3\)</span> além da interação entre estes foram significativos. Este modelo também apresentou um excelente ajuste, com <span class="math inline">\(R_{aj}^2 = 0,9973\)</span>.</p>
+<p>Após uma primeira avaliação, pode-se remover alguma interação de ordem maior com efeito menor. Porém, neste estudo, como o bloco não foi significativo, pode-se removê-lo do modelo, conforme segue. Pode-se concluir que os efeitos de <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_3\)</span> além da interação entre estes foram significativos. Este modelo também apresentou um excelente ajuste, com <span class="math inline">\(R_{aj}^2 = 0,9973\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análise fatorial 2^k com blocagem e confundimento</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo linear sem bloco</span></span>
@@ -3360,7 +3366,7 @@ F-statistic: 392,7 on 14 and 1 DF,  p-value: 0,03954</code></pre>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># anova_conf3 &lt;- aov(lm_conf3)</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(anova_conf3)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pode-se também utilizar o pacote <code>unrepx</code> para analisar o planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento. Entretano, o analista deve entender em qual interação está alocado o bloco, visto que os resultados deste pacote não especificam. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise pode ser realizada conforme segue.</p>
+<p>Pode-se também utilizar o pacote <code>unrepx</code> para analisar o planejamento fatorial <span class="math inline">\(2^k\)</span> com blocagem e confundimento. Entretanto, o analista deve entender em qual interação está alocado o bloco, visto que os resultados deste pacote não especificam. Para o <a href="#exm-blockconf" class="quarto-xref">Exemplo&nbsp;<span>6.3</span></a>, a análise pode ser realizada conforme segue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resposta na ordem padrão do fatorial</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>rend <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">156</span>, <span class="dv">120</span>, <span class="dv">142</span>, <span class="dv">62</span>, <span class="dv">72</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">112</span>, <span class="dv">170</span>, <span class="dv">126</span>, <span class="dv">134</span>, <span class="dv">42</span>, <span class="dv">50</span>, <span class="dv">56</span>, <span class="dv">38</span>)</span>
@@ -3381,21 +3387,21 @@ attr(,"mean")
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eff.test</span>(efeitos, <span class="at">method =</span> <span class="st">"Lenth"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     effect Lenth_PSE t.ratio p.value simult.pval
-C    -85,25      9,75  -8,744  0,0002      0,0015
-A     19,25      9,75   1,974  0,0667      0,4994
-AC   -16,25      9,75  -1,667  0,1059      0,7000
-AB   -13,25      9,75  -1,359  0,1708      0,8800
-BCD   12,75      9,75   1,308  0,1855      0,9119
-B    -11,25      9,75  -1,154  0,2364      0,9655
-ABC    7,25      9,75   0,744  0,4316      1,0000
-BC    -6,75      9,75  -0,692  0,4674      1,0000
-BD     6,25      9,75   0,641  0,5570      1,0000
-ABD   -5,75      9,75  -0,590  0,5894      1,0000
-AD    -5,25      9,75  -0,538  0,6222      1,0000
-CD    -3,75      9,75  -0,385  0,7237      1,0000
-ACD   -2,75      9,75  -0,282  0,7958      1,0000
-D      1,75      9,75   0,179  0,8681      1,0000
-ABCD  -1,25      9,75  -0,128  0,9067      1,0000</code></pre>
+C    -85,25      9,75  -8,744  0,0000      0,0004
+A     19,25      9,75   1,974  0,0616      0,4829
+AC   -16,25      9,75  -1,667  0,1008      0,6888
+AB   -13,25      9,75  -1,359  0,1651      0,8785
+BCD   12,75      9,75   1,308  0,1802      0,9074
+B    -11,25      9,75  -1,154  0,2303      0,9663
+ABC    7,25      9,75   0,744  0,4279      1,0000
+BC    -6,75      9,75  -0,692  0,4639      1,0000
+BD     6,25      9,75   0,641  0,5562      1,0000
+ABD   -5,75      9,75  -0,590  0,5883      1,0000
+AD    -5,25      9,75  -0,538  0,6208      1,0000
+CD    -3,75      9,75  -0,385  0,7222      1,0000
+ACD   -2,75      9,75  -0,282  0,7936      1,0000
+D      1,75      9,75   0,179  0,8666      1,0000
+ABCD  -1,25      9,75  -0,128  0,9051      1,0000</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -3415,8 +3421,8 @@ Figura&nbsp;6.8: Gráfico de Pareto para os efeitos no fatorial <span class="mat
 </section>
 <section id="fatorial-fracionado-2k-p" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="fatorial-fracionado-2k-p"><span class="header-section-number">6.4</span> Fatorial fracionado <span class="math inline">\(2^{k-p}\)</span></h2>
-<p>Em diversas situações onde o número de fatores de controle é elevado, o custo experimental para executar um planejamento fatorial <span class="math inline">\(2^k\)</span> completo fica elevado, visto que o número de experimentos cresce exponencialmente com o aumento do número de fatores de interesse, <span class="math inline">\(N=2^k\)</span>. Nestes casos pode-se utilizar o planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> para estudar o processo de interesse. No planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> apenas uma fração do fatorial <span class="math inline">\(2^k\)</span> é realizada, viabilizando economia na experimentação. Para <span class="math inline">\(p=1\)</span>, tem-se um planejamento com meia fração, já para <span class="math inline">\(p=2\)</span>, tem-se uma fração de um quarto. Apesar da perda de informação decorrente na redução do número de ensaios, há alguns princípios que sustentam o uso do fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>.</p>
-<p>Ao realizar apenas uma fração do planejamento, não é possível estimar todos os efeitos do processo em estudo. Entretanto, pelo princípio da hierarquia dos efeitos, os efeitos de menor ordem são mais importantes e devem ser priorizados. Já pelo princípio da esparcidade dos efeitos, geralmente poucos efeitos serão significativos em uma resposta de interesse, enquanto a maior parte dos efeitos será esparça. Logo, considerando estes dois princípios, na maioria dos estudos poucos efeitos e de menor ordem serão significativos na resposta de interesse. A <a href="#fig-esphier" class="quarto-xref">Figura&nbsp;<span>6.9</span></a> ilustra estes princípios.</p>
+<p>Em diversas situações onde o número de fatores de controle é elevado, o custo experimental para executar um planejamento fatorial <span class="math inline">\(2^k\)</span> completo fica elevado, visto que o número de experimentos cresce exponencialmente com o aumento do número de fatores de interesse, <span class="math inline">\(N=2^k\)</span>. Nestes casos, pode-se utilizar o planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> para estudar o processo de interesse. No planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, apenas uma fração do fatorial <span class="math inline">\(2^k\)</span> é realizada, viabilizando economia na experimentação. Para <span class="math inline">\(p=1\)</span>, tem-se um planejamento com meia fração, já para <span class="math inline">\(p=2\)</span>, tem-se uma fração de um quarto. Apesar da perda de informação decorrente na redução do número de ensaios, há alguns princípios que sustentam o uso do fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>.</p>
+<p>Ao realizar apenas uma fração do planejamento, não é possível estimar todos os efeitos do processo em estudo. Entretanto, pelo princípio da hierarquia dos efeitos, os efeitos de menor ordem são mais importantes e devem ser priorizados. Já pelo princípio da esparcidade dos efeitos, geralmente poucos efeitos serão significativos em uma resposta de interesse, enquanto a maior parte dos efeitos será esparça. Logo, considerando estes dois princípios, na maioria dos estudos, poucos efeitos e de menor ordem serão significativos na resposta de interesse. A <a href="#fig-esphier" class="quarto-xref">Figura&nbsp;<span>6.9</span></a> ilustra estes princípios.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-esphier" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -3431,8 +3437,8 @@ Figura&nbsp;6.9: Princípios da esparcidade e hierarquia dos efeitos
 </div>
 </div>
 </div>
-<p>Um conceito fundamental na experimentação que sustenta o uso do planejamento fatorial fracionado é a experimentação sequencial. Geralmente em estudos com muitas variáveis de interesse, torna-se necessário a realização de experimentos inciciais, ditos de varredura (<em>screening experiments</em>). Nestes experimentos deseja-se conhecer os fatores influentes entre muitos existentes. Deste modo, ao realizar o fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> não deseja-se obter resultados conclusivos, mas indícios que demonstrem o caminho a ser seguido nas etapas subsequentes da experimentação. O analista busca com este planejamento reduzir o número de fatores em investigação para depois aplicar outros métodos conclusivos.</p>
-<p>Relacionado à questão da experimentação sequencial está a propriedade de projeção. Esta propriedade implica na remoção dos efeitos com menor magnitude do fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, projetando-o em um fatorial completo <span class="math inline">\(2^k\)</span>. Seja um fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>. Este planejamento contém <span class="math inline">\(k = 3\)</span> fatores, <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> e <span class="math inline">\(x_3\)</span> e consiste em meia fração do fatorial <span class="math inline">\(2^k\)</span> completo, <span class="math inline">\(p = 1\)</span>. Logo, o número de experimentos realizado é <span class="math inline">\(N=2^{3-1}=4\)</span>. Supondo que após uma primeira análise dos efeitos principais dos três fatores, observa-se que o efeito de um deles, por exemplo de <span class="math inline">\(x_3\)</span>, não é significativo. Sugere-se remover este fator do estudo, projetando o planejamento em um fatorial completo <span class="math inline">\(2^2\)</span>. A <a href="#fig-projecao" class="quarto-xref">Figura&nbsp;<span>6.10</span></a> ilustra a propriedade de projeção.</p>
+<p>Um conceito fundamental na experimentação que sustenta o uso do planejamento fatorial fracionado é a experimentação sequencial. Geralmente em estudos com muitas variáveis de interesse, torna-se necessário a realização de experimentos iniciais, ditos de varredura (<em>screening experiments</em>). Nestes experimentos deseja-se conhecer os fatores influentes entre muitos existentes. Deste modo, ao se realizar o fatorial fracionado, <span class="math inline">\(2^{k-p}\)</span>, geralmente não deseja-se obter resultados conclusivos, mas indícios que demonstrem o caminho a ser seguido nas etapas subsequentes da experimentação. O analista busca com este planejamento reduzir o número de fatores em investigação, para depois aplicar outros métodos conclusivos.</p>
+<p>Relacionada à questão da experimentação sequencial está a propriedade de projeção. Esta propriedade implica na remoção dos efeitos com menor magnitude do fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, projetando-o em um fatorial completo <span class="math inline">\(2^k\)</span>. Seja um fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>. Este planejamento contém <span class="math inline">\(k = 3\)</span> fatores, <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> e <span class="math inline">\(x_3\)</span> e consiste em meia fração do fatorial <span class="math inline">\(2^k\)</span> completo, <span class="math inline">\(p = 1\)</span>. Logo, o número de experimentos realizado é <span class="math inline">\(N=2^{3-1}=4\)</span>. Supondo que, após uma primeira análise dos efeitos principais dos três fatores, observa-se que o efeito de um deles, por exemplo <span class="math inline">\(x_3\)</span>, não é significativo. Sugere-se remover este fator do estudo, projetando o planejamento em um fatorial completo <span class="math inline">\(2^2\)</span> com <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> apenas. A <a href="#fig-projecao" class="quarto-xref">Figura&nbsp;<span>6.10</span></a> ilustra a propriedade de projeção.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-projecao" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -3447,7 +3453,7 @@ Figura&nbsp;6.10: Projeção no fatorial fracionado <span class="math inline">\(
 </div>
 </div>
 </div>
-<p>Ainda considerando o caso do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, com <span class="math inline">\(N = 4\)</span> experimentos, deve-se escolher qual <span class="math inline">\(1/2\)</span> fração menos prejudicial deve ser realizada. Neste caso os níveis do fator <span class="math inline">\(x_3\)</span> devem ser definidos considerando o produto <span class="math inline">\(x_1x_2\)</span>. Isto, logicamente implicará em um confundimento desta interação com o efeito de <span class="math inline">\(x_3\)</span>. A <a href="#tbl-frac31" class="quarto-xref">Tabela&nbsp;<span>6.5</span></a> apresenta este planejamento. Entretanto, há outra possibilidade para o mesmo planejamento fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, a fração alternativa, definindo o terceiro fator como <span class="math inline">\(x_3=-x_1x_2\)</span>.</p>
+<p>Ainda considerando o caso do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, com <span class="math inline">\(N = 4\)</span> experimentos, deve-se escolher qual <span class="math inline">\(1/2\)</span> fração menos prejudicial deve ser realizada. Neste caso, os níveis do fator <span class="math inline">\(x_3\)</span> devem ser definidos considerando o produto <span class="math inline">\(x_1x_2\)</span>. Logicamente, tal definição implicará em um confundimento desta interação com o efeito de <span class="math inline">\(x_3\)</span>. A <a href="#tbl-frac31" class="quarto-xref">Tabela&nbsp;<span>6.5</span></a> apresenta este planejamento. Entretanto, há outra possibilidade para o mesmo planejamento fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, a fração alternativa, definindo o terceiro fator como <span class="math inline">\(x_3=-x_1x_2\)</span>.</p>
 <div class="cell">
 <div id="tbl-frac31" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -3456,23 +3462,23 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
 </figcaption>
 <div aria-describedby="tbl-frac31-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fvdpuklzjx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fvdpuklzjx table {
+<div id="pcohnabxnn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pcohnabxnn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fvdpuklzjx thead, #fvdpuklzjx tbody, #fvdpuklzjx tfoot, #fvdpuklzjx tr, #fvdpuklzjx td, #fvdpuklzjx th {
+#pcohnabxnn thead, #pcohnabxnn tbody, #pcohnabxnn tfoot, #pcohnabxnn tr, #pcohnabxnn td, #pcohnabxnn th {
   border-style: none;
 }
 
-#fvdpuklzjx p {
+#pcohnabxnn p {
   margin: 0;
   padding: 0;
 }
 
-#fvdpuklzjx .gt_table {
+#pcohnabxnn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3498,12 +3504,12 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-left-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_caption {
+#pcohnabxnn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fvdpuklzjx .gt_title {
+#pcohnabxnn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3515,7 +3521,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-bottom-width: 0;
 }
 
-#fvdpuklzjx .gt_subtitle {
+#pcohnabxnn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3527,7 +3533,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-top-width: 0;
 }
 
-#fvdpuklzjx .gt_heading {
+#pcohnabxnn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3539,13 +3545,13 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-right-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_bottom_border {
+#pcohnabxnn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_col_headings {
+#pcohnabxnn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3560,7 +3566,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-right-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_col_heading {
+#pcohnabxnn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3580,7 +3586,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   overflow-x: hidden;
 }
 
-#fvdpuklzjx .gt_column_spanner_outer {
+#pcohnabxnn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3592,15 +3598,15 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 4px;
 }
 
-#fvdpuklzjx .gt_column_spanner_outer:first-child {
+#pcohnabxnn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fvdpuklzjx .gt_column_spanner_outer:last-child {
+#pcohnabxnn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fvdpuklzjx .gt_column_spanner {
+#pcohnabxnn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3612,11 +3618,11 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   width: 100%;
 }
 
-#fvdpuklzjx .gt_spanner_row {
+#pcohnabxnn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fvdpuklzjx .gt_group_heading {
+#pcohnabxnn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3642,7 +3648,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   text-align: left;
 }
 
-#fvdpuklzjx .gt_empty_group_heading {
+#pcohnabxnn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3657,15 +3663,15 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   vertical-align: middle;
 }
 
-#fvdpuklzjx .gt_from_md > :first-child {
+#pcohnabxnn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fvdpuklzjx .gt_from_md > :last-child {
+#pcohnabxnn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fvdpuklzjx .gt_row {
+#pcohnabxnn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3684,7 +3690,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   overflow-x: hidden;
 }
 
-#fvdpuklzjx .gt_stub {
+#pcohnabxnn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3697,7 +3703,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 5px;
 }
 
-#fvdpuklzjx .gt_stub_row_group {
+#pcohnabxnn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3711,15 +3717,15 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   vertical-align: top;
 }
 
-#fvdpuklzjx .gt_row_group_first td {
+#pcohnabxnn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fvdpuklzjx .gt_row_group_first th {
+#pcohnabxnn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fvdpuklzjx .gt_summary_row {
+#pcohnabxnn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3729,16 +3735,16 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 5px;
 }
 
-#fvdpuklzjx .gt_first_summary_row {
+#pcohnabxnn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_first_summary_row.thick {
+#pcohnabxnn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fvdpuklzjx .gt_last_summary_row {
+#pcohnabxnn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3748,7 +3754,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-bottom-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_grand_summary_row {
+#pcohnabxnn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3758,7 +3764,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 5px;
 }
 
-#fvdpuklzjx .gt_first_grand_summary_row {
+#pcohnabxnn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3768,7 +3774,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-top-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_last_grand_summary_row_top {
+#pcohnabxnn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3778,11 +3784,11 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-bottom-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_striped {
+#pcohnabxnn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fvdpuklzjx .gt_table_body {
+#pcohnabxnn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3791,7 +3797,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-bottom-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_footnotes {
+#pcohnabxnn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3805,7 +3811,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-right-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_footnote {
+#pcohnabxnn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3814,7 +3820,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 5px;
 }
 
-#fvdpuklzjx .gt_sourcenotes {
+#pcohnabxnn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3828,7 +3834,7 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   border-right-color: #D3D3D3;
 }
 
-#fvdpuklzjx .gt_sourcenote {
+#pcohnabxnn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3836,72 +3842,72 @@ Tabela&nbsp;6.5: Planejamento fatorial fracionado 2^3-1
   padding-right: 5px;
 }
 
-#fvdpuklzjx .gt_left {
+#pcohnabxnn .gt_left {
   text-align: left;
 }
 
-#fvdpuklzjx .gt_center {
+#pcohnabxnn .gt_center {
   text-align: center;
 }
 
-#fvdpuklzjx .gt_right {
+#pcohnabxnn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fvdpuklzjx .gt_font_normal {
+#pcohnabxnn .gt_font_normal {
   font-weight: normal;
 }
 
-#fvdpuklzjx .gt_font_bold {
+#pcohnabxnn .gt_font_bold {
   font-weight: bold;
 }
 
-#fvdpuklzjx .gt_font_italic {
+#pcohnabxnn .gt_font_italic {
   font-style: italic;
 }
 
-#fvdpuklzjx .gt_super {
+#pcohnabxnn .gt_super {
   font-size: 65%;
 }
 
-#fvdpuklzjx .gt_footnote_marks {
+#pcohnabxnn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fvdpuklzjx .gt_asterisk {
+#pcohnabxnn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fvdpuklzjx .gt_indent_1 {
+#pcohnabxnn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fvdpuklzjx .gt_indent_2 {
+#pcohnabxnn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fvdpuklzjx .gt_indent_3 {
+#pcohnabxnn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fvdpuklzjx .gt_indent_4 {
+#pcohnabxnn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fvdpuklzjx .gt_indent_5 {
+#pcohnabxnn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fvdpuklzjx .katex-display {
+#pcohnabxnn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fvdpuklzjx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pcohnabxnn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3964,9 +3970,9 @@ Figura&nbsp;6.11: Fatorial fracionado <span class="math inline">\(2^{3-1}\)</spa
 </div>
 </div>
 </div>
-<p>Considerando ainda o princípio da experimentação sequencial, após realizar <span class="math inline">\(1/2\)</span> fração de um fatorial completo, caso o experimentador constate que todos os efeitos são importantes em magnitude, ele pode completar o planejamento com a outra fração, de forma a obter mais informação acerca dos efeitos em estudo. O experimentador pode neste caso blocar as frações testadas em momentos distintos, para avaliar a significância de uma possível variabilidade entre as estas etapas.</p>
-<p>Ao realizar um fatorial fracionado, o analista deve ter em mente que perderá informação em relação aos efeitos possíveis de serem estimados considerando os fatores em análise e suas interações. Tomando o exemplo dos três fatores, no fatorial completo <span class="math inline">\(2^3\)</span> há possibilidade de estimar uma constante, 3 efeitos principais, 3 interações de segunda ordem e uma interação de terceira ordem. Ao realizar um fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, o analista só poderá estimar <span class="math inline">\(r = 4\)</span> efeitos, uma vez que tem apenas <span class="math inline">\(N=4\)</span> experimentos. Deste modo, o conceito de confundimento está implícito nos fatoriais fracionados, de forma que não é possível estimar um efeito sem este estar confundido com outro de interesse. Deve-se, portanto, avaliar a estrutura de confundimento do planejamento e entender quais as implicações desta estrutura na estimativa dos efeitos.</p>
-<p>Seja a estrutura de confundimento do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>. Sejam os efeitos de <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> e <span class="math inline">\(x_3\)</span>, A, B e C, respectivamente. Para definir esta estrutura, deve-se considerar a seguinte regra AA = BB = CC = I, onde I é uma constante (não confundir com álgebra matricial). Tomando o gerador C = AB, visto que os níveis de <span class="math inline">\(x_3\)</span> foram gerados considerando a interação <span class="math inline">\(x_1x_2\)</span>, multiplicando ambos os lados por C, tem-se, CC = ABC, resultando em I = ABC. Portanto, I = ABC consiste na relação de definição. A partir desta relação sabe-se que o efeito da constante está confundido com a interação de terceira ordem. Ao multiplicar cada efeito em ambos os lados nesta relação, obtém-se a estrutura de confundimento completa do planejamento fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, conforme ilustrado na <a href="#fig-estrut" class="quarto-xref">Figura&nbsp;<span>6.12</span></a>. Pode-se constatar que neste planejamento os efeitos principais estão confundidos com as interações de segunda ordem e a constante confundida com a interação de terceira ordem.</p>
+<p>Considerando ainda o princípio da experimentação sequencial, após realizar meia fração de um fatorial completo, caso o experimentador constate que todos os efeitos são importantes em magnitude, ele pode completar o planejamento com a outra fração, de forma a obter mais informação acerca dos efeitos em estudo. O experimentador pode, neste caso, blocar as frações testadas em momentos distintos, para avaliar a significância de uma possível variabilidade entre as etapas de experimentação.</p>
+<p>Ao se realizar um fatorial fracionado, o analista deve ter em mente que perderá informação em relação aos efeitos possíveis de serem estimados considerando os fatores em análise e suas interações. Tomando o exemplo dos três fatores, no fatorial completo <span class="math inline">\(2^3\)</span>, há possibilidade de estimar uma constante, 3 efeitos principais, 3 interações de segunda ordem e uma interação de terceira ordem. Ao realizar um fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, o analista só poderá estimar <span class="math inline">\(r = 4\)</span> efeitos, uma vez que tem apenas <span class="math inline">\(N=4\)</span> experimentos. Deste modo, o conceito de confundimento está implícito nos fatoriais fracionados, de forma que não é possível estimar um efeito sem este estar confundido com outro de interesse. Deve-se, portanto, avaliar a estrutura de confundimento do planejamento e entender quais as implicações desta estrutura na estimativa dos efeitos.</p>
+<p>Seja a estrutura de confundimento do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>. Sejam os efeitos de <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> e <span class="math inline">\(x_3\)</span>, denotados por A, B e C, respectivamente. Para definir esta estrutura, deve-se considerar a seguinte regra AA = BB = CC = I, onde I é uma constante (não confundir com álgebra matricial). Tomando o gerador C = AB, visto que os níveis de <span class="math inline">\(x_3\)</span> foram gerados considerando a interação <span class="math inline">\(x_1x_2\)</span>, multiplicando ambos os lados por C, tem-se, CC = ABC, resultando em I = ABC. Portanto, I = ABC consiste na relação de definição. A partir desta relação sabe-se que o efeito da constante está confundido com a interação de terceira ordem. Ao se multiplicar cada efeito em ambos os lados nesta relação, obtém-se a estrutura de confundimento completa do planejamento fatorial fracionado <span class="math inline">\(2^{3-1}\)</span>, conforme ilustrado na <a href="#fig-estrut" class="quarto-xref">Figura&nbsp;<span>6.12</span></a>. Pode-se constatar que, neste planejamento, os efeitos principais estão confundidos com as interações de segunda ordem e a constante confundida com a interação de terceira ordem.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-estrut" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -3981,7 +3987,7 @@ Figura&nbsp;6.12: Estrutura de confundimento do fatorial fracionado <span class=
 </div>
 </div>
 </div>
-<p>Outro conceito importante para avaliar o fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é a resolução. Considerando a estrutura de confundimento do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span> este planejamento é dito de resolução III. Um fatorial fracionado de resolução III não é considerado de boa resolução, uma vez que os efeitos principais estão confundidos com as interações de segunda ordem, sendo a interpretação dos efeitos de baixa ordem imprecindível considerando os objetivos do planejamento fatorial.</p>
+<p>Outro conceito importante para avaliar o fatorial fracionado <span class="math inline">\(2^{k-p}\)</span> é a resolução. Considerando a estrutura de confundimento do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span> este planejamento é dito de resolução III. Um fatorial fracionado de resolução III não é recomendado, uma vez que os efeitos principais estão confundidos com as interações de segunda ordem, sendo a interpretação dos efeitos de baixa ordem imprecindível, considerando os objetivos do planejamento fatorial.</p>
 <p>Um modelo de regressão do fatorial fracionado <span class="math inline">\(2^{3-1}\)</span> pode ser escrito conforme <a href="07-rsm.html#eq-regfrac" class="quarto-xref">Equação&nbsp;<span>7.3</span></a>. Pode-se observar que não há certeza em relação aos coeficientes, dado o confundimento na estimativa destes. Entretanto, deve-se priorizar os efeitos de menor ordem na interpretação, dado o princípio da hierarquia dos efeitos.</p>
 <p><span id="eq-regfrac"><span class="math display">\[
 \hat{y}=(\beta_0+\beta_{123}) + (\beta_1+\beta_{23})x_1 + (\beta_2+\beta_{13})x_2 + (\beta_3+\beta_{12})x_3
@@ -3997,23 +4003,23 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
 </figcaption>
 <div aria-describedby="tbl-fracmetpo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="bpsfyhpffy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bpsfyhpffy table {
+<div id="cjofdsypdj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cjofdsypdj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bpsfyhpffy thead, #bpsfyhpffy tbody, #bpsfyhpffy tfoot, #bpsfyhpffy tr, #bpsfyhpffy td, #bpsfyhpffy th {
+#cjofdsypdj thead, #cjofdsypdj tbody, #cjofdsypdj tfoot, #cjofdsypdj tr, #cjofdsypdj td, #cjofdsypdj th {
   border-style: none;
 }
 
-#bpsfyhpffy p {
+#cjofdsypdj p {
   margin: 0;
   padding: 0;
 }
 
-#bpsfyhpffy .gt_table {
+#cjofdsypdj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4039,12 +4045,12 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-left-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_caption {
+#cjofdsypdj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bpsfyhpffy .gt_title {
+#cjofdsypdj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4056,7 +4062,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-bottom-width: 0;
 }
 
-#bpsfyhpffy .gt_subtitle {
+#cjofdsypdj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4068,7 +4074,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-top-width: 0;
 }
 
-#bpsfyhpffy .gt_heading {
+#cjofdsypdj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4080,13 +4086,13 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-right-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_bottom_border {
+#cjofdsypdj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_col_headings {
+#cjofdsypdj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4101,7 +4107,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-right-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_col_heading {
+#cjofdsypdj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4121,7 +4127,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   overflow-x: hidden;
 }
 
-#bpsfyhpffy .gt_column_spanner_outer {
+#cjofdsypdj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4133,15 +4139,15 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 4px;
 }
 
-#bpsfyhpffy .gt_column_spanner_outer:first-child {
+#cjofdsypdj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bpsfyhpffy .gt_column_spanner_outer:last-child {
+#cjofdsypdj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bpsfyhpffy .gt_column_spanner {
+#cjofdsypdj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4153,11 +4159,11 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   width: 100%;
 }
 
-#bpsfyhpffy .gt_spanner_row {
+#cjofdsypdj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bpsfyhpffy .gt_group_heading {
+#cjofdsypdj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4183,7 +4189,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   text-align: left;
 }
 
-#bpsfyhpffy .gt_empty_group_heading {
+#cjofdsypdj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4198,15 +4204,15 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   vertical-align: middle;
 }
 
-#bpsfyhpffy .gt_from_md > :first-child {
+#cjofdsypdj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bpsfyhpffy .gt_from_md > :last-child {
+#cjofdsypdj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bpsfyhpffy .gt_row {
+#cjofdsypdj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4225,7 +4231,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   overflow-x: hidden;
 }
 
-#bpsfyhpffy .gt_stub {
+#cjofdsypdj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4238,7 +4244,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 5px;
 }
 
-#bpsfyhpffy .gt_stub_row_group {
+#cjofdsypdj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4252,15 +4258,15 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   vertical-align: top;
 }
 
-#bpsfyhpffy .gt_row_group_first td {
+#cjofdsypdj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bpsfyhpffy .gt_row_group_first th {
+#cjofdsypdj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bpsfyhpffy .gt_summary_row {
+#cjofdsypdj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4270,16 +4276,16 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 5px;
 }
 
-#bpsfyhpffy .gt_first_summary_row {
+#cjofdsypdj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_first_summary_row.thick {
+#cjofdsypdj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bpsfyhpffy .gt_last_summary_row {
+#cjofdsypdj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4289,7 +4295,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-bottom-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_grand_summary_row {
+#cjofdsypdj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4299,7 +4305,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 5px;
 }
 
-#bpsfyhpffy .gt_first_grand_summary_row {
+#cjofdsypdj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4309,7 +4315,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-top-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_last_grand_summary_row_top {
+#cjofdsypdj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4319,11 +4325,11 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-bottom-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_striped {
+#cjofdsypdj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bpsfyhpffy .gt_table_body {
+#cjofdsypdj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4332,7 +4338,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-bottom-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_footnotes {
+#cjofdsypdj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4346,7 +4352,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-right-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_footnote {
+#cjofdsypdj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4355,7 +4361,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 5px;
 }
 
-#bpsfyhpffy .gt_sourcenotes {
+#cjofdsypdj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4369,7 +4375,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   border-right-color: #D3D3D3;
 }
 
-#bpsfyhpffy .gt_sourcenote {
+#cjofdsypdj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4377,72 +4383,72 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
   padding-right: 5px;
 }
 
-#bpsfyhpffy .gt_left {
+#cjofdsypdj .gt_left {
   text-align: left;
 }
 
-#bpsfyhpffy .gt_center {
+#cjofdsypdj .gt_center {
   text-align: center;
 }
 
-#bpsfyhpffy .gt_right {
+#cjofdsypdj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bpsfyhpffy .gt_font_normal {
+#cjofdsypdj .gt_font_normal {
   font-weight: normal;
 }
 
-#bpsfyhpffy .gt_font_bold {
+#cjofdsypdj .gt_font_bold {
   font-weight: bold;
 }
 
-#bpsfyhpffy .gt_font_italic {
+#cjofdsypdj .gt_font_italic {
   font-style: italic;
 }
 
-#bpsfyhpffy .gt_super {
+#cjofdsypdj .gt_super {
   font-size: 65%;
 }
 
-#bpsfyhpffy .gt_footnote_marks {
+#cjofdsypdj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bpsfyhpffy .gt_asterisk {
+#cjofdsypdj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bpsfyhpffy .gt_indent_1 {
+#cjofdsypdj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bpsfyhpffy .gt_indent_2 {
+#cjofdsypdj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bpsfyhpffy .gt_indent_3 {
+#cjofdsypdj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bpsfyhpffy .gt_indent_4 {
+#cjofdsypdj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bpsfyhpffy .gt_indent_5 {
+#cjofdsypdj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bpsfyhpffy .katex-display {
+#cjofdsypdj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bpsfyhpffy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cjofdsypdj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4532,7 +4538,7 @@ Tabela&nbsp;6.6: Planejamento fatorial fracionado 2<sup>4-1</sup>, metalurgia do
 </figure>
 </div>
 </div>
-<p>Para gerar este planejamento no R, pode-se utilizar o pacote <code>FrF2</code> com o código à seguir. Ao exibir o planejamento com o comando <code>summary(plan_mgzn)</code>, o analista obtém o planejamento, suas características e a estrutura de confundimento (<em>alias structure</em>). Entretanto, como o padrão deste pacote é a análise do modelo linear com interações de até segunda ordem, a estrutura de confundimento exibida só apresenta os confundimentos dos termos de até segunda ordem.</p>
+<p>Para gerar este planejamento no R, pode-se utilizar o pacote <code>FrF2</code> com o código à seguir. Ao exibir o planejamento com o comando <code>summary(plan_mgzn)</code>, o analista obtém o planejamento, suas características e a estrutura de confundimento (<em>alias structure</em>). Entretanto, neste pacote, a estrutura de confundimento exibida só apresenta os confundimentos dos termos de até segunda ordem.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plan_mgzn <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">8</span>,</span>
@@ -4594,10 +4600,10 @@ The design itself:
 class=design, type= FrF2 </code></pre>
 </div>
 </div>
-<p>Para obter a estrutura de confundimento completa utilizando o pacote <code>FrF2</code> deve-se utilizar o comando <code>aliases</code>, com o modelo de interesse, conforme segue. Pelos resultados, pode-se constatar que os termos principais estão confundidos com as interações de terceira ordem, enquanto as interações de segunda ordem estão confundidas entre si. Este planejamento tem resolução IV. O maior problema neste planejamento reside na dificuldade de interpretar as interações de segunda ordem.</p>
+<p>Para se obter a estrutura de confundimento completa utilizando o pacote <code>FrF2</code>, deve-se utilizar o comando <code>aliases</code>, com o modelo de interesse, conforme segue. Pelos resultados, pode-se constatar que os termos principais estão confundidos com as interações de terceira ordem, enquanto as interações de segunda ordem estão confundidas entre si. Este planejamento tem resolução IV. O maior problema neste planejamento reside na dificuldade de interpretar as interações de segunda ordem.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento com termos de até quarta ordem</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_mgzn))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> .<span class="sc">^</span><span class="dv">4</span>, <span class="at">data =</span> plan_mgzn))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              
  x1 = x2:x3:x4
@@ -4609,7 +4615,7 @@ class=design, type= FrF2 </code></pre>
  x1:x4 = x2:x3</code></pre>
 </div>
 </div>
-<p>Após criar o planejamento pode-se proceder com a análise. Pode-se observar que, ao se obter o modelo de segunda ordem, algumas das interações não são exibidas. Isto ocorre pois, além de não haver graus de liberdade suficiente para estimá-las, deve-se lembrar que estas interações estão confundidas. Deste modo, quando o analista interpreta o efeito da interação <span class="math inline">\(x_1x_2\)</span>, ele deve ter em mente que neste efeito consta também a interação <span class="math inline">\(x_3x_4\)</span>, ou seja, a magnitude do efeito é na verdade o confundimento destes dois efeitos <span class="math inline">\(x_1x_2+x_3x_4\)</span>. O mesmo ocorre para as demais interações de segunda ordem. As interações de terceira ordem, apesar de serem menos importantes estão confundidas com os efeitos de primeira ordem. Entretanto, neste caso, a interpretação deve priorizar os efeitos principais, dado o princípio da hierarquia dos efeitos.</p>
+<p>Após a obtenção do planejamento, pode-se proceder com a análise. Pode-se observar que, ao se obter o modelo de segunda ordem, algumas das interações não são exibidas. Isto ocorre pois, além de não haver graus de liberdade suficiente para estimá-las, deve-se lembrar que estas interações estão confundidas. Deste modo, quando o analista interpreta o efeito da interação <span class="math inline">\(x_1x_2\)</span>, ele deve ter em mente que, neste efeito, consta também a interação <span class="math inline">\(x_3x_4\)</span>, ou seja, no efeito é considerado o confundimento destes dois efeitos, <span class="math inline">\(x_1x_2+x_3x_4\)</span>. O mesmo ocorre para as demais interações de segunda ordem. As interações de terceira ordem, apesar de serem menos importantes estão confundidas com os efeitos de primeira ordem. Entretanto, neste caso, a interpretação deve priorizar os efeitos principais, dado o princípio da hierarquia dos efeitos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo "completo"</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(plan_mgzn)</span>
@@ -4644,7 +4650,7 @@ Multiple R-squared:      1, Adjusted R-squared:    NaN
 F-statistic:   NaN on 7 and 0 DF,  p-value: NA</code></pre>
 </div>
 </div>
-<p>Ao observar os efeitos, pode-se optar por reduzir o modelo, retirando uma interação com menor magnitude para estimar o erro experimental. Isto pode ser feito utilizando o comando <code>lm</code> base do R, conforme segue. Procedendo desta forma é possível estimar o erro experimental e testar a significância dos efeitos. Neste caso apenas o efeito de <span class="math inline">\(x_4\)</span> foi estatísticamente significativo com <span class="math inline">\(\alpha = 0,05\)</span> de significância. O modelo explica uma proporção de 0,9895 da variabilidade dos dados.</p>
+<p>Ao se observar os efeitos, pode-se optar por reduzir o modelo, retirando uma interação com menor magnitude para estimar o erro experimental. Isto pode ser feito utilizando o comando <code>lm</code> base do R, conforme segue. Procedendo desta forma, é possível estimar o erro experimental e testar a significância dos efeitos. Neste caso, apenas o efeito de <span class="math inline">\(x_4\)</span> foi estatisticamente significativo com <span class="math inline">\(\alpha = 0,05\)</span> de significância. O modelo explica uma proporção de 0,9895 da variabilidade dos dados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo com apenas duas interações</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span>x1 <span class="sc">+</span>x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x1<span class="sc">:</span>x3 <span class="sc">+</span> x2<span class="sc">:</span>x3,</span>
@@ -4691,7 +4697,7 @@ Figura&nbsp;6.13
 </div>
 </div>
 </div>
-<p>Utilizando o pacote <code>FrF2</code> é possível gerar um planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, definindo o gerador do planejamento. Observando a <a href="#fig-summfrac" class="quarto-xref">Figura&nbsp;<span>6.13</span></a> seja o planejamento <span class="math inline">\(2^{5-1}\)</span> considerando que o analista deseja analisar 5 fatores, mas só tem recursos para 16 ensaios. Este planejamento tem resolução V. Caso o analista queira utilizar a fração alternativa, ele deve considerar o gerador E = -ABCD, colocando o argumento <code>gen = "-ABCD"</code>, conforme segue.</p>
+<p>Utilizando o pacote <code>FrF2</code> é possível gerar um planejamento fatorial fracionado <span class="math inline">\(2^{k-p}\)</span>, definindo o gerador do planejamento. Observando a <a href="#fig-summfrac" class="quarto-xref">Figura&nbsp;<span>6.13</span></a>, seja o planejamento <span class="math inline">\(2^{5-1}\)</span> para um caso onde o analista deseja analisar 5 fatores, mas só tem recursos para 16 ensaios. Este planejamento tem resolução V. Caso o analista queira utilizar a fração alternativa, ele deve considerar o gerador E = -ABCD, colocando o argumento <code>gen = "-ABCD"</code>, conforme segue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Planejamento 2^(5-1) com fração alternativa</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>planv <span class="ot">&lt;-</span> <span class="fu">FrF2</span>(<span class="at">nruns =</span> <span class="dv">16</span>,</span>
@@ -4725,26 +4731,26 @@ Alias structure:
 
 The design itself:
     A  B  C  D  E
-1  -1  1  1  1  1
-2   1  1  1 -1  1
-3   1  1 -1 -1 -1
+1  -1  1 -1 -1  1
+2  -1 -1 -1 -1 -1
+3  -1  1  1 -1 -1
 4  -1  1 -1  1 -1
-5  -1 -1  1 -1  1
-6  -1 -1 -1 -1 -1
-7   1 -1  1  1  1
-8  -1 -1 -1  1  1
-9   1  1  1  1 -1
-10  1  1 -1  1  1
-11  1 -1 -1  1 -1
-12  1 -1 -1 -1  1
-13 -1  1  1 -1 -1
+5   1 -1 -1  1 -1
+6   1  1  1  1 -1
+7   1  1 -1  1  1
+8   1  1 -1 -1 -1
+9  -1 -1 -1  1  1
+10  1 -1  1  1  1
+11  1  1  1 -1  1
+12 -1  1  1  1  1
+13  1 -1  1 -1 -1
 14 -1 -1  1  1 -1
-15  1 -1  1 -1 -1
-16 -1  1 -1 -1  1
+15 -1 -1  1 -1  1
+16  1 -1 -1 -1  1
 class=design, type= FrF2.generators </code></pre>
 </div>
 </div>
-<p>Pelos resultados pode-se observar que não há confundimento entre os efeitos principais e as interações de segunda ordem. Caso o analista deseje entender toda a estrutura de confundimento, deve-se utilizar o comando <code>aliases</code> conforme sintaxe abaixo.</p>
+<p>Pelos resultados, pode-se observar que não há confundimento entre os efeitos principais e as interações de segunda ordem. Caso o analista deseje entender toda a estrutura de confundimento, deve-se utilizar o comando <code>aliases</code> conforme sintaxe abaixo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gerando coluna resposta aleatória </span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apenas para ver confundimento</span></span>
@@ -4753,7 +4759,7 @@ class=design, type= FrF2.generators </code></pre>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>planv<span class="sc">$</span>y <span class="ot">&lt;-</span> y</span>
 <span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura de confundimento completa</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> (.)<span class="sc">^</span><span class="dv">5</span>, <span class="at">data =</span> planv))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span>(<span class="fu">lm</span>(y <span class="sc">~</span> .<span class="sc">^</span><span class="dv">5</span>, <span class="at">data =</span> planv))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
  A = -B:C:D:E
